@@ -12,6 +12,7 @@ import GameplayKit
 class GameScene: SKScene {
     
     let gameLayer: GameLayer?
+    let backgroundLayer: BackgroundLayer?
     
     var initialState: AnyClass
     
@@ -25,6 +26,7 @@ class GameScene: SKScene {
     init(size: CGSize, stateClass: AnyClass) {
         initialState = stateClass
         gameLayer = GameLayer(size: size)
+        backgroundLayer = BackgroundLayer(size: size)
         super.init(size: size)
     }
     
