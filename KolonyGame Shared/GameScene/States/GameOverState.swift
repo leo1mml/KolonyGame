@@ -1,15 +1,15 @@
 //
-//  PlayingState.swift
+//  GameOverState.swift
 //  KolonyGame iOS
 //
-//  Created by Leonel Menezes on 09/03/2018.
+//  Created by Augusto on 12/03/2018.
 //  Copyright © 2018 Leonel Menezes. All rights reserved.
 //
 
 import SpriteKit
 import GameplayKit
 
-class PlayingState: GKState {
+class GameOverState: GKState {
     unowned let scene: GameScene
     
     init(scene: SKScene) {
@@ -22,7 +22,7 @@ class PlayingState: GKState {
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is GameOverState.Type
+        return stateClass is PlayingState.Type
     }
     
     override func update(deltaTime seconds: TimeInterval) {
