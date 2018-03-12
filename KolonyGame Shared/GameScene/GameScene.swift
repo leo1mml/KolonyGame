@@ -7,10 +7,28 @@
 //
 
 import SpriteKit
+import GameplayKit
 
 class GameScene: SKScene {
     
+    var initialState: AnyClass
     
-
+    init(size: CGSize, stateClass: AnyClass) {
+        initialState = stateClass
+        super.init(size: size)
+    }
+    
+    override func didMove(to view: SKView) {
+        stateMachine.enter(initialState)
+    }
+    
+    lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
+        PlayingState(scene: self)
+        ])
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
 

@@ -16,9 +16,11 @@ class PlayingState: GKState {
         self.scene = scene as! GameScene
         super.init()
     }
+    
     override func didEnter(from previousState: GKState?) {
         
     }
+    
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return true
     }
