@@ -117,6 +117,7 @@
 		8A8CCF9D205323EF00546F56 /* GameScene */ = {
 			isa = PBXGroup;
 			children = (
+				8A8CCF9F2053244C00546F56 /* Components */,
 				8A8CCFA12053245D00546F56 /* States */,
 				8A8CCF9E2053244400546F56 /* Layers */,
 				8A8CCF6B2053239A00546F56 /* GameScene.swift */,
@@ -159,7 +160,6 @@
 		8A8CCFA4205327BF00546F56 /* GameLayer */ = {
 			isa = PBXGroup;
 			children = (
-				8A8CCF9F2053244C00546F56 /* Components */,
 				8A8CCFA02053245300546F56 /* Entities */,
 				8A8CCFA22053249F00546F56 /* GameLayer.swift */,
 			);
