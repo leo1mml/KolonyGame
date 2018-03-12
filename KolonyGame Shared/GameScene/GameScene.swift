@@ -20,7 +20,8 @@ class GameScene: SKScene {
     var lastUpdateTimeInterval: TimeInterval = 0
     
     lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
-        PlayingState(scene: self)
+        PlayingState(scene: self),
+        GameOverState(scene: self)
         ])
     
     init(size: CGSize, stateClass: AnyClass) {
