@@ -11,6 +11,7 @@ import GameplayKit
 
 class BackgroundLayer: SKNode {
     var size: CGSize?
+   
     
     init(size: CGSize) {
         super.init()
