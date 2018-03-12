@@ -29,6 +29,11 @@ class GameScene: SKScene {
         gameLayer = GameLayer(size: size)
         backgroundLayer = BackgroundLayer(size: size)
         super.init(size: size)
+        addLayers()
+    }
+    
+    func addLayers() {
+        self.addChild(self.gameLayer!)
     }
     
     override func didMove(to view: SKView) {
