@@ -23,6 +23,7 @@
 		8A8CCFA6205328FB00546F56 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA5205328FB00546F56 /* SpriteComponent.swift */; };
 		8A8CCFA82053292B00546F56 /* PlanetEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA72053292B00546F56 /* PlanetEntity.swift */; };
 		8A8CCFAA20532B6600546F56 /* PlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA920532B6600546F56 /* PlayingState.swift */; };
+		9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D32056F51D008A9159 /* BackgroundLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		8A8CCFA5205328FB00546F56 /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
 		8A8CCFA72053292B00546F56 /* PlanetEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetEntity.swift; sourceTree = "<group>"; };
 		8A8CCFA920532B6600546F56 /* PlayingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingState.swift; sourceTree = "<group>"; };
+		9790E7D32056F51D008A9159 /* BackgroundLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 		8A8CCF9E2053244400546F56 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				9790E7D12056F4C1008A9159 /* BackgroundLayer */,
 				8A8CCFA4205327BF00546F56 /* GameLayer */,
 			);
 			path = Layers;
@@ -164,6 +167,22 @@
 				8A8CCFA22053249F00546F56 /* GameLayer.swift */,
 			);
 			path = GameLayer;
+			sourceTree = "<group>";
+		};
+		9790E7D12056F4C1008A9159 /* BackgroundLayer */ = {
+			isa = PBXGroup;
+			children = (
+				9790E7D22056F4F7008A9159 /* Entities */,
+				9790E7D32056F51D008A9159 /* BackgroundLayer.swift */,
+			);
+			path = BackgroundLayer;
+			sourceTree = "<group>";
+		};
+		9790E7D22056F4F7008A9159 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +293,7 @@
 				8A8CCFA6205328FB00546F56 /* SpriteComponent.swift in Sources */,
 				8A8CCFA32053249F00546F56 /* GameLayer.swift in Sources */,
 				8A8CCF772053239A00546F56 /* GameViewController.swift in Sources */,
+				9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */,
 				8A8CCFA82053292B00546F56 /* PlanetEntity.swift in Sources */,
 				8A8CCF752053239A00546F56 /* AppDelegate.swift in Sources */,
 			);
