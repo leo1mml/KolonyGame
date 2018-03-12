@@ -11,20 +11,37 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    let gameLayer: GameLayer?
+    
     var initialState: AnyClass
+    
+    var deltaTime: TimeInterval = 0
+    var lastUpdateTimeInterval: TimeInterval = 0
+    
+    lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
+        PlayingState(scene: self)
+        ])
     
     init(size: CGSize, stateClass: AnyClass) {
         initialState = stateClass
+        gameLayer = GameLayer(size: size)
         super.init(size: size)
     }
     
     override func didMove(to view: SKView) {
         stateMachine.enter(initialState)
     }
-    
-    lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
-        PlayingState(scene: self)
-        ])
+
+    override func update(_ currentTime: TimeInterval) {
+        if lastUpdateTimeInterval == 0 {
+            lastUpdateTimeInterval = currentTime
+        }
+        
+        deltaTime = currentTime - lastUpdateTimeInterval
+        lastUpdateTimeInterval = currentTime
+        stateMachine.update(deltaTime: deltaTime)
+
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
