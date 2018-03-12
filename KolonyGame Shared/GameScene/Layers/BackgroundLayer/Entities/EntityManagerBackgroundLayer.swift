@@ -7,3 +7,8 @@
 //
 
 import Foundation
+import GameplayKit
+
+public class EntityManagerBackgroundLayer : GKEntity {
+    
+}
