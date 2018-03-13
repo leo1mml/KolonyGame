@@ -45,7 +45,6 @@ class GameLayer: SKNode {
             if let blackHoleSprite = blackHole?.component(ofType: SpriteComponent.self) {
                 planetSpriteComponent.node.position.x = 0
                 planetSpriteComponent.node.position.y = -(blackHoleSprite.node.size.height/2)
-//                blackHoleSprite.node.addChild(planetSpriteComponent.node)
                 entityManager?.addPlanet(planetOne)
             }
             
