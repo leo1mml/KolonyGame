@@ -31,6 +31,7 @@
 		8AE8079520570423006EDC86 /* GameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA22053249F00546F56 /* GameLayer.swift */; };
 		9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D32056F51D008A9159 /* BackgroundLayer.swift */; };
 		9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */; };
+		9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D720571F09008A9159 /* BackgroundEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerGameLayer.swift; sourceTree = "<group>"; };
 		9790E7D32056F51D008A9159 /* BackgroundLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundLayer.swift; sourceTree = "<group>"; };
 		9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerBackgroundLayer.swift; sourceTree = "<group>"; };
+		9790E7D720571F09008A9159 /* BackgroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */,
+				9790E7D720571F09008A9159 /* BackgroundEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			files = (
 				8A8CCFAA20532B6600546F56 /* PlayingState.swift in Sources */,
 				14ACEF752056FEAA00D62305 /* GameOverState.swift in Sources */,
+				9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */,
 				8A8CCF912053239B00546F56 /* GameScene.swift in Sources */,
 				8AE807912056FE70006EDC86 /* EntityManagerGameLayer.swift in Sources */,
 				8A8CCFA6205328FB00546F56 /* SpriteComponent.swift in Sources */,
