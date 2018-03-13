@@ -23,11 +23,9 @@ class PlanetEntity: GKEntity {
         self.spriteComponent = SpriteComponent(texture: texture)
         self.addComponent(self.spriteComponent!)
         
-        self.physicsBodyComponent = PhysicBodyComponent(size: texture.size())
-//        self.addComponent(self.physicsBodyComponent!)
+        self.physicsBodyComponent = PhysicBodyComponent(node: (self.spriteComponent?.node)!, physicCategory: PhysicsCategory.Planet)
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
-        
-        self.spriteComponent?.node.physicsBody?.affectedByGravity = false
+
     }
     
     required init?(coder aDecoder: NSCoder) {
