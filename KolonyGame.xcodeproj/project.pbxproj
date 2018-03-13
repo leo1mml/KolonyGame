@@ -33,6 +33,7 @@
 		8AE8079320570413006EDC86 /* EntityManagerGameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */; };
 		8AE8079420570418006EDC86 /* BackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D32056F51D008A9159 /* BackgroundLayer.swift */; };
 		8AE8079520570423006EDC86 /* GameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA22053249F00546F56 /* GameLayer.swift */; };
+		8AE8079720571FA6006EDC86 /* BlackHoleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */; };
 		9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D32056F51D008A9159 /* BackgroundLayer.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		8A8CCFA72053292B00546F56 /* PlanetEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetEntity.swift; sourceTree = "<group>"; };
 		8A8CCFA920532B6600546F56 /* PlayingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingState.swift; sourceTree = "<group>"; };
 		8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerGameLayer.swift; sourceTree = "<group>"; };
+		8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackHoleEntity.swift; sourceTree = "<group>"; };
 		9790E7D32056F51D008A9159 /* BackgroundLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +169,7 @@
 			children = (
 				8A8CCFA72053292B00546F56 /* PlanetEntity.swift */,
 				8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */,
+				8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AE8079720571FA6006EDC86 /* BlackHoleEntity.swift in Sources */,
 				8A8CCFAA20532B6600546F56 /* PlayingState.swift in Sources */,
 				14ACEF752056FEAA00D62305 /* GameOverState.swift in Sources */,
 				8A8CCF912053239B00546F56 /* GameScene.swift in Sources */,
