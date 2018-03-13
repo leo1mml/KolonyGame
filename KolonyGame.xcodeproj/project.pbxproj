@@ -10,6 +10,7 @@
 		14ACEF732056F08E00D62305 /* PlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA920532B6600546F56 /* PlayingState.swift */; };
 		14ACEF752056FEAA00D62305 /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ACEF742056FEAA00D62305 /* GameOverState.swift */; };
 		14E2FE0720583C9600A0E3A8 /* PhysicBodyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */; };
+		14E2FE09205869AE00A0E3A8 /* RotationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */; };
 		14FA662620582FFB00D4C10B /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA662520582FFB00D4C10B /* PhysicsCategory.swift */; };
 		14FA662720582FFB00D4C10B /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA662520582FFB00D4C10B /* PhysicsCategory.swift */; };
 		8A8CCF752053239A00546F56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCF742053239A00546F56 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		14ACEF742056FEAA00D62305 /* GameOverState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverState.swift; sourceTree = "<group>"; };
 		14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicBodyComponent.swift; sourceTree = "<group>"; };
+		14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationComponent.swift; sourceTree = "<group>"; };
 		14FA662520582FFB00D4C10B /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		8A8CCF6B2053239A00546F56 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		8A8CCF6C2053239A00546F56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				8A8CCFA5205328FB00546F56 /* SpriteComponent.swift */,
 				14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */,
+				14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				8A8CCFA6205328FB00546F56 /* SpriteComponent.swift in Sources */,
 				14E2FE0720583C9600A0E3A8 /* PhysicBodyComponent.swift in Sources */,
 				14FA662620582FFB00D4C10B /* PhysicsCategory.swift in Sources */,
+				14E2FE09205869AE00A0E3A8 /* RotationComponent.swift in Sources */,
 				8A8CCFA32053249F00546F56 /* GameLayer.swift in Sources */,
 				8A8CCF772053239A00546F56 /* GameViewController.swift in Sources */,
 				9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */,
