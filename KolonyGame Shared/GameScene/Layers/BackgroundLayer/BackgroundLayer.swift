@@ -10,8 +10,11 @@ import SpriteKit
 import GameplayKit
 
 class BackgroundLayer: SKNode {
+    
+    let STARS_AMOUNT = 100
+    
     var size: CGSize?
-   var entityManager : EntityManagerBackgroundLayer?
+    var entityManager : EntityManagerBackgroundLayer?
     
     init(size: CGSize) {
         super.init()
@@ -24,19 +27,44 @@ class BackgroundLayer: SKNode {
         
         var size = CGSize(width: (self.size?.width)!, height: (self.size?.height)!)
         let bg = BackgroundEntity(imageName: "bg", size: size)
-
-        size = CGSize(width: (self.size?.height)! * 0.018, height: (self.size?.height)! * 0.018)
+        
+        size = CGSize(width: (self.size?.height)! * 0.015, height: (self.size?.height)! * 0.015)
         let star = StarEntity(imageName: "star", size: size)
-
+        
+        
+        let stars = createPoolStars(size, "star")
+        setup(stars)
+        
+        
+        
         setupEntity(entity: bg, position: CGPoint.zero)
         setupEntity(entity: star, position: CGPoint.zero)
         
         self.entityManager?.add(bg)
-        self.entityManager?.add(star)
+        self.entityManager?.addAll(stars)
         
     }
-
     
+    func setup (_ stars: [StarEntity]) {
+        for (index, i ) in stars.enumerated() {
+            
+            var x = CGFloat(arc4random_uniform(UInt32(size!.width)))
+            x -= (size?.width)! / 2
+            var y = CGFloat(arc4random_uniform(UInt32(size!.height)))
+            y -= (size?.height)! / 2
+            setupEntity(entity: i, position: CGPoint(x: x, y: y))
+        }
+    }
+    
+    
+    
+    func createPoolStars(_ size : CGSize, _ imageName: String) -> [StarEntity] {
+        var stars = [StarEntity]()
+        for _ in 0...STARS_AMOUNT {
+            stars.append(StarEntity(imageName: imageName, size: size))
+        }
+        return stars
+    }
     
     func setupEntity<T: GKEntity>(entity: T, position: CGPoint) {
         if let spriteComponent = entity.component(ofType: SpriteComponent.self) {
@@ -50,6 +78,6 @@ class BackgroundLayer: SKNode {
     
     
     
-
-
+    
+    
 }

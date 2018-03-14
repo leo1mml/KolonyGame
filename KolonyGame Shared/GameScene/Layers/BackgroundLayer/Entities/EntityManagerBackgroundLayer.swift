@@ -38,6 +38,21 @@ public class EntityManagerBackgroundLayer : GKEntity {
         //        }
     }
     
+    func addAll(_ entities: [GKEntity]) {
+        
+        for i in entities {
+            self.entities.insert(i)
+            
+            if let spriteNode = i.component(ofType: SpriteComponent.self)?.node {
+                bgLayer.addChild(spriteNode)
+            }
+        }
+        
+        //        for componentSystem in componentSystems {
+        //            componentSystem.addComponent(foundIn: entity)
+        //        }
+    }
+    
     func remove(_ entity: GKEntity) {
         if let spriteNode = entity.component(ofType: SpriteComponent.self)?.node {
             spriteNode.removeFromParent()
