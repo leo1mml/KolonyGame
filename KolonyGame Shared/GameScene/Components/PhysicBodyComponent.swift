@@ -14,7 +14,7 @@ class PhysicBodyComponent: GKComponent {
     var physicBody: SKPhysicsBody
 
     init(node: SKSpriteNode, physicCategory: UInt32 ) {
- 
+        
         switch physicCategory {
         case PhysicsCategory.Planet:
             

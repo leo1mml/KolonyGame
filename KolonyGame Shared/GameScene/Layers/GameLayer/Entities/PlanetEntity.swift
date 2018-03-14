@@ -15,15 +15,15 @@ class PlanetEntity: GKEntity {
     var spriteComponent : SpriteComponent?
     var physicsBodyComponent: PhysicBodyComponent?
     
-    init(imageName: String) {
+    init(imageName: String, size: CGSize) {
         super.init()
         
         let texture = SKTexture(imageNamed: imageName)
         
-        self.spriteComponent = SpriteComponent(texture: texture)
+        self.spriteComponent = SpriteComponent(texture: texture, size: size)
         self.addComponent(self.spriteComponent!)
         
-        self.physicsBodyComponent = PhysicBodyComponent(node: (self.spriteComponent?.node)!, physicCategory: PhysicsCategory.Planet)
+        self.physicsBodyComponent = PhysicBodyComponent(node: (spriteComponent?.node)!, physicCategory: PhysicsCategory.Planet)
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
 
     }

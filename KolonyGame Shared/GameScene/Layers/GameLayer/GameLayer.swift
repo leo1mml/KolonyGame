@@ -27,10 +27,9 @@ class GameLayer: SKNode {
     
     
     func createBlackHole() {
-        self.blackHole = BlackHoleEntity(imageName: "blackhole")
+        let size = CGSize(width: (self.size?.height)! * 0.31, height: (self.size?.height)! * 0.31)
+        self.blackHole = BlackHoleEntity(imageName: "blackhole", size: size)
         if let spriteComponent = blackHole?.component(ofType: SpriteComponent.self) {
-            spriteComponent.node.size.height = (self.size?.height)! * 0.31
-            spriteComponent.node.size.width = (self.size?.height)! * 0.31
             spriteComponent.node.position = CGPoint(x: (self.size?.width)!/2, y: (self.size?.height)! * 0.73)
         }
         entityManager?.add(blackHole!)
@@ -38,10 +37,9 @@ class GameLayer: SKNode {
     }
     
     func createPlanetOne() {
-        let planetOne = PlanetEntity(imageName: "planet1")
+        let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
+        let planetOne = PlanetEntity(imageName: "planet1", size: size)
         if let planetSpriteComponent = planetOne.component(ofType: SpriteComponent.self) {
-            planetSpriteComponent.node.size.height = (self.size?.height)! * 0.11
-            planetSpriteComponent.node.size.width = (self.size?.height)! * 0.11
             if let blackHoleSprite = blackHole?.component(ofType: SpriteComponent.self) {
                 planetSpriteComponent.node.position.x = 0
                 planetSpriteComponent.node.position.y = -(blackHoleSprite.node.size.height/2)

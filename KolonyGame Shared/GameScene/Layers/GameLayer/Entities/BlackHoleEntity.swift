@@ -13,14 +13,18 @@ class BlackHoleEntity: GKEntity {
     
     var spriteComponent : SpriteComponent?
     var planet1 : PlanetEntity?
+    var rotationComponent: RotationComponent?
     
-    init(imageName: String) {
+    init(imageName: String, size: CGSize) {
         super.init()
         
         let texture = SKTexture(imageNamed: imageName)
         
-        self.spriteComponent = SpriteComponent(texture: texture)
+        self.spriteComponent = SpriteComponent(texture: texture, size: size)
         self.addComponent(self.spriteComponent!)
+        
+        self.rotationComponent = RotationComponent(entity: self)
+        self.rotationComponent?.startRotate(angle: CGFloat.pi * 2, duration: 3)
     }
     
     required init?(coder aDecoder: NSCoder) {
