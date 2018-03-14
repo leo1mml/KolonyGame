@@ -28,7 +28,7 @@ class BackgroundLayer: SKNode {
         var size = CGSize(width: (self.size?.width)!, height: (self.size?.height)!)
         let bg = BackgroundEntity(imageName: "bg", size: size)
         
-        size = CGSize(width: (self.size?.height)! * 0.015, height: (self.size?.height)! * 0.015)
+        size = CGSize(width: (self.size?.height)! * 0.01, height: (self.size?.height)! * 0.01)
         let star = StarEntity(imageName: "star", size: size)
         
         
@@ -69,6 +69,7 @@ class BackgroundLayer: SKNode {
     func setupEntity<T: GKEntity>(entity: T, position: CGPoint) {
         if let spriteComponent = entity.component(ofType: SpriteComponent.self) {
             spriteComponent.node.position = position
+            spriteComponent.node.run(spriteComponent.scaleAction(timeBetweenScale: 1, scaleMultiplier: 1.3))
         }
     }
     
