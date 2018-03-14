@@ -15,11 +15,11 @@ class BackgroundEntity : GKEntity {
     var spriteComponent : SpriteComponent?
     
     
-    init(imageName: String) {
+    init(imageName: String, size: CGSize) {
         super.init()
         
         let texture = SKTexture(imageNamed: imageName)
-        self.spriteComponent = SpriteComponent(texture: texture)
+        self.spriteComponent = SpriteComponent(texture: texture, size: size)
         self.addComponent(self.spriteComponent!)
     }
     

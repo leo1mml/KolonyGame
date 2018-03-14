@@ -21,11 +21,10 @@ class BackgroundLayer: SKNode {
     
     
     func setupLayer () {
-        let bg = BackgroundEntity(imageName: "bg")
+        let size = CGSize(width: (self.size?.width)!, height: (self.size?.height)!)
+        let bg = BackgroundEntity(imageName: "bg", size: size)
         if let spriteComponent = bg.component(ofType: SpriteComponent.self) {
             spriteComponent.node.position = CGPoint.zero
-            spriteComponent.node.size.height = (self.size?.height)!
-            spriteComponent.node.size.width = ((self.size?.width)! )
         }
         entityManager?.add(bg)
     }
