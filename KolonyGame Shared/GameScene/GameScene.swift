@@ -25,19 +25,33 @@ class GameScene: SKScene {
         ])
     
     init(size: CGSize, stateClass: AnyClass) {
+        
         initialState = stateClass
         gameLayer = GameLayer(size: size)
         backgroundLayer = BackgroundLayer(size: size)
+        self.gameLayer?.zPosition = 0
         super.init(size: size)
-        addLayers()
+        self.setup(backgroundLayer: backgroundLayer!)
+        self.addLayers()
+    }
+    
+    
+    func setup (backgroundLayer: BackgroundLayer) {
+        let x = self.scene?.size.width
+        let y = self.scene?.size.height
+        self.backgroundLayer?.zPosition = -1
+        self.backgroundLayer?.position = CGPoint(x: x! / 2, y: y! / 2)
     }
     
     func addLayers() {
+        self.addChild(self.backgroundLayer!)
         self.addChild(self.gameLayer!)
     }
     
     override func didMove(to view: SKView) {
         stateMachine.enter(initialState)
+        self.backgroundColor = .clear
+        
     }
 
     override func update(_ currentTime: TimeInterval) {

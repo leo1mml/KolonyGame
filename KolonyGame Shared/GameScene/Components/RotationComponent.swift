@@ -19,19 +19,22 @@ class RotationComponent: GKComponent {
         super.init()
     }
     
-    func startRotate() {
+    func startRotate(angle: CGFloat, duration: TimeInterval) {
         let spriteNode = spriteComponent.node
         
-        let rotateAction = SKAction.rotate(toAngle: CGFloat(Double.pi / 4), duration: 0)
+        // CGFloat.pi * 2
         
-        let rotateForever = SKAction.repeatForever(rotateAction)
+        let oneRevolution:SKAction = SKAction.rotate(byAngle: angle, duration: duration)
+        let repeatRotation:SKAction = SKAction.repeatForever(oneRevolution)
         
-        spriteNode.run(rotateForever)
+        spriteNode.run(repeatRotation, withKey: "rotation")
         
     }
     
     func stopRotate(){
+        let spriteNode = spriteComponent.node
         
+        spriteNode.removeAction(forKey: "rotation")
     }
     
     override func update(deltaTime seconds: TimeInterval) {

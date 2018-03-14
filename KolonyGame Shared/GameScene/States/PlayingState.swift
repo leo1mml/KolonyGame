@@ -18,7 +18,9 @@ class PlayingState: GKState {
     }
     
     override func didEnter(from previousState: GKState?) {
+        scene.backgroundLayer?.setupLayer()
         scene.gameLayer?.configureLayer()
+        
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
