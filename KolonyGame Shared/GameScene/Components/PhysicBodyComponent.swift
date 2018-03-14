@@ -47,7 +47,6 @@ class PhysicBodyComponent: GKComponent {
         
         physicBody.categoryBitMask = physicCategory
         physicBody.collisionBitMask = 0
-        physicBody.affectedByGravity = false
         
         super.init()
         

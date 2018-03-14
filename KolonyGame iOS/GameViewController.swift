@@ -26,6 +26,8 @@ class GameViewController: UIViewController {
         
         scene.scaleMode = .aspectFit
         
+        scene.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        
         skView.presentScene(scene)
     }
 
