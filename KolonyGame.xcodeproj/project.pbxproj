@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		14ACEF732056F08E00D62305 /* PlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA920532B6600546F56 /* PlayingState.swift */; };
 		14ACEF752056FEAA00D62305 /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ACEF742056FEAA00D62305 /* GameOverState.swift */; };
+		14E2FE0720583C9600A0E3A8 /* PhysicBodyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */; };
+		14E2FE09205869AE00A0E3A8 /* RotationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */; };
+		14FA662620582FFB00D4C10B /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA662520582FFB00D4C10B /* PhysicsCategory.swift */; };
+		14FA662720582FFB00D4C10B /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA662520582FFB00D4C10B /* PhysicsCategory.swift */; };
 		8A8CCF752053239A00546F56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCF742053239A00546F56 /* AppDelegate.swift */; };
 		8A8CCF772053239A00546F56 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCF762053239A00546F56 /* GameViewController.swift */; };
 		8A8CCF7A2053239A00546F56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A8CCF782053239A00546F56 /* Main.storyboard */; };
@@ -29,6 +33,7 @@
 		8AE8079320570413006EDC86 /* EntityManagerGameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */; };
 		8AE8079420570418006EDC86 /* BackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D32056F51D008A9159 /* BackgroundLayer.swift */; };
 		8AE8079520570423006EDC86 /* GameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA22053249F00546F56 /* GameLayer.swift */; };
+		8AE8079720571FA6006EDC86 /* BlackHoleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */; };
 		9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D32056F51D008A9159 /* BackgroundLayer.swift */; };
 		9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */; };
 		9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D720571F09008A9159 /* BackgroundEntity.swift */; };
@@ -36,6 +41,9 @@
 
 /* Begin PBXFileReference section */
 		14ACEF742056FEAA00D62305 /* GameOverState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverState.swift; sourceTree = "<group>"; };
+		14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicBodyComponent.swift; sourceTree = "<group>"; };
+		14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationComponent.swift; sourceTree = "<group>"; };
+		14FA662520582FFB00D4C10B /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		8A8CCF6B2053239A00546F56 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		8A8CCF6C2053239A00546F56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A8CCF712053239A00546F56 /* KolonyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KolonyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +62,7 @@
 		8A8CCFA72053292B00546F56 /* PlanetEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetEntity.swift; sourceTree = "<group>"; };
 		8A8CCFA920532B6600546F56 /* PlayingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingState.swift; sourceTree = "<group>"; };
 		8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerGameLayer.swift; sourceTree = "<group>"; };
+		8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackHoleEntity.swift; sourceTree = "<group>"; };
 		9790E7D32056F51D008A9159 /* BackgroundLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundLayer.swift; sourceTree = "<group>"; };
 		9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerBackgroundLayer.swift; sourceTree = "<group>"; };
 		9790E7D720571F09008A9159 /* BackgroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEntity.swift; sourceTree = "<group>"; };
@@ -135,6 +144,7 @@
 				8A8CCFA12053245D00546F56 /* States */,
 				8A8CCF9E2053244400546F56 /* Layers */,
 				8A8CCF6B2053239A00546F56 /* GameScene.swift */,
+				14FA662520582FFB00D4C10B /* PhysicsCategory.swift */,
 			);
 			path = GameScene;
 			sourceTree = "<group>";
@@ -152,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				8A8CCFA5205328FB00546F56 /* SpriteComponent.swift */,
+				14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */,
+				14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -161,6 +173,7 @@
 			children = (
 				8A8CCFA72053292B00546F56 /* PlanetEntity.swift */,
 				8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */,
+				8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -304,12 +317,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AE8079720571FA6006EDC86 /* BlackHoleEntity.swift in Sources */,
 				8A8CCFAA20532B6600546F56 /* PlayingState.swift in Sources */,
 				14ACEF752056FEAA00D62305 /* GameOverState.swift in Sources */,
 				9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */,
 				8A8CCF912053239B00546F56 /* GameScene.swift in Sources */,
 				8AE807912056FE70006EDC86 /* EntityManagerGameLayer.swift in Sources */,
 				8A8CCFA6205328FB00546F56 /* SpriteComponent.swift in Sources */,
+				14E2FE0720583C9600A0E3A8 /* PhysicBodyComponent.swift in Sources */,
+				14FA662620582FFB00D4C10B /* PhysicsCategory.swift in Sources */,
+				14E2FE09205869AE00A0E3A8 /* RotationComponent.swift in Sources */,
 				8A8CCFA32053249F00546F56 /* GameLayer.swift in Sources */,
 				8A8CCF772053239A00546F56 /* GameViewController.swift in Sources */,
 				9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */,
@@ -326,6 +343,7 @@
 				8A8CCF922053239B00546F56 /* GameScene.swift in Sources */,
 				8AE8079520570423006EDC86 /* GameLayer.swift in Sources */,
 				8A8CCF882053239B00546F56 /* GameViewController.swift in Sources */,
+				14FA662720582FFB00D4C10B /* PhysicsCategory.swift in Sources */,
 				14ACEF732056F08E00D62305 /* PlayingState.swift in Sources */,
 				8AE807922057040F006EDC86 /* PlanetEntity.swift in Sources */,
 				8AE8079320570413006EDC86 /* EntityManagerGameLayer.swift in Sources */,
@@ -470,7 +488,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JC4QT73C9E;
+				DEVELOPMENT_TEAM = J8J2K4KEX2;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -488,7 +506,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JC4QT73C9E;
+				DEVELOPMENT_TEAM = J8J2K4KEX2;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -1,19 +1,19 @@
 //
-//  PlanetEntity.swift
+//  BlackHoleEntity.swift
 //  KolonyGame iOS
 //
-//  Created by Leonel Menezes on 09/03/2018.
+//  Created by Leonel Menezes on 12/03/2018.
 //  Copyright © 2018 Leonel Menezes. All rights reserved.
 //
-
 
 import SpriteKit
 import GameplayKit
 
-class PlanetEntity: GKEntity {
+class BlackHoleEntity: GKEntity {
     
     var spriteComponent : SpriteComponent?
-    var physicsBodyComponent: PhysicBodyComponent?
+    var planet1 : PlanetEntity?
+    var rotationComponent: RotationComponent?
     
     init(imageName: String, size: CGSize) {
         super.init()
@@ -23,9 +23,8 @@ class PlanetEntity: GKEntity {
         self.spriteComponent = SpriteComponent(texture: texture, size: size)
         self.addComponent(self.spriteComponent!)
         
-        self.physicsBodyComponent = PhysicBodyComponent(node: (spriteComponent?.node)!, physicCategory: PhysicsCategory.Planet)
-        self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
-
+        self.rotationComponent = RotationComponent(entity: self)
+        self.rotationComponent?.startRotate(angle: CGFloat.pi * 2, duration: 3)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,3 +32,4 @@ class PlanetEntity: GKEntity {
     }
     
 }
+

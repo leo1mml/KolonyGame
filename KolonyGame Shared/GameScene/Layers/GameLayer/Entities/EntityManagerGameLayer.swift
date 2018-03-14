@@ -33,6 +33,14 @@ class EntityManagerGameLayer {
 //        }
     }
     
+    func addPlanet(_ planet: PlanetEntity){
+        for entity in entities {
+            if let blackHole = entity.isKind(of: BlackHoleEntity.self) ? entity : nil {
+                blackHole.component(ofType: SpriteComponent.self)?.node.addChild((planet.spriteComponent?.node)!)
+            }
+        }
+    }
+    
     func remove(_ entity: GKEntity) {
         if let spriteNode = entity.component(ofType: SpriteComponent.self)?.node {
             spriteNode.removeFromParent()
