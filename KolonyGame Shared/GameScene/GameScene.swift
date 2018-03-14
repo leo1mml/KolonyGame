@@ -27,20 +27,20 @@ class GameScene: SKScene {
     init(size: CGSize, stateClass: AnyClass) {
         
         initialState = stateClass
-        gameLayer = GameLayer(size: size)
-        backgroundLayer = BackgroundLayer(size: size)
-        self.gameLayer?.zPosition = 0
+        
+        self.gameLayer = GameLayer(size: size)
+        self.backgroundLayer = BackgroundLayer(size: size)
+        
         super.init(size: size)
         self.setup(backgroundLayer: backgroundLayer!)
+        
         self.addLayers()
     }
     
     
     func setup (backgroundLayer: BackgroundLayer) {
-        let x = self.scene?.size.width
-        let y = self.scene?.size.height
         self.backgroundLayer?.zPosition = -1
-        self.backgroundLayer?.position = CGPoint(x: x! / 2, y: y! / 2)
+        self.backgroundLayer?.position = CGPoint(x: (self.scene?.size.width)! / 2, y: (self.scene?.size.height)! / 2)
     }
     
     func addLayers() {

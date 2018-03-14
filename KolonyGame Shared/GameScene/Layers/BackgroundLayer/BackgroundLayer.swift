@@ -21,12 +21,27 @@ class BackgroundLayer: SKNode {
     
     
     func setupLayer () {
-        let size = CGSize(width: (self.size?.width)!, height: (self.size?.height)!)
+        
+        var size = CGSize(width: (self.size?.width)!, height: (self.size?.height)!)
         let bg = BackgroundEntity(imageName: "bg", size: size)
-        if let spriteComponent = bg.component(ofType: SpriteComponent.self) {
-            spriteComponent.node.position = CGPoint.zero
+
+        size = CGSize(width: (self.size?.height)! * 0.018, height: (self.size?.height)! * 0.018)
+        let star = StarEntity(imageName: "star", size: size)
+
+        setupEntity(entity: bg, position: CGPoint.zero)
+        setupEntity(entity: star, position: CGPoint.zero)
+        
+        self.entityManager?.add(bg)
+        self.entityManager?.add(star)
+        
+    }
+
+    
+    
+    func setupEntity<T: GKEntity>(entity: T, position: CGPoint) {
+        if let spriteComponent = entity.component(ofType: SpriteComponent.self) {
+            spriteComponent.node.position = position
         }
-        entityManager?.add(bg)
     }
     
     required init?(coder aDecoder: NSCoder) {
