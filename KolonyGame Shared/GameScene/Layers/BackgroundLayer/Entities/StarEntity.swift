@@ -6,10 +6,8 @@
 //  Copyright © 2018 Leonel Menezes. All rights reserved.
 //
 
-
 import SpriteKit
 import GameplayKit
-
 
 class StarEntity : GKEntity {
     var spriteComponent: SpriteComponent?
