@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let gameLayer: GameLayer?
     let backgroundLayer: BackgroundLayer?
@@ -32,6 +32,7 @@ class GameScene: SKScene {
         self.gameLayer?.zPosition = 0
         super.init(size: size)
         self.setup(backgroundLayer: backgroundLayer!)
+        self.physicsWorld.contactDelegate = self
         self.addLayers()
     }
     
@@ -63,6 +64,10 @@ class GameScene: SKScene {
         lastUpdateTimeInterval = currentTime
         stateMachine.update(deltaTime: deltaTime)
 
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        gameLayer?.didBegin(contact)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

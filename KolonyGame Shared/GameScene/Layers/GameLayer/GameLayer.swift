@@ -7,7 +7,7 @@
 //
 import SpriteKit
 
-class GameLayer: SKNode, SKPhysicsContactDelegate {
+class GameLayer: SKNode {
     
     var size: CGSize?
     var entityManager : EntityManagerGameLayer?
@@ -18,7 +18,6 @@ class GameLayer: SKNode, SKPhysicsContactDelegate {
         super.init()
         self.size = size
         entityManager = EntityManagerGameLayer(gameLayer: self)
-        
     }
     
     
@@ -62,10 +61,7 @@ class GameLayer: SKNode, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        if contact.bodyA.node?.name == "ball" &&
-            contact.bodyB.node?.name == "ball" {
-            print(contact.contactPoint)
-        }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
