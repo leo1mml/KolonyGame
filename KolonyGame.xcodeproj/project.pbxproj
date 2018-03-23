@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1491A39E20659B5000AA982C /* StarEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7E320599526008A9159 /* StarEntity.swift */; };
 		14ACEF732056F08E00D62305 /* PlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA920532B6600546F56 /* PlayingState.swift */; };
 		14ACEF752056FEAA00D62305 /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ACEF742056FEAA00D62305 /* GameOverState.swift */; };
 		14E2FE0720583C9600A0E3A8 /* PhysicBodyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */; };
@@ -39,7 +40,6 @@
 		9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D32056F51D008A9159 /* BackgroundLayer.swift */; };
 		9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */; };
 		9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D720571F09008A9159 /* BackgroundEntity.swift */; };
-		9790E7E420599526008A9159 /* StarEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7E320599526008A9159 /* StarEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -324,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1491A39E20659B5000AA982C /* StarEntity.swift in Sources */,
 				8AE8079720571FA6006EDC86 /* BlackHoleEntity.swift in Sources */,
 				8A8CCFAA20532B6600546F56 /* PlayingState.swift in Sources */,
 				14F761C32059A16400F4D04F /* RocketEntity.swift in Sources */,
