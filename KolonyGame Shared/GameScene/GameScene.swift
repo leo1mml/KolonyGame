@@ -14,6 +14,7 @@ class GameScene: SKScene {
     let gameLayer: GameLayer?
     let backgroundLayer: BackgroundLayer?
     
+    
     var initialState: AnyClass
     
     var deltaTime: TimeInterval = 0
