@@ -24,6 +24,8 @@ class PlanetEntity: GKEntity {
         
         self.physicsBodyComponent = PhysicBodyComponent(node: (spriteComponent?.node)!, physicCategory: PhysicsCategory.Planet)
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
+        
+        self.spriteComponent?.node.name = "planet"
 
     }
     

@@ -29,6 +29,8 @@ class BlackHoleEntity: GKEntity {
         
         self.physicsBodyComponent = PhysicBodyComponent(node: (spriteComponent?.node)!, physicCategory: PhysicsCategory.BlackHole)
         self.spriteComponent?.node.physicsBody = physicsBodyComponent?.physicBody
+        
+        self.spriteComponent?.node.name = "blackHole"
     }
     
     required init?(coder aDecoder: NSCoder) {

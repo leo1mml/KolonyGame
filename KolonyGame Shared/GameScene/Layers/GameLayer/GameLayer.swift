@@ -61,7 +61,9 @@ class GameLayer: SKNode {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        
+        if (contact.bodyA.node?.name == "planet" && contact.bodyB.node?.name == "rocket") || (contact.bodyB.node?.name == "planet" && contact.bodyA.node?.name == "rocket") {
+            print("acertou")
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

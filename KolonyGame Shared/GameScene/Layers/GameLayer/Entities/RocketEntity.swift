@@ -25,6 +25,7 @@ class RocketEntity: GKEntity {
         self.physicsBodyComponent = PhysicBodyComponent(node: (spriteComponent?.node)!, physicCategory: PhysicsCategory.Rocket)
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
         
+        self.spriteComponent?.node.name = "rocket"
     }
     
     required init?(coder aDecoder: NSCoder) {

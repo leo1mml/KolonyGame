@@ -20,14 +20,20 @@ class PhysicBodyComponent: GKComponent {
             
             physicBody = SKPhysicsBody(circleOfRadius: max(node.size.width / 2.8,
                                                            node.size.height / 2.8))
+            
             physicBody.contactTestBitMask = PhysicsCategory.Rocket | PhysicsCategory.BlackHole
+            
+            physicBody.collisionBitMask = PhysicsCategory.Rocket
             
             break
         case PhysicsCategory.Rocket:
             
             physicBody = SKPhysicsBody(circleOfRadius: max(node.size.width / 2,
                                                            node.size.height / 2))
+            
             physicBody.contactTestBitMask = PhysicsCategory.Planet|PhysicsCategory.BlackHole | PhysicsCategory.Obstacle
+            
+            physicBody.collisionBitMask = PhysicsCategory.Planet
             
             physicBody.friction = 0.0
             
@@ -40,7 +46,10 @@ class PhysicBodyComponent: GKComponent {
             
             physicBody = SKPhysicsBody(circleOfRadius: max(node.size.width / 2.8,
                                                            node.size.height / 2.8))
+            
             physicBody.contactTestBitMask = PhysicsCategory.Rocket
+            
+            physicBody.collisionBitMask = PhysicsCategory.BlackHole
             
             physicBody.restitution = 0.0
             
@@ -49,7 +58,10 @@ class PhysicBodyComponent: GKComponent {
             
             physicBody = SKPhysicsBody(circleOfRadius: max(node.size.width / 2,
                                                            node.size.height / 2))
+            
             physicBody.contactTestBitMask = PhysicsCategory.Rocket
+            
+            physicBody.collisionBitMask = PhysicsCategory.BlackHole
             
             break
         default:
@@ -58,7 +70,6 @@ class PhysicBodyComponent: GKComponent {
         }
         
         physicBody.categoryBitMask = physicCategory
-        physicBody.collisionBitMask = PhysicsCategory.BlackHole
         
         super.init()
         
