@@ -36,9 +36,10 @@ class BackgroundLayer: SKNode {
         setup(stars)
         
         
-        
-        setupEntity(entity: bg, position: CGPoint.zero)
         setupEntity(entity: star, position: CGPoint.zero)
+        setupEntity(entity: bg, position: CGPoint.zero)
+        
+        bg.spriteComponent?.node.zPosition = -5
         
         self.entityManager?.add(bg)
         self.entityManager?.addAll(stars)
