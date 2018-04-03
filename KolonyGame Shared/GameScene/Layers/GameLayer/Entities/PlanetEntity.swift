@@ -14,6 +14,7 @@ class PlanetEntity: GKEntity {
     
     var spriteComponent : SpriteComponent?
     var physicsBodyComponent: PhysicBodyComponent?
+    var translationComponent: TranslationComponent?
     
     init(imageName: String, size: CGSize) {
         super.init()
@@ -25,6 +26,9 @@ class PlanetEntity: GKEntity {
         
         self.physicsBodyComponent = PhysicBodyComponent(node: (spriteComponent?.node)!, physicCategory: PhysicsCategory.Planet)
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
+        
+        self.translationComponent = TranslationComponent(entity: self)
+        
 
     }
     
