@@ -69,8 +69,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameLayer?.didBegin(contact)
     }
     
+    #if os(iOS)
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         gameLayer?.touchesBegan(touches, with: event)
+    }
+    #endif
+    
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        
+        for press in presses {
+            if press.type == .select {
+                gameLayer?.pressesBegan(presses, with: event)
+            }
+        }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
