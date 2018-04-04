@@ -18,12 +18,19 @@ class GameViewController: UIViewController {
         // Present the scene
         let skView = self.view as! SKView
         let scene = GameScene(size: skView.frame.size, stateClass: PlayingState.self)
-        
-        skView.presentScene(scene)
-        
+
         skView.ignoresSiblingOrder = true
         skView.showsFPS = true
         skView.showsNodeCount = true
+        skView.showsPhysics = true
+        
+        scene.scaleMode = .aspectFit
+        
+        scene.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        scene.physicsBody?.friction = 0.0
+        scene.physicsBody?.linearDamping = 0.0
+        
+        skView.presentScene(scene)
     }
     
     override func didReceiveMemoryWarning() {
