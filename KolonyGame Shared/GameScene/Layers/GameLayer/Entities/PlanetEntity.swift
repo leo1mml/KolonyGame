@@ -6,7 +6,6 @@
 //  Copyright © 2018 Leonel Menezes. All rights reserved.
 //
 
-
 import SpriteKit
 import GameplayKit
 

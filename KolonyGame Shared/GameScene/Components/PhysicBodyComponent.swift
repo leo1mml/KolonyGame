@@ -21,23 +21,47 @@ class PhysicBodyComponent: GKComponent {
             physicBody = SKPhysicsBody(circleOfRadius: max(node.size.width / 2.8,
                                                            node.size.height / 2.8))
             
+            physicBody.contactTestBitMask = PhysicsCategory.Rocket | PhysicsCategory.BlackHole
+            
+            physicBody.collisionBitMask = PhysicsCategory.Rocket
+            
             break
         case PhysicsCategory.Rocket:
             
             physicBody = SKPhysicsBody(circleOfRadius: max(node.size.width / 2,
                                                            node.size.height / 2))
             
+            physicBody.contactTestBitMask = PhysicsCategory.Planet|PhysicsCategory.BlackHole | PhysicsCategory.Obstacle
+            
+            physicBody.collisionBitMask = PhysicsCategory.Planet
+            
+            physicBody.friction = 0.0
+            
+            physicBody.linearDamping = 0.0
+            
+            physicBody.restitution = 0.0
+            
             break
         case PhysicsCategory.BlackHole:
             
-            physicBody = SKPhysicsBody(circleOfRadius: max(node.size.width / 2,
-                                                           node.size.height / 2))
+            physicBody = SKPhysicsBody(circleOfRadius: max(node.size.width / 2.8,
+                                                           node.size.height / 2.8))
+            
+            physicBody.contactTestBitMask = PhysicsCategory.Rocket
+            
+            physicBody.collisionBitMask = PhysicsCategory.BlackHole
+            
+            physicBody.restitution = 0.0
             
             break
         case PhysicsCategory.Obstacle:
             
             physicBody = SKPhysicsBody(circleOfRadius: max(node.size.width / 2,
                                                            node.size.height / 2))
+            
+            physicBody.contactTestBitMask = PhysicsCategory.Rocket
+            
+            physicBody.collisionBitMask = PhysicsCategory.BlackHole
             
             break
         default:
@@ -46,8 +70,6 @@ class PhysicBodyComponent: GKComponent {
         }
         
         physicBody.categoryBitMask = physicCategory
-        physicBody.collisionBitMask = 0
-        physicBody.affectedByGravity = false
         
         super.init()
         

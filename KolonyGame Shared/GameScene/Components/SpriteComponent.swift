@@ -24,5 +24,18 @@ class SpriteComponent: GKComponent {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func scaleAction (timeBetweenScale: TimeInterval, scaleMultiplier: CGFloat) -> SKAction {
+        
+        let scaleUp = SKAction.scale(to: scaleMultiplier, duration: timeBetweenScale)
+        let scaleDown = SKAction.scale(to: 1, duration: timeBetweenScale)
+        
+        let sequence = SKAction.sequence([scaleUp, scaleDown])
+        let repeatForever = SKAction.repeatForever(sequence)
+        return repeatForever
+        
+        
+    }
+    
 }
 
