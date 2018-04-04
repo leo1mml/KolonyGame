@@ -14,6 +14,7 @@ class BlackHoleEntity: GKEntity {
     var spriteComponent : SpriteComponent?
     var planet1 : PlanetEntity?
     var rotationComponent: RotationComponent?
+    var physicsBodyComponent: PhysicBodyComponent?
     
     init(imageName: String, size: CGSize) {
         super.init()
@@ -25,6 +26,11 @@ class BlackHoleEntity: GKEntity {
         
         self.rotationComponent = RotationComponent(entity: self)
         self.rotationComponent?.startRotate(angle: CGFloat.pi * 2, duration: 3)
+        
+        self.physicsBodyComponent = PhysicBodyComponent(node: (spriteComponent?.node)!, physicCategory: PhysicsCategory.BlackHole)
+        self.spriteComponent?.node.physicsBody = physicsBodyComponent?.physicBody
+        
+        self.spriteComponent?.node.name = "blackHole"
     }
     
     required init?(coder aDecoder: NSCoder) {

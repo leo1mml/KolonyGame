@@ -1,15 +1,15 @@
 //
-//  PlanetEntity.swift
-//  KolonyGame iOS
+//  RocketEntity.swift
+//  KolonyGame
 //
-//  Created by Leonel Menezes on 09/03/2018.
+//  Created by Augusto on 14/03/2018.
 //  Copyright © 2018 Leonel Menezes. All rights reserved.
 //
 
 import SpriteKit
 import GameplayKit
 
-class PlanetEntity: GKEntity {
+class RocketEntity: GKEntity {
     
     var spriteComponent : SpriteComponent?
     var physicsBodyComponent: PhysicBodyComponent?
@@ -22,11 +22,10 @@ class PlanetEntity: GKEntity {
         self.spriteComponent = SpriteComponent(texture: texture, size: size)
         self.addComponent(self.spriteComponent!)
         
-        self.physicsBodyComponent = PhysicBodyComponent(node: (spriteComponent?.node)!, physicCategory: PhysicsCategory.Planet)
+        self.physicsBodyComponent = PhysicBodyComponent(node: (spriteComponent?.node)!, physicCategory: PhysicsCategory.Rocket)
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
         
-        self.spriteComponent?.node.name = "planet"
-
+        self.spriteComponent?.node.name = "rocket"
     }
     
     required init?(coder aDecoder: NSCoder) {
