@@ -36,9 +36,10 @@ class BackgroundLayer: SKNode {
         setup(stars)
         
         
-        
-        setupEntity(entity: bg, position: CGPoint.zero)
         setupEntity(entity: star, position: CGPoint.zero)
+        setupEntity(entity: bg, position: CGPoint.zero)
+        
+        bg.spriteComponent?.node.zPosition = -5
         
         self.entityManager?.add(bg)
         self.entityManager?.addAll(stars)
@@ -46,7 +47,7 @@ class BackgroundLayer: SKNode {
     }
     
     func setup (_ stars: [StarEntity]) {
-        for (index, i ) in stars.enumerated() {
+        for  i in stars {
             
             var x = CGFloat(arc4random_uniform(UInt32(size!.width)))
             x -= (size?.width)! / 2
