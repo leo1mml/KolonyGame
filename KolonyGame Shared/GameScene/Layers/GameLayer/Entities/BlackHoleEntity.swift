@@ -27,7 +27,7 @@ class BlackHoleEntity: GKEntity {
         self.rotationComponent = RotationComponent(entity: self)
         self.rotationComponent?.startRotate(angle: CGFloat.pi * 2, duration: 3)
         
-        self.physicsBodyComponent = PhysicBodyComponent(node: (spriteComponent?.node)!, physicCategory: PhysicsCategory.BlackHole)
+        self.physicsBodyComponent = PhysicBodyComponent(circleOfRadius: size.height/2.8, contactTestBitMask: PhysicsCategory.Planet|PhysicsCategory.BlackHole | PhysicsCategory.Obstacle, collisionBitMask: PhysicsCategory.Planet, physicCategory: PhysicsCategory.BlackHole, friction: 0.0, linearDamping: 0.0, restitution: 0.0)
         self.spriteComponent?.node.physicsBody = physicsBodyComponent?.physicBody
         
         self.spriteComponent?.node.name = "blackHole"

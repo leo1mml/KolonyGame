@@ -22,7 +22,7 @@ class RocketEntity: GKEntity {
         self.spriteComponent = SpriteComponent(texture: texture, size: size)
         self.addComponent(self.spriteComponent!)
         
-        self.physicsBodyComponent = PhysicBodyComponent(node: (spriteComponent?.node)!, physicCategory: PhysicsCategory.Rocket)
+        self.physicsBodyComponent = PhysicBodyComponent(circleOfRadius: size.height/2, contactTestBitMask: PhysicsCategory.Planet|PhysicsCategory.BlackHole | PhysicsCategory.Obstacle, collisionBitMask: PhysicsCategory.Planet, physicCategory: PhysicsCategory.Rocket, friction: 0.0, linearDamping: 0.0, restitution: 0.0)
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
         
         self.spriteComponent?.node.name = "rocket"
