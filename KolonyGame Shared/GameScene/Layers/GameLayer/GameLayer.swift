@@ -65,10 +65,10 @@ class GameLayer: SKNode {
         let tupla = (contact.bodyA.categoryBitMask, contact.bodyB.categoryBitMask)
         
         switch tupla {
-        case (PhysicsCategory.Planet, PhysicsCategory.Rocket):
+        case (PhysicsCategory.RedPlanet, PhysicsCategory.RedRocket):
             print("contact")
             break
-        case (PhysicsCategory.Rocket, PhysicsCategory.Planet):
+        case (PhysicsCategory.RedRocket, PhysicsCategory.RedPlanet):
             print("contact")
             break
         default:
