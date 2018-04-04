@@ -61,8 +61,18 @@ class GameLayer: SKNode {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        if (contact.bodyA.node?.name == "planet" && contact.bodyB.node?.name == "rocket") || (contact.bodyB.node?.name == "planet" && contact.bodyA.node?.name == "rocket") {
-            print("acertou")
+        
+        let tupla = (contact.bodyA.categoryBitMask, contact.bodyB.categoryBitMask)
+        
+        switch tupla {
+        case (PhysicsCategory.Planet, PhysicsCategory.Rocket):
+            print("contact")
+            break
+        case (PhysicsCategory.Rocket, PhysicsCategory.Planet):
+            print("contact")
+            break
+        default:
+            break
         }
     }
     
