@@ -23,42 +23,54 @@ class BackgroundLayer: SKNode {
     }
     
     
+    
+    
+
     func setupLayer () {
         
         var size = CGSize(width: (self.size?.width)!, height: (self.size?.height)!)
         let bg = BackgroundEntity(imageName: "bg", size: size)
         
         size = CGSize(width: (self.size?.height)! * 0.01, height: (self.size?.height)! * 0.01)
-        let star = StarEntity(imageName: "star", size: size)
-        
-        
         let stars = createPoolStars(size, "star")
         setup(stars)
         
+        size = CGSize(width: (self.size?.height)! , height: (self.size?.height)!)
+        let mist = StarEntity(imageName: "nevoas", size: size)
         
-        setupEntity(entity: star, position: CGPoint.zero)
-        setupEntity(entity: bg, position: CGPoint.zero)
         
-        bg.spriteComponent?.node.zPosition = -5
         
-        self.entityManager?.add(bg)
+        
+        
+        setupEntity(entity: mist, position: CGPoint.zero, zPosition: nil)
+        setupEntity(entity: bg, position: CGPoint.zero, zPosition: -5)
+        
+       
+        self.addEntitiesInBackgroundLayer([bg, mist])
         self.entityManager?.addAll(stars)
         
     }
     
-    func setup (_ stars: [StarEntity]) {
-        for  i in stars {
-            
-            var x = CGFloat(arc4random_uniform(UInt32(size!.width)))
-            x -= (size?.width)! / 2
-            var y = CGFloat(arc4random_uniform(UInt32(size!.height)))
-            y -= (size?.height)! / 2
-            setupEntity(entity: i, position: CGPoint(x: x, y: y))
+    func addEntitiesInBackgroundLayer (_ entities : [BackgroundBasicEntity]) {
+        for i in entities {
+            self.entityManager?.add(i)
         }
     }
     
     
+    //Create ramdon position for stars and configure they
+    func setup (_ stars: [StarEntity]) {
+        for  i in stars {
+            var x = CGFloat(arc4random_uniform(UInt32(size!.width)))
+            x -= (size?.width)! / 2
+            var y = CGFloat(arc4random_uniform(UInt32(size!.height)))
+            y -= (size?.height)! / 2
+            setupEntity(entity: i, position: CGPoint(x: x, y: y), zPosition: nil)
+        }
+    }
     
+    
+    //Create many stars for background
     func createPoolStars(_ size : CGSize, _ imageName: String) -> [StarEntity] {
         var stars = [StarEntity]()
         for _ in 0...STARS_AMOUNT {
@@ -67,10 +79,13 @@ class BackgroundLayer: SKNode {
         return stars
     }
     
-    func setupEntity<T: GKEntity>(entity: T, position: CGPoint) {
+    func setupEntity<T: GKEntity>(entity: T, position: CGPoint, zPosition: CGFloat?) {
         if let spriteComponent = entity.component(ofType: SpriteComponent.self) {
             spriteComponent.node.position = position
-            spriteComponent.node.run(spriteComponent.scaleAction(timeBetweenScale: 1, scaleMultiplier: 1.3))
+            if let zPosition = zPosition {
+                spriteComponent.node.zPosition = zPosition
+            }
+//                spriteComponent.node.run(spriteComponent.scaleAction(timeBetweenScale: 1, scaleMultiplier: 1.3))
         }
     }
     
