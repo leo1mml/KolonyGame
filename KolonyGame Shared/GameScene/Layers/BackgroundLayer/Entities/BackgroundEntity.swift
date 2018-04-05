@@ -10,17 +10,10 @@
 import SpriteKit
 import GameplayKit
 
-class BackgroundEntity : GKEntity {
-    
-    var spriteComponent : SpriteComponent?
-    
-    
-    init(imageName: String, size: CGSize) {
-        super.init()
-        
-        let texture = SKTexture(imageNamed: imageName)
-        self.spriteComponent = SpriteComponent(texture: texture, size: size)
-        self.addComponent(self.spriteComponent!)
+class BackgroundEntity : BackgroundBasicEntity {
+ 
+    override init(imageName: String, size: CGSize) {
+        super.init(imageName: imageName, size: size)
     }
     
     required init?(coder aDecoder: NSCoder) {
