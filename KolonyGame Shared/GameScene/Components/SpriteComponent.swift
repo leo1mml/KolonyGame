@@ -12,7 +12,7 @@ import GameplayKit
 class SpriteComponent: GKComponent {
     
     // 3
-    let node: SKSpriteNode
+    var node: SKSpriteNode
     
     // 4
     init(texture: SKTexture, size: CGSize) {

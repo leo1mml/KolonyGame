@@ -13,6 +13,7 @@ class PlanetEntity: GKEntity {
     
     var spriteComponent : SpriteComponent?
     var physicsBodyComponent: PhysicBodyComponent?
+    var rotationComponent: RotationComponent?
     
     init(imageName: String, size: CGSize) {
         super.init()
@@ -26,11 +27,21 @@ class PlanetEntity: GKEntity {
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
         
         self.spriteComponent?.node.name = "planet"
-
+        self.spriteComponent?.node.physicsBody?.isDynamic = false
+        
+        self.rotationComponent = RotationComponent(entity: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func startRotating(angle: Double, duration: Double) {
+        let rotateAction = SKAction.rotate(byAngle: CGFloat(angle), duration: duration)
+        let repeatForever = SKAction.repeatForever(rotateAction)
+        if let sprite = self.component(ofType: SpriteComponent.self)?.node {
+            sprite.run(repeatForever)
+        }
     }
     
 }
