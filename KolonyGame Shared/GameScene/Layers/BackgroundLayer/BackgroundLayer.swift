@@ -56,6 +56,8 @@ class BackgroundLayer: SKNode {
             x -= (size?.width)! / 2
             var y = CGFloat(arc4random_uniform(UInt32(size!.height)))
             y -= (size?.height)! / 2
+            i.spriteComponent?.node.color = GameColors.ramdomColor()
+            i.spriteComponent?.node.colorBlendFactor = 1.0
             setupEntity(entity: i, position: CGPoint(x: x, y: y), zPosition: nil)
         }
     }

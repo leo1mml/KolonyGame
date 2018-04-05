@@ -26,10 +26,13 @@ enum GameColors {
     case blue
     case green
     
+    private static let allValues = [yellow, red, blue, green]
+
+    
     var color: UIColor {
         switch self {
         case .yellow:
-            return UIColor(colorWithHexValue: 0xE92663)
+            return UIColor(colorWithHexValue: 0xFFD740)
         case .blue:
             return UIColor(colorWithHexValue: 0x0191EA)
         case .green:
@@ -37,6 +40,11 @@ enum GameColors {
         case .red:
             return UIColor(colorWithHexValue: 0xE92663)
         }
+    }
+    
+    static func ramdomColor () -> UIColor {
+        let ramdomIndex = arc4random_uniform(4)
+        return GameColors.allValues[Int(ramdomIndex)].color
     }
 }
 
