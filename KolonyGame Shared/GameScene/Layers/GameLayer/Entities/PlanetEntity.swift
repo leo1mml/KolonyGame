@@ -23,7 +23,7 @@ class PlanetEntity: GKEntity {
         self.spriteComponent = SpriteComponent(texture: texture, size: size)
         self.addComponent(self.spriteComponent!)
         
-        self.physicsBodyComponent = PhysicBodyComponent(node: (spriteComponent?.node)!, physicCategory: PhysicsCategory.Planet)
+        self.physicsBodyComponent = PhysicBodyComponent(circleOfRadius: size.height/2.8, contactTestBitMask: PhysicsCategory.RedRocket | PhysicsCategory.BlackHole, collisionBitMask: PhysicsCategory.RedRocket, physicCategory: PhysicsCategory.RedPlanet, friction: 0.0, linearDamping: 0.0, restitution: 0.0)
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
         
         self.spriteComponent?.node.name = "planet"

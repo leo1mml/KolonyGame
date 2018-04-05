@@ -1,16 +1,16 @@
 //
-//  StarEntity.swift
+//  MistEntity.swift
 //  KolonyGame iOS
 //
-//  Created by Isaias Fernandes on 14/03/2018.
+//  Created by Isaias Fernandes on 04/04/2018.
 //  Copyright © 2018 Leonel Menezes. All rights reserved.
 //
 
 import SpriteKit
 import GameplayKit
 
-class StarEntity : BackgroundBasicEntity {
-  
+class MistEntity : BackgroundBasicEntity {
+    
     override init(imageName: String, size: CGSize) {
         super.init(imageName: imageName, size: size)
     }
@@ -19,4 +19,3 @@ class StarEntity : BackgroundBasicEntity {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
