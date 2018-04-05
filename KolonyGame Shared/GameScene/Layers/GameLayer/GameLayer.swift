@@ -46,7 +46,7 @@ class GameLayer: SKNode {
     
     func createPlanetBlue() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetOne = PlanetEntity(imageName: "planetblue", size: size)
+        self.planetOne = PlanetEntity(imageName: "planetblue", size: size, contactTestBitMask: PhysicsCategory.BlueRocket, collisionBitMask: PhysicsCategory.BlueRocket, physicCategory: PhysicsCategory.BluePlanet)
         if let planetSpriteComponent = planetOne?.component(ofType: SpriteComponent.self) {
             if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
                 planetSpriteComponent.node.position = CGPoint(x: 0, y: -(blackHoleSprite.node.size.height/2))
@@ -58,7 +58,7 @@ class GameLayer: SKNode {
     
     func createPlanetGreen() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetTwo = PlanetEntity(imageName: "planetgreen", size: size)
+        self.planetTwo = PlanetEntity(imageName: "planetgreen", size: size, contactTestBitMask: PhysicsCategory.GreenRocket, collisionBitMask: PhysicsCategory.GreenRocket, physicCategory: PhysicsCategory.GreenPlanet)
         if let planetSpriteComponent = planetTwo?.component(ofType: SpriteComponent.self) {
             if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
                 planetSpriteComponent.node.position = CGPoint(x: 0, y: +(blackHoleSprite.node.size.height/2))
@@ -70,7 +70,7 @@ class GameLayer: SKNode {
     
     func createPlanetRed() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetTwo = PlanetEntity(imageName: "planetred", size: size)
+        self.planetTwo = PlanetEntity(imageName: "planetred", size: size, contactTestBitMask: PhysicsCategory.RedRocket, collisionBitMask: PhysicsCategory.RedRocket, physicCategory: PhysicsCategory.RedPlanet)
         if let planetSpriteComponent = planetTwo?.component(ofType: SpriteComponent.self) {
             if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
                 planetSpriteComponent.node.position = CGPoint(x: (blackHoleSprite.node.size.height/2), y: 0)
@@ -82,7 +82,7 @@ class GameLayer: SKNode {
     
     func createPlanetYellow() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetTwo = PlanetEntity(imageName: "planetyellow", size: size)
+        self.planetTwo = PlanetEntity(imageName: "planetyellow", size: size, contactTestBitMask: PhysicsCategory.YellowRocket, collisionBitMask: PhysicsCategory.YellowRocket, physicCategory: PhysicsCategory.YellowPlanet)
         if let planetSpriteComponent = planetTwo?.component(ofType: SpriteComponent.self) {
             if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
                 planetSpriteComponent.node.position = CGPoint(x: -(blackHoleSprite.node.size.height/2), y: 0)

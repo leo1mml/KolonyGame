@@ -40,6 +40,7 @@ extension GameLayer {
             print("yellow")
             break
         default:
+            print("\(contact.bodyA.categoryBitMask , contact.bodyB.categoryBitMask)")
             print("erro")
             break
         }
