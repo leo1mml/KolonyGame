@@ -21,10 +21,6 @@ class BackgroundLayer: SKNode {
         self.size = size
         self.entityManager = EntityManagerBackgroundLayer(bgLayer: self)
     }
-    
-    
-    
-    
 
     func setupLayer () {
         
@@ -32,19 +28,14 @@ class BackgroundLayer: SKNode {
         let bg = BackgroundEntity(imageName: "bg", size: size)
         
         size = CGSize(width: (self.size?.height)! * 0.01, height: (self.size?.height)! * 0.01)
-        let stars = createPoolStars(size, "star")
+        let stars = createPoolStars(size, "stardefault")
         setup(stars)
         
         size = CGSize(width: (self.size?.height)! , height: (self.size?.height)!)
         let mist = StarEntity(imageName: "nevoas", size: size)
         
-        
-        
-        
-        
         setupEntity(entity: mist, position: CGPoint.zero, zPosition: nil)
         setupEntity(entity: bg, position: CGPoint.zero, zPosition: -5)
-        
        
         self.addEntitiesInBackgroundLayer([bg, mist])
         self.entityManager?.addAll(stars)
