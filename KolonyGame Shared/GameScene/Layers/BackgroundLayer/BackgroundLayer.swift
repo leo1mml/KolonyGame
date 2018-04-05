@@ -39,6 +39,7 @@ class BackgroundLayer: SKNode {
        
         self.addEntitiesInBackgroundLayer([bg, mist])
         self.entityManager?.addAll(stars)
+        self.entityManager?.add(particles: createComet())
         
     }
     
@@ -80,6 +81,20 @@ class BackgroundLayer: SKNode {
             }
 //                spriteComponent.node.run(spriteComponent.scaleAction(timeBetweenScale: 1, scaleMultiplier: 1.3))
         }
+    }
+    
+    func createComet() -> SKEmitterNode{
+        
+        let particle = SKEmitterNode(fileNamed: "Comets.sks")
+        let texture = SKTexture(image: #imageLiteral(resourceName: "cometa"))
+        
+        texture.filteringMode = .linear
+        particle?.particleTexture = texture
+        
+        particle?.position = CGPoint(x: 0, y: (self.size?.height)!)
+        particle?.particlePositionRange = CGVector(dx: ((self.size?.width)! * 3), dy: 0)
+        
+        return particle!
     }
     
     required init?(coder aDecoder: NSCoder) {
