@@ -57,9 +57,24 @@ class BackgroundLayer: SKNode {
             x -= (size?.width)! / 2
             var y = CGFloat(arc4random_uniform(UInt32(size!.height)))
             y -= (size?.height)! / 2
-            i.spriteComponent?.node.color = GameColors.ramdomColor()
-            i.spriteComponent?.node.colorBlendFactor = 1.0
             setupEntity(entity: i, position: CGPoint(x: x, y: y), zPosition: nil)
+            
+            if let sprite = i.spriteComponent {
+                
+                //configuring color of sprite
+                sprite.node.color = GameColors.ramdomColor()
+                sprite.node.colorBlendFactor = 1.0
+                
+                //configuring scale effect
+                sprite.node.run(sprite.scaleAction(timeBetweenScale: 1, scaleMultiplier: NumbersUtil.randomCGFloat(min: 0.4, max: 1.5)))
+                
+                //configuring alpha fade effect                
+                sprite.node.run(sprite.alphaAction(alphaValue: NumbersUtil.randomCGFloat(min: 0, max: 0.8), duration: TimeInterval(NumbersUtil.randomCGFloat(min: 4, max: 6))))
+
+            }
+            
+            
+            
         }
     }
     
@@ -79,7 +94,6 @@ class BackgroundLayer: SKNode {
             if let zPosition = zPosition {
                 spriteComponent.node.zPosition = zPosition
             }
-//                spriteComponent.node.run(spriteComponent.scaleAction(timeBetweenScale: 1, scaleMultiplier: 1.3))
         }
     }
     

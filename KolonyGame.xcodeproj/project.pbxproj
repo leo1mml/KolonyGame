@@ -39,6 +39,8 @@
 		8AE8079720571FA6006EDC86 /* BlackHoleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */; };
 		9735C2232075BBF10054C6E9 /* Comets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9735C2222075BBF10054C6E9 /* Comets.sks */; };
 		9735C2242075BBF10054C6E9 /* Comets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9735C2222075BBF10054C6E9 /* Comets.sks */; };
+		9735C2262075CB400054C6E9 /* NumbersUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2252075CB400054C6E9 /* NumbersUtil.swift */; };
+		9735C2272075CB400054C6E9 /* NumbersUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2252075CB400054C6E9 /* NumbersUtil.swift */; };
 		977B660520755C5A00CE37D6 /* BackgroundBasicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660420755C5A00CE37D6 /* BackgroundBasicEntity.swift */; };
 		977B660720755D9300CE37D6 /* MistEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660620755D9300CE37D6 /* MistEntity.swift */; };
 		977B660B2075ACD500CE37D6 /* GameColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660A2075ACD500CE37D6 /* GameColors.swift */; };
@@ -74,6 +76,7 @@
 		8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerGameLayer.swift; sourceTree = "<group>"; };
 		8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackHoleEntity.swift; sourceTree = "<group>"; };
 		9735C2222075BBF10054C6E9 /* Comets.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Comets.sks; sourceTree = "<group>"; };
+		9735C2252075CB400054C6E9 /* NumbersUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersUtil.swift; sourceTree = "<group>"; };
 		977B660420755C5A00CE37D6 /* BackgroundBasicEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBasicEntity.swift; sourceTree = "<group>"; };
 		977B660620755D9300CE37D6 /* MistEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistEntity.swift; sourceTree = "<group>"; };
 		977B660A2075ACD500CE37D6 /* GameColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColors.swift; sourceTree = "<group>"; };
@@ -218,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				977B660A2075ACD500CE37D6 /* GameColors.swift */,
+				9735C2252075CB400054C6E9 /* NumbersUtil.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -358,6 +362,7 @@
 				8AE807912056FE70006EDC86 /* EntityManagerGameLayer.swift in Sources */,
 				8A8CCFA6205328FB00546F56 /* SpriteComponent.swift in Sources */,
 				977B660B2075ACD500CE37D6 /* GameColors.swift in Sources */,
+				9735C2262075CB400054C6E9 /* NumbersUtil.swift in Sources */,
 				14E2FE0720583C9600A0E3A8 /* PhysicBodyComponent.swift in Sources */,
 				14FA662620582FFB00D4C10B /* PhysicsCategory.swift in Sources */,
 				14E2FE09205869AE00A0E3A8 /* RotationComponent.swift in Sources */,
@@ -382,6 +387,7 @@
 				14FA662720582FFB00D4C10B /* PhysicsCategory.swift in Sources */,
 				14ACEF732056F08E00D62305 /* PlayingState.swift in Sources */,
 				8AE807922057040F006EDC86 /* PlanetEntity.swift in Sources */,
+				9735C2272075CB400054C6E9 /* NumbersUtil.swift in Sources */,
 				8AE8079320570413006EDC86 /* EntityManagerGameLayer.swift in Sources */,
 				8AE8079420570418006EDC86 /* BackgroundLayer.swift in Sources */,
 				14F761C42059A16400F4D04F /* RocketEntity.swift in Sources */,
