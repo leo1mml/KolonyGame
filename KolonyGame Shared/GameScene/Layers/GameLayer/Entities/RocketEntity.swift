@@ -28,6 +28,12 @@ class RocketEntity: GKEntity {
         self.spriteComponent?.node.name = "rocket"
     }
     
+    func applyForce(force: CGVector){
+      
+        self.spriteComponent?.node.physicsBody?.applyForce(force)
+        
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

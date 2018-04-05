@@ -77,18 +77,14 @@ class GameLayer: SKNode {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        if let sprite = rocket?.component(ofType: SpriteComponent.self) {
-            sprite.node.physicsBody?.applyForce(CGVector(dx: 0, dy: 400))
-        }
+ 
+        rocket?.applyForce(force: CGVector(dx: 0, dy: 400))
         
     }
     
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        
-        if let sprite = rocket?.component(ofType: SpriteComponent.self) {
-            sprite.node.physicsBody?.applyForce(CGVector(dx: 0, dy: 400))
-        }
+
+        rocket?.applyForce(force: CGVector(dx: 0, dy: 400))
         
     }
     
