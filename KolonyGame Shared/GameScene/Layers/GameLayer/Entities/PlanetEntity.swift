@@ -27,6 +27,7 @@ class PlanetEntity: GKEntity {
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
         
         self.spriteComponent?.node.name = "planet"
+        self.spriteComponent?.node.physicsBody?.isDynamic = false
         
         self.rotationComponent = RotationComponent(entity: self)
     }
