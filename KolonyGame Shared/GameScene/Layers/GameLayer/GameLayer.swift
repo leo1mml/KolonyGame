@@ -61,16 +61,30 @@ class GameLayer: SKNode {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        if (contact.bodyA.node?.name == "planet" && contact.bodyB.node?.name == "rocket") || (contact.bodyB.node?.name == "planet" && contact.bodyA.node?.name == "rocket") {
-            print("acertou")
+        
+        let tupla = (contact.bodyA.categoryBitMask, contact.bodyB.categoryBitMask)
+        
+        switch tupla {
+        case (PhysicsCategory.RedPlanet, PhysicsCategory.RedRocket):
+            print("contact")
+            break
+        case (PhysicsCategory.RedRocket, PhysicsCategory.RedPlanet):
+            print("contact")
+            break
+        default:
+            break
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+ 
+        rocket?.applyForce(force: CGVector(dx: 0, dy: 400))
         
-        if let sprite = rocket?.component(ofType: SpriteComponent.self) {
-            sprite.node.physicsBody?.applyForce(CGVector(dx: 0, dy: 400))
-        }
+    }
+    
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+
+        rocket?.applyForce(force: CGVector(dx: 0, dy: 400))
         
     }
     

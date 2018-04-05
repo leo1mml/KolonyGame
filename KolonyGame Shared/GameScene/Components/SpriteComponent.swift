@@ -32,10 +32,23 @@ class SpriteComponent: GKComponent {
         
         let sequence = SKAction.sequence([scaleUp, scaleDown])
         let repeatForever = SKAction.repeatForever(sequence)
+        
         return repeatForever
-        
-        
     }
     
+    func alphaAction (alphaValue: CGFloat, duration: TimeInterval) -> SKAction {
+        
+        let downAlpha = SKAction.fadeAlpha(by: alphaValue, duration: duration)
+        
+        let defaultAlpha = SKAction.fadeAlpha(by: 1, duration: duration)
+        
+        let sequenceFade = SKAction.sequence([downAlpha, defaultAlpha])
+        
+        let repeatForever = SKAction.repeatForever(sequenceFade)
+        
+        return repeatForever
+    }
+    
+
 }
 

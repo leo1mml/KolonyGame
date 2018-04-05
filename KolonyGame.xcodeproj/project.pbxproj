@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		143817EA2075635C007E5A1E /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA5205328FB00546F56 /* SpriteComponent.swift */; };
+		143817EB2075635F007E5A1E /* PhysicBodyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */; };
+		143817EC20756362007E5A1E /* RotationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */; };
+		143817ED2075636D007E5A1E /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ACEF742056FEAA00D62305 /* GameOverState.swift */; };
+		143817EF2075637A007E5A1E /* StarEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7E320599526008A9159 /* StarEntity.swift */; };
+		143817F02075637E007E5A1E /* EntityManagerBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */; };
+		143817F120756381007E5A1E /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D720571F09008A9159 /* BackgroundEntity.swift */; };
+		143817F22075638F007E5A1E /* BlackHoleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */; };
 		1491A39E20659B5000AA982C /* StarEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7E320599526008A9159 /* StarEntity.swift */; };
 		14ACEF732056F08E00D62305 /* PlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA920532B6600546F56 /* PlayingState.swift */; };
 		14ACEF752056FEAA00D62305 /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ACEF742056FEAA00D62305 /* GameOverState.swift */; };
@@ -37,6 +45,14 @@
 		8AE8079420570418006EDC86 /* BackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D32056F51D008A9159 /* BackgroundLayer.swift */; };
 		8AE8079520570423006EDC86 /* GameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA22053249F00546F56 /* GameLayer.swift */; };
 		8AE8079720571FA6006EDC86 /* BlackHoleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */; };
+		9735C2232075BBF10054C6E9 /* Comets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9735C2222075BBF10054C6E9 /* Comets.sks */; };
+		9735C2242075BBF10054C6E9 /* Comets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9735C2222075BBF10054C6E9 /* Comets.sks */; };
+		9735C2262075CB400054C6E9 /* NumbersUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2252075CB400054C6E9 /* NumbersUtil.swift */; };
+		9735C2272075CB400054C6E9 /* NumbersUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2252075CB400054C6E9 /* NumbersUtil.swift */; };
+		977B660520755C5A00CE37D6 /* BackgroundBasicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660420755C5A00CE37D6 /* BackgroundBasicEntity.swift */; };
+		977B660720755D9300CE37D6 /* MistEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660620755D9300CE37D6 /* MistEntity.swift */; };
+		977B660B2075ACD500CE37D6 /* GameColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660A2075ACD500CE37D6 /* GameColors.swift */; };
+		977B660C2075ACD500CE37D6 /* GameColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660A2075ACD500CE37D6 /* GameColors.swift */; };
 		9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D32056F51D008A9159 /* BackgroundLayer.swift */; };
 		9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */; };
 		9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D720571F09008A9159 /* BackgroundEntity.swift */; };
@@ -67,6 +83,11 @@
 		8A8CCFA920532B6600546F56 /* PlayingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingState.swift; sourceTree = "<group>"; };
 		8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerGameLayer.swift; sourceTree = "<group>"; };
 		8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackHoleEntity.swift; sourceTree = "<group>"; };
+		9735C2222075BBF10054C6E9 /* Comets.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Comets.sks; sourceTree = "<group>"; };
+		9735C2252075CB400054C6E9 /* NumbersUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersUtil.swift; sourceTree = "<group>"; };
+		977B660420755C5A00CE37D6 /* BackgroundBasicEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBasicEntity.swift; sourceTree = "<group>"; };
+		977B660620755D9300CE37D6 /* MistEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistEntity.swift; sourceTree = "<group>"; };
+		977B660A2075ACD500CE37D6 /* GameColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColors.swift; sourceTree = "<group>"; };
 		9790E7D32056F51D008A9159 /* BackgroundLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundLayer.swift; sourceTree = "<group>"; };
 		9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerBackgroundLayer.swift; sourceTree = "<group>"; };
 		9790E7D720571F09008A9159 /* BackgroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEntity.swift; sourceTree = "<group>"; };
@@ -104,8 +125,10 @@
 		8A8CCF682053239A00546F56 /* KolonyGame Shared */ = {
 			isa = PBXGroup;
 			children = (
+				977B66082075AC6500CE37D6 /* Game */,
 				8A8CCF9D205323EF00546F56 /* GameScene */,
 				8A8CCF6C2053239A00546F56 /* Assets.xcassets */,
+				9735C2222075BBF10054C6E9 /* Comets.sks */,
 			);
 			path = "KolonyGame Shared";
 			sourceTree = "<group>";
@@ -202,6 +225,15 @@
 			path = GameLayer;
 			sourceTree = "<group>";
 		};
+		977B66082075AC6500CE37D6 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				977B660A2075ACD500CE37D6 /* GameColors.swift */,
+				9735C2252075CB400054C6E9 /* NumbersUtil.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
 		9790E7D12056F4C1008A9159 /* BackgroundLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,9 +246,11 @@
 		9790E7D22056F4F7008A9159 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				9790E7E320599526008A9159 /* StarEntity.swift */,
-				9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */,
 				9790E7D720571F09008A9159 /* BackgroundEntity.swift */,
+				977B660420755C5A00CE37D6 /* BackgroundBasicEntity.swift */,
+				9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */,
+				977B660620755D9300CE37D6 /* MistEntity.swift */,
+				9790E7E320599526008A9159 /* StarEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -302,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9735C2232075BBF10054C6E9 /* Comets.sks in Resources */,
 				8A8CCF7A2053239A00546F56 /* Main.storyboard in Resources */,
 				8A8CCF7D2053239A00546F56 /* LaunchScreen.storyboard in Resources */,
 				8A8CCF932053239B00546F56 /* Assets.xcassets in Resources */,
@@ -314,6 +349,7 @@
 			files = (
 				8A8CCF8B2053239B00546F56 /* Main.storyboard in Resources */,
 				8A8CCF942053239B00546F56 /* Assets.xcassets in Resources */,
+				9735C2242075BBF10054C6E9 /* Comets.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,9 +369,13 @@
 				8A8CCF912053239B00546F56 /* GameScene.swift in Sources */,
 				8AE807912056FE70006EDC86 /* EntityManagerGameLayer.swift in Sources */,
 				8A8CCFA6205328FB00546F56 /* SpriteComponent.swift in Sources */,
+				977B660B2075ACD500CE37D6 /* GameColors.swift in Sources */,
+				9735C2262075CB400054C6E9 /* NumbersUtil.swift in Sources */,
 				14E2FE0720583C9600A0E3A8 /* PhysicBodyComponent.swift in Sources */,
 				14FA662620582FFB00D4C10B /* PhysicsCategory.swift in Sources */,
 				14E2FE09205869AE00A0E3A8 /* RotationComponent.swift in Sources */,
+				977B660520755C5A00CE37D6 /* BackgroundBasicEntity.swift in Sources */,
+				977B660720755D9300CE37D6 /* MistEntity.swift in Sources */,
 				8A8CCFA32053249F00546F56 /* GameLayer.swift in Sources */,
 				8A8CCF772053239A00546F56 /* GameViewController.swift in Sources */,
 				9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */,
@@ -349,16 +389,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				143817EF2075637A007E5A1E /* StarEntity.swift in Sources */,
 				8A8CCF922053239B00546F56 /* GameScene.swift in Sources */,
+				143817EA2075635C007E5A1E /* SpriteComponent.swift in Sources */,
 				8AE8079520570423006EDC86 /* GameLayer.swift in Sources */,
 				8A8CCF882053239B00546F56 /* GameViewController.swift in Sources */,
 				14FA662720582FFB00D4C10B /* PhysicsCategory.swift in Sources */,
+				143817EB2075635F007E5A1E /* PhysicBodyComponent.swift in Sources */,
 				14ACEF732056F08E00D62305 /* PlayingState.swift in Sources */,
+				143817F22075638F007E5A1E /* BlackHoleEntity.swift in Sources */,
+				143817EC20756362007E5A1E /* RotationComponent.swift in Sources */,
 				8AE807922057040F006EDC86 /* PlanetEntity.swift in Sources */,
+				143817F02075637E007E5A1E /* EntityManagerBackgroundLayer.swift in Sources */,
+				143817ED2075636D007E5A1E /* GameOverState.swift in Sources */,
 				8AE8079320570413006EDC86 /* EntityManagerGameLayer.swift in Sources */,
 				8AE8079420570418006EDC86 /* BackgroundLayer.swift in Sources */,
 				14F761C42059A16400F4D04F /* RocketEntity.swift in Sources */,
 				8A8CCF862053239B00546F56 /* AppDelegate.swift in Sources */,
+				143817F120756381007E5A1E /* BackgroundEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,6 +38,10 @@ public class EntityManagerBackgroundLayer : GKEntity {
         //        }
     }
     
+    func add (particles: SKEmitterNode) {
+        self.bgLayer.addChild(particles)
+    }
+    
     func addAll(_ entities: [GKEntity]) {
         
         for i in entities {
