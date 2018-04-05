@@ -60,22 +60,6 @@ class GameLayer: SKNode {
         entityManager?.add(rocket!)
     }
     
-    func didBegin(_ contact: SKPhysicsContact) {
-        
-        let tupla = (contact.bodyA.categoryBitMask, contact.bodyB.categoryBitMask)
-        
-        switch tupla {
-        case (PhysicsCategory.RedPlanet, PhysicsCategory.RedRocket):
-            print("contact")
-            break
-        case (PhysicsCategory.RedRocket, PhysicsCategory.RedPlanet):
-            print("contact")
-            break
-        default:
-            break
-        }
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
  
         rocket?.applyForce(force: CGVector(dx: 0, dy: 400))
