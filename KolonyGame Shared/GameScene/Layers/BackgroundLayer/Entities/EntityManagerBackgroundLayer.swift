@@ -51,8 +51,6 @@ public class EntityManagerBackgroundLayer : GKEntity {
                 bgLayer.addChild(spriteNode)
             }
         }
-        
-git s
     }
     
     func remove(_ entity: GKEntity) {
