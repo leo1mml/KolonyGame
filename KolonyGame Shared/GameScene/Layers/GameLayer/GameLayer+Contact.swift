@@ -12,41 +12,28 @@ extension GameLayer {
     
     func didBegin(_ contact: SKPhysicsContact) {
         
-        let tupla = (contact.bodyA.categoryBitMask, contact.bodyB.categoryBitMask)
+        let tupla = (contact.bodyA.node?.name, contact.bodyB.node?.name)
         
         switch tupla {
-        case (PhysicsCategory.RedPlanet, PhysicsCategory.RedRocket):
-            print("red")
+        case ("red", "red"):
+            print("RED")
             break
-        case (PhysicsCategory.RedRocket, PhysicsCategory.RedPlanet):
-            print("red")
+        case ("blue", "blue"):
+            print("BLUE")
             break
-        case (PhysicsCategory.BluePlanet, PhysicsCategory.BlueRocket):
-            print("blue")
+        case ("green", "green"):
+            print("GREEN")
             break
-        case (PhysicsCategory.BlueRocket, PhysicsCategory.BluePlanet):
-            print("blue")
-            break
-        case (PhysicsCategory.GreenPlanet, PhysicsCategory.GreenRocket):
-            print("green")
-            break
-        case (PhysicsCategory.GreenRocket, PhysicsCategory.GreenPlanet):
-            print("green")
-            break
-        case (PhysicsCategory.YellowPlanet, PhysicsCategory.YellowRocket):
-            print("yellow")
-            break
-        case (PhysicsCategory.YellowRocket, PhysicsCategory.YellowPlanet):
-            print("yellow")
+        case ("yellow", "yellow"):
+            print("YELLOW")
             break
         default:
-            print("\(contact.bodyA.categoryBitMask , contact.bodyB.categoryBitMask)")
-            print("erro")
+            print("You Lose")
             break
         }
     }
     
-    func addFrag(node: SKNode, position: CGPoint) {
+    func addFlag(node: SKNode, position: CGPoint) {
         
         
         

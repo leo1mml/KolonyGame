@@ -18,6 +18,7 @@
 		1491A39E20659B5000AA982C /* StarEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7E320599526008A9159 /* StarEntity.swift */; };
 		14A0F6A520769B530093C5D3 /* GameLayer+Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A0F6A420769B530093C5D3 /* GameLayer+Contact.swift */; };
 		14A0F6A620769B530093C5D3 /* GameLayer+Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A0F6A420769B530093C5D3 /* GameLayer+Contact.swift */; };
+		14A0F6A82076C3530093C5D3 /* EntitiesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A0F6A72076C3530093C5D3 /* EntitiesEnum.swift */; };
 		14ACEF732056F08E00D62305 /* PlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA920532B6600546F56 /* PlayingState.swift */; };
 		14ACEF752056FEAA00D62305 /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ACEF742056FEAA00D62305 /* GameOverState.swift */; };
 		14E2FE0720583C9600A0E3A8 /* PhysicBodyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		14A0F6A420769B530093C5D3 /* GameLayer+Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameLayer+Contact.swift"; sourceTree = "<group>"; };
+		14A0F6A72076C3530093C5D3 /* EntitiesEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitiesEnum.swift; sourceTree = "<group>"; };
 		14ACEF742056FEAA00D62305 /* GameOverState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverState.swift; sourceTree = "<group>"; };
 		14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicBodyComponent.swift; sourceTree = "<group>"; };
 		14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationComponent.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				977B660A2075ACD500CE37D6 /* GameColors.swift */,
 				9735C2252075CB400054C6E9 /* NumbersUtil.swift */,
+				14A0F6A72076C3530093C5D3 /* EntitiesEnum.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				14FA662620582FFB00D4C10B /* PhysicsCategory.swift in Sources */,
 				14A0F6A520769B530093C5D3 /* GameLayer+Contact.swift in Sources */,
 				14E2FE09205869AE00A0E3A8 /* RotationComponent.swift in Sources */,
+				14A0F6A82076C3530093C5D3 /* EntitiesEnum.swift in Sources */,
 				977B660520755C5A00CE37D6 /* BackgroundBasicEntity.swift in Sources */,
 				977B660720755D9300CE37D6 /* MistEntity.swift in Sources */,
 				8A8CCFA32053249F00546F56 /* GameLayer.swift in Sources */,
