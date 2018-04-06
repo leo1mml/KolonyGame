@@ -14,6 +14,7 @@ class RocketEntity: GKEntity {
     var spriteComponent : SpriteComponent?
     var physicsBodyComponent: PhysicBodyComponent?
     
+    
     init(imageName: String, size: CGSize) {
         super.init()
         
@@ -38,4 +39,39 @@ class RocketEntity: GKEntity {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+enum type {
+    case yellow
+    case red
+    case blue
+    case green
+    
+    private static let allValues = [yellow, red, blue, green]
+    
+    var texture: SKTexture {
+        switch self {
+        case .yellow:
+            return SKTexture(imageNamed: "planetyellow")
+        case .red:
+            return SKTexture(imageNamed: "planetred")
+        case .green:
+            return SKTexture(imageNamed: "planetgreen")
+        case .blue:
+            return SKTexture(imageNamed: "planetblue")
+        }
+    }
+    
+    var type: String {
+        switch self {
+        case .yellow:
+            return "yellow"
+        case .red:
+            return "red"
+        case .green:
+            return "green"
+        case .blue:
+            return "planetblue"
+        }
+    }
 }

@@ -15,6 +15,7 @@ class GameLayer: SKNode {
     var planetOne : PlanetEntity?
     var planetTwo : PlanetEntity?
     var rocketToLaunch : RocketEntity?
+    var rocketList = [RocketEntity]()
     
     init(size: CGSize) {
         super.init()
@@ -104,7 +105,34 @@ class GameLayer: SKNode {
             }
             positionX += (self.size?.width)!/10
             entityManager?.add(rocket)
+            self.rocketList.append(rocket)
         }
+    }
+    
+    func configureRandomRocketShip(ship: RocketEntity) {
+        let type = Int(arc4random_uniform(4))
+        let texture = generateRandomTexture(type: type)
+        
+        
+    }
+    
+    func generateRandomTexture(type: Int) -> SKTexture {
+        switch type {
+        case 0:
+            return SKTexture(imageNamed: "planetblue")
+        case 1:
+            return SKTexture(imageNamed: "planetgreen")
+        case 2:
+            return SKTexture(imageNamed: "planetred")
+        case 3:
+            return SKTexture(imageNamed: "planetyellow")
+        default:
+            return SKTexture(imageNamed: "")
+        }
+    }
+    
+    func lauchRocket() {
+        rocketToLaunch?.applyForce(force: CGVector(dx: 0, dy: 800))
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -124,7 +152,7 @@ class GameLayer: SKNode {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        rocketToLaunch?.applyForce(force: CGVector(dx: 0, dy: 800))
+        lauchRocket()
     }
     
     required init?(coder aDecoder: NSCoder) {
