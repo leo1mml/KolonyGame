@@ -52,9 +52,7 @@ public class EntityManagerBackgroundLayer : GKEntity {
             }
         }
         
-        //        for componentSystem in componentSystems {
-        //            componentSystem.addComponent(foundIn: entity)
-        //        }
+git s
     }
     
     func remove(_ entity: GKEntity) {

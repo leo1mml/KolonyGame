@@ -117,7 +117,8 @@ class BackgroundLayer: SKNode {
             return (x,  y)
         }
         
-        return (0, 0)
+        //default value for exceptions case
+        return (CGFloat(0), CGFloat(0))
     }
     
     //Create many stars for background
