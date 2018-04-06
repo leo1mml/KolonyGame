@@ -12,20 +12,20 @@ extension GameLayer {
     
     func didBegin(_ contact: SKPhysicsContact) {
         
-        let tupla = (contact.bodyA.node?.name, contact.bodyB.node?.name)
+        let names = (contact.bodyA.node?.name, contact.bodyB.node?.name)
         
-        switch tupla {
+        switch names {
         case ("red", "red"):
-            print("RED")
+            getPlanet(contact: contact)
             break
         case ("blue", "blue"):
-            print("BLUE")
+            getPlanet(contact: contact)
             break
         case ("green", "green"):
-            print("GREEN")
+            getPlanet(contact: contact)
             break
         case ("yellow", "yellow"):
-            print("YELLOW")
+            getPlanet(contact: contact)
             break
         default:
             print("You Lose")
@@ -33,9 +33,34 @@ extension GameLayer {
         }
     }
     
-    func addFlag(node: SKNode, position: CGPoint) {
+    func getPlanet(contact: SKPhysicsContact) {
+        if contact.bodyA.categoryBitMask == PhysicsCategory.Planet {
+            addFlag(node: contact.bodyA.node!, typeColor: TypeColor.red.rawValue, contactPoint: contact.contactPoint)
+        } else {
+            addFlag(node: contact.bodyB.node!, typeColor: TypeColor.red.rawValue, contactPoint: contact.contactPoint)
+        }
+    }
+    
+    func addFlag(node: SKNode, typeColor: String, contactPoint: CGPoint) {
         
-        
+        switch typeColor {
+        case "red":
+            let flag = SKSpriteNode(texture: SKTexture(imageNamed: "bandeira1"))
+            flag.position = convert(contactPoint, from: self)
+            print("RED")
+            break
+        case "blue":
+            print("BLUE")
+            break
+        case "green":
+            print("GREEN")
+            break
+        case "yellow":
+            print("YELLOW")
+            break
+        default:
+            print("You Lose")
+        }
         
     }
     
