@@ -11,7 +11,7 @@ import GameplayKit
 
 class BackgroundLayer: SKNode {
     
-    let STARS_AMOUNT = 100
+    let STARS_AMOUNT = 50
     
     //layer size
     var size: CGSize?
@@ -39,11 +39,17 @@ class BackgroundLayer: SKNode {
         size = CGSize(width: (self.size?.height)! , height: (self.size?.height)!)
         let mist = StarEntity(imageName: "nevoas", size: size)
         
-        setupEntity(entity: mist, position: CGPoint.zero, zPosition: nil)
+        //creating little stars of background
+        size = CGSize(width: (self.size?.height)! * 0.005, height: (self.size?.height)! * 0.005)
+        let littleStars = createPoolLittleStars(size, "starbg")
+        setup(littleStars: littleStars)
+        
+        setupEntity(entity: mist, position: CGPoint.zero, zPosition: -4)
         setupEntity(entity: bg, position: CGPoint.zero, zPosition: -5)
        
         self.addEntitiesInBackgroundLayer([bg, mist])
         self.entityManager?.addAll(stars)
+        self.entityManager?.addAll(littleStars)
         self.entityManager?.add(particles: createComet())
         
     }
@@ -54,30 +60,53 @@ class BackgroundLayer: SKNode {
         }
     }
     
+    func setup (littleStars: [LittleStar]) {
+        for i in littleStars {
+            //get position x and y in a tuple -> (x: CGFloat, y:CGFloat)
+            var pos = randomPosition()
+            
+            pos.x -= (size?.width)! / 2
+            pos.y -=  (size?.height)! / 2
+            setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -2)
+            i.spriteComponent?.node.run((i.spriteComponent?.alphaAction(alphaValue: 5, duration: TimeInterval(5)))!)
+            
+        }
+    }
+    
     //Create ramdon position for stars and configure they
     func setup (_ stars: [StarEntity]) {
         for  i in stars {
             
-            var x = CGFloat(arc4random_uniform(UInt32(size!.width)))
-            x -= (size?.width)! / 2
-            var y = CGFloat(arc4random_uniform(UInt32(size!.height)))
-            y -= (size?.height)! / 2
-            setupEntity(entity: i, position: CGPoint(x: x, y: y), zPosition: nil)
+            //get position x and y in a tuple -> (x: CGFloat, y:CGFloat)
+            var pos = randomPosition()
+            
+            pos.x -= (size?.width)! / 2
+            pos.y -=  (size?.height)! / 2
+            
+            setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -2)
             
             if let sprite = i.spriteComponent {
                 
                 //configuring color of sprite
                 sprite.node.color = GameColors.ramdomColor()
                 sprite.node.colorBlendFactor = 1.0
-                
+
                 //configuring scale effect
                 sprite.node.run(sprite.scaleAction(timeBetweenScale: 1, scaleMultiplier: NumbersUtil.randomCGFloat(min: 0.4, max: 1.5)))
                 
                 //configuring alpha fade effect
-                sprite.node.run(sprite.alphaAction(alphaValue: NumbersUtil.randomCGFloat(min: 0, max: 0.8), duration: TimeInterval(NumbersUtil.randomCGFloat(min: 4, max: 6))))
+                //prite.node.run(sprite.alphaAction(alphaValue: 5, duration: TimeInterval(5)))
 
             }
         }
+    }
+
+    
+    func randomPosition () -> (x: CGFloat, y: CGFloat) {
+        let x = CGFloat(arc4random_uniform(UInt32(size!.width)))
+        let y = CGFloat(arc4random_uniform(UInt32(size!.height)))
+    
+        return (x,  y)
     }
     
     //Create many stars for background
@@ -85,6 +114,16 @@ class BackgroundLayer: SKNode {
         var stars = [StarEntity]()
         for _ in 0...STARS_AMOUNT {
             stars.append(StarEntity(imageName: imageName, size: size))
+        }
+        return stars
+    }
+    
+    
+    //Create many stars for background
+    func createPoolLittleStars(_ size : CGSize, _ imageName: String) -> [LittleStar] {
+        var stars = [LittleStar]()
+        for _ in 0...STARS_AMOUNT {
+            stars.append(LittleStar(imageName: imageName, size: size))
         }
         return stars
     }
@@ -108,8 +147,9 @@ class BackgroundLayer: SKNode {
         texture.filteringMode = .linear
         particle?.particleTexture = texture
         
-        particle?.position = CGPoint(x: 0, y: (self.size?.height)!)
-        particle?.particlePositionRange = CGVector(dx: ((self.size?.width)! * 3), dy: 0)
+        particle?.position = CGPoint(x: (size?.width)!/2 * -1, y: ((size?.height)!/2))
+        particle?.zPosition = -3
+
         
         return particle!
     }
