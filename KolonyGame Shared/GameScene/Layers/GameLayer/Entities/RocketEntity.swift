@@ -71,7 +71,7 @@ enum type {
         case .green:
             return "green"
         case .blue:
-            return "planetblue"
+            return "blue"
         }
     }
 }
