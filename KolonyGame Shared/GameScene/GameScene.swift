@@ -76,13 +76,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     #endif
     
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        
         for press in presses {
             if press.type == .select {
                 gameLayer?.pressesBegan(presses, with: event)
             }
         }
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
