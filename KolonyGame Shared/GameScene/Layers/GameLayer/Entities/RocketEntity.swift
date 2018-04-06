@@ -14,7 +14,7 @@ class RocketEntity: GKEntity {
     var spriteComponent : SpriteComponent?
     var physicsBodyComponent: PhysicBodyComponent?
     
-    init(imageName: String, size: CGSize) {
+    init(imageName: String, size: CGSize, typeColor: TypeColor) {
         super.init()
         
         let texture = SKTexture(imageNamed: imageName)
@@ -22,10 +22,10 @@ class RocketEntity: GKEntity {
         self.spriteComponent = SpriteComponent(texture: texture, size: size)
         self.addComponent(self.spriteComponent!)
         
-        self.physicsBodyComponent = PhysicBodyComponent(circleOfRadius: size.height/2, contactTestBitMask: PhysicsCategory.RedPlanet|PhysicsCategory.BlackHole | PhysicsCategory.Obstacle, collisionBitMask: PhysicsCategory.RedPlanet, physicCategory: PhysicsCategory.RedRocket, friction: 0.0, linearDamping: 0.0, restitution: 0.0)
+        self.physicsBodyComponent = PhysicBodyComponent(circleOfRadius: size.height/2, contactTestBitMask: PhysicsCategory.BlackHole | PhysicsCategory.Planet, collisionBitMask: PhysicsCategory.Planet, physicCategory: PhysicsCategory.Rocket, friction: 0.0, linearDamping: 0.0, restitution: 0.0)
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
         
-        self.spriteComponent?.node.name = "rocket"
+        self.spriteComponent?.node.name = typeColor.rawValue
     }
     
     func applyForce(force: CGVector){

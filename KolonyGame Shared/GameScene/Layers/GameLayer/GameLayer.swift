@@ -14,8 +14,7 @@ class GameLayer: SKNode {
     var blackHole : BlackHoleEntity?
     var planetOne : PlanetEntity?
     var planetTwo : PlanetEntity?
-    var rocket: RocketEntity?
-    
+    var rocketToLaunch : RocketEntity?
     
     init(size: CGSize) {
         super.init()
@@ -23,12 +22,10 @@ class GameLayer: SKNode {
         entityManager = EntityManagerGameLayer(gameLayer: self)
     }
     
-    
     func configureLayer() {
         createBlackHole()
-        createRocket()
+        createRocketList()
     }
-    
     
     func createBlackHole() {
         let size = CGSize(width: (self.size?.height)! * 0.31, height: (self.size?.height)! * 0.31)
@@ -46,7 +43,7 @@ class GameLayer: SKNode {
     
     func createPlanetBlue() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetOne = PlanetEntity(imageName: "planetblue", size: size)
+        self.planetOne = PlanetEntity(imageName: "planetblue", size: size, typeColor: TypeColor.blue)
         if let planetSpriteComponent = planetOne?.component(ofType: SpriteComponent.self) {
             if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
                 planetSpriteComponent.node.position = CGPoint(x: 0, y: -(blackHoleSprite.node.size.height/2))
@@ -58,72 +55,101 @@ class GameLayer: SKNode {
     
     func createPlanetGreen() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetTwo = PlanetEntity(imageName: "planetgreen", size: size)
+        self.planetTwo = PlanetEntity(imageName: "planetgreen", size: size, typeColor: TypeColor.green)
         if let planetSpriteComponent = planetTwo?.component(ofType: SpriteComponent.self) {
             if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
                 planetSpriteComponent.node.position = CGPoint(x: 0, y: +(blackHoleSprite.node.size.height/2))
                 entityManager?.addPlanet(self.planetTwo!)
-                self.planetTwo?.startRotating(angle: -Double.pi * 2, duration: 4)
+                self.planetTwo?.startRotating(angle: -Double.pi * 2, duration: 5)
             }
         }
     }
     
     func createPlanetRed() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetTwo = PlanetEntity(imageName: "planetred", size: size)
+        self.planetTwo = PlanetEntity(imageName: "planetred", size: size, typeColor: TypeColor.red)
         if let planetSpriteComponent = planetTwo?.component(ofType: SpriteComponent.self) {
             if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
                 planetSpriteComponent.node.position = CGPoint(x: (blackHoleSprite.node.size.height/2), y: 0)
                 entityManager?.addPlanet(self.planetTwo!)
-                self.planetTwo?.startRotating(angle: -Double.pi * 2, duration: 4)
+                self.planetTwo?.startRotating(angle: -Double.pi * 2, duration: 3.5)
             }
         }
     }
     
     func createPlanetYellow() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetTwo = PlanetEntity(imageName: "planetyellow", size: size)
+        self.planetTwo = PlanetEntity(imageName: "planetyellow", size: size, typeColor: TypeColor.yellow)
         if let planetSpriteComponent = planetTwo?.component(ofType: SpriteComponent.self) {
             if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
                 planetSpriteComponent.node.position = CGPoint(x: -(blackHoleSprite.node.size.height/2), y: 0)
                 entityManager?.addPlanet(self.planetTwo!)
-                self.planetTwo?.startRotating(angle: -Double.pi * 2, duration: 4)
+                self.planetTwo?.startRotating(angle: -Double.pi * 2, duration: 3)
             }
         }
     }
     
-    func createRocket() {
-        let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-        self.rocket = RocketEntity(imageName: "nave", size: size)
-        
-        if let sprite = rocket?.component(ofType: SpriteComponent.self) {
-            sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)
+    func createRocketList() {
+        var positionX = (self.size?.width)! / 2
+        for index in 0...2 {
+            let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
+            let rocket = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.red)
+            
+            if(index == 0){
+                self.rocketToLaunch = rocket
+            }
+            
+            if let sprite = rocket.component(ofType: SpriteComponent.self) {
+                sprite.node.position = CGPoint(x: positionX, y: (self.size?.height)! / 8)
+            }
+            positionX += (self.size?.width)!/10
+            entityManager?.add(rocket)
         }
-        entityManager?.add(rocket!)
     }
     
-    func didBegin(_ contact: SKPhysicsContact) {
+    func createRocketBlue() {
+        let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
+        self.rocketToLaunch = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.blue)
         
-        let tupla = (contact.bodyA.categoryBitMask, contact.bodyB.categoryBitMask)
-        
-        switch tupla {
-        case (PhysicsCategory.RedPlanet, PhysicsCategory.RedRocket):
-            print("contact")
-            break
-        case (PhysicsCategory.RedRocket, PhysicsCategory.RedPlanet):
-            print("contact")
-            break
-        default:
-            break
+        if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
+            sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)
         }
+        entityManager?.add(rocketToLaunch!)
+    }
+    
+    func createRocketGreen() {
+        let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
+        self.rocketToLaunch = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.green)
+        
+        if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
+            sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)
+        }
+        entityManager?.add(rocketToLaunch!)
+    }
+    
+    func createRocketRed() {
+        let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
+        self.rocketToLaunch = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.red)
+        print("\(String(describing: rocketToLaunch?.spriteComponent?.node.name))")
+        
+        if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
+            sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)
+        }
+        entityManager?.add(rocketToLaunch!)
+    }
+    
+    func createRocketYellow() {
+        let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
+        self.rocketToLaunch = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.yellow)
+        
+        if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
+            sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)
+        }
+        entityManager?.add(rocketToLaunch!)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        rocket?.applyForce(force: CGVector(dx: 0, dy: 400))
-    }
-    
-    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        rocket?.applyForce(force: CGVector(dx: 0, dy: 400))
+        rocketToLaunch?.applyForce(force: CGVector(dx: 0, dy: 800))
     }
     
     required init?(coder aDecoder: NSCoder) {
