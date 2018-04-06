@@ -14,11 +14,10 @@ class RocketEntity: GKEntity {
     var spriteComponent : SpriteComponent?
     var physicsBodyComponent: PhysicBodyComponent?
     
-    
-    init(imageName: String, size: CGSize) {
+    init(size: CGSize, typeColor: RocketType) {
         super.init()
         
-        let texture = SKTexture(imageNamed: imageName)
+        let texture = typeColor.texture
         
         self.spriteComponent = SpriteComponent(texture: texture, size: size)
         self.addComponent(self.spriteComponent!)
@@ -26,7 +25,7 @@ class RocketEntity: GKEntity {
         self.physicsBodyComponent = PhysicBodyComponent(circleOfRadius: size.height/2, contactTestBitMask: PhysicsCategory.BlackHole | PhysicsCategory.Planet, collisionBitMask: PhysicsCategory.Planet, physicCategory: PhysicsCategory.Rocket, friction: 0.0, linearDamping: 0.0, restitution: 0.0)
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
         
-        self.spriteComponent?.node.name = typeColor.rawValue
+        self.spriteComponent?.node.name = typeColor.type
     }
     
     func applyForce(force: CGVector){
@@ -39,39 +38,4 @@ class RocketEntity: GKEntity {
         fatalError("init(coder:) has not been implemented")
     }
     
-}
-
-enum type {
-    case yellow
-    case red
-    case blue
-    case green
-    
-    private static let allValues = [yellow, red, blue, green]
-    
-    var texture: SKTexture {
-        switch self {
-        case .yellow:
-            return SKTexture(imageNamed: "planetyellow")
-        case .red:
-            return SKTexture(imageNamed: "planetred")
-        case .green:
-            return SKTexture(imageNamed: "planetgreen")
-        case .blue:
-            return SKTexture(imageNamed: "planetblue")
-        }
-    }
-    
-    var type: String {
-        switch self {
-        case .yellow:
-            return "yellow"
-        case .red:
-            return "red"
-        case .green:
-            return "green"
-        case .blue:
-            return "blue"
-        }
-    }
 }

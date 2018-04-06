@@ -44,7 +44,7 @@ class GameLayer: SKNode {
     
     func createPlanetBlue() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetOne = PlanetEntity(imageName: "planetblue", size: size, typeColor: TypeColor.blue)
+        self.planetOne = PlanetEntity(property: PlanetProperties.blue, size: size)
         if let planetSpriteComponent = planetOne?.component(ofType: SpriteComponent.self) {
             if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
                 planetSpriteComponent.node.position = CGPoint(x: 0, y: -(blackHoleSprite.node.size.height/2))
@@ -56,7 +56,7 @@ class GameLayer: SKNode {
     
     func createPlanetGreen() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetTwo = PlanetEntity(imageName: "planetgreen", size: size, typeColor: TypeColor.green)
+        self.planetTwo = PlanetEntity(property: PlanetProperties.green, size: size)
         if let planetSpriteComponent = planetTwo?.component(ofType: SpriteComponent.self) {
             if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
                 planetSpriteComponent.node.position = CGPoint(x: 0, y: +(blackHoleSprite.node.size.height/2))
@@ -68,7 +68,7 @@ class GameLayer: SKNode {
     
     func createPlanetRed() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetTwo = PlanetEntity(imageName: "planetred", size: size, typeColor: TypeColor.red)
+        self.planetTwo = PlanetEntity(property: PlanetProperties.red, size: size)
         if let planetSpriteComponent = planetTwo?.component(ofType: SpriteComponent.self) {
             if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
                 planetSpriteComponent.node.position = CGPoint(x: (blackHoleSprite.node.size.height/2), y: 0)
@@ -80,7 +80,7 @@ class GameLayer: SKNode {
     
     func createPlanetYellow() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetTwo = PlanetEntity(imageName: "planetyellow", size: size, typeColor: TypeColor.yellow)
+        self.planetTwo = PlanetEntity(property: PlanetProperties.yellow, size: size)
         if let planetSpriteComponent = planetTwo?.component(ofType: SpriteComponent.self) {
             if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
                 planetSpriteComponent.node.position = CGPoint(x: -(blackHoleSprite.node.size.height/2), y: 0)
@@ -94,7 +94,7 @@ class GameLayer: SKNode {
         var positionX = (self.size?.width)! / 2
         for index in 0...2 {
             let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-            let rocket = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.red)
+            let rocket = RocketEntity(size: size, typeColor: RocketType.generateRandomShipProperties())
             
             if(index == 0){
                 self.rocketToLaunch = rocket
@@ -109,43 +109,13 @@ class GameLayer: SKNode {
         }
     }
     
-    func configureRandomRocketShip(ship: RocketEntity) {
-        let type = Int(arc4random_uniform(4))
-        let texture = generateRandomTexture(type: type)
-        
-        
-    }
-    
-    func generateRandomTexture(type: Int) -> SKTexture {
-        switch type {
-        case 0:
-            return SKTexture(imageNamed: "planetblue")
-        case 1:
-            return SKTexture(imageNamed: "planetgreen")
-        case 2:
-            return SKTexture(imageNamed: "planetred")
-        case 3:
-            return SKTexture(imageNamed: "planetyellow")
-        default:
-            return SKTexture(imageNamed: "")
-        }
-    }
-    
     func lauchRocket() {
         rocketToLaunch?.applyForce(force: CGVector(dx: 0, dy: 800))
     }
     
-    func didBegin(_ contact: SKPhysicsContact) {
-        
-        if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
-            sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)
-        }
-        entityManager?.add(rocketToLaunch!)
-    }
-    
     func createRocketGreen() {
         let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-        self.rocketToLaunch = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.green)
+        self.rocketToLaunch = RocketEntity(size: size, typeColor: RocketType.green)
         
         if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
             sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)
@@ -155,7 +125,7 @@ class GameLayer: SKNode {
     
     func createRocketRed() {
         let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-        self.rocketToLaunch = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.red)
+        self.rocketToLaunch = RocketEntity(size: size, typeColor: .red)
         print("\(String(describing: rocketToLaunch?.spriteComponent?.node.name))")
         
         if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
@@ -166,7 +136,7 @@ class GameLayer: SKNode {
     
     func createRocketYellow() {
         let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-        self.rocketToLaunch = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.yellow)
+        self.rocketToLaunch = RocketEntity(size: size, typeColor: .yellow)
         
         if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
             sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)

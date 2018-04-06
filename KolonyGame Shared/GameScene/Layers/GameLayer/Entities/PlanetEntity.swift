@@ -15,10 +15,10 @@ class PlanetEntity: GKEntity {
     var physicsBodyComponent: PhysicBodyComponent?
     var rotationComponent: RotationComponent?
     
-    init(imageName: String, size: CGSize, typeColor: TypeColor) {
+    init(property: PlanetProperties, size: CGSize) {
         super.init()
         
-        let texture = SKTexture(imageNamed: imageName)
+        let texture = property.texture
         
         self.spriteComponent = SpriteComponent(texture: texture, size: size)
         self.addComponent(self.spriteComponent!)
@@ -26,7 +26,7 @@ class PlanetEntity: GKEntity {
         self.physicsBodyComponent = PhysicBodyComponent(circleOfRadius: size.height/2, contactTestBitMask: PhysicsCategory.Rocket, collisionBitMask: PhysicsCategory.Rocket, physicCategory: PhysicsCategory.Planet, friction: 0.0, linearDamping: 0.0, restitution: 0.0)
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
         
-        self.spriteComponent?.node.name = typeColor.rawValue
+        self.spriteComponent?.node.name = property.type
         self.spriteComponent?.node.physicsBody?.isDynamic = false
         
         self.rotationComponent = RotationComponent(entity: self)
