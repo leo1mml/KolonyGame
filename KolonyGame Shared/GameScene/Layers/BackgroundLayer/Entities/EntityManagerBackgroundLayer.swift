@@ -51,10 +51,6 @@ public class EntityManagerBackgroundLayer : GKEntity {
                 bgLayer.addChild(spriteNode)
             }
         }
-        
-        //        for componentSystem in componentSystems {
-        //            componentSystem.addComponent(foundIn: entity)
-        //        }
     }
     
     func remove(_ entity: GKEntity) {
