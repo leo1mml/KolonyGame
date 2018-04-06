@@ -48,7 +48,6 @@
 		9735C2232075BBF10054C6E9 /* Comets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9735C2222075BBF10054C6E9 /* Comets.sks */; };
 		9735C2242075BBF10054C6E9 /* Comets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9735C2222075BBF10054C6E9 /* Comets.sks */; };
 		9735C2262075CB400054C6E9 /* NumbersUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2252075CB400054C6E9 /* NumbersUtil.swift */; };
-		9735C2272075CB400054C6E9 /* NumbersUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2252075CB400054C6E9 /* NumbersUtil.swift */; };
 		9735C2292076BE200054C6E9 /* LittleStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2282076BE200054C6E9 /* LittleStar.swift */; };
 		9735C22A2076BE200054C6E9 /* LittleStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2282076BE200054C6E9 /* LittleStar.swift */; };
 		977B660520755C5A00CE37D6 /* BackgroundBasicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660420755C5A00CE37D6 /* BackgroundBasicEntity.swift */; };
@@ -557,7 +556,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JC4QT73C9E;
+				DEVELOPMENT_TEAM = RT5RW3DL77;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -575,7 +574,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JC4QT73C9E;
+				DEVELOPMENT_TEAM = RT5RW3DL77;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

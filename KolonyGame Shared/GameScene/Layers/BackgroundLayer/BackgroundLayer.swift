@@ -11,7 +11,8 @@ import GameplayKit
 
 class BackgroundLayer: SKNode {
     
-    let STARS_AMOUNT = 50
+    let STARS_AMOUNT = 45
+    let LITLE_STARS_AMOUNT = 100
     
     //layer size
     var size: CGSize?
@@ -68,8 +69,11 @@ class BackgroundLayer: SKNode {
             pos.x -= (size?.width)! / 2
             pos.y -=  (size?.height)! / 2
             setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -2)
-            i.spriteComponent?.node.run((i.spriteComponent?.alphaAction(alphaValue: 5, duration: TimeInterval(5)))!)
             
+            if let sprite = i.spriteComponent {
+                sprite.node.setScale(NumbersUtil.randomCGFloat(min: 0.3, max: 1))
+                sprite.node.run(sprite.alphaAction(alphaValue: NumbersUtil.randomCGFloat(min: 0.05, max: 0.8), duration: TimeInterval(NumbersUtil.randomCGFloat(min: 3, max: 5))))
+            }
         }
     }
     
@@ -80,8 +84,11 @@ class BackgroundLayer: SKNode {
             //get position x and y in a tuple -> (x: CGFloat, y:CGFloat)
             var pos = randomPosition()
             
-            pos.x -= (size?.width)! / 2
-            pos.y -=  (size?.height)! / 2
+            if let size = self.size {
+                pos.x -= size.width / 2
+                pos.y -= size.height / 2
+            }
+            
             
             setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -2)
             
@@ -92,7 +99,7 @@ class BackgroundLayer: SKNode {
                 sprite.node.colorBlendFactor = 1.0
 
                 //configuring scale effect
-                sprite.node.run(sprite.scaleAction(timeBetweenScale: 1, scaleMultiplier: NumbersUtil.randomCGFloat(min: 0.4, max: 1.5)))
+                sprite.node.run(sprite.scaleAction(timeBetweenScale: 1, scaleMultiplier: NumbersUtil.randomCGFloat(min: 0.4, max: 1)))
                 
                 //configuring alpha fade effect
                 //prite.node.run(sprite.alphaAction(alphaValue: 5, duration: TimeInterval(5)))
@@ -103,10 +110,14 @@ class BackgroundLayer: SKNode {
 
     
     func randomPosition () -> (x: CGFloat, y: CGFloat) {
-        let x = CGFloat(arc4random_uniform(UInt32(size!.width)))
-        let y = CGFloat(arc4random_uniform(UInt32(size!.height)))
-    
-        return (x,  y)
+        
+        if let size = self.size {
+            let x = CGFloat(arc4random_uniform(UInt32(size.width)))
+            let y = CGFloat(arc4random_uniform(UInt32(size.height)))
+            return (x,  y)
+        }
+        
+        return (0, 0)
     }
     
     //Create many stars for background
@@ -119,10 +130,10 @@ class BackgroundLayer: SKNode {
     }
     
     
-    //Create many stars for background
+    //Create many little stars for background
     func createPoolLittleStars(_ size : CGSize, _ imageName: String) -> [LittleStar] {
         var stars = [LittleStar]()
-        for _ in 0...STARS_AMOUNT {
+        for _ in 0...LITLE_STARS_AMOUNT {
             stars.append(LittleStar(imageName: imageName, size: size))
         }
         return stars

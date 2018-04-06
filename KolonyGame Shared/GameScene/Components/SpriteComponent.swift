@@ -38,9 +38,9 @@ class SpriteComponent: GKComponent {
     
     func alphaAction (alphaValue: CGFloat, duration: TimeInterval) -> SKAction {
         
-        let downAlpha = SKAction.fadeAlpha(by: alphaValue, duration: duration)
+        let downAlpha = SKAction.fadeAlpha(to: alphaValue, duration: duration)
         
-        let defaultAlpha = SKAction.fadeAlpha(by: 1, duration: duration)
+        let defaultAlpha = SKAction.fadeAlpha(to: 1, duration: duration)
         
         let sequenceFade = SKAction.sequence([downAlpha, defaultAlpha])
         
