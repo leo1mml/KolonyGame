@@ -21,6 +21,8 @@
 		14A0F6A82076C3530093C5D3 /* EntitiesEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A0F6A72076C3530093C5D3 /* EntitiesEnum.swift */; };
 		14ACEF732056F08E00D62305 /* PlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA920532B6600546F56 /* PlayingState.swift */; };
 		14ACEF752056FEAA00D62305 /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ACEF742056FEAA00D62305 /* GameOverState.swift */; };
+		14D3B25C2077EDC900CB6B98 /* LittleStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2282076BE200054C6E9 /* LittleStar.swift */; };
+		14D3B25D2077EDCA00CB6B98 /* LittleStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2282076BE200054C6E9 /* LittleStar.swift */; };
 		14E2FE0720583C9600A0E3A8 /* PhysicBodyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */; };
 		14E2FE09205869AE00A0E3A8 /* RotationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */; };
 		14F761C32059A16400F4D04F /* RocketEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F761C22059A16400F4D04F /* RocketEntity.swift */; };
@@ -367,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14D3B25C2077EDC900CB6B98 /* LittleStar.swift in Sources */,
 				1491A39E20659B5000AA982C /* StarEntity.swift in Sources */,
 				8AE8079720571FA6006EDC86 /* BlackHoleEntity.swift in Sources */,
 				8A8CCFAA20532B6600546F56 /* PlayingState.swift in Sources */,
@@ -390,7 +393,6 @@
 				9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */,
 				9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */,
 				8A8CCFA82053292B00546F56 /* PlanetEntity.swift in Sources */,
-				9735C2292076BE200054C6E9 /* LittleStar.swift in Sources */,
 				8A8CCF752053239A00546F56 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,11 +416,10 @@
 				143817F02075637E007E5A1E /* EntityManagerBackgroundLayer.swift in Sources */,
 				143817ED2075636D007E5A1E /* GameOverState.swift in Sources */,
 				8AE8079320570413006EDC86 /* EntityManagerGameLayer.swift in Sources */,
+				14D3B25D2077EDCA00CB6B98 /* LittleStar.swift in Sources */,
 				8AE8079420570418006EDC86 /* BackgroundLayer.swift in Sources */,
 				14F761C42059A16400F4D04F /* RocketEntity.swift in Sources */,
 				8A8CCF862053239B00546F56 /* AppDelegate.swift in Sources */,
-				977B660C2075ACD500CE37D6 /* GameColors.swift in Sources */,
-				9735C22A2076BE200054C6E9 /* LittleStar.swift in Sources */,
 				143817F120756381007E5A1E /* BackgroundEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

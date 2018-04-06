@@ -24,7 +24,7 @@ class GameLayer: SKNode {
     
     func configureLayer() {
         createBlackHole()
-        createRocketRed()
+        createRocketList()
     }
     
     func createBlackHole() {
@@ -89,44 +89,63 @@ class GameLayer: SKNode {
         }
     }
     
+    func createRocketList() {
+        var positionX = (self.size?.width)! / 2
+        for index in 0...2 {
+            let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
+            let rocket = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.red)
+            
+            if(index == 0){
+                self.rocketToLaunch = rocket
+            }
+            
+            if let sprite = rocket.component(ofType: SpriteComponent.self) {
+                sprite.node.position = CGPoint(x: positionX, y: (self.size?.height)! / 8)
+            }
+            positionX += (self.size?.width)!/10
+            entityManager?.add(rocket)
+        }
+    }
+    
     func createRocketBlue() {
         let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-        self.rocket = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.blue)
+        self.rocketToLaunch = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.blue)
         
-        if let sprite = rocket?.component(ofType: SpriteComponent.self) {
+        if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
             sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)
         }
+        entityManager?.add(rocketToLaunch!)
     }
     
     func createRocketGreen() {
         let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-        self.rocket = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.green)
+        self.rocketToLaunch = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.green)
         
-        if let sprite = rocket?.component(ofType: SpriteComponent.self) {
+        if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
             sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)
         }
-        entityManager?.add(rocket!)
+        entityManager?.add(rocketToLaunch!)
     }
     
     func createRocketRed() {
         let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-        self.rocket = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.red)
-        print("\(String(describing: rocket?.spriteComponent?.node.name))")
+        self.rocketToLaunch = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.red)
+        print("\(String(describing: rocketToLaunch?.spriteComponent?.node.name))")
         
-        if let sprite = rocket?.component(ofType: SpriteComponent.self) {
+        if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
             sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)
         }
-        entityManager?.add(rocket!)
+        entityManager?.add(rocketToLaunch!)
     }
     
     func createRocketYellow() {
         let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-        self.rocket = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.yellow)
+        self.rocketToLaunch = RocketEntity(imageName: "nave", size: size, typeColor: TypeColor.yellow)
         
-        if let sprite = rocket?.component(ofType: SpriteComponent.self) {
+        if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
             sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)
         }
-        entityManager?.add(rocket!)
+        entityManager?.add(rocketToLaunch!)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
