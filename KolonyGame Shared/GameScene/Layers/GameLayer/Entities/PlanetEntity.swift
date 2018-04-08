@@ -36,6 +36,14 @@ class PlanetEntity: GKEntity {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func addFlag(flag: SKSpriteNode){
+        flag.zPosition = (self.spriteComponent?.node.zPosition)! + 1
+        self.spriteComponent?.node.addChild(flag)
+        flag.size = CGSize(width: 15, height: 30)
+        flag.position = CGPoint(x: flag.position.x, y: flag.position.y + flag.size.height/2 + (self.spriteComponent?.node.size.height)!/2)
+        
+    }
+    
     func startRotating(angle: Double, duration: Double) {
         let rotateAction = SKAction.rotate(byAngle: CGFloat(angle), duration: duration)
         let repeatForever = SKAction.repeatForever(rotateAction)

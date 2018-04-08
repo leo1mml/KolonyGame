@@ -57,16 +57,28 @@ extension GameLayer {
             
             texture = SKTexture(imageNamed: "bandeira1")
             flag = SKSpriteNode(texture: texture)
-            blackHole?.spriteComponent?.node.addChild(flag)
+            self.planetRed?.addFlag(flag: flag)
             
             break
         case PlanetProperties.blue.type:
             
+            texture = SKTexture(imageNamed: "bandeira1")
+            flag = SKSpriteNode(texture: texture)
+            self.planetBlue?.addFlag(flag: flag)
+            
             break
         case PlanetProperties.green.type:
             
+            texture = SKTexture(imageNamed: "bandeira1")
+            flag = SKSpriteNode(texture: texture)
+            self.planetGreen?.addFlag(flag: flag)
+            
             break
         case PlanetProperties.yellow.type:
+            
+            texture = SKTexture(imageNamed: "bandeira1")
+            flag = SKSpriteNode(texture: texture)
+            self.planetYellow?.addFlag(flag: flag)
             
             break
         default:
