@@ -16,16 +16,16 @@ extension GameLayer {
         
         switch names {
         case ("red", "red"):
-            getPlanet(contact: contact)
+            getPlanet(contact: contact, type: PlanetProperties.red)
             break
         case ("blue", "blue"):
-            getPlanet(contact: contact)
+            getPlanet(contact: contact, type: PlanetProperties.blue)
             break
         case ("green", "green"):
-            getPlanet(contact: contact)
+            getPlanet(contact: contact, type: PlanetProperties.green)
             break
         case ("yellow", "yellow"):
-            getPlanet(contact: contact)
+            getPlanet(contact: contact, type: PlanetProperties.yellow)
             break
         default:
             print("You Lose")
@@ -33,33 +33,44 @@ extension GameLayer {
         }
     }
     
-    func getPlanet(contact: SKPhysicsContact) {
-        if contact.bodyA.categoryBitMask == PhysicsCategory.Planet {
-            addFlag(node: contact.bodyA.node!, typeColor: TypeColor.red.rawValue, contactPoint: contact.contactPoint)
-        } else {
-            addFlag(node: contact.bodyB.node!, typeColor: TypeColor.red.rawValue, contactPoint: contact.contactPoint)
-        }
-    }
-    
-    func addFlag(node: SKNode, typeColor: String, contactPoint: CGPoint) {
+    func getPlanet(contact: SKPhysicsContact, type: PlanetProperties) {
         
-        switch typeColor {
-        case "red":
-            let flag = SKSpriteNode(texture: SKTexture(imageNamed: "bandeira1"))
-            flag.position = convert(contactPoint, from: self)
-            print("RED")
+        var planet: SKNode
+        
+        if contact.bodyA.node?.physicsBody?.categoryBitMask == PhysicsCategory.Planet {
+            planet = contact.bodyA.node!
+        } else {
+            planet = contact.bodyB.node!
+        }
+        
+        addFlag(planet: planet, contactPoint: contact.contactPoint)
+        
+    }
+    
+    func addFlag(planet: SKNode, contactPoint: CGPoint) {
+        
+        var texture: SKTexture
+        var flag: SKSpriteNode
+        
+        switch planet.name {
+        case PlanetProperties.red.type:
+            
+            texture = SKTexture(imageNamed: "bandeira1")
+            flag = SKSpriteNode(texture: texture)
+            blackHole?.spriteComponent?.node.addChild(flag)
+            
             break
-        case "blue":
-            print("BLUE")
+        case PlanetProperties.blue.type:
+            
             break
-        case "green":
-            print("GREEN")
+        case PlanetProperties.green.type:
+            
             break
-        case "yellow":
-            print("YELLOW")
+        case PlanetProperties.yellow.type:
+            
             break
         default:
-            print("You Lose")
+            break
         }
         
     }
