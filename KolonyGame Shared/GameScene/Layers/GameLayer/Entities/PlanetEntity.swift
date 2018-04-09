@@ -56,11 +56,13 @@ class PlanetEntity: GKEntity {
         
         var textures = [SKTexture]()
         
-        for i in 1...40 {
-            textures.append(SKTexture(imageNamed: "nome\(i)"))
+        for i in 72...98 {
+            textures.append(SKTexture(imageNamed: "Ativo \(i)"))
         }
         
-        SKAction.animate(with: textures, timePerFrame: 60)
+        let rotate = SKAction.animate(with: textures, timePerFrame: 0.06)
+        let repeatForever = SKAction.repeatForever(rotate)
+        self.spriteComponent?.node.run(repeatForever)
     }
     
     func startRotating(angle: Double, duration: Double) {

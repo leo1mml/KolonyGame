@@ -38,7 +38,6 @@ class EntityManagerGameLayer {
             if let blackHole = entity.isKind(of: BlackHoleEntity.self) ? entity : nil {
                 planet.spriteComponent?.node.zPosition = (blackHole.component(ofType: SpriteComponent.self)?.node.zPosition)! + 1
                 blackHole.component(ofType: SpriteComponent.self)?.node.addChild((planet.spriteComponent?.node)!)
-                planet.animate()
             }
         }
     }
