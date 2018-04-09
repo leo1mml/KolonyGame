@@ -55,28 +55,28 @@ extension GameLayer {
         switch planet.name {
         case PlanetProperties.red.type:
             
-            texture = SKTexture(imageNamed: "bandeira1")
+            texture = SKTexture(imageNamed: "flagred")
             flag = SKSpriteNode(texture: texture)
             self.planetRed?.addFlag(flag: flag)
             
             break
         case PlanetProperties.blue.type:
             
-            texture = SKTexture(imageNamed: "bandeira1")
+            texture = SKTexture(imageNamed: "flagblue")
             flag = SKSpriteNode(texture: texture)
             self.planetBlue?.addFlag(flag: flag)
             
             break
         case PlanetProperties.green.type:
             
-            texture = SKTexture(imageNamed: "bandeira1")
+            texture = SKTexture(imageNamed: "flaggreen")
             flag = SKSpriteNode(texture: texture)
             self.planetGreen?.addFlag(flag: flag)
             
             break
         case PlanetProperties.yellow.type:
             
-            texture = SKTexture(imageNamed: "bandeira1")
+            texture = SKTexture(imageNamed: "flagyellow")
             flag = SKSpriteNode(texture: texture)
             self.planetYellow?.addFlag(flag: flag)
             
