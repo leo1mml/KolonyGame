@@ -28,10 +28,12 @@ class RocketEntity: GKEntity {
         self.spriteComponent?.node.name = typeColor.type
     }
     
-    func applyForce(force: CGVector){
-      
-        self.spriteComponent?.node.physicsBody?.applyForce(force)
-        
+    func launch(velocity: CGVector) {
+        self.spriteComponent?.node.physicsBody?.velocity = velocity
+    }
+    
+    func stop() {
+        self.spriteComponent?.node.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {

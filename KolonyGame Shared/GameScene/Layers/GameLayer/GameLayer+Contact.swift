@@ -15,7 +15,7 @@ extension GameLayer {
         let categories = (contact.bodyA.categoryBitMask, contact.bodyB.categoryBitMask)
         
         switch categories {
-
+            
         case (PhysicsCategory.Planet, PhysicsCategory.Rocket):
             handlePlanetAndRocket(planet: contact.bodyA.node!, rocket: contact.bodyB.node!)
             break
@@ -42,9 +42,9 @@ extension GameLayer {
                 parent.incrementScore()
             }
         }
-        
+        recicleShip(rocket: self.rocketToLaunch!)
     }
-
+    
     func addFlag(planet: SKNode) {
         
         var texture: SKTexture

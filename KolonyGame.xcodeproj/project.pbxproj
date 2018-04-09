@@ -143,9 +143,8 @@
 		8A8CCF682053239A00546F56 /* KolonyGame Shared */ = {
 			isa = PBXGroup;
 			children = (
-				977B66082075AC6500CE37D6 /* Game Utils */,
+				977B66082075AC6500CE37D6 /* Game */,
 				8A8CCF9D205323EF00546F56 /* GameScene */,
-				97D1A218207BE2CF0011F458 /* Resources */,
 				8A8CCF6C2053239A00546F56 /* Assets.xcassets */,
 				9735C2222075BBF10054C6E9 /* Comets.sks */,
 			);
@@ -199,7 +198,6 @@
 		8A8CCF9E2053244400546F56 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				97D1A212207BDF990011F458 /* HudLayer */,
 				9790E7D12056F4C1008A9159 /* BackgroundLayer */,
 				8A8CCFA4205327BF00546F56 /* GameLayer */,
 			);
@@ -246,7 +244,7 @@
 			path = GameLayer;
 			sourceTree = "<group>";
 		};
-		977B66082075AC6500CE37D6 /* Game Utils */ = {
+		977B66082075AC6500CE37D6 /* Game */ = {
 			isa = PBXGroup;
 			children = (
 				977B660A2075ACD500CE37D6 /* GameColors.swift */,
@@ -254,7 +252,7 @@
 				8A84A4652078135200CD92C9 /* RocketshipProperties.swift */,
 				8A84A46720781B0900CD92C9 /* PlanetProperties.swift */,
 			);
-			path = "Game Utils";
+			path = Game;
 			sourceTree = "<group>";
 		};
 		9790E7D12056F4C1008A9159 /* BackgroundLayer */ = {
@@ -387,7 +385,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9735C2232075BBF10054C6E9 /* Comets.sks in Resources */,
-				97D1A21A207BE3320011F458 /* ONRAMP.ttf in Resources */,
 				8A8CCF7A2053239A00546F56 /* Main.storyboard in Resources */,
 				8A8CCF7D2053239A00546F56 /* LaunchScreen.storyboard in Resources */,
 				8A8CCF932053239B00546F56 /* Assets.xcassets in Resources */,
@@ -401,7 +398,6 @@
 				8A8CCF8B2053239B00546F56 /* Main.storyboard in Resources */,
 				8A8CCF942053239B00546F56 /* Assets.xcassets in Resources */,
 				9735C2242075BBF10054C6E9 /* Comets.sks in Resources */,
-				97D1A21B207BE3320011F458 /* ONRAMP.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,7 +434,6 @@
 				8A8CCF772053239A00546F56 /* GameViewController.swift in Sources */,
 				9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */,
 				9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */,
-				97D1A215207BDFD30011F458 /* HudLayer.swift in Sources */,
 				8A8CCFA82053292B00546F56 /* PlanetEntity.swift in Sources */,
 				8A8CCF752053239A00546F56 /* AppDelegate.swift in Sources */,
 			);
@@ -612,7 +607,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RT5RW3DL77;
+				DEVELOPMENT_TEAM = JC4QT73C9E;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -630,7 +625,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RT5RW3DL77;
+				DEVELOPMENT_TEAM = JC4QT73C9E;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
