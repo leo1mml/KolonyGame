@@ -15,4 +15,8 @@ class NumbersUtil {
         return CGFloat(Float(arc4random()) / Float(UINT32_MAX)) * (max - min) + min
     }
     
+    static func randomDouble(min: Double, max: Double) -> Double {
+        return (Double(arc4random()) / 0xFFFFFFFF) * (max - min) + min
+    }
+    
 }
