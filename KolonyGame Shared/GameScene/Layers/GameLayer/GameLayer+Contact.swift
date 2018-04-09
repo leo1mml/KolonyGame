@@ -38,6 +38,9 @@ extension GameLayer {
         
         if(planet.name == rocket.name){
             addFlag(planet: planet)
+            if let parent = self.parent as? GameScene {
+                parent.incrementScore()
+            }
         }
         
     }
