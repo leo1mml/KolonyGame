@@ -14,6 +14,8 @@ class HudLayer: SKNode {
     var size: CGSize?
     var entityManager : EntityManagerHudLayer?
     private var score = 0
+    var scoreLabel: SKLabelNode?
+    
     
     init(size: CGSize) {
         super.init()
@@ -30,22 +32,25 @@ class HudLayer: SKNode {
             let scoreIcon = ScoreIconEntity(imageName: "scoreicon", size: size)
             
             //creating score label
-            let scoreLabel = SKLabelNode(fontNamed: "Onramp")
-            scoreLabel.fontSize = 44
-            scoreLabel.text = String(self.score)
-            scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
+            self.scoreLabel = SKLabelNode(fontNamed: "Onramp")
+            if let score = self.scoreLabel {
+                score.fontSize = 44
+                score.text = String(self.score)
+                score.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
+            }
             
             
             setupEntity(entity: scoreIcon, position: CGPoint(x: sizeLayer.width * 0.08 , y: sizeLayer.height * 0.97), zPosition: nil)
             if let spriteScoreIcon = scoreIcon.spriteComponent {
-                
-                
-                scoreLabel.position = CGPoint(x: spriteScoreIcon.node.position.x + 30 , y: spriteScoreIcon.node.position.y - (spriteScoreIcon.node.size.height / 2  + 1)  )
+                if let score = self.scoreLabel {
+                    score.position = CGPoint(x: spriteScoreIcon.node.position.x + 30 , y: spriteScoreIcon.node.position.y - (spriteScoreIcon.node.size.height / 2  + 1)  )
+                    self.entityManager?.add(score)
+                }
             }
             
             
             self.entityManager?.add(scoreIcon)
-            self.entityManager?.add(scoreLabel)
+            
         }
     }
     
@@ -61,6 +66,9 @@ class HudLayer: SKNode {
     
     func incrementScore() {
         self.score += 1
+        if let score = self.scoreLabel {
+            score.text = String(self.score)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
