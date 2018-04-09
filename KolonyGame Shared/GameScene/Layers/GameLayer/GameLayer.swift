@@ -12,7 +12,13 @@ class GameLayer: SKNode {
     var size: CGSize?
     var entityManager : EntityManagerGameLayer?
     var blackHole : BlackHoleEntity?
-    var rocketToLaunch : RocketEntity?
+    var rocketToLaunch : RocketEntity? {
+        didSet {
+            if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self)?.node{
+                sprite.physicsBody?.isDynamic = true
+            }
+        }
+    }
     var rocketList = [RocketEntity]()
     
     var planetRed : PlanetEntity?
@@ -101,50 +107,52 @@ class GameLayer: SKNode {
             
             if(index == 0){
                 self.rocketToLaunch = rocket
+                resizeRocket(rocket: self.rocketToLaunch!)
             }
             
             if let sprite = rocket.component(ofType: SpriteComponent.self) {
                 sprite.node.position = CGPoint(x: positionX, y: (self.size?.height)! / 8)
             }
-            positionX += (self.size?.width)!/10
+            positionX += (self.size?.width)!/8
             entityManager?.add(rocket)
             self.rocketList.append(rocket)
         }
     }
     
+    func resizeRocket(rocket: RocketEntity) {
+        if let sprite = rocket.component(ofType: SpriteComponent.self)?.node {
+            let resizeAction = SKAction.scale(to: 1.4, duration: 0.5)
+            sprite.run(resizeAction)
+        }
+    }
+    
+    func recicleShip(rocket: RocketEntity) {
+        let properties = RocketType.generateRandomShipProperties()
+        self.rocketList.append(rocket)
+        if let sprite = rocket.component(ofType: SpriteComponent.self)?.node {
+            sprite.texture = properties.texture
+            sprite.name = properties.type
+            sprite.removeAllActions()
+            sprite.run(SKAction.scale(to: 1.0, duration: 0))
+            sprite.physicsBody?.isDynamic = false
+            sprite.run(SKAction.move(to: CGPoint(x: (rocketList[rocketList.count - 1].spriteComponent?.node.position.x)! + (self.size?.width)!/8, y: (self.size?.height)!/8), duration: 0))
+        }
+    }
+    
+    func moveRocketList() {
+        for index in 0...1 {
+            
+            if let sprite = rocketList[index].component(ofType: SpriteComponent.self)?.node {
+                let moveAction = SKAction.move(to: CGPoint(x: sprite.position.x - ((self.size?.width)!/8), y: (self.size?.height)!/8), duration: 0.5)
+                sprite.run(moveAction)
+            }
+        }
+    }
+    
     func lauchRocket() {
+        self.rocketToLaunch = self.rocketList.remove(at: 0)
         rocketToLaunch?.applyForce(force: CGVector(dx: 0, dy: 800))
-    }
-    
-    func createRocketGreen() {
-        let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-        self.rocketToLaunch = RocketEntity(size: size, typeColor: RocketType.green)
-        
-        if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
-            sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)
-        }
-        entityManager?.add(rocketToLaunch!)
-    }
-    
-    func createRocketRed() {
-        let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-        self.rocketToLaunch = RocketEntity(size: size, typeColor: .red)
-        print("\(String(describing: rocketToLaunch?.spriteComponent?.node.name))")
-        
-        if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
-            sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)
-        }
-        entityManager?.add(rocketToLaunch!)
-    }
-    
-    func createRocketYellow() {
-        let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-        self.rocketToLaunch = RocketEntity(size: size, typeColor: .yellow)
-        
-        if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self) {
-            sprite.node.position = CGPoint(x: (self.size?.width)! / 2, y: (self.size?.height)! / 8)
-        }
-        entityManager?.add(rocketToLaunch!)
+        moveRocketList()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
