@@ -52,7 +52,6 @@ class BackgroundLayer: SKNode {
         self.entityManager?.addAll(stars)
         self.entityManager?.addAll(littleStars)
         self.entityManager?.add(particles: createComet())
-        
     }
     
     func addEntitiesInBackgroundLayer (_ entities : [BackgroundBasicEntity]) {
@@ -165,6 +164,8 @@ class BackgroundLayer: SKNode {
         
         return particle!
     }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
