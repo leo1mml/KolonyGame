@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ONRAMP.ttf</string>
+	</array>
 </dict>
 </plist>

@@ -62,6 +62,8 @@
 		9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D720571F09008A9159 /* BackgroundEntity.swift */; };
 		97D1A215207BDFD30011F458 /* HudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D1A214207BDFD30011F458 /* HudLayer.swift */; };
 		97D1A217207BDFF20011F458 /* ScoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D1A216207BDFF20011F458 /* ScoreEntity.swift */; };
+		97D1A21A207BE3320011F458 /* ONRAMP.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97D1A219207BE3320011F458 /* ONRAMP.ttf */; };
+		97D1A21B207BE3320011F458 /* ONRAMP.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97D1A219207BE3320011F458 /* ONRAMP.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +106,7 @@
 		9790E7E320599526008A9159 /* StarEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarEntity.swift; sourceTree = "<group>"; };
 		97D1A214207BDFD30011F458 /* HudLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudLayer.swift; sourceTree = "<group>"; };
 		97D1A216207BDFF20011F458 /* ScoreEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreEntity.swift; sourceTree = "<group>"; };
+		97D1A219207BE3320011F458 /* ONRAMP.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ONRAMP.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +142,7 @@
 			children = (
 				977B66082075AC6500CE37D6 /* Game Utils */,
 				8A8CCF9D205323EF00546F56 /* GameScene */,
+				97D1A218207BE2CF0011F458 /* Resources */,
 				8A8CCF6C2053239A00546F56 /* Assets.xcassets */,
 				9735C2222075BBF10054C6E9 /* Comets.sks */,
 			);
@@ -289,6 +293,14 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		97D1A218207BE2CF0011F458 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				97D1A219207BE3320011F458 /* ONRAMP.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -371,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9735C2232075BBF10054C6E9 /* Comets.sks in Resources */,
+				97D1A21A207BE3320011F458 /* ONRAMP.ttf in Resources */,
 				8A8CCF7A2053239A00546F56 /* Main.storyboard in Resources */,
 				8A8CCF7D2053239A00546F56 /* LaunchScreen.storyboard in Resources */,
 				8A8CCF932053239B00546F56 /* Assets.xcassets in Resources */,
@@ -384,6 +397,7 @@
 				8A8CCF8B2053239B00546F56 /* Main.storyboard in Resources */,
 				8A8CCF942053239B00546F56 /* Assets.xcassets in Resources */,
 				9735C2242075BBF10054C6E9 /* Comets.sks in Resources */,
+				97D1A21B207BE3320011F458 /* ONRAMP.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
