@@ -107,7 +107,7 @@ class GameLayer: SKNode {
             
             if(index == 0){
                 self.rocketToLaunch = rocket
-                resizeRocket(rocket: self.rocketToLaunch!)
+                resizeRocketToBig(rocket: self.rocketToLaunch!)
             }
             
             if let sprite = rocket.component(ofType: SpriteComponent.self) {
@@ -119,44 +119,67 @@ class GameLayer: SKNode {
         }
     }
     
-    func resizeRocket(rocket: RocketEntity) {
+    func resizeRocketToBig(rocket: RocketEntity) {
         if let sprite = rocket.component(ofType: SpriteComponent.self)?.node {
             let resizeAction = SKAction.scale(to: 1.4, duration: 0.5)
             sprite.run(resizeAction)
         }
     }
     
+    func resizeRocketToNormal(rocket: RocketEntity) {
+        if let sprite = rocket.component(ofType: SpriteComponent.self)?.node {
+            let resizeAction = SKAction.scale(to: 1, duration: 0.5)
+            sprite.run(resizeAction)
+        }
+    }
+    
     func recicleShip(rocket: RocketEntity) {
+        rocket.stop()
         let properties = RocketType.generateRandomShipProperties()
-        self.rocketList.append(rocket)
         if let sprite = rocket.component(ofType: SpriteComponent.self)?.node {
             sprite.texture = properties.texture
             sprite.name = properties.type
             sprite.removeAllActions()
-            sprite.run(SKAction.scale(to: 1.0, duration: 0))
-            sprite.physicsBody?.isDynamic = false
-            sprite.run(SKAction.move(to: CGPoint(x: (rocketList[rocketList.count - 1].spriteComponent?.node.position.x)! + (self.size?.width)!/8, y: (self.size?.height)!/8), duration: 0))
+            if(rocketList.count > 0){
+                
+                sprite.run(SKAction.move(to: CGPoint(x: (rocketList[rocketList.count - 1].spriteComponent?.node.position.x)! + (self.size?.width)!/8, y: (self.size?.height)!/8), duration: 0))
+                
+            }else {
+                sprite.run(SKAction.move(to: CGPoint(x: (self.size?.width)!/2, y: (self.size?.height)!/8), duration: 0))
+            }
+            
         }
+        resizeRocketToNormal(rocket: rocket)
+        self.rocketList.append(rocket)
     }
     
     func moveRocketList() {
-        for index in 0...1 {
-            
+        for index in 0...rocketList.count - 1 {
             if let sprite = rocketList[index].component(ofType: SpriteComponent.self)?.node {
-                let moveAction = SKAction.move(to: CGPoint(x: sprite.position.x - ((self.size?.width)!/8), y: (self.size?.height)!/8), duration: 0.5)
-                sprite.run(moveAction)
+                if(index == 0){
+                    let moveAction = SKAction.move(to: CGPoint(x: (self.size?.width)!/2 , y: (self.size?.height)!/8), duration: 0.5)
+                    sprite.run(moveAction)
+                    resizeRocketToBig(rocket: rocketList[index])
+                }else {
+                    let moveAction = SKAction.move(to: CGPoint(x: sprite.position.x - ((self.size?.width)!/8), y: (self.size?.height)!/8), duration: 0.5)
+                    sprite.run(moveAction)
+                }
             }
         }
     }
     
     func lauchRocket() {
-        self.rocketToLaunch = self.rocketList.remove(at: 0)
-        rocketToLaunch?.applyForce(force: CGVector(dx: 0, dy: 800))
-        moveRocketList()
+        if(rocketList.count > 0){
+            self.rocketToLaunch = self.rocketList.remove(at: 0)
+            rocketToLaunch?.launch(velocity: CGVector(dx: 0, dy: 400))
+            moveRocketList()
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        lauchRocket()
+        if(rocketList.count == 3){
+            lauchRocket()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
