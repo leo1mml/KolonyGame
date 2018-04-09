@@ -20,6 +20,7 @@ class PlayingState: GKState {
     override func didEnter(from previousState: GKState?) {
         scene.backgroundLayer?.setupLayer()
         scene.gameLayer?.configureLayer()
+        scene.hudLayer?.setupLayer()
         
     }
     

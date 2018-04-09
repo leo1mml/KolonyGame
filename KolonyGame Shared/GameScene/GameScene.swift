@@ -13,6 +13,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let gameLayer: GameLayer?
     let backgroundLayer: BackgroundLayer?
+    let hudLayer: HudLayer?
     
     var initialState: AnyClass
     
@@ -30,8 +31,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.gameLayer = GameLayer(size: size)
         self.backgroundLayer = BackgroundLayer(size: size)
-        
+        self.hudLayer = HudLayer(size: size)
+        self.gameLayer?.zPosition = 0
+        self.hudLayer?.zPosition = 5
         super.init(size: size)
+        
         self.setup(backgroundLayer: backgroundLayer!)
         self.physicsWorld.contactDelegate = self
         self.addLayers()
@@ -46,6 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addLayers() {
         self.addChild(self.backgroundLayer!)
         self.addChild(self.gameLayer!)
+        self.addChild(self.hudLayer!)
     }
     
     override func didMove(to view: SKView) {

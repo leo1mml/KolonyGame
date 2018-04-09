@@ -61,9 +61,11 @@
 		9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */; };
 		9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D720571F09008A9159 /* BackgroundEntity.swift */; };
 		97D1A215207BDFD30011F458 /* HudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D1A214207BDFD30011F458 /* HudLayer.swift */; };
-		97D1A217207BDFF20011F458 /* ScoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D1A216207BDFF20011F458 /* ScoreEntity.swift */; };
+		97D1A217207BDFF20011F458 /* ScoreIconEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D1A216207BDFF20011F458 /* ScoreIconEntity.swift */; };
 		97D1A21A207BE3320011F458 /* ONRAMP.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97D1A219207BE3320011F458 /* ONRAMP.ttf */; };
 		97D1A21B207BE3320011F458 /* ONRAMP.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97D1A219207BE3320011F458 /* ONRAMP.ttf */; };
+		97D1A21D207BE76E0011F458 /* EntityManagerHudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D1A21C207BE76E0011F458 /* EntityManagerHudLayer.swift */; };
+		97D1A21E207BE76E0011F458 /* EntityManagerHudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D1A21C207BE76E0011F458 /* EntityManagerHudLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,8 +107,9 @@
 		9790E7D720571F09008A9159 /* BackgroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEntity.swift; sourceTree = "<group>"; };
 		9790E7E320599526008A9159 /* StarEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarEntity.swift; sourceTree = "<group>"; };
 		97D1A214207BDFD30011F458 /* HudLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudLayer.swift; sourceTree = "<group>"; };
-		97D1A216207BDFF20011F458 /* ScoreEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreEntity.swift; sourceTree = "<group>"; };
+		97D1A216207BDFF20011F458 /* ScoreIconEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreIconEntity.swift; sourceTree = "<group>"; };
 		97D1A219207BE3320011F458 /* ONRAMP.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ONRAMP.ttf; sourceTree = "<group>"; };
+		97D1A21C207BE76E0011F458 /* EntityManagerHudLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerHudLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,7 +291,8 @@
 		97D1A213207BDFC00011F458 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				97D1A216207BDFF20011F458 /* ScoreEntity.swift */,
+				97D1A216207BDFF20011F458 /* ScoreIconEntity.swift */,
+				97D1A21C207BE76E0011F458 /* EntityManagerHudLayer.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -409,7 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14D3B25C2077EDC900CB6B98 /* LittleStar.swift in Sources */,
-				97D1A217207BDFF20011F458 /* ScoreEntity.swift in Sources */,
+				97D1A217207BDFF20011F458 /* ScoreIconEntity.swift in Sources */,
 				1491A39E20659B5000AA982C /* StarEntity.swift in Sources */,
 				8AE8079720571FA6006EDC86 /* BlackHoleEntity.swift in Sources */,
 				8A8CCFAA20532B6600546F56 /* PlayingState.swift in Sources */,
@@ -418,6 +422,7 @@
 				9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */,
 				8A8CCF912053239B00546F56 /* GameScene.swift in Sources */,
 				8AE807912056FE70006EDC86 /* EntityManagerGameLayer.swift in Sources */,
+				97D1A21D207BE76E0011F458 /* EntityManagerHudLayer.swift in Sources */,
 				8A8CCFA6205328FB00546F56 /* SpriteComponent.swift in Sources */,
 				977B660B2075ACD500CE37D6 /* GameColors.swift in Sources */,
 				9735C2262075CB400054C6E9 /* NumbersUtil.swift in Sources */,
@@ -452,6 +457,7 @@
 				143817EB2075635F007E5A1E /* PhysicBodyComponent.swift in Sources */,
 				14ACEF732056F08E00D62305 /* PlayingState.swift in Sources */,
 				14A0F6A620769B530093C5D3 /* GameLayer+Contact.swift in Sources */,
+				97D1A21E207BE76E0011F458 /* EntityManagerHudLayer.swift in Sources */,
 				143817F22075638F007E5A1E /* BlackHoleEntity.swift in Sources */,
 				143817EC20756362007E5A1E /* RotationComponent.swift in Sources */,
 				8AE807922057040F006EDC86 /* PlanetEntity.swift in Sources */,
