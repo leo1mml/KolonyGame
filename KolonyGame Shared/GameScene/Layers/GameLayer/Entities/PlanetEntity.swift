@@ -37,19 +37,18 @@ class PlanetEntity: GKEntity {
     }
     
     func addFlag(flag: SKSpriteNode){
+        
         flag.zPosition = (self.spriteComponent?.node.zPosition)! + 1
         flag.size = CGSize(width: (spriteComponent?.node.size.height)!/6, height: (spriteComponent?.node.size.height)!/4)
-        self.spriteComponent?.node.addChild(flag)
 
-
-        let random = NumbersUtil.randomDouble(min: 0, max: 2)
-        let radius = Double.pi * random
-        let degreus = CGFloat(radius * 180 / Double.pi)
-        flag.position = CGPoint(x: (self.spriteComponent?.node.size.height)!/2 * cos(degreus), y: (self.spriteComponent?.node.size.height)!/2 * sin(degreus))
-            
+        let aleatorio = NumbersUtil.randomDouble(min: 0, max: 2)
+        let radianos = Double.pi * aleatorio
+        let graus = CGFloat(Double(radianos * 180) / Double.pi)
+        flag.zRotation = -graus
         
-        
+        flag.position = CGPoint(x: (self.spriteComponent?.node.size.height)!/2 * sin(graus) , y: ((self.spriteComponent?.node.size.height)!/2 + flag.size.height/2) * cos(graus))
 
+         self.spriteComponent?.node.addChild(flag)
     }
     
     func animate(){
