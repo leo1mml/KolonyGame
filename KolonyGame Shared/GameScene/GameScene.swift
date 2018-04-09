@@ -41,6 +41,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addLayers()
     }
     
+    func incrementScore() {
+        if let hud = self.hudLayer {
+            hud.incrementScore()
+        }
+    }
+    
     
     func setup (backgroundLayer: BackgroundLayer) {
         self.backgroundLayer?.zPosition = -1

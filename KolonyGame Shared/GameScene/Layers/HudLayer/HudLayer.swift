@@ -13,6 +13,7 @@ class HudLayer: SKNode {
     
     var size: CGSize?
     var entityManager : EntityManagerHudLayer?
+    private var score = 0
     
     init(size: CGSize) {
         super.init()
@@ -31,7 +32,7 @@ class HudLayer: SKNode {
             //creating score label
             let scoreLabel = SKLabelNode(fontNamed: "Onramp")
             scoreLabel.fontSize = 44
-            scoreLabel.text = "0"
+            scoreLabel.text = String(self.score)
             scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
             
             
@@ -56,6 +57,10 @@ class HudLayer: SKNode {
                 spriteComponent.node.zPosition = zPosition
             }
         }
+    }
+    
+    func incrementScore() {
+        self.score += 1
     }
     
     required init?(coder aDecoder: NSCoder) {
