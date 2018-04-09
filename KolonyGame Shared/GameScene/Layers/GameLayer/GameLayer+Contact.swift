@@ -12,42 +12,37 @@ extension GameLayer {
     
     func didBegin(_ contact: SKPhysicsContact) {
         
-        let names = (contact.bodyA.node?.name, contact.bodyB.node?.name)
+        let categories = (contact.bodyA.categoryBitMask, contact.bodyB.categoryBitMask)
         
-        switch names {
-        case ("red", "red"):
-            getPlanet(contact: contact, type: PlanetProperties.red)
+        switch categories {
+
+        case (PhysicsCategory.Planet, PhysicsCategory.Rocket):
+            handlePlanetAndRocket(planet: contact.bodyA.node!, rocket: contact.bodyB.node!)
             break
-        case ("blue", "blue"):
-            getPlanet(contact: contact, type: PlanetProperties.blue)
+        case (PhysicsCategory.Rocket, PhysicsCategory.Planet):
+            handlePlanetAndRocket(planet: contact.bodyB.node!, rocket: contact.bodyA.node!)
             break
-        case ("green", "green"):
-            getPlanet(contact: contact, type: PlanetProperties.green)
+            
+        case (PhysicsCategory.BlackHole, PhysicsCategory.Rocket):
             break
-        case ("yellow", "yellow"):
-            getPlanet(contact: contact, type: PlanetProperties.yellow)
+        case (PhysicsCategory.Rocket, PhysicsCategory.BlackHole):
             break
+            
         default:
             print("You Lose")
             break
         }
     }
     
-    func getPlanet(contact: SKPhysicsContact, type: PlanetProperties) {
+    func handlePlanetAndRocket(planet: SKNode, rocket: SKNode) {
         
-        var planet: SKNode
-        
-        if contact.bodyA.node?.physicsBody?.categoryBitMask == PhysicsCategory.Planet {
-            planet = contact.bodyA.node!
-        } else {
-            planet = contact.bodyB.node!
+        if(planet.name == rocket.name){
+            addFlag(planet: planet)
         }
         
-        addFlag(planet: planet, contactPoint: contact.contactPoint)
-        
     }
-    
-    func addFlag(planet: SKNode, contactPoint: CGPoint) {
+
+    func addFlag(planet: SKNode) {
         
         var texture: SKTexture
         var flag: SKSpriteNode

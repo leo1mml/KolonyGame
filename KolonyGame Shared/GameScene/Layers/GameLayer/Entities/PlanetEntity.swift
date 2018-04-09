@@ -38,8 +38,9 @@ class PlanetEntity: GKEntity {
     
     func addFlag(flag: SKSpriteNode){
         flag.zPosition = (self.spriteComponent?.node.zPosition)! + 1
+        
         self.spriteComponent?.node.addChild(flag)
-        flag.size = CGSize(width: 15, height: 30)
+        flag.size = CGSize(width: (spriteComponent?.node.size.height)!/6, height: (spriteComponent?.node.size.height)!/4)
         flag.position = CGPoint(x: flag.position.x, y: flag.position.y + flag.size.height/2 + (self.spriteComponent?.node.size.height)!/2)
         
     }
