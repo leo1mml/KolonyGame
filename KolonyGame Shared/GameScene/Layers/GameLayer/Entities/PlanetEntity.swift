@@ -37,11 +37,31 @@ class PlanetEntity: GKEntity {
     }
     
     func addFlag(flag: SKSpriteNode){
-        flag.zPosition = (self.spriteComponent?.node.zPosition)! + 1
-        self.spriteComponent?.node.addChild(flag)
-        flag.size = CGSize(width: 15, height: 30)
-        flag.position = CGPoint(x: flag.position.x, y: flag.position.y + flag.size.height/2 + (self.spriteComponent?.node.size.height)!/2)
         
+        flag.zPosition = (self.spriteComponent?.node.zPosition)! + 1
+        flag.size = CGSize(width: (spriteComponent?.node.size.height)!/6, height: (spriteComponent?.node.size.height)!/4)
+
+        let aleatorio = NumbersUtil.randomDouble(min: 0, max: 2)
+        let radianos = Double.pi * aleatorio
+        let graus = CGFloat(Double(radianos * 180) / Double.pi)
+        flag.zRotation = -graus
+        
+        flag.position = CGPoint(x: (self.spriteComponent?.node.size.height)!/2 * sin(graus) , y: ((self.spriteComponent?.node.size.height)!/2 + flag.size.height/2) * cos(graus))
+
+         self.spriteComponent?.node.addChild(flag)
+    }
+    
+    func animate(){
+        
+        var textures = [SKTexture]()
+        
+        for i in 72...98 {
+            textures.append(SKTexture(imageNamed: "Ativo \(i)"))
+        }
+        
+        let rotate = SKAction.animate(with: textures, timePerFrame: 0.06)
+        let repeatForever = SKAction.repeatForever(rotate)
+        self.spriteComponent?.node.run(repeatForever)
     }
     
     func startRotating(angle: Double, duration: Double) {

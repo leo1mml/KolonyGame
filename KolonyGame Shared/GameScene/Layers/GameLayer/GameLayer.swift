@@ -47,6 +47,7 @@ class GameLayer: SKNode {
         createPlanetRed()
         createPlanetBlue()
         createPlanetGreen()
+        planetGreen?.animate()
         createPlanetYellow()
         self.blackHole?.rotationComponent?.startRotate(angle: CGFloat.pi * 2, duration: 8)
     }
