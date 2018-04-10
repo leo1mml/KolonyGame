@@ -30,6 +30,8 @@ class PlanetEntity: GKEntity {
         self.spriteComponent?.node.physicsBody?.isDynamic = false
         
         self.rotationComponent = RotationComponent(entity: self)
+        
+        self.spriteComponent?.node.zPosition = 2
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -55,7 +57,7 @@ class PlanetEntity: GKEntity {
         
         var textures = [SKTexture]()
         
-        for i in 72...98 {
+        for i in 72...125 {
             textures.append(SKTexture(imageNamed: "Ativo \(i)"))
         }
         

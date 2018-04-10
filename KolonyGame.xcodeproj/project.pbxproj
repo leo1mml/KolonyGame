@@ -146,6 +146,7 @@
 		1466BBE9207C1638007FD926 /* HudLayer */ = {
 			isa = PBXGroup;
 			children = (
+				1466BBEA207C1638007FD926 /* HudLayer.swift */,
 				1466BBEB207C1638007FD926 /* Entities */,
 			);
 			path = HudLayer;
@@ -239,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				1466BBE9207C1638007FD926 /* HudLayer */,
-				1466BBEA207C1638007FD926 /* HudLayer.swift */,
 				9790E7D12056F4C1008A9159 /* BackgroundLayer */,
 				8A8CCFA4205327BF00546F56 /* GameLayer */,
 			);
@@ -628,7 +628,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RT5RW3DL77;
+				DEVELOPMENT_TEAM = J8J2K4KEX2;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -646,7 +646,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RT5RW3DL77;
+				DEVELOPMENT_TEAM = J8J2K4KEX2;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
