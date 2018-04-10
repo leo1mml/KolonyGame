@@ -13,10 +13,12 @@ class RocketEntity: GKEntity {
     
     var spriteComponent : SpriteComponent?
     var physicsBodyComponent: PhysicBodyComponent?
+    let fogo = SKSpriteNode(texture: SKTexture(imageNamed: "rocketBlueFire1"))
     
     init(size: CGSize, typeColor: RocketType) {
-        super.init()
         
+        super.init()
+
         let texture = typeColor.texture
         
         self.spriteComponent = SpriteComponent(texture: texture, size: size)
@@ -26,6 +28,25 @@ class RocketEntity: GKEntity {
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
         
         self.spriteComponent?.node.name = typeColor.type
+        
+        
+        
+        
+        let node = self.spriteComponent?.node
+        
+        fogo.position = CGPoint(x: 0, y: -(node?.size.height)!)
+        
+        fogo.size =  CGSize(width: (node?.size.width)!/2, height: (node?.size.height)!)
+        
+        let textures = [SKTexture(imageNamed: "rocketBlueFire1"), SKTexture(imageNamed: "rocketBlueFire2")]
+        
+        let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
+        
+        let repeatForever = SKAction.repeatForever(animation)
+        
+        fogo.run(repeatForever)
+        
+        self.spriteComponent?.node.addChild(fogo)
     }
     
     func launch(velocity: CGVector) {

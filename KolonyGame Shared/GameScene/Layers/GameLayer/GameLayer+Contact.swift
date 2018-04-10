@@ -24,8 +24,10 @@ extension GameLayer {
             break
             
         case (PhysicsCategory.BlackHole, PhysicsCategory.Rocket):
+            recicleShip(rocket: self.rocketToLaunch!)
             break
         case (PhysicsCategory.Rocket, PhysicsCategory.BlackHole):
+            recicleShip(rocket: self.rocketToLaunch!)
             break
             
         default:
