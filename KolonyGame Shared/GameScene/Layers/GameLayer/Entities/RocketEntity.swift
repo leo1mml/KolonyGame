@@ -15,10 +15,16 @@ class RocketEntity: GKEntity {
     var physicsBodyComponent: PhysicBodyComponent?
     let fogo = SKSpriteNode(texture: SKTexture(imageNamed: "rocketBlueFire1"))
     
+    lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
+        QueueState(rocket: self),
+        IdleState(rocket: self),
+        LaunchState(rocket: self)
+        ])
+    
     init(size: CGSize, typeColor: RocketType) {
         
         super.init()
-
+        
         let texture = typeColor.texture
         
         self.spriteComponent = SpriteComponent(texture: texture, size: size)
@@ -29,9 +35,11 @@ class RocketEntity: GKEntity {
         
         self.spriteComponent?.node.name = typeColor.type
         
+        self.propulsionAnimation()
         
-        
-        
+    }
+    
+    func propulsionAnimation(){
         let node = self.spriteComponent?.node
         
         fogo.position = CGPoint(x: 0, y: -(node?.size.height)!)
