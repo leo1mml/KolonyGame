@@ -105,7 +105,7 @@ class GameLayer: SKNode {
         var positionX = (self.size?.width)! / 2
         for index in 0...2 {
             let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-            let rocket = RocketEntity(size: size, typeColor: RocketType.generateRandomShipProperties())
+            let rocket = RocketEntity(size: size, rocketType: RocketType.generateRandomShipProperties())
             
             if(index == 0){
                 self.rocketToLaunch = rocket

@@ -41,6 +41,32 @@ enum RocketType {
         }
     }
     
+    var fire: [SKTexture]{
+        switch self {
+        case .yellow:
+            return [SKTexture(imageNamed: "rocketYellowFire1"), SKTexture(imageNamed: "rocketYellowFire2")]
+        case .red:
+            return [SKTexture(imageNamed: "rocketRedFire1"), SKTexture(imageNamed: "rocketRedFire2")]
+        case .green:
+            return [SKTexture(imageNamed: "rocketGreenFire1"), SKTexture(imageNamed: "rocketGreenFire2")]
+        case .blue:
+            return [SKTexture(imageNamed: "rocketBlueFire1"), SKTexture(imageNamed: "rocketBlueFire2")]
+        }
+    }
+    
+    var idleFire: [SKTexture]{
+        switch self {
+        case .yellow:
+            return [SKTexture(imageNamed: "rocketYellowIddleFire1"), SKTexture(imageNamed: "rocketYellowIddleFire2")]
+        case .red:
+            return [SKTexture(imageNamed: "rocketRedIddleFire1"), SKTexture(imageNamed: "rocketRedIddleFire2")]
+        case .green:
+            return [SKTexture(imageNamed: "rocketGreenIddleFire1"), SKTexture(imageNamed: "rocketGreenIddleFire2")]
+        case .blue:
+            return [SKTexture(imageNamed: "rocketBlueIddleFire1"), SKTexture(imageNamed: "rocketBlueIddleFire2")]
+        }
+    }
+    
     static func generateRandomShipProperties() -> RocketType {
         return RocketType.allValues[Int(arc4random_uniform(4))]
     }
