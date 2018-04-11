@@ -12,6 +12,7 @@ class GameLayer: SKNode {
     var size: CGSize?
     var entityManager : EntityManagerGameLayer?
     var blackHole : BlackHoleEntity?
+    var cantTouchThis: Bool = false
     var rocketToLaunch : RocketEntity? {
         didSet {
             if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self)?.node{
@@ -143,10 +144,14 @@ class GameLayer: SKNode {
             sprite.removeAllActions()
             if(rocketList.count > 0){
                 
-                sprite.run(SKAction.move(to: CGPoint(x: (rocketList[rocketList.count - 1].spriteComponent?.node.position.x)! + (self.size?.width)!/8, y: (self.size?.height)!/8), duration: 0))
+                sprite.run(SKAction.move(to: CGPoint(x: (rocketList[rocketList.count - 1].spriteComponent?.node.position.x)! + (self.size?.width)!/8, y: (self.size?.height)!/8), duration: 0)){
+                    self.cantTouchThis = false
+                }
                 
             }else {
-                sprite.run(SKAction.move(to: CGPoint(x: (self.size?.width)!/2, y: (self.size?.height)!/8), duration: 0))
+                sprite.run(SKAction.move(to: CGPoint(x: (self.size?.width)!/2, y: (self.size?.height)!/8), duration: 0)) {
+                    self.cantTouchThis = false
+                }
             }
             
         }
@@ -171,6 +176,7 @@ class GameLayer: SKNode {
     
     func lauchRocket() {
         if(rocketList.count > 0){
+            self.cantTouchThis = true
             self.rocketToLaunch = self.rocketList.remove(at: 0)
             rocketToLaunch?.launch(velocity: CGVector(dx: 0, dy: 400))
             moveRocketList()
@@ -178,7 +184,7 @@ class GameLayer: SKNode {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if(rocketList.count == 3){
+        if(rocketList.count == 3 && !cantTouchThis){
             lauchRocket()
         }
     }
