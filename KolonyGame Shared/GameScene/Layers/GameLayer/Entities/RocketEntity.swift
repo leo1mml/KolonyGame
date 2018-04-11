@@ -61,6 +61,16 @@ class RocketEntity: GKEntity {
         self.spriteComponent?.node.physicsBody?.velocity = velocity
     }
     
+    func moveIdle() {
+        if let sprite = self.component(ofType: SpriteComponent.self)?.node {
+            let moveUp = SKAction.moveTo(y: sprite.position.y + (sprite.size.height/4), duration: 0.8)
+            let moveDown = SKAction.moveTo(y: sprite.position.y - (sprite.size.height/4), duration: 0.8)
+            let sequence = SKAction.sequence([moveUp, moveDown])
+            let repeatForever = SKAction.repeatForever(sequence)
+            sprite.run(repeatForever)
+        }
+    }
+    
     func stop() {
         self.spriteComponent?.node.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
     }

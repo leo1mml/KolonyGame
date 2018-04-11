@@ -18,9 +18,7 @@ class IdleState: GKState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        
-        
-        
+        self.rocket.moveIdle()
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
