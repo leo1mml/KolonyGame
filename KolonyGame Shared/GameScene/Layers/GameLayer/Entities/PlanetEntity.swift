@@ -14,9 +14,12 @@ class PlanetEntity: GKEntity {
     var spriteComponent : SpriteComponent?
     var physicsBodyComponent: PhysicBodyComponent?
     var rotationComponent: RotationComponent?
+    var properties: PlanetProperties?
     
     init(property: PlanetProperties, size: CGSize) {
         super.init()
+        
+        self.properties = property
         
         let texture = property.texture
         
@@ -59,8 +62,8 @@ class PlanetEntity: GKEntity {
         
         var textures = [SKTexture]()
         
-        for i in 72...125 {
-            textures.append(SKTexture(imageNamed: "Ativo \(i)"))
+        for i in 1...52 {
+            textures.append(SKTexture(imageNamed:"planetblue_\(i)"))
         }
         
         let rotate = SKAction.animate(with: textures, timePerFrame: 0.06)

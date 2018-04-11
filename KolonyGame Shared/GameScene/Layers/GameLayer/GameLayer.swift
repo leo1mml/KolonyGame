@@ -56,6 +56,7 @@ class GameLayer: SKNode {
     func createPlanetBlue() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
         self.planetBlue = PlanetEntity(property: PlanetProperties.blue, size: size)
+        self.planetBlue?.animate()
         if let planetSpriteComponent = planetBlue?.component(ofType: SpriteComponent.self) {
             if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
                 planetSpriteComponent.node.position = CGPoint(x: 0, y: -(blackHoleSprite.node.size.height/2))

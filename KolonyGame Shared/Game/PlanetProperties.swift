@@ -43,4 +43,17 @@ enum PlanetProperties {
             return "yellow"
         }
     }
+    
+    var animateName: String {
+        switch self {
+        case .red:
+            return "red"
+        case .blue:
+            return "planetblue_"
+        case .green:
+            return "Ativo "
+        case .yellow:
+            return "yellow"
+        }
+    }
 }
