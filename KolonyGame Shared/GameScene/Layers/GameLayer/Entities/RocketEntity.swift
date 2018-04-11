@@ -42,9 +42,11 @@ class RocketEntity: GKEntity {
     func propulsionAnimation(){
         let node = self.spriteComponent?.node
         
-        fogo.position = CGPoint(x: 0, y: -(node?.size.height)!)
+        fogo.zPosition = (node?.zPosition)! - 1
         
-        fogo.size =  CGSize(width: (node?.size.width)!/2, height: (node?.size.height)!)
+        fogo.position = CGPoint(x: 0, y: -(node?.size.height)! * 0.96)
+        
+        fogo.size =  CGSize(width: (node?.size.width)!/2.3, height: (node?.size.height)!)
         
         let textures = [SKTexture(imageNamed: "rocketBlueFire1"), SKTexture(imageNamed: "rocketBlueFire2")]
         
