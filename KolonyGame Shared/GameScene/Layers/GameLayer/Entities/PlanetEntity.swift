@@ -48,7 +48,9 @@ class PlanetEntity: GKEntity {
         let graus = CGFloat(Double(radianos * 180) / Double.pi)
         flag.zRotation = -graus
         
-        flag.position = CGPoint(x: (self.spriteComponent?.node.size.height)!/2 * sin(graus) , y: ((self.spriteComponent?.node.size.height)!/2 + flag.size.height/2) * cos(graus))
+        let raio = ((self.spriteComponent?.node.size.height)!/2) + (flag.size.height/2)
+       
+        flag.position = CGPoint(x: raio * sin(graus) , y: raio * cos(graus))
 
          self.spriteComponent?.node.addChild(flag)
     }
