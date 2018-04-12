@@ -13,7 +13,7 @@ class RocketEntity: GKEntity {
     
     var spriteComponent : SpriteComponent?
     var physicsBodyComponent: PhysicBodyComponent?
-    let fogo = SKSpriteNode(texture: SKTexture())
+    var flame: SKSpriteNode!
     var rocketType: RocketType?
     
     lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
@@ -38,44 +38,47 @@ class RocketEntity: GKEntity {
         
         self.spriteComponent?.node.name = rocketType.type
         
-        self.IdleFlame()
-        
+        IdleFlame()
     }
     
     func launchFlame(){
         let node = self.spriteComponent?.node
         
-        fogo.zPosition = (node?.zPosition)! - 1
+        flame = SKSpriteNode()
         
-        fogo.position = CGPoint(x: 0, y: -(node?.size.height)! * 0.96)
+        flame.zPosition = (node?.zPosition)! - 1
         
-        fogo.size =  CGSize(width: (node?.size.width)!/2.3, height: (node?.size.height)!)
+        flame.position = CGPoint(x: 0, y: -(node?.size.height)! * 0.96)
+        
+        flame.size = CGSize(width: (node?.size.width)!/2.3, height: (node?.size.height)!)
         
         let animation = SKAction.animate(with: (rocketType?.fire)!, timePerFrame: 0.2)
         
         let repeatForever = SKAction.repeatForever(animation)
         
-        fogo.run(repeatForever)
+        flame.run(repeatForever)
         
-        self.spriteComponent?.node.addChild(fogo)
+        self.spriteComponent?.node.addChild(flame)
     }
     
     func IdleFlame(){
         let node = self.spriteComponent?.node
         
-        fogo.zPosition = (node?.zPosition)! - 1
+        flame = SKSpriteNode()
         
-        fogo.position = CGPoint(x: 0, y: -(node?.size.height)! * 0.61)
+        flame.zPosition = (node?.zPosition)! - 1
         
-        fogo.size =  CGSize(width: (node?.size.width)! * 0.3712, height: (node?.size.height)! * 0.2266)
+        flame.position = CGPoint(x: 0, y: -(node?.size.height)! * 0.61)
+        
+        flame.size = CGSize(width: (node?.size.width)! * 0.3712, height: (node?.size.height)! * 0.2266)
         
         let animation = SKAction.animate(with: (rocketType?.idleFire)!, timePerFrame: 0.2)
         
         let repeatForever = SKAction.repeatForever(animation)
         
-        fogo.run(repeatForever)
+        flame.run(repeatForever)
         
-        self.spriteComponent?.node.addChild(fogo)
+        self.spriteComponent?.node.addChild(flame)
     }
     
     func launch(velocity: CGVector) {
