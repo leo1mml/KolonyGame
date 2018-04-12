@@ -144,6 +144,7 @@ class GameLayer: SKNode {
         if let sprite = rocket.component(ofType: SpriteComponent.self)?.node {
             sprite.texture = properties.texture
             sprite.name = properties.type
+            
             sprite.removeAllActions()
             if(rocketList.count > 0){
                 sprite.run(SKAction.move(to: CGPoint(x: (rocketList[rocketList.count - 1].spriteComponent?.node.position.x)! + (self.size?.width)!/8, y: (self.size?.height)!/8), duration: 0)){
