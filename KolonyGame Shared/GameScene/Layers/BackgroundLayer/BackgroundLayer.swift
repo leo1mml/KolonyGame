@@ -45,8 +45,8 @@ class BackgroundLayer: SKNode {
         let littleStars = createPoolLittleStars(size, "starbg")
         setup(littleStars: littleStars)
         
-        setupEntity(entity: mist, position: CGPoint.zero, zPosition: -4)
-        setupEntity(entity: bg, position: CGPoint.zero, zPosition: -5)
+        setupEntity(entity: mist, position: CGPoint.zero, zPosition: -14)
+        setupEntity(entity: bg, position: CGPoint.zero, zPosition: -15)
        
         self.addEntitiesInBackgroundLayer([bg, mist])
         self.entityManager?.addAll(stars)
@@ -68,11 +68,11 @@ class BackgroundLayer: SKNode {
             
             pos.x -= (size?.width)! / 2
             pos.y -=  (size?.height)! / 2
-            setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -2)
+            setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -12)
             
             if let sprite = i.spriteComponent {
                 sprite.node.setScale(NumbersUtil.randomCGFloat(min: 0.3, max: 1))
-                sprite.node.run(sprite.alphaAction(alphaValue: NumbersUtil.randomCGFloat(min: 0.05, max: 0.8), duration: TimeInterval(NumbersUtil.randomCGFloat(min: 3, max: 5))))
+                sprite.node.run(sprite.alphaAction(alphaValue: 0, duration: TimeInterval(NumbersUtil.randomCGFloat(min: 1, max: 4))))
             }
         }
     }
@@ -90,7 +90,7 @@ class BackgroundLayer: SKNode {
             }
             
             
-            setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -2)
+            setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -12)
             
             if let sprite = i.spriteComponent {
                 
@@ -99,8 +99,8 @@ class BackgroundLayer: SKNode {
                 sprite.node.colorBlendFactor = 1.0
 
                 //configuring scale effect
-                sprite.node.run(sprite.scaleAction(timeBetweenScale: 1, scaleMultiplier: NumbersUtil.randomCGFloat(min: 0.4, max: 1)))
-                
+                //sprite.node.run(sprite.scaleAction(timeBetweenScale: 1, scaleMultiplier: NumbersUtil.randomCGFloat(min: 0.4, max: 1)))
+                sprite.node.run(sprite.alphaAction(alphaValue: NumbersUtil.randomCGFloat(min: 0.1, max: 0.4), duration: TimeInterval(NumbersUtil.randomCGFloat(min: 1, max: 3))))
                 //configuring alpha fade effect
                 //prite.node.run(sprite.alphaAction(alphaValue: 5, duration: TimeInterval(5)))
 
@@ -160,7 +160,7 @@ class BackgroundLayer: SKNode {
         particle?.particleTexture = texture
         
         particle?.position = CGPoint(x: (size?.width)!/2 * -1, y: ((size?.height)!/2))
-        particle?.zPosition = -3
+        particle?.zPosition = -13
 
         
         return particle!
