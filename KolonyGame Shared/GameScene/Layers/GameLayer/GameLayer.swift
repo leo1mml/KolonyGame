@@ -40,7 +40,7 @@ class GameLayer: SKNode {
     
     func createBlackHole() {
         let size = CGSize(width: (self.size?.height)! * 0.31, height: (self.size?.height)! * 0.31)
-        self.blackHole = BlackHoleEntity(imageName: "blackhole", size: size)
+        self.blackHole = BlackHoleEntity(size: size)
         if let spriteComponent = blackHole?.component(ofType: SpriteComponent.self) {
             spriteComponent.node.position = CGPoint(x: (self.size?.width)!/2, y: (self.size?.height)! * 0.73)
         }
