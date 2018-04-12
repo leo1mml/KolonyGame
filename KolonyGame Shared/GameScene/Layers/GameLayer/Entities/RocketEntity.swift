@@ -65,9 +65,9 @@ class RocketEntity: GKEntity {
         
         fogo.zPosition = (node?.zPosition)! - 1
         
-        fogo.position = CGPoint(x: 0, y: -(node?.size.height)! * 0.715)
+        fogo.position = CGPoint(x: 0, y: -(node?.size.height)! * 0.61)
         
-        fogo.size =  CGSize(width: (node?.size.width)!/2.3, height: (node?.size.height)!/2)
+        fogo.size =  CGSize(width: (node?.size.width)! * 0.3712, height: (node?.size.height)! * 0.2266)
         
         let animation = SKAction.animate(with: (rocketType?.idleFire)!, timePerFrame: 0.2)
         
