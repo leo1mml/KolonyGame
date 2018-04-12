@@ -28,6 +28,7 @@ class EntityManagerGameLayer {
             gameLayer.addChild(spriteNode)
         }
         
+        
 //        for componentSystem in componentSystems {
 //            componentSystem.addComponent(foundIn: entity)
 //        }

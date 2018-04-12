@@ -45,8 +45,8 @@ class BackgroundLayer: SKNode {
         let littleStars = createPoolLittleStars(size, "starbg")
         setup(littleStars: littleStars)
         
-        setupEntity(entity: mist, position: CGPoint.zero, zPosition: -4)
-        setupEntity(entity: bg, position: CGPoint.zero, zPosition: -5)
+        setupEntity(entity: mist, position: CGPoint.zero, zPosition: -14)
+        setupEntity(entity: bg, position: CGPoint.zero, zPosition: -15)
        
         self.addEntitiesInBackgroundLayer([bg, mist])
         self.entityManager?.addAll(stars)
@@ -68,7 +68,7 @@ class BackgroundLayer: SKNode {
             
             pos.x -= (size?.width)! / 2
             pos.y -=  (size?.height)! / 2
-            setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -2)
+            setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -12)
             
             if let sprite = i.spriteComponent {
                 sprite.node.setScale(NumbersUtil.randomCGFloat(min: 0.3, max: 1))
@@ -90,7 +90,7 @@ class BackgroundLayer: SKNode {
             }
             
             
-            setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -2)
+            setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -12)
             
             if let sprite = i.spriteComponent {
                 
@@ -160,7 +160,7 @@ class BackgroundLayer: SKNode {
         particle?.particleTexture = texture
         
         particle?.position = CGPoint(x: (size?.width)!/2 * -1, y: ((size?.height)!/2))
-        particle?.zPosition = -3
+        particle?.zPosition = -13
 
         
         return particle!
