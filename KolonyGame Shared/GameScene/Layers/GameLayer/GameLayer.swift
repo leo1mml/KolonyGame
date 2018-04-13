@@ -40,7 +40,7 @@ class GameLayer: SKNode {
     
     func createBlackHole() {
         let size = CGSize(width: (self.size?.height)! * 0.31, height: (self.size?.height)! * 0.31)
-        self.blackHole = BlackHoleEntity(imageName: "blackhole", size: size)
+        self.blackHole = BlackHoleEntity(size: size)
         if let spriteComponent = blackHole?.component(ofType: SpriteComponent.self) {
             spriteComponent.node.position = CGPoint(x: (self.size?.width)!/2, y: (self.size?.height)! * 0.73)
         }
@@ -48,7 +48,6 @@ class GameLayer: SKNode {
         createPlanetRed()
         createPlanetBlue()
         createPlanetGreen()
-        planetGreen?.animate()
         createPlanetYellow()
         self.blackHole?.rotationComponent?.startRotate(angle: CGFloat.pi * 2, duration: 3)
     }
@@ -105,7 +104,7 @@ class GameLayer: SKNode {
         var positionX = (self.size?.width)! / 2
         for index in 0...2 {
             let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-            let rocket = RocketEntity(size: size, typeColor: RocketType.generateRandomShipProperties())
+            let rocket = RocketEntity(size: size, rocketType: RocketType.generateRandomShipProperties())
             
             if(index == 0){
                 self.rocketToLaunch = rocket
@@ -145,6 +144,7 @@ class GameLayer: SKNode {
         if let sprite = rocket.component(ofType: SpriteComponent.self)?.node {
             sprite.texture = properties.texture
             sprite.name = properties.type
+            
             sprite.removeAllActions()
             if(rocketList.count > 0){
                 sprite.run(SKAction.move(to: CGPoint(x: (rocketList[rocketList.count - 1].spriteComponent?.node.position.x)! + (self.size?.width)!/8, y: (self.size?.height)!/8), duration: 0)){
@@ -159,6 +159,7 @@ class GameLayer: SKNode {
             
         }
         resizeRocketToNormal(rocket: rocket)
+        rocket.stateMachine.enter(QueueState.self)
         self.rocketList.append(rocket)
     }
     

@@ -15,8 +15,12 @@ class PlanetEntity: GKEntity {
     var physicsBodyComponent: PhysicBodyComponent?
     var rotationComponent: RotationComponent?
     
+    var property: PlanetProperties?
+    
     init(property: PlanetProperties, size: CGSize) {
         super.init()
+        
+        self.property = property
         
         let texture = property.texture
         
@@ -30,6 +34,7 @@ class PlanetEntity: GKEntity {
         self.spriteComponent?.node.physicsBody?.isDynamic = false
         
         self.rotationComponent = RotationComponent(entity: self)
+        self.animate()
         
         self.spriteComponent?.node.zPosition = 2
     }
@@ -59,11 +64,12 @@ class PlanetEntity: GKEntity {
         
         var textures = [SKTexture]()
         
-        for i in 72...125 {
-            textures.append(SKTexture(imageNamed: "Ativo \(i)"))
+        for i in 0...119 {
+            let name = "planet"+(property?.type)!+"_\(i)"
+            textures.append(SKTexture(imageNamed: name))
         }
         
-        let rotate = SKAction.animate(with: textures, timePerFrame: 0.06)
+        let rotate = SKAction.animate(with: textures, timePerFrame: 0.05)
         let repeatForever = SKAction.repeatForever(rotate)
         self.spriteComponent?.node.run(repeatForever)
     }

@@ -18,8 +18,9 @@ class QueueState: GKState {
     }
     
     override func didEnter(from previousState: GKState?) {
-     
-        
+
+        rocket.flame.removeFromParent()
+        rocket.IdleFlame()
         
     }
     

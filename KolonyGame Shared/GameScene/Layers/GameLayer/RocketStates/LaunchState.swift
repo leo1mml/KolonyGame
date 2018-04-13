@@ -20,6 +20,8 @@ class LaunchState: GKState {
     override func didEnter(from previousState: GKState?) {
         rocket.spriteComponent?.node.removeAllActions()
         rocket.launch(velocity: CGVector(dx: 0, dy: 400))
+        rocket.flame.removeFromParent()
+        rocket.launchFlame()
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {

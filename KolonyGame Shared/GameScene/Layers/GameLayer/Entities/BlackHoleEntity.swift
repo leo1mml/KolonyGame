@@ -16,13 +16,20 @@ class BlackHoleEntity: GKEntity {
     var rotationComponent: RotationComponent?
     var physicsBodyComponent: PhysicBodyComponent?
     
-    init(imageName: String, size: CGSize) {
+    init(size: CGSize) {
         super.init()
-        
-        let texture = SKTexture(imageNamed: imageName)
-        
-        self.spriteComponent = SpriteComponent(texture: texture, size: size)
+        self.spriteComponent = SpriteComponent(texture: SKTexture(imageNamed: "blackhole8"), size: size)
         self.addComponent(self.spriteComponent!)
+        if let mainSprite = self.component(ofType: SpriteComponent.self) {
+            mainSprite.node.zPosition = -8
+            for index in (1...7).reversed() {
+                let texture = SKTexture(imageNamed: "blackhole\(index)")
+                let sprite = SKSpriteNode(texture: texture)
+                sprite.size = CGSize(width: mainSprite.node.size.width * CGFloat(index/10), height: mainSprite.node.size.height * CGFloat(index/10))
+                sprite.zPosition = CGFloat(-index)
+                mainSprite.node.addChild(sprite)
+            }
+        }
         
         self.rotationComponent = RotationComponent(entity: self)
         self.rotationComponent?.startRotate(angle: CGFloat.pi * 2, duration: 10)
