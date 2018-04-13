@@ -79,17 +79,18 @@ class BackgroundLayer: SKNode {
     
     //Create ramdon position for stars and configure they
     func setup (_ stars: [StarEntity]) {
+        
         for  i in stars {
             
             //get position x and y in a tuple -> (x: CGFloat, y:CGFloat)
-            var pos = randomPosition()
+
+            var pos = self.randomPosition()
             
             if let size = self.size {
                 pos.x -= size.width / 2
                 pos.y -= size.height / 2
             }
-            
-            
+        
             setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -12)
             
             if let sprite = i.spriteComponent {
@@ -111,9 +112,15 @@ class BackgroundLayer: SKNode {
     
     func randomPosition () -> (x: CGFloat, y: CGFloat) {
         
+       
+        
         if let size = self.size {
-            let x = CGFloat(arc4random_uniform(UInt32(size.width)))
-            let y = CGFloat(arc4random_uniform(UInt32(size.height)))
+            let respawnDistributionX =  GKShuffledDistribution(randomSource: GKARC4RandomSource(), lowestValue: 0, highestValue: Int(size.width))
+            let respawnDistributionY =  GKShuffledDistribution(randomSource: GKARC4RandomSource(), lowestValue: 0, highestValue: Int(size.height))
+            
+            let x = CGFloat(respawnDistributionX.nextInt())
+            let y = CGFloat(respawnDistributionY.nextInt())
+            
             return (x,  y)
         }
         
