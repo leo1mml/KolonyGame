@@ -76,6 +76,7 @@ class GameLayer: SKNode {
         }
     }
     
+    
     func createPlanetRed() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
         self.planetRed = PlanetEntity(property: PlanetProperties.red, size: size)
