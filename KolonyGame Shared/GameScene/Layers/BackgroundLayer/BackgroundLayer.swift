@@ -72,24 +72,25 @@ class BackgroundLayer: SKNode {
             
             if let sprite = i.spriteComponent {
                 sprite.node.setScale(NumbersUtil.randomCGFloat(min: 0.3, max: 1))
-                sprite.node.run(sprite.alphaAction(alphaValue: NumbersUtil.randomCGFloat(min: 0.05, max: 0.8), duration: TimeInterval(NumbersUtil.randomCGFloat(min: 3, max: 5))))
+                sprite.node.run(sprite.alphaAction(alphaValue: 0, duration: TimeInterval(NumbersUtil.randomCGFloat(min: 1, max: 4))))
             }
         }
     }
     
     //Create ramdon position for stars and configure they
     func setup (_ stars: [StarEntity]) {
+        
         for  i in stars {
             
             //get position x and y in a tuple -> (x: CGFloat, y:CGFloat)
-            var pos = randomPosition()
+
+            var pos = self.randomPosition()
             
             if let size = self.size {
                 pos.x -= size.width / 2
                 pos.y -= size.height / 2
             }
-            
-            
+        
             setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -12)
             
             if let sprite = i.spriteComponent {
@@ -99,8 +100,8 @@ class BackgroundLayer: SKNode {
                 sprite.node.colorBlendFactor = 1.0
 
                 //configuring scale effect
-                sprite.node.run(sprite.scaleAction(timeBetweenScale: 1, scaleMultiplier: NumbersUtil.randomCGFloat(min: 0.4, max: 1)))
-                
+                //sprite.node.run(sprite.scaleAction(timeBetweenScale: 1, scaleMultiplier: NumbersUtil.randomCGFloat(min: 0.4, max: 1)))
+                sprite.node.run(sprite.alphaAction(alphaValue: NumbersUtil.randomCGFloat(min: 0.1, max: 0.4), duration: TimeInterval(NumbersUtil.randomCGFloat(min: 1, max: 3))))
                 //configuring alpha fade effect
                 //prite.node.run(sprite.alphaAction(alphaValue: 5, duration: TimeInterval(5)))
 
@@ -111,9 +112,15 @@ class BackgroundLayer: SKNode {
     
     func randomPosition () -> (x: CGFloat, y: CGFloat) {
         
+       
+        
         if let size = self.size {
-            let x = CGFloat(arc4random_uniform(UInt32(size.width)))
-            let y = CGFloat(arc4random_uniform(UInt32(size.height)))
+            let respawnDistributionX =  GKShuffledDistribution(randomSource: GKARC4RandomSource(), lowestValue: 0, highestValue: Int(size.width))
+            let respawnDistributionY =  GKShuffledDistribution(randomSource: GKARC4RandomSource(), lowestValue: 0, highestValue: Int(size.height))
+            
+            let x = CGFloat(respawnDistributionX.nextInt())
+            let y = CGFloat(respawnDistributionY.nextInt())
+            
             return (x,  y)
         }
         

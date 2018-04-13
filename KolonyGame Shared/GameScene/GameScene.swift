@@ -49,7 +49,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func setup (backgroundLayer: BackgroundLayer) {
-        self.backgroundLayer?.zPosition = -1
+        self.backgroundLayer?.zPosition = -15
         self.backgroundLayer?.position = CGPoint(x: (self.scene?.size.width)! / 2, y: (self.scene?.size.height)! / 2)
     }
     
