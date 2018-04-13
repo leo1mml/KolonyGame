@@ -41,6 +41,15 @@ class RocketEntity: GKEntity {
         IdleFlame()
     }
     
+    func setup(size: CGSize, rocketType: RocketType) {
+        
+        self.rocketType = rocketType
+        let sprite = self.spriteComponent?.node
+        
+        sprite?.texture = rocketType.texture
+        sprite?.name = rocketType.type
+    }
+    
     func launchFlame(){
         let node = self.spriteComponent?.node
         
