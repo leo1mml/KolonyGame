@@ -65,7 +65,7 @@ class GameLayer: SKNode {
                 planetSpriteComponent.node.position = CGPoint(x: 0, y: -(blackHoleSprite.node.size.height/2))
                 planetSpriteComponent.node.zPosition = 20
                 entityManager?.addPlanet(self.planetBlue!)
-                self.planetBlue?.startRotating(angle: -Double.pi * 2, duration: 4)
+                self.planetBlue?.startRotating(angle: -Double.pi * 2, duration: 3)
             }
         }
     }
@@ -78,7 +78,7 @@ class GameLayer: SKNode {
                 planetSpriteComponent.node.position = CGPoint(x: 0, y: +(blackHoleSprite.node.size.height/2))
                 planetSpriteComponent.node.zPosition = 20
                 entityManager?.addPlanet(self.planetGreen!)
-                self.planetGreen?.startRotating(angle: -Double.pi * 2, duration: 5)
+                self.planetGreen?.startRotating(angle: -Double.pi * 2, duration: 3)
             }
         }
     }
@@ -92,7 +92,7 @@ class GameLayer: SKNode {
                 planetSpriteComponent.node.position = CGPoint(x: (blackHoleSprite.node.size.height/2), y: 0)
                 planetSpriteComponent.node.zPosition = 20
                 entityManager?.addPlanet(self.planetRed!)
-                self.planetRed?.startRotating(angle: -Double.pi * 2, duration: 3.5)
+                self.planetRed?.startRotating(angle: -Double.pi * 2, duration: 3)
             }
         }
     }
@@ -151,9 +151,10 @@ class GameLayer: SKNode {
     func recicleShip(rocket: RocketEntity) {
         rocket.stop()
         let properties = RocketType.generateRandomShipProperties()
+        
         if let sprite = rocket.component(ofType: SpriteComponent.self)?.node {
-            sprite.texture = properties.texture
-            sprite.name = properties.type
+            
+            rocket.setup(size: sprite.size, rocketType: properties)
             
             sprite.removeAllActions()
             if(rocketList.count > 0){
@@ -184,7 +185,6 @@ class GameLayer: SKNode {
                 }else {
                     let moveAction = SKAction.move(to: CGPoint(x: sprite.position.x - ((self.size?.width)!/8), y: (self.size?.height)!/8), duration: 0.5)
                     sprite.run(moveAction)
-                    rocketList[index].stateMachine.enter(QueueState.self)
                 }
             }
         }

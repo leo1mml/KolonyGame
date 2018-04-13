@@ -19,9 +19,9 @@ class GameViewController: UIViewController {
         let skView = self.view as! SKView
         let scene = GameScene(size: skView.frame.size, stateClass: PlayingState.self)
         
-//        skView.showsFPS = true
-//        skView.showsNodeCount = true
-//        skView.showsPhysics = true
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        skView.showsPhysics = true
         skView.ignoresSiblingOrder = true
         
         scene.scaleMode = .aspectFit
