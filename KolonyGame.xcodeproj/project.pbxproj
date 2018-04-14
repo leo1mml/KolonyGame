@@ -74,12 +74,14 @@
 		9735C2232075BBF10054C6E9 /* Comets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9735C2222075BBF10054C6E9 /* Comets.sks */; };
 		9735C2242075BBF10054C6E9 /* Comets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9735C2222075BBF10054C6E9 /* Comets.sks */; };
 		9735C2262075CB400054C6E9 /* NumbersUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2252075CB400054C6E9 /* NumbersUtil.swift */; };
+		974D11F420813EDE0073269E /* GameScene+ShakeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D11F220812A510073269E /* GameScene+ShakeScreen.swift */; };
 		977B660520755C5A00CE37D6 /* BackgroundBasicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660420755C5A00CE37D6 /* BackgroundBasicEntity.swift */; };
 		977B660720755D9300CE37D6 /* MistEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660620755D9300CE37D6 /* MistEntity.swift */; };
 		977B660B2075ACD500CE37D6 /* GameColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660A2075ACD500CE37D6 /* GameColors.swift */; };
 		9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D32056F51D008A9159 /* BackgroundLayer.swift */; };
 		9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */; };
 		9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D720571F09008A9159 /* BackgroundEntity.swift */; };
+		97DC3C84208275A6000A4DA0 /* GameScene+ShakeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D11F220812A510073269E /* GameScene+ShakeScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +122,7 @@
 		9735C2222075BBF10054C6E9 /* Comets.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Comets.sks; sourceTree = "<group>"; };
 		9735C2252075CB400054C6E9 /* NumbersUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersUtil.swift; sourceTree = "<group>"; };
 		9735C2282076BE200054C6E9 /* LittleStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleStar.swift; sourceTree = "<group>"; };
+		974D11F220812A510073269E /* GameScene+ShakeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+ShakeScreen.swift"; sourceTree = "<group>"; };
 		977B660420755C5A00CE37D6 /* BackgroundBasicEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBasicEntity.swift; sourceTree = "<group>"; };
 		977B660620755D9300CE37D6 /* MistEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistEntity.swift; sourceTree = "<group>"; };
 		977B660A2075ACD500CE37D6 /* GameColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColors.swift; sourceTree = "<group>"; };
@@ -256,6 +259,7 @@
 				8A8CCF9F2053244C00546F56 /* Components */,
 				8A8CCFA12053245D00546F56 /* States */,
 				8A8CCF9E2053244400546F56 /* Layers */,
+				974D11F220812A510073269E /* GameScene+ShakeScreen.swift */,
 				8A8CCF6B2053239A00546F56 /* GameScene.swift */,
 				14FA662520582FFB00D4C10B /* PhysicsCategory.swift */,
 			);
@@ -462,6 +466,7 @@
 				14ACEF752056FEAA00D62305 /* GameOverState.swift in Sources */,
 				9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */,
 				8A8CCF912053239B00546F56 /* GameScene.swift in Sources */,
+				97DC3C84208275A6000A4DA0 /* GameScene+ShakeScreen.swift in Sources */,
 				14AF0625207E876E003D47F4 /* IdleState.swift in Sources */,
 				8AE807912056FE70006EDC86 /* EntityManagerGameLayer.swift in Sources */,
 				8A8CCFA6205328FB00546F56 /* SpriteComponent.swift in Sources */,
@@ -502,6 +507,7 @@
 				14FA662720582FFB00D4C10B /* PhysicsCategory.swift in Sources */,
 				14AF0632207E8D8A003D47F4 /* LaunchState.swift in Sources */,
 				14AF062D207E8D56003D47F4 /* PlanetProperties.swift in Sources */,
+				974D11F420813EDE0073269E /* GameScene+ShakeScreen.swift in Sources */,
 				143817EB2075635F007E5A1E /* PhysicBodyComponent.swift in Sources */,
 				14AF062B207E8D4E003D47F4 /* NumbersUtil.swift in Sources */,
 				14ACEF732056F08E00D62305 /* PlayingState.swift in Sources */,
