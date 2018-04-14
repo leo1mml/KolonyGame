@@ -1,10 +1,10 @@
 // !$*UTF8*$!
 {
-    archiveVersion = 1;
-    classes = {
-    };
-    objectVersion = 48;
-    objects = {
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
 
 /* Begin PBXBuildFile section */
 		143817EA2075635C007E5A1E /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA5205328FB00546F56 /* SpriteComponent.swift */; };
@@ -81,6 +81,7 @@
 		9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D32056F51D008A9159 /* BackgroundLayer.swift */; };
 		9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */; };
 		9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D720571F09008A9159 /* BackgroundEntity.swift */; };
+		97DC3C84208275A6000A4DA0 /* GameScene+ShakeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D11F220812A510073269E /* GameScene+ShakeScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,20 +135,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-        8A8CCF6E2053239A00546F56 /* Frameworks */ = {
-            isa = PBXFrameworksBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        8A8CCF802053239A00546F56 /* Frameworks */ = {
-            isa = PBXFrameworksBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-        };
+		8A8CCF6E2053239A00546F56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A8CCF802053239A00546F56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -352,103 +353,103 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-        8A8CCF702053239A00546F56 /* KolonyGame iOS */ = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = 8A8CCF972053239B00546F56 /* Build configuration list for PBXNativeTarget "KolonyGame iOS" */;
-            buildPhases = (
-                8A8CCF6D2053239A00546F56 /* Sources */,
-                8A8CCF6E2053239A00546F56 /* Frameworks */,
-                8A8CCF6F2053239A00546F56 /* Resources */,
-            );
-            buildRules = (
-            );
-            dependencies = (
-            );
-            name = "KolonyGame iOS";
-            productName = "KolonyGame iOS";
-            productReference = 8A8CCF712053239A00546F56 /* KolonyGame.app */;
-            productType = "com.apple.product-type.application";
-        };
-        8A8CCF822053239A00546F56 /* KolonyGame tvOS */ = {
-            isa = PBXNativeTarget;
-            buildConfigurationList = 8A8CCF9A2053239B00546F56 /* Build configuration list for PBXNativeTarget "KolonyGame tvOS" */;
-            buildPhases = (
-                8A8CCF7F2053239A00546F56 /* Sources */,
-                8A8CCF802053239A00546F56 /* Frameworks */,
-                8A8CCF812053239A00546F56 /* Resources */,
-            );
-            buildRules = (
-            );
-            dependencies = (
-            );
-            name = "KolonyGame tvOS";
-            productName = "KolonyGame tvOS";
-            productReference = 8A8CCF832053239B00546F56 /* KolonyGame.app */;
-            productType = "com.apple.product-type.application";
-        };
+		8A8CCF702053239A00546F56 /* KolonyGame iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A8CCF972053239B00546F56 /* Build configuration list for PBXNativeTarget "KolonyGame iOS" */;
+			buildPhases = (
+				8A8CCF6D2053239A00546F56 /* Sources */,
+				8A8CCF6E2053239A00546F56 /* Frameworks */,
+				8A8CCF6F2053239A00546F56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KolonyGame iOS";
+			productName = "KolonyGame iOS";
+			productReference = 8A8CCF712053239A00546F56 /* KolonyGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8A8CCF822053239A00546F56 /* KolonyGame tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A8CCF9A2053239B00546F56 /* Build configuration list for PBXNativeTarget "KolonyGame tvOS" */;
+			buildPhases = (
+				8A8CCF7F2053239A00546F56 /* Sources */,
+				8A8CCF802053239A00546F56 /* Frameworks */,
+				8A8CCF812053239A00546F56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KolonyGame tvOS";
+			productName = "KolonyGame tvOS";
+			productReference = 8A8CCF832053239B00546F56 /* KolonyGame.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-        8A8CCF642053239A00546F56 /* Project object */ = {
-            isa = PBXProject;
-            attributes = {
-                LastSwiftUpdateCheck = 0920;
-                LastUpgradeCheck = 0930;
-                ORGANIZATIONNAME = "Leonel Menezes";
-                TargetAttributes = {
-                    8A8CCF702053239A00546F56 = {
-                        CreatedOnToolsVersion = 9.2;
-                        ProvisioningStyle = Automatic;
-                    };
-                    8A8CCF822053239A00546F56 = {
-                        CreatedOnToolsVersion = 9.2;
-                        ProvisioningStyle = Automatic;
-                    };
-                };
-            };
-            buildConfigurationList = 8A8CCF672053239A00546F56 /* Build configuration list for PBXProject "KolonyGame" */;
-            compatibilityVersion = "Xcode 8.0";
-            developmentRegion = en;
-            hasScannedForEncodings = 0;
-            knownRegions = (
-                en,
-                Base,
-            );
-            mainGroup = 8A8CCF632053239A00546F56;
-            productRefGroup = 8A8CCF722053239A00546F56 /* Products */;
-            projectDirPath = "";
-            projectRoot = "";
-            targets = (
-                8A8CCF702053239A00546F56 /* KolonyGame iOS */,
-                8A8CCF822053239A00546F56 /* KolonyGame tvOS */,
-            );
-        };
+		8A8CCF642053239A00546F56 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Leonel Menezes";
+				TargetAttributes = {
+					8A8CCF702053239A00546F56 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					8A8CCF822053239A00546F56 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8A8CCF672053239A00546F56 /* Build configuration list for PBXProject "KolonyGame" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8A8CCF632053239A00546F56;
+			productRefGroup = 8A8CCF722053239A00546F56 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8A8CCF702053239A00546F56 /* KolonyGame iOS */,
+				8A8CCF822053239A00546F56 /* KolonyGame tvOS */,
+			);
+		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-        8A8CCF6F2053239A00546F56 /* Resources */ = {
-            isa = PBXResourcesBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-                9735C2232075BBF10054C6E9 /* Comets.sks in Resources */,
-                1466BBFA207C1874007FD926 /* ONRAMP.ttf in Resources */,
-                8A8CCF7A2053239A00546F56 /* Main.storyboard in Resources */,
-                8A8CCF7D2053239A00546F56 /* LaunchScreen.storyboard in Resources */,
-                8A8CCF932053239B00546F56 /* Assets.xcassets in Resources */,
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-        };
-        8A8CCF812053239A00546F56 /* Resources */ = {
-            isa = PBXResourcesBuildPhase;
-            buildActionMask = 2147483647;
-            files = (
-                8A8CCF8B2053239B00546F56 /* Main.storyboard in Resources */,
-                8A8CCF942053239B00546F56 /* Assets.xcassets in Resources */,
-                9735C2242075BBF10054C6E9 /* Comets.sks in Resources */,
-                14AF0629207E8D44003D47F4 /* ONRAMP.ttf in Resources */,
-            );
-            runOnlyForDeploymentPostprocessing = 0;
-        };
+		8A8CCF6F2053239A00546F56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9735C2232075BBF10054C6E9 /* Comets.sks in Resources */,
+				1466BBFA207C1874007FD926 /* ONRAMP.ttf in Resources */,
+				8A8CCF7A2053239A00546F56 /* Main.storyboard in Resources */,
+				8A8CCF7D2053239A00546F56 /* LaunchScreen.storyboard in Resources */,
+				8A8CCF932053239B00546F56 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A8CCF812053239A00546F56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A8CCF8B2053239B00546F56 /* Main.storyboard in Resources */,
+				8A8CCF942053239B00546F56 /* Assets.xcassets in Resources */,
+				9735C2242075BBF10054C6E9 /* Comets.sks in Resources */,
+				14AF0629207E8D44003D47F4 /* ONRAMP.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -465,8 +466,8 @@
 				14ACEF752056FEAA00D62305 /* GameOverState.swift in Sources */,
 				9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */,
 				8A8CCF912053239B00546F56 /* GameScene.swift in Sources */,
+				97DC3C84208275A6000A4DA0 /* GameScene+ShakeScreen.swift in Sources */,
 				14AF0625207E876E003D47F4 /* IdleState.swift in Sources */,
-				974D11F320812A510073269E /* GameScene+ShakeScreen.swift in Sources */,
 				8AE807912056FE70006EDC86 /* EntityManagerGameLayer.swift in Sources */,
 				8A8CCFA6205328FB00546F56 /* SpriteComponent.swift in Sources */,
 				14AF0627207E8D1E003D47F4 /* EntityManagerHudLayer.swift in Sources */,
@@ -535,242 +536,242 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-        8A8CCF782053239A00546F56 /* Main.storyboard */ = {
-            isa = PBXVariantGroup;
-            children = (
-                8A8CCF792053239A00546F56 /* Base */,
-            );
-            name = Main.storyboard;
-            sourceTree = "<group>";
-        };
-        8A8CCF7B2053239A00546F56 /* LaunchScreen.storyboard */ = {
-            isa = PBXVariantGroup;
-            children = (
-                8A8CCF7C2053239A00546F56 /* Base */,
-            );
-            name = LaunchScreen.storyboard;
-            sourceTree = "<group>";
-        };
-        8A8CCF892053239B00546F56 /* Main.storyboard */ = {
-            isa = PBXVariantGroup;
-            children = (
-                8A8CCF8A2053239B00546F56 /* Base */,
-            );
-            name = Main.storyboard;
-            sourceTree = "<group>";
-        };
+		8A8CCF782053239A00546F56 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A8CCF792053239A00546F56 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8A8CCF7B2053239A00546F56 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A8CCF7C2053239A00546F56 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8A8CCF892053239B00546F56 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A8CCF8A2053239B00546F56 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-        8A8CCF952053239B00546F56 /* Debug */ = {
-            isa = XCBuildConfiguration;
-            buildSettings = {
-                ALWAYS_SEARCH_USER_PATHS = NO;
-                CLANG_ANALYZER_NONNULL = YES;
-                CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-                CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-                CLANG_CXX_LIBRARY = "libc++";
-                CLANG_ENABLE_MODULES = YES;
-                CLANG_ENABLE_OBJC_ARC = YES;
-                CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-                CLANG_WARN_BOOL_CONVERSION = YES;
-                CLANG_WARN_COMMA = YES;
-                CLANG_WARN_CONSTANT_CONVERSION = YES;
-                CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-                CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-                CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-                CLANG_WARN_EMPTY_BODY = YES;
-                CLANG_WARN_ENUM_CONVERSION = YES;
-                CLANG_WARN_INFINITE_RECURSION = YES;
-                CLANG_WARN_INT_CONVERSION = YES;
-                CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-                CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-                CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-                CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-                CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-                CLANG_WARN_STRICT_PROTOTYPES = YES;
-                CLANG_WARN_SUSPICIOUS_MOVE = YES;
-                CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-                CLANG_WARN_UNREACHABLE_CODE = YES;
-                CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-                COPY_PHASE_STRIP = NO;
-                DEBUG_INFORMATION_FORMAT = dwarf;
-                ENABLE_STRICT_OBJC_MSGSEND = YES;
-                ENABLE_TESTABILITY = YES;
-                GCC_C_LANGUAGE_STANDARD = gnu11;
-                GCC_DYNAMIC_NO_PIC = NO;
-                GCC_NO_COMMON_BLOCKS = YES;
-                GCC_OPTIMIZATION_LEVEL = 0;
-                GCC_PREPROCESSOR_DEFINITIONS = (
-                    "DEBUG=1",
-                    "$(inherited)",
-                );
-                GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-                GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-                GCC_WARN_UNDECLARED_SELECTOR = YES;
-                GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-                GCC_WARN_UNUSED_FUNCTION = YES;
-                GCC_WARN_UNUSED_VARIABLE = YES;
-                MTL_ENABLE_DEBUG_INFO = YES;
-                ONLY_ACTIVE_ARCH = YES;
-                SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-                SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-            };
-            name = Debug;
-        };
-        8A8CCF962053239B00546F56 /* Release */ = {
-            isa = XCBuildConfiguration;
-            buildSettings = {
-                ALWAYS_SEARCH_USER_PATHS = NO;
-                CLANG_ANALYZER_NONNULL = YES;
-                CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-                CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-                CLANG_CXX_LIBRARY = "libc++";
-                CLANG_ENABLE_MODULES = YES;
-                CLANG_ENABLE_OBJC_ARC = YES;
-                CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-                CLANG_WARN_BOOL_CONVERSION = YES;
-                CLANG_WARN_COMMA = YES;
-                CLANG_WARN_CONSTANT_CONVERSION = YES;
-                CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-                CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-                CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-                CLANG_WARN_EMPTY_BODY = YES;
-                CLANG_WARN_ENUM_CONVERSION = YES;
-                CLANG_WARN_INFINITE_RECURSION = YES;
-                CLANG_WARN_INT_CONVERSION = YES;
-                CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-                CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-                CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-                CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-                CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-                CLANG_WARN_STRICT_PROTOTYPES = YES;
-                CLANG_WARN_SUSPICIOUS_MOVE = YES;
-                CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-                CLANG_WARN_UNREACHABLE_CODE = YES;
-                CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-                COPY_PHASE_STRIP = NO;
-                DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-                ENABLE_NS_ASSERTIONS = NO;
-                ENABLE_STRICT_OBJC_MSGSEND = YES;
-                GCC_C_LANGUAGE_STANDARD = gnu11;
-                GCC_NO_COMMON_BLOCKS = YES;
-                GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-                GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-                GCC_WARN_UNDECLARED_SELECTOR = YES;
-                GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-                GCC_WARN_UNUSED_FUNCTION = YES;
-                GCC_WARN_UNUSED_VARIABLE = YES;
-                MTL_ENABLE_DEBUG_INFO = NO;
-                SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-            };
-            name = Release;
-        };
-        8A8CCF982053239B00546F56 /* Debug */ = {
-            isa = XCBuildConfiguration;
-            buildSettings = {
-                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-                CODE_SIGN_IDENTITY = "iPhone Developer";
-                CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JC4QT73C9E;
-                INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
-                IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-                LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-                PRODUCT_BUNDLE_IDENTIFIER = BEPID.KolonyGame;
-                PRODUCT_NAME = KolonyGame;
-                SDKROOT = iphoneos;
-                SWIFT_VERSION = 4.0;
-                TARGETED_DEVICE_FAMILY = "1,2";
-            };
-            name = Debug;
-        };
-        8A8CCF992053239B00546F56 /* Release */ = {
-            isa = XCBuildConfiguration;
-            buildSettings = {
-                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-                CODE_SIGN_IDENTITY = "iPhone Developer";
-                CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JC4QT73C9E;
-                INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
-                IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-                LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-                PRODUCT_BUNDLE_IDENTIFIER = BEPID.KolonyGame;
-                PRODUCT_NAME = KolonyGame;
-                SDKROOT = iphoneos;
-                SWIFT_VERSION = 4.0;
-                TARGETED_DEVICE_FAMILY = "1,2";
-                VALIDATE_PRODUCT = YES;
-            };
-            name = Release;
-        };
-        8A8CCF9B2053239B00546F56 /* Debug */ = {
-            isa = XCBuildConfiguration;
-            buildSettings = {
-                ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
-                ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
-                CODE_SIGN_STYLE = Automatic;
-                DEVELOPMENT_TEAM = J8J2K4KEX2;
-                INFOPLIST_FILE = "KolonyGame tvOS/Info.plist";
-                LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-                PRODUCT_BUNDLE_IDENTIFIER = BEPID.KolonyGame;
-                PRODUCT_NAME = KolonyGame;
-                SDKROOT = appletvos;
-                SWIFT_VERSION = 4.0;
-                TARGETED_DEVICE_FAMILY = 3;
-                TVOS_DEPLOYMENT_TARGET = 11.2;
-            };
-            name = Debug;
-        };
-        8A8CCF9C2053239B00546F56 /* Release */ = {
-            isa = XCBuildConfiguration;
-            buildSettings = {
-                ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
-                ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
-                CODE_SIGN_STYLE = Automatic;
-                DEVELOPMENT_TEAM = J8J2K4KEX2;
-                INFOPLIST_FILE = "KolonyGame tvOS/Info.plist";
-                LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-                PRODUCT_BUNDLE_IDENTIFIER = BEPID.KolonyGame;
-                PRODUCT_NAME = KolonyGame;
-                SDKROOT = appletvos;
-                SWIFT_VERSION = 4.0;
-                TARGETED_DEVICE_FAMILY = 3;
-                TVOS_DEPLOYMENT_TARGET = 11.2;
-                VALIDATE_PRODUCT = YES;
-            };
-            name = Release;
-        };
+		8A8CCF952053239B00546F56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8A8CCF962053239B00546F56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		8A8CCF982053239B00546F56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RT5RW3DL77;
+				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BEPID.KolonyGame;
+				PRODUCT_NAME = KolonyGame;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8A8CCF992053239B00546F56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RT5RW3DL77;
+				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BEPID.KolonyGame;
+				PRODUCT_NAME = KolonyGame;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8A8CCF9B2053239B00546F56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J8J2K4KEX2;
+				INFOPLIST_FILE = "KolonyGame tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BEPID.KolonyGame;
+				PRODUCT_NAME = KolonyGame;
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Debug;
+		};
+		8A8CCF9C2053239B00546F56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J8J2K4KEX2;
+				INFOPLIST_FILE = "KolonyGame tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BEPID.KolonyGame;
+				PRODUCT_NAME = KolonyGame;
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-        8A8CCF672053239A00546F56 /* Build configuration list for PBXProject "KolonyGame" */ = {
-            isa = XCConfigurationList;
-            buildConfigurations = (
-                8A8CCF952053239B00546F56 /* Debug */,
-                8A8CCF962053239B00546F56 /* Release */,
-            );
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Release;
-        };
-        8A8CCF972053239B00546F56 /* Build configuration list for PBXNativeTarget "KolonyGame iOS" */ = {
-            isa = XCConfigurationList;
-            buildConfigurations = (
-                8A8CCF982053239B00546F56 /* Debug */,
-                8A8CCF992053239B00546F56 /* Release */,
-            );
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Release;
-        };
-        8A8CCF9A2053239B00546F56 /* Build configuration list for PBXNativeTarget "KolonyGame tvOS" */ = {
-            isa = XCConfigurationList;
-            buildConfigurations = (
-                8A8CCF9B2053239B00546F56 /* Debug */,
-                8A8CCF9C2053239B00546F56 /* Release */,
-            );
-            defaultConfigurationIsVisible = 0;
-            defaultConfigurationName = Release;
-        };
+		8A8CCF672053239A00546F56 /* Build configuration list for PBXProject "KolonyGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A8CCF952053239B00546F56 /* Debug */,
+				8A8CCF962053239B00546F56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A8CCF972053239B00546F56 /* Build configuration list for PBXNativeTarget "KolonyGame iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A8CCF982053239B00546F56 /* Debug */,
+				8A8CCF992053239B00546F56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A8CCF9A2053239B00546F56 /* Build configuration list for PBXNativeTarget "KolonyGame tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A8CCF9B2053239B00546F56 /* Debug */,
+				8A8CCF9C2053239B00546F56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
-    };
-    rootObject = 8A8CCF642053239A00546F56 /* Project object */;
+	};
+	rootObject = 8A8CCF642053239A00546F56 /* Project object */;
 }
