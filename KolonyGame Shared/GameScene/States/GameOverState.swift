@@ -18,7 +18,16 @@ class GameOverState: GKState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        
+        scene.shakeScene(duration: 2)
+        if let backgroundLayer = self.scene.backgroundLayer {
+            if let manager = backgroundLayer.entityManager {
+                for item in manager.entities {
+                    if let spriteComponent = item.component(ofType: SpriteComponent.self) {
+                        spriteComponent.node.position = (self.scene.gameLayer?.blackHolePosition())!
+                    }
+                }
+            }
+        }
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {

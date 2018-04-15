@@ -24,9 +24,12 @@ extension GameLayer {
             break
             
         case (PhysicsCategory.BlackHole, PhysicsCategory.Rocket):
+            handleRocketAndBlackHole(rocket: contact.bodyB.node!, blackHole: contact.bodyA.node!)
             recicleShip(rocket: self.rocketToLaunch!)
             break
         case (PhysicsCategory.Rocket, PhysicsCategory.BlackHole):
+            //TO DO: Veridicar a ordem dos objetos existentes em contact com o augusto.
+            handleRocketAndBlackHole(rocket: contact.bodyA.node!, blackHole: contact.bodyB.node!)
             recicleShip(rocket: self.rocketToLaunch!)
             break
             
@@ -43,8 +46,19 @@ extension GameLayer {
             if let parent = self.parent as? GameScene {
                 parent.incrementScore()
             }
+        }else {
+            if let parent = self.parent as? GameScene {
+                parent.changeState(state: GameOverState.self)
+            }
         }
         recicleShip(rocket: self.rocketToLaunch!)
+    }
+    
+    
+    func handleRocketAndBlackHole (rocket: SKNode, blackHole: SKNode) {
+        if let parent = self.parent as? GameScene {
+            parent.changeState(state: GameOverState.self)
+        }
     }
     
     func addFlag(planet: SKNode) {

@@ -57,6 +57,14 @@ class GameLayer: SKNode {
         self.blackHole?.rotationComponent?.startRotate(angle: CGFloat.pi * 2, duration: 3)
     }
     
+    //Get the black hole position
+    func blackHolePosition() -> CGPoint{
+        if let spriteComponent = blackHole?.component(ofType: SpriteComponent.self) {
+            return spriteComponent.node.position
+        }
+        return CGPoint.zero
+    }
+    
     func createPlanetBlue() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
         self.planetBlue = PlanetEntity(property: PlanetProperties.blue, size: size)

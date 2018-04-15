@@ -99,21 +99,15 @@ class BackgroundLayer: SKNode {
                 sprite.node.color = GameColors.ramdomColor()
                 sprite.node.colorBlendFactor = 1.0
 
-                //configuring scale effect
-                //sprite.node.run(sprite.scaleAction(timeBetweenScale: 1, scaleMultiplier: NumbersUtil.randomCGFloat(min: 0.4, max: 1)))
+                //configuring alpha effect
                 sprite.node.run(sprite.alphaAction(alphaValue: NumbersUtil.randomCGFloat(min: 0.1, max: 0.4), duration: TimeInterval(NumbersUtil.randomCGFloat(min: 1, max: 3))))
-                //configuring alpha fade effect
-                //prite.node.run(sprite.alphaAction(alphaValue: 5, duration: TimeInterval(5)))
-
             }
         }
     }
 
     
     func randomPosition () -> (x: CGFloat, y: CGFloat) {
-        
-       
-        
+
         if let size = self.size {
             let respawnDistributionX =  GKShuffledDistribution(randomSource: GKARC4RandomSource(), lowestValue: 0, highestValue: Int(size.width))
             let respawnDistributionY =  GKShuffledDistribution(randomSource: GKARC4RandomSource(), lowestValue: 0, highestValue: Int(size.height))
