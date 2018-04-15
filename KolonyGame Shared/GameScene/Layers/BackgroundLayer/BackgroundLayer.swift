@@ -16,8 +16,13 @@ class BackgroundLayer: SKNode {
     
     //layer size
     var size: CGSize?
-    
     var entityManager : EntityManagerBackgroundLayer?
+    
+    var bg : BackgroundEntity? = nil
+    var mist: MistEntity? = nil
+    var stars: [StarEntity]? = nil
+    var littleStars: [LittleStar]? = nil
+    var comets: SKEmitterNode? = nil
     
     init(size: CGSize) {
         super.init()
@@ -29,39 +34,41 @@ class BackgroundLayer: SKNode {
         
         //creating background
         var size = CGSize(width: (self.size?.width)!, height: (self.size?.height)!)
-        let bg = BackgroundEntity(imageName: "bg", size: size)
+        self.bg = BackgroundEntity(imageName: "bg", size: size)
         
         //creating stars of background
         size = CGSize(width: (self.size?.height)! * 0.01, height: (self.size?.height)! * 0.01)
-        let stars = createPoolStars(size, "stardefault")
-        setup(stars)
+        self.stars = createPoolStars(size, "stardefault")
+        setup(stars!)
         
         //creating mist
         size = CGSize(width: (self.size?.height)! , height: (self.size?.height)!)
-        let mist = StarEntity(imageName: "nevoas", size: size)
+        self.mist = MistEntity(imageName: "nevoas", size: size)
         
         //creating little stars of background
         size = CGSize(width: (self.size?.height)! * 0.005, height: (self.size?.height)! * 0.005)
-        let littleStars = createPoolLittleStars(size, "starbg")
-        setup(littleStars: littleStars)
+        self.littleStars = createPoolLittleStars(size, "starbg")
+        setup(littleStars: littleStars!)
         
-        setupEntity(entity: mist, position: CGPoint.zero, zPosition: -14)
-        setupEntity(entity: bg, position: CGPoint.zero, zPosition: -15)
+        setupEntity(entity: mist!, position: CGPoint.zero, zPosition: -14)
+        setupEntity(entity: bg!, position: CGPoint.zero, zPosition: -15)
        
-        self.addEntitiesInBackgroundLayer([bg, mist])
-        self.entityManager?.addAll(stars)
-        self.entityManager?.addAll(littleStars)
-        self.entityManager?.add(particles: createComet())
+        self.comets = createComet()
+        
+        self.addEntitiesInBackgroundLayer([bg!, mist!])
+        self.entityManager?.addAll(stars!)
+        self.entityManager?.addAll(littleStars!)
+        self.entityManager?.add(particles: self.comets!)
         
     }
     
-    func addEntitiesInBackgroundLayer (_ entities : [BackgroundBasicEntity]) {
+    private func addEntitiesInBackgroundLayer (_ entities : [BackgroundBasicEntity]) {
         for i in entities {
             self.entityManager?.add(i)
         }
     }
     
-    func setup (littleStars: [LittleStar]) {
+    private func setup (littleStars: [LittleStar]) {
         for i in littleStars {
             //get position x and y in a tuple -> (x: CGFloat, y:CGFloat)
             var pos = randomPosition()
@@ -78,7 +85,7 @@ class BackgroundLayer: SKNode {
     }
     
     //Create ramdon position for stars and configure they
-    func setup (_ stars: [StarEntity]) {
+    private func setup (_ stars: [StarEntity]) {
         
         for  i in stars {
             
@@ -106,7 +113,7 @@ class BackgroundLayer: SKNode {
     }
 
     
-    func randomPosition () -> (x: CGFloat, y: CGFloat) {
+    private func randomPosition () -> (x: CGFloat, y: CGFloat) {
 
         if let size = self.size {
             let respawnDistributionX =  GKShuffledDistribution(randomSource: GKARC4RandomSource(), lowestValue: 0, highestValue: Int(size.width))
@@ -123,7 +130,7 @@ class BackgroundLayer: SKNode {
     }
     
     //Create many stars for background
-    func createPoolStars(_ size : CGSize, _ imageName: String) -> [StarEntity] {
+    private func createPoolStars(_ size : CGSize, _ imageName: String) -> [StarEntity] {
         var stars = [StarEntity]()
         for _ in 0...STARS_AMOUNT {
             stars.append(StarEntity(imageName: imageName, size: size))
@@ -133,7 +140,7 @@ class BackgroundLayer: SKNode {
     
     
     //Create many little stars for background
-    func createPoolLittleStars(_ size : CGSize, _ imageName: String) -> [LittleStar] {
+    private func createPoolLittleStars(_ size : CGSize, _ imageName: String) -> [LittleStar] {
         var stars = [LittleStar]()
         for _ in 0...LITLE_STARS_AMOUNT {
             stars.append(LittleStar(imageName: imageName, size: size))
@@ -142,7 +149,7 @@ class BackgroundLayer: SKNode {
     }
     
     //configure properties of a gkEntity
-    func setupEntity<T: GKEntity>(entity: T, position: CGPoint, zPosition: CGFloat?) {
+    private func setupEntity<T: GKEntity>(entity: T, position: CGPoint, zPosition: CGFloat?) {
         if let spriteComponent = entity.component(ofType: SpriteComponent.self) {
             spriteComponent.node.position = position
             if let zPosition = zPosition {
@@ -152,7 +159,7 @@ class BackgroundLayer: SKNode {
     }
     
     //create comets particles
-    func createComet() -> SKEmitterNode{
+    private func createComet() -> SKEmitterNode {
         
         let particle = SKEmitterNode(fileNamed: "Comets.sks")
         let texture = SKTexture(image: #imageLiteral(resourceName: "cometa"))
@@ -162,9 +169,43 @@ class BackgroundLayer: SKNode {
         
         particle?.position = CGPoint(x: (size?.width)!/2 * -1, y: ((size?.height)!/2))
         particle?.zPosition = -13
+        particle?.name = "comets"
 
-        
         return particle!
+    }
+    
+    private func moveSpritesToBlackHolePostion () {
+        moveToBlackHoleposition(node: (self.mist?.spriteComponent?.node)!, duration: TimeInterval(2))
+        moveStars(stars: self.stars!, duration: TimeInterval(2))
+        moveStars(stars: self.littleStars!, duration: TimeInterval(2))
+    }
+    
+    private func moveStars <T: BackgroundBasicEntity> (stars: [T], duration: TimeInterval) {
+        for star in stars {
+            moveToBlackHoleposition(node: (star.spriteComponent?.node)!, duration: duration)
+        }
+    }
+    
+    func startGameOverEffect () {
+        self.moveSpritesToBlackHolePostion()
+        self.comets?.numParticlesToEmit = 0
+    }
+    
+    //Move a sprite node for blackHole position
+    private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval) {
+        let scene = self.sceceReference()
+        var position = CGPoint.zero
+        if let gameLayer = scene?.gameLayer {
+            position = gameLayer.blackHolePosition()
+        }
+        node.run(SKAction.move(to: position, duration: duration))
+    }
+    
+    private func sceceReference () ->  GameScene! {
+        if let parent = self.parent as? GameScene {
+            return parent
+        }
+        return nil
     }
     
     required init?(coder aDecoder: NSCoder) {
