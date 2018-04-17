@@ -38,7 +38,7 @@ class BackgroundLayer: SKNode {
         
         //creating stars of background
         size = CGSize(width: (self.size?.height)! * 0.01, height: (self.size?.height)! * 0.01)
-        self.stars = createPoolStars(size, "stardefault")
+        self.stars = createPoolStars(size, BackgroundTextures.star)
         setup(stars!)
         
         //creating mist
@@ -47,7 +47,7 @@ class BackgroundLayer: SKNode {
         
         //creating little stars of background
         size = CGSize(width: (self.size?.height)! * 0.005, height: (self.size?.height)! * 0.005)
-        self.littleStars = createPoolLittleStars(size, "starbg")
+        self.littleStars = createPoolLittleStars(size, BackgroundTextures.littleStar)
         setup(littleStars: littleStars!)
         
         setupEntity(entity: mist!, position: CGPoint.zero, zPosition: -14)
@@ -130,20 +130,20 @@ class BackgroundLayer: SKNode {
     }
     
     //Create many stars for background
-    private func createPoolStars(_ size : CGSize, _ imageName: String) -> [StarEntity] {
+    private func createPoolStars(_ size : CGSize, _ typeTexture: BackgroundTextures) -> [StarEntity] {
         var stars = [StarEntity]()
         for _ in 0...STARS_AMOUNT {
-            stars.append(StarEntity(imageName: imageName, size: size))
+            stars.append(StarEntity(texture: typeTexture.texture, size: size))
         }
         return stars
     }
     
     
     //Create many little stars for background
-    private func createPoolLittleStars(_ size : CGSize, _ imageName: String) -> [LittleStar] {
+    private func createPoolLittleStars(_ size : CGSize, _ typeTexture: BackgroundTextures) -> [LittleStar] {
         var stars = [LittleStar]()
         for _ in 0...LITLE_STARS_AMOUNT {
-            stars.append(LittleStar(imageName: imageName, size: size))
+            stars.append(LittleStar(texture: typeTexture.texture, size: size))
         }
         return stars
     }
@@ -175,14 +175,14 @@ class BackgroundLayer: SKNode {
     }
     
     private func moveSpritesToBlackHolePostion () {
-        moveToBlackHoleposition(node: (self.mist?.spriteComponent?.node)!, duration: TimeInterval(2))
-        moveStars(stars: self.stars!, duration: TimeInterval(2))
-        moveStars(stars: self.littleStars!, duration: TimeInterval(2))
+        moveToBlackHoleposition(node: (self.mist?.spriteComponent?.node)!, duration: TimeInterval(1.5), durantionDecreaseScale: TimeInterval(2))
+        moveStars(stars: self.stars!, duration: TimeInterval(NumbersUtil.randomInt(min: 1, max: 3)))
+        moveStars(stars: self.littleStars!, duration: TimeInterval(NumbersUtil.randomInt(min: 1, max: 3)))
     }
     
     private func moveStars <T: BackgroundBasicEntity> (stars: [T], duration: TimeInterval) {
         for star in stars {
-            moveToBlackHoleposition(node: (star.spriteComponent?.node)!, duration: duration)
+            moveToBlackHoleposition(node: (star.spriteComponent?.node)!, duration: duration, durantionDecreaseScale: TimeInterval(2))
         }
     }
     
@@ -192,13 +192,20 @@ class BackgroundLayer: SKNode {
     }
     
     //Move a sprite node for blackHole position
-    private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval) {
+    private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval, durantionDecreaseScale: TimeInterval) {
         let scene = self.sceceReference()
         var position = CGPoint.zero
         if let gameLayer = scene?.gameLayer {
             position = gameLayer.blackHolePosition()
         }
-        node.run(SKAction.move(to: position, duration: duration))
+        
+        //move to black hole position, set scale 0 and remove of screen
+        let sequence = SKAction.sequence([SKAction.move(to: position, duration: duration), SKAction.scale(to: 0, duration: durantionDecreaseScale), SKAction.removeFromParent()])
+        
+        //run sequence and remove all actions of node after actions
+        node.run(sequence) {
+            node.removeAllActions()
+        }
     }
     
     private func sceceReference () ->  GameScene! {

@@ -20,6 +20,7 @@ class GameOverState: GKState {
     override func didEnter(from previousState: GKState?) {
         scene.shakeScene(duration: 2)
         scene.backgroundLayer?.startGameOverEffect()
+        scene.gameLayer?.startGameOverEffect()
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {

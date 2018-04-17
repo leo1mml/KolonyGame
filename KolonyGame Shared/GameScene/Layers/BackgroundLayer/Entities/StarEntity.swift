@@ -15,6 +15,10 @@ class StarEntity : BackgroundBasicEntity {
         super.init(imageName: imageName, size: size)
     }
     
+    override init(texture: SKTexture, size: CGSize) {
+        super.init(texture: texture, size: size)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

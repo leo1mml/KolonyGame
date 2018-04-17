@@ -23,6 +23,15 @@ class BackgroundBasicEntity: GKEntity {
         }
     }
     
+    init (texture: SKTexture, size: CGSize) {
+        super.init()
+        
+        self.spriteComponent = SpriteComponent(texture: texture, size: size)
+        if let component = self.spriteComponent {
+            self.addComponent(component)
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

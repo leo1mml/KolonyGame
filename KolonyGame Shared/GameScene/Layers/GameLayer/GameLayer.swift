@@ -60,7 +60,10 @@ class GameLayer: SKNode {
     //Get the black hole position
     func blackHolePosition() -> CGPoint{
         if let spriteComponent = blackHole?.component(ofType: SpriteComponent.self) {
-            return spriteComponent.node.position
+            let position = spriteComponent.node.position
+            if let scene = self.parent as? GameScene {
+                return self.convert(position, to: scene.backgroundLayer!)
+            }
         }
         return CGPoint.zero
     }
@@ -164,6 +167,7 @@ class GameLayer: SKNode {
             
             rocket.setup(size: sprite.size, rocketType: properties)
             
+            
             sprite.removeAllActions()
             if(rocketList.count > 0){
                 sprite.run(SKAction.move(to: CGPoint(x: (rocketList[rocketList.count - 1].spriteComponent?.node.position.x)! + (self.size?.width)!/8, y: (self.size?.height)!/8), duration: 0)){
@@ -208,6 +212,14 @@ class GameLayer: SKNode {
                 moveRocketList()
             }
         }
+    }
+    
+    func startGameOverEffect() {
+        
+        
+        let group = SKAction.group([SKAction.move(to: CGPoint(x: (size?.width)! / 2 , y: (size?.height)! / 2), duration: TimeInterval(1)), SKAction.scale(to: 6, duration: TimeInterval(1))])
+        self.blackHole?.spriteComponent?.node.run(group)
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
