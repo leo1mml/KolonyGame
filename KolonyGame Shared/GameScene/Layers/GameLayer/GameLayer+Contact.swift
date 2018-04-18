@@ -17,10 +17,10 @@ extension GameLayer {
         switch categories {
             
         case (PhysicsCategory.Planet, PhysicsCategory.Rocket):
-            handlePlanetAndRocket(planet: contact.bodyA.node!, rocket: contact.bodyB.node!)
+            handlePlanetAndRocket(planet: contact.bodyA.node!, rocket: contact.bodyB.node!, contactPoint: contact.contactPoint)
             break
         case (PhysicsCategory.Rocket, PhysicsCategory.Planet):
-            handlePlanetAndRocket(planet: contact.bodyB.node!, rocket: contact.bodyA.node!)
+            handlePlanetAndRocket(planet: contact.bodyB.node!, rocket: contact.bodyA.node!, contactPoint: contact.contactPoint)
             break
             
         case (PhysicsCategory.BlackHole, PhysicsCategory.Rocket):
@@ -39,52 +39,38 @@ extension GameLayer {
         }
     }
     
-    func handlePlanetAndRocket(planet: SKNode, rocket: SKNode) {
+    func handlePlanetAndRocket(planet: SKNode, rocket: SKNode, contactPoint: CGPoint) {
         
         if(planet.name == rocket.name){
-            addFlag(planet: planet)
+            addFlag(planet: planet, contactPoint: contactPoint)
             if let parent = self.parent as? GameScene {
                 parent.incrementScore()
             }
-        } else {
-            //adding position
-            //smoke?.position =
         }
         recicleShip(rocket: self.rocketToLaunch!)
     }
     
-    func addFlag(planet: SKNode) {
-        
-        var texture: SKTexture
-        var flag: SKSpriteNode
+    func addFlag(planet: SKNode, contactPoint: CGPoint) {
         
         switch planet.name {
         case PlanetProperties.red.type:
             
-            texture = SKTexture(imageNamed: "flagred")
-            flag = SKSpriteNode(texture: texture)
-            self.planetRed?.addFlag(flag: flag)
+            self.planetRed?.addFlag(contactPoint: self.convert(contactPoint, to: planet))
             
             break
         case PlanetProperties.blue.type:
             
-            texture = SKTexture(imageNamed: "flagblue")
-            flag = SKSpriteNode(texture: texture)
-            self.planetBlue?.addFlag(flag: flag)
+            self.planetBlue?.addFlag(contactPoint: self.convert(contactPoint, to: planet))
             
             break
         case PlanetProperties.green.type:
             
-            texture = SKTexture(imageNamed: "flaggreen")
-            flag = SKSpriteNode(texture: texture)
-            self.planetGreen?.addFlag(flag: flag)
+            self.planetGreen?.addFlag(contactPoint: self.convert(contactPoint, to: planet))
             
             break
         case PlanetProperties.yellow.type:
             
-            texture = SKTexture(imageNamed: "flagyellow")
-            flag = SKSpriteNode(texture: texture)
-            self.planetYellow?.addFlag(flag: flag)
+            self.planetYellow?.addFlag(contactPoint: self.convert(contactPoint, to: planet))
             
             break
         default:
