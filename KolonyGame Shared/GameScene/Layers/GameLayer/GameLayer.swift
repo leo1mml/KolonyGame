@@ -30,10 +30,15 @@ class GameLayer: SKNode {
     
     var spiralRadius : CGFloat = 0
     
+    var smoke: SKEmitterNode?
+    
     init(size: CGSize) {
         super.init()
         self.size = size
         entityManager = EntityManagerGameLayer(gameLayer: self)
+        smoke = SKEmitterNode(fileNamed: "smoke.sks")
+        smoke?.targetNode = self
+        smoke?.name = "smoke"
     }
     
     func configureLayer() {
