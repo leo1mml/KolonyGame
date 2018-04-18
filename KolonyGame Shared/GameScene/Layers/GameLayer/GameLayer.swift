@@ -21,11 +21,14 @@ class GameLayer: SKNode {
         }
     }
     var rocketList = [RocketEntity]()
+    var rocketAngle : CGFloat = 0.0
     
     var planetRed : PlanetEntity?
     var planetBlue : PlanetEntity?
     var planetGreen : PlanetEntity?
     var planetYellow : PlanetEntity?
+    
+    var spiralRadius : CGFloat = 0
     
     init(size: CGSize) {
         super.init()
@@ -165,6 +168,16 @@ class GameLayer: SKNode {
                 moveRocketList()
             }
         }
+    }
+    
+    func updateSpiralRocketTo(point: CGPoint){
+        if let rocketSprite = self.rocketToLaunch?.component(ofType: SpriteComponent.self) {
+            spiralRadius = point.y.distance(to: rocketSprite.node.position.y) - 1
+            let initialAngle = atan2(rocketSprite.node.position.y - point.y, rocketSprite.node.position.x - point.x)
+            rocketSprite.node.position = CGPoint(x: cos(initialAngle) * spiralRadius + point.x,
+                                                 y: sin(initialAngle) * spiralRadius + point.y)
+        }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

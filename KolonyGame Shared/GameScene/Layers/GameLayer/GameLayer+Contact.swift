@@ -24,9 +24,11 @@ extension GameLayer {
             break
             
         case (PhysicsCategory.BlackHole, PhysicsCategory.Rocket):
+            moveSpiralRocketTo(point: (self.blackHole?.spriteComponent?.node.position)!, duration: 3)
             recicleShip(rocket: self.rocketToLaunch!)
             break
         case (PhysicsCategory.Rocket, PhysicsCategory.BlackHole):
+            moveSpiralRocketTo(point: (self.blackHole?.spriteComponent?.node.position)!, duration: 3)
             recicleShip(rocket: self.rocketToLaunch!)
             break
             

@@ -65,6 +65,7 @@
 		8A8CCFA6205328FB00546F56 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA5205328FB00546F56 /* SpriteComponent.swift */; };
 		8A8CCFA82053292B00546F56 /* PlanetEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA72053292B00546F56 /* PlanetEntity.swift */; };
 		8A8CCFAA20532B6600546F56 /* PlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA920532B6600546F56 /* PlayingState.swift */; };
+		8ABF66CB2087C5A1008149B0 /* smoke - cópia.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8ABF66CA2087C5A1008149B0 /* smoke - cópia.sks */; };
 		8AE807912056FE70006EDC86 /* EntityManagerGameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */; };
 		8AE807922057040F006EDC86 /* PlanetEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA72053292B00546F56 /* PlanetEntity.swift */; };
 		8AE8079320570413006EDC86 /* EntityManagerGameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */; };
@@ -117,6 +118,7 @@
 		8A8CCFA5205328FB00546F56 /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
 		8A8CCFA72053292B00546F56 /* PlanetEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetEntity.swift; sourceTree = "<group>"; };
 		8A8CCFA920532B6600546F56 /* PlayingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingState.swift; sourceTree = "<group>"; };
+		8ABF66CA2087C5A1008149B0 /* smoke - cópia.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "smoke - cópia.sks"; sourceTree = "<group>"; };
 		8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerGameLayer.swift; sourceTree = "<group>"; };
 		8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackHoleEntity.swift; sourceTree = "<group>"; };
 		9735C2222075BBF10054C6E9 /* Comets.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Comets.sks; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				8A8CCF9D205323EF00546F56 /* GameScene */,
 				8A8CCF6C2053239A00546F56 /* Assets.xcassets */,
 				9735C2222075BBF10054C6E9 /* Comets.sks */,
+				8ABF66CA2087C5A1008149B0 /* smoke - cópia.sks */,
 			);
 			path = "KolonyGame Shared";
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ABF66CB2087C5A1008149B0 /* smoke - cópia.sks in Resources */,
 				9735C2232075BBF10054C6E9 /* Comets.sks in Resources */,
 				1466BBFA207C1874007FD926 /* ONRAMP.ttf in Resources */,
 				8A8CCF7A2053239A00546F56 /* Main.storyboard in Resources */,
