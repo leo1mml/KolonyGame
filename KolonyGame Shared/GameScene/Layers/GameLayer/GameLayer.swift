@@ -170,12 +170,15 @@ class GameLayer: SKNode {
         }
     }
     
-    func updateSpiralRocketTo(point: CGPoint){
-        if let rocketSprite = self.rocketToLaunch?.component(ofType: SpriteComponent.self) {
-            spiralRadius = point.y.distance(to: rocketSprite.node.position.y) - 1
-            let initialAngle = atan2(rocketSprite.node.position.y - point.y, rocketSprite.node.position.x - point.x)
-            rocketSprite.node.position = CGPoint(x: cos(initialAngle) * spiralRadius + point.x,
-                                                 y: sin(initialAngle) * spiralRadius + point.y)
+    func flushRocketTo(centerPoint: CGPoint, startRadius: CGFloat, endRadius: CGFloat, angle: CGFloat, duration: TimeInterval){
+        if let sprite = self.rocketToLaunch?.component(ofType: SpriteComponent.self){
+            sprite.node.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+            sprite.node.physicsBody?.applyAngularImpulse(0.004)
+            let scaleDown = SKAction.scale(to: 0, duration: 4)
+            let spiralMovement = SKAction.spiral(startRadius: startRadius, endRadius: endRadius, angle: angle, centerPoint: centerPoint, duration: duration)
+            sprite.node.run(SKAction.group([scaleDown, spiralMovement])){
+                sprite.node.removeFromParent()
+            }
         }
         
     }
@@ -184,6 +187,10 @@ class GameLayer: SKNode {
         if(rocketList.count == 3 && !cantTouchThis){
             lauchRocket()
         }
+    }
+    
+    func update(deltaTime: TimeInterval) {
+    
     }
     
     required init?(coder aDecoder: NSCoder) {

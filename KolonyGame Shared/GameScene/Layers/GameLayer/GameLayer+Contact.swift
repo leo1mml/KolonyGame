@@ -24,14 +24,15 @@ extension GameLayer {
             break
             
         case (PhysicsCategory.BlackHole, PhysicsCategory.Rocket):
-            moveSpiralRocketTo(point: (self.blackHole?.spriteComponent?.node.position)!, duration: 3)
-            recicleShip(rocket: self.rocketToLaunch!)
+            if let spriteBlackHole = self.blackHole?.component(ofType: SpriteComponent.self) {
+                flushRocketTo(centerPoint: (spriteBlackHole.node.position), startRadius: contact.contactPoint.y.distance(to: spriteBlackHole.node.position.y), endRadius: 0, angle: CGFloat.pi * 2, duration: 3)
+            }
             break
         case (PhysicsCategory.Rocket, PhysicsCategory.BlackHole):
-            moveSpiralRocketTo(point: (self.blackHole?.spriteComponent?.node.position)!, duration: 3)
-            recicleShip(rocket: self.rocketToLaunch!)
+            if let spriteBlackHole = self.blackHole?.component(ofType: SpriteComponent.self) {
+                flushRocketTo(centerPoint: (spriteBlackHole.node.position), startRadius: contact.contactPoint.y.distance(to: spriteBlackHole.node.position.y), endRadius: 0, angle: CGFloat.pi * 2, duration: 3)
+            }
             break
-            
         default:
             print("You Lose")
             break
