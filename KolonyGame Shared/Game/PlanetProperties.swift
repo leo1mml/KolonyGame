@@ -44,4 +44,23 @@ enum PlanetProperties {
         }
     }
     
+    var flagAction: SKAction {
+        var textures = [SKTexture]()
+        
+        for i in 0...14 {
+            
+            let texture = SKTexture(imageNamed: self.type+"Flag_\(i)")
+            textures.append(texture)
+            
+        }
+        
+        let disappear = SKAction.animate(with: textures, timePerFrame: 0.05)
+        let animation = SKAction.animate(with: textures, timePerFrame: 0.1)
+        let appear = SKAction.reversed(animation)
+        
+        let wait = SKAction.wait(forDuration: 1)
+        
+        return SKAction.sequence([appear(), wait, disappear])
+    }
+    
 }

@@ -46,6 +46,10 @@ extension GameLayer {
             if let parent = self.parent as? GameScene {
                 parent.incrementScore()
             }
+        } else {
+            smoke?.isHidden = false
+            smoke?.position = contactPoint
+            smoke?.resetSimulation()
         }
         recicleShip(rocket: self.rocketToLaunch!)
     }

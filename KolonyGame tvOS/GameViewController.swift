@@ -22,9 +22,9 @@ class GameViewController: UIViewController {
         scene = GameScene(size: skView.frame.size, stateClass: PlayingState.self)
         
         skView.ignoresSiblingOrder = true
-//        skView.showsFPS = true
-//        skView.showsNodeCount = true
-//        skView.showsPhysics = true
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        skView.showsPhysics = true
         
         scene?.scaleMode = .aspectFit
         

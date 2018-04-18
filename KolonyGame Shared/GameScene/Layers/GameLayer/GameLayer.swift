@@ -36,14 +36,25 @@ class GameLayer: SKNode {
         super.init()
         self.size = size
         entityManager = EntityManagerGameLayer(gameLayer: self)
-        smoke = SKEmitterNode(fileNamed: "smoke.sks")
-        smoke?.targetNode = self
-        smoke?.name = "smoke"
     }
     
     func configureLayer() {
         createBlackHole()
         createRocketList()
+        createSmoke()
+    }
+    
+    func createSmoke() {
+        guard let emitter = SKEmitterNode(fileNamed: "Smoke.sks") else {
+            return
+        }
+ 
+        emitter.name = "smoke"
+        emitter.targetNode = self
+        smoke = emitter
+        smoke?.zPosition = 20
+        smoke?.position = CGPoint(x: (size?.width)! * 2, y: (size?.height)! * 2)
+        addChild(smoke!)
     }
     
     func createBlackHole() {
