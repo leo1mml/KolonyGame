@@ -26,12 +26,16 @@ extension GameLayer {
         case (PhysicsCategory.BlackHole, PhysicsCategory.Rocket):
             if let spriteBlackHole = self.blackHole?.component(ofType: SpriteComponent.self) {
                 flushRocketTo(centerPoint: (spriteBlackHole.node.position), startRadius: contact.contactPoint.y.distance(to: spriteBlackHole.node.position.y), endRadius: 0, angle: CGFloat.pi * 2, duration: 3)
+                handleRocketAndBlackHole(rocket: contact.bodyB.node!, blackHole: contact.bodyA.node!)
             }
+            
             break
         case (PhysicsCategory.Rocket, PhysicsCategory.BlackHole):
             if let spriteBlackHole = self.blackHole?.component(ofType: SpriteComponent.self) {
                 flushRocketTo(centerPoint: (spriteBlackHole.node.position), startRadius: contact.contactPoint.y.distance(to: spriteBlackHole.node.position.y), endRadius: 0, angle: CGFloat.pi * 2, duration: 3)
+                handleRocketAndBlackHole(rocket: contact.bodyA.node!, blackHole: contact.bodyB.node!)
             }
+            
             break
         default:
             print("You Lose")
@@ -45,19 +49,29 @@ extension GameLayer {
             
             addFlag(planet: planet, contactPoint: contactPoint)
             if let parent = self.parent as? GameScene {
+                self.blackHole?.rotationComponent?.rotationDuration = (self.blackHole?.rotationComponent?.rotationDuration)! - 0.02
                 parent.incrementScore()
             }
-            
-        } else {
-            
-            addSmoke(contactPoint: contactPoint)
+        }else {
+            if let parent = self.parent as? GameScene {
+                addSmoke(contactPoint: contactPoint)
+                parent.changeState(state: GameOverState.self)
+            }
             
         }
         recicleShip(rocket: self.rocketToLaunch!)
         
     }
     
-    func addFireworks(contactPoint: CGPoint) {
+    
+    func handleRocketAndBlackHole (rocket: SKNode, blackHole: SKNode) {
+        if let parent = self.parent as? GameScene {
+            parent.changeState(state: GameOverState.self)
+        }
+    }
+    
+    
+     func addFireworks(contactPoint: CGPoint) {
         
         let planetSize = planetRed?.spriteComponent?.node.size
         

@@ -12,6 +12,17 @@ import GameplayKit
 class RotationComponent: GKComponent {
 
     let spriteComponent: SpriteComponent
+    var rotationDuration: TimeInterval = 4 {
+        didSet {
+            rotate()
+        }
+    }
+    
+    var clockWise = false {
+        didSet {
+            invertRotation()
+        }
+    }
     
     init(entity: GKEntity) {
         
@@ -19,16 +30,39 @@ class RotationComponent: GKComponent {
         super.init()
     }
     
-    func startRotate(angle: CGFloat, duration: TimeInterval) {
-        let spriteNode = spriteComponent.node
-        
-        // CGFloat.pi * 2
-        
-        let oneRevolution:SKAction = SKAction.rotate(byAngle: angle, duration: duration)
-        let repeatRotation:SKAction = SKAction.repeatForever(oneRevolution)
-        
-        spriteNode.run(repeatRotation, withKey: "rotation")
-        
+    func rotate() {
+        if(self.clockWise){
+            runRotationAction(angle: CGFloat.pi * 2)
+        }else {
+            runRotationAction(angle: -CGFloat.pi * 2)
+        }
+    }
+    
+    func runRotationAction(angle: CGFloat) {
+        self.spriteComponent.node.removeAllActions()
+        let rotation = SKAction.rotate(byAngle: angle, duration: rotationDuration)
+        let repeatRotation = SKAction.repeatForever(rotation)
+        self.spriteComponent.node.run(repeatRotation)
+    }
+    
+    func invertRotation(){
+        let angle = CGFloat.pi * 2
+        self.spriteComponent.node.removeAllActions()
+        if(self.clockWise){
+            runInvertRotationAction(angle: -angle)
+        }else {
+            runInvertRotationAction(angle: angle)
+        }
+    }
+
+    func runInvertRotationAction (angle: CGFloat) {
+        self.spriteComponent.node.removeAllActions()
+        let rotation = SKAction.rotate(byAngle: angle, duration: rotationDuration)
+        let breakAction = SKAction.rotate(byAngle: -angle/2, duration: rotationDuration/1.5)
+        breakAction.timingMode = .easeOut
+        let repeatRotation = SKAction.repeatForever(rotation)
+        let sequence = SKAction.sequence([breakAction, repeatRotation])
+        self.spriteComponent.node.run(sequence)
     }
     
     func stopRotate(){
