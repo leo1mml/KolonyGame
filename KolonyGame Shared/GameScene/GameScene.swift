@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -19,6 +20,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var deltaTime: TimeInterval = 0
     var lastUpdateTimeInterval: TimeInterval = 0
+    
+    var hasBeganToPlay = false
+    var backgroundMusic1: AVAudioPlayer?
+    var backgroundMusic2: AVAudioPlayer?
     
     lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
         PlayingState(scene: self),
@@ -35,6 +40,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.gameLayer?.zPosition = 0
         self.hudLayer?.zPosition = 5
         super.init(size: size)
+        
+        self.playSound()
         
         self.setup(backgroundLayer: backgroundLayer!)
         self.physicsWorld.contactDelegate = self
@@ -112,6 +119,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+    
+    func playSound() {
+        if !self.hasBeganToPlay {
+            do{
+                self.backgroundMusic1 =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "backgroundSound1", ofType: "mp3")!))
+                self.backgroundMusic1?.numberOfLoops = -1
+                self.backgroundMusic1?.play()
+            }catch{
+                print(error)
+            }
+            
+            do{
+                self.backgroundMusic2 =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "backgroundSound2", ofType: "mp3")!))
+                self.backgroundMusic2?.numberOfLoops = -1
+                self.backgroundMusic2?.play()
+            }catch{
+                print(error)
+            }
+            
+            if (backgroundMusic1?.isPlaying)! && (backgroundMusic2?.isPlaying)! {
+                self.hasBeganToPlay = true
+            }
+            
+            
+        }
+    }
+
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
