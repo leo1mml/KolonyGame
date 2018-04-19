@@ -54,17 +54,13 @@ class PlanetEntity: GKEntity {
         // angulo em radianos
         let radian = atan2(contactPoint.y, contactPoint.x)
         
-        //calcula o angulo  em graus
-        let degree = Double(radian * 180)/Double.pi
+        flag.anchorPoint = CGPoint(x: 0.5, y: 0)
         
         // rotaciona a bandeira
         flag.zRotation = radian - CGFloat(Double.pi / 2)
         
-        // obtem o raio do planeta
-        let radius: Double = Double((self.spriteComponent?.node.size.width)!/2 + (flag.size.height/2))
-        
         //calculando a posição para inserir a bandeira
-        flag.position = CGPoint(x: radius * sin(degree + 270) , y: radius * cos(degree + 270))
+        flag.position = contactPoint
         
         self.spriteComponent?.node.addChild(flag)
         
