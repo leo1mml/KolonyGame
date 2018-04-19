@@ -57,6 +57,18 @@ class GameLayer: SKNode {
         self.blackHole?.rotationComponent?.startRotate(angle: CGFloat.pi * 2, duration: 3)
     }
     
+    //Get the black hole position
+    func blackHolePosition() -> CGPoint{
+        if let spriteComponent = blackHole?.component(ofType: SpriteComponent.self) {
+            let position = spriteComponent.node.position
+            if let scene = self.parent as? GameScene {
+                return self.convert(position, to: scene.backgroundLayer!)
+            }
+        }
+        return CGPoint.zero
+    }
+    
+  
     
     func createPlanets() {
         if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
@@ -124,6 +136,7 @@ class GameLayer: SKNode {
             
             rocket.setup(size: sprite.size, rocketType: properties)
             
+            
             sprite.removeAllActions()
             if(rocketList.count > 0){
                 sprite.run(SKAction.move(to: CGPoint(x: (rocketList[rocketList.count - 1].spriteComponent?.node.position.x)! + (self.size?.width)!/8, y: (self.size?.height)!/8), duration: 0)){
@@ -181,6 +194,66 @@ class GameLayer: SKNode {
             }
         }
         
+    }
+    
+    func startGameOverEffect(finished: (() -> Void)?) {
+        
+        
+        DispatchQueue.main.async {
+            
+            self.blackHole?.movePlanetsToCenterBlackHole()
+            
+            
+            var time = 0.333
+            
+            
+            for rocket in self.rocketList {
+                rocket.spriteComponent?.node.physicsBody?.categoryBitMask = PhysicsCategory.None
+                self.moveToBlackHoleposition(node: (rocket.spriteComponent?.node)!, duration: TimeInterval(time), durantionDecreaseScale: TimeInterval(1), finished: nil)
+                time += 0.333
+            }
+            
+            
+            
+            let group = SKAction.group([SKAction.move(to: CGPoint(x: (self.size?.width)! / 2 , y: (self.size?.height)! / 2), duration: TimeInterval(1)), SKAction.scale(to: 6, duration: TimeInterval(1))])
+            
+            
+            self.blackHole?.spriteComponent?.node.run(group){
+                finished?()
+            }
+            
+            
+            
+        }
+        
+    }
+    
+    
+    
+    //Move a sprite node for blackHole position
+    private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval, durantionDecreaseScale: TimeInterval, finished: (() -> Void)?) {
+
+        //move to black hole position, set scale 0 and remove of screen
+        
+        let position = CGPoint(x: (self.size?.width)! / 2 , y: (self.size?.height)! / 2 )
+        let sequence = SKAction.sequence([SKAction.move(to: position, duration: duration), SKAction.scale(to: 0, duration: durantionDecreaseScale), SKAction.removeFromParent()])
+        
+        //run sequence and remove all actions of node after actions
+        node.run(sequence) {
+            node.removeAllActions()
+            DispatchQueue.main.async {
+                finished?()
+            }
+            //// mandando as naves pro meio da tela raz
+        }
+    }
+    
+    
+    private func sceceReference () ->  GameScene! {
+        if let parent = self.parent as? GameScene {
+            return parent
+        }
+        return nil
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

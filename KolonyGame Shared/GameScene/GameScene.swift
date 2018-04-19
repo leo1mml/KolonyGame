@@ -40,20 +40,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.addLayers()
         
-        let shakeBackground = self.shakeCamera(layer: self.backgroundLayer!, duration: 10)
-        let shakeGameLayer = self.shakeCamera(layer: self.gameLayer!, duration: 10)
-        let shakeHudLayer = self.shakeCamera(layer: self.hudLayer!, duration: 10)
+    }
+    
+    func shakeScene(duration: Float, finished: @escaping () -> Void) {
+        let shakeBackground = self.shakeCamera(layer: self.backgroundLayer!, duration: duration)
+        let shakeGameLayer = self.shakeCamera(layer: self.gameLayer!, duration: duration)
+        let shakeHudLayer = self.shakeCamera(layer: self.hudLayer!, duration: duration)
         
         self.gameLayer?.run(shakeGameLayer)
         self.hudLayer?.run(shakeHudLayer)
-        self.backgroundLayer?.run (shakeBackground)
-        
+        self.backgroundLayer?.run (shakeBackground) {
+            DispatchQueue.main.async {
+                finished()
+            }
+            
+        }
     }
     
     func incrementScore() {
         if let hud = self.hudLayer {
             hud.incrementScore()
         }
+    }
+    
+    func changeState(state: AnyClass) {
+        self.stateMachine.enter(state)
     }
     
     func setup (backgroundLayer: BackgroundLayer) {

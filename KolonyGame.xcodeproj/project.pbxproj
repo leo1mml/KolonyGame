@@ -86,6 +86,7 @@
 		9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */; };
 		9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D720571F09008A9159 /* BackgroundEntity.swift */; };
 		97DC3C84208275A6000A4DA0 /* GameScene+ShakeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D11F220812A510073269E /* GameScene+ShakeScreen.swift */; };
+		97DC3C8620867B27000A4DA0 /* BackgroundTextures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DC3C8520867B27000A4DA0 /* BackgroundTextures.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +139,7 @@
 		9790E7E320599526008A9159 /* StarEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarEntity.swift; sourceTree = "<group>"; };
 		97D1A216207BDFF20011F458 /* ScoreIconEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreIconEntity.swift; sourceTree = "<group>"; };
 		97D1A21C207BE76E0011F458 /* EntityManagerHudLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerHudLayer.swift; sourceTree = "<group>"; };
+		97DC3C8520867B27000A4DA0 /* BackgroundTextures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTextures.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +334,7 @@
 				8A84A4652078135200CD92C9 /* RocketshipProperties.swift */,
 				8A84A46720781B0900CD92C9 /* PlanetProperties.swift */,
 				8ABF66CC2087CD47008149B0 /* SKAction + Movements.swift */,
+				97DC3C8520867B27000A4DA0 /* BackgroundTextures.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				8A8CCFA82053292B00546F56 /* PlanetEntity.swift in Sources */,
 				1466BBEE207C1638007FD926 /* HudLayer.swift in Sources */,
 				8A8CCF752053239A00546F56 /* AppDelegate.swift in Sources */,
+				97DC3C8620867B27000A4DA0 /* BackgroundTextures.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
