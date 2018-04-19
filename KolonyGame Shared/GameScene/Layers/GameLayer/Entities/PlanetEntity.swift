@@ -37,6 +37,7 @@ class PlanetEntity: GKEntity {
         self.animate()
         
         self.spriteComponent?.node.zPosition = 2
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,7 +48,6 @@ class PlanetEntity: GKEntity {
     func addFlag(contactPoint: CGPoint){
         
         let flag = SKSpriteNode(texture: SKTexture(imageNamed: "flag"+(property?.type)!))
-        
         flag.zPosition = (self.spriteComponent?.node.zPosition)! + 1
         flag.size = CGSize(width: (spriteComponent?.node.size.height)!/6, height: (spriteComponent?.node.size.height)!/4)
         
@@ -55,7 +55,7 @@ class PlanetEntity: GKEntity {
         let radian = atan2(contactPoint.y, contactPoint.x)
         
         //calcula o angulo  em graus
-        let degree = 270 - (-(Double(radian * 180)/Double.pi))
+        let degree = Double(radian * 180)/Double.pi
         
         // rotaciona a bandeira
         flag.zRotation = radian - CGFloat(Double.pi / 2)
@@ -63,10 +63,8 @@ class PlanetEntity: GKEntity {
         // obtem o raio do planeta
         let radius: Double = Double((self.spriteComponent?.node.size.width)!/2 + (flag.size.height/2))
         
-        //////////////////////////// CERTO ATÉ AKI /////////////////////////////////////
-        
         //calculando a posição para inserir a bandeira
-        flag.position = CGPoint(x: radius * sin(degree) , y: radius * cos(degree))
+        flag.position = CGPoint(x: radius * sin(degree + 270) , y: radius * cos(degree + 270))
         
         self.spriteComponent?.node.addChild(flag)
         
