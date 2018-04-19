@@ -18,9 +18,16 @@ class GameOverState: GKState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        scene.shakeScene(duration: 2)
-        scene.backgroundLayer?.startGameOverEffect()
-        scene.gameLayer?.startGameOverEffect()
+        DispatchQueue.main.async {
+            self.scene.shakeScene(duration: 1.5) {
+                
+                self.scene.gameLayer?.startGameOverEffect(finished: nil)
+                self.scene.backgroundLayer?.startGameOverEffect(finished: nil)
+            
+                
+            }
+        }
+        
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {

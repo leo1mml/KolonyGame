@@ -68,6 +68,8 @@ class GameLayer: SKNode {
         return CGPoint.zero
     }
     
+    
+    
     func createPlanetBlue() {
         let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
         self.planetBlue = PlanetEntity(property: PlanetProperties.blue, size: size)
@@ -214,12 +216,64 @@ class GameLayer: SKNode {
         }
     }
     
-    func startGameOverEffect() {
+    func startGameOverEffect(finished: (() -> Void)?) {
         
         
-        let group = SKAction.group([SKAction.move(to: CGPoint(x: (size?.width)! / 2 , y: (size?.height)! / 2), duration: TimeInterval(1)), SKAction.scale(to: 6, duration: TimeInterval(1))])
-        self.blackHole?.spriteComponent?.node.run(group)
+        DispatchQueue.main.async {
+            
+            self.blackHole?.movePlanetsToCenterBlackHole()
+            
+            
+            var time = 0.333
+            
+            
+            for rocket in self.rocketList {
+                rocket.spriteComponent?.node.physicsBody?.categoryBitMask = PhysicsCategory.None
+                self.moveToBlackHoleposition(node: (rocket.spriteComponent?.node)!, duration: TimeInterval(time), durantionDecreaseScale: TimeInterval(1), finished: nil)
+                time += 0.333
+            }
+            
+            
+            
+            let group = SKAction.group([SKAction.move(to: CGPoint(x: (self.size?.width)! / 2 , y: (self.size?.height)! / 2), duration: TimeInterval(1)), SKAction.scale(to: 6, duration: TimeInterval(1))])
+            
+            
+            self.blackHole?.spriteComponent?.node.run(group){
+                finished?()
+            }
+            
+            
+            
+        }
+        
+    }
+    
+    
+    
+    //Move a sprite node for blackHole position
+    private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval, durantionDecreaseScale: TimeInterval, finished: (() -> Void)?) {
 
+        //move to black hole position, set scale 0 and remove of screen
+        
+        let position = CGPoint(x: (self.size?.width)! / 2 , y: (self.size?.height)! / 2 )
+        let sequence = SKAction.sequence([SKAction.move(to: position, duration: duration), SKAction.scale(to: 0, duration: durantionDecreaseScale), SKAction.removeFromParent()])
+        
+        //run sequence and remove all actions of node after actions
+        node.run(sequence) {
+            node.removeAllActions()
+            DispatchQueue.main.async {
+                finished?()
+            }
+            //// mandando as naves pro meio da tela raz
+        }
+    }
+    
+    
+    private func sceceReference () ->  GameScene! {
+        if let parent = self.parent as? GameScene {
+            return parent
+        }
+        return nil
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -174,37 +174,68 @@ class BackgroundLayer: SKNode {
         return particle!
     }
     
-    private func moveSpritesToBlackHolePostion () {
-        moveToBlackHoleposition(node: (self.mist?.spriteComponent?.node)!, duration: TimeInterval(1.5), durantionDecreaseScale: TimeInterval(2))
-        moveStars(stars: self.stars!, duration: TimeInterval(NumbersUtil.randomInt(min: 1, max: 3)))
-        moveStars(stars: self.littleStars!, duration: TimeInterval(NumbersUtil.randomInt(min: 1, max: 3)))
+    private func moveSpritesToBlackHolePostion (finished: (() -> Void)?) {
+        //moveToBlackHoleposition(node: (self.mist?.spriteComponent?.node)!, duration: TimeInterval(0.5), durantionDecreaseScale: TimeInterval(0.5), finished: nil)
+        moveStars(stars: self.stars!, duration: TimeInterval(NumbersUtil.randomDouble(min: 1, max: 1)), finished: nil)
+        
+        moveStars(stars: self.littleStars!, duration: TimeInterval(NumbersUtil.randomDouble(min: 1, max: 1))) {
+            DispatchQueue.main.async {
+                finished?()
+            }
+        }
+        
     }
     
-    private func moveStars <T: BackgroundBasicEntity> (stars: [T], duration: TimeInterval) {
-        for star in stars {
-            moveToBlackHoleposition(node: (star.spriteComponent?.node)!, duration: duration, durantionDecreaseScale: TimeInterval(2))
+    private func moveStars <T: BackgroundBasicEntity> (stars: [T], duration: TimeInterval, finished: (() -> Void)?) {
+        for index in 0...20 {
+            
+            moveToBlackHoleposition(node: (stars[index].spriteComponent?.node)!, duration: duration, durantionDecreaseScale: TimeInterval(0.1 ), finished: nil)
+            
+            
+//            if star == stars.last {
+//                moveToBlackHoleposition(node: (star.spriteComponent?.node)!, duration: duration, durantionDecreaseScale: TimeInterval(0.5)) {
+//
+//                    print("IS LAST STAR")
+//
+//                    DispatchQueue.main.async {
+//                        finished?()
+//                    }
+//                }
+//            } else {
+//                moveToBlackHoleposition(node: (star.spriteComponent?.node)!, duration: duration, durantionDecreaseScale: TimeInterval(2), finished: nil)
+//            }
         }
     }
     
-    func startGameOverEffect () {
-        self.moveSpritesToBlackHolePostion()
-        self.comets?.numParticlesToEmit = 0
+    func startGameOverEffect (finished: (() -> Void)?) {
+        self.moveSpritesToBlackHolePostion {
+            DispatchQueue.main.async {
+                finished?()
+            }
+            
+        }
+        
     }
     
     //Move a sprite node for blackHole position
-    private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval, durantionDecreaseScale: TimeInterval) {
+    private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval, durantionDecreaseScale: TimeInterval, finished: (() -> Void)?) {
+        
         let scene = self.sceceReference()
         var position = CGPoint.zero
         if let gameLayer = scene?.gameLayer {
             position = gameLayer.blackHolePosition()
         }
+        node.zPosition = 50
         
         //move to black hole position, set scale 0 and remove of screen
-        let sequence = SKAction.sequence([SKAction.move(to: position, duration: duration), SKAction.scale(to: 0, duration: durantionDecreaseScale), SKAction.removeFromParent()])
+        let sequence = SKAction.sequence([SKAction.move(to: CGPoint.zero, duration: duration), SKAction.scale(to: 0, duration: durantionDecreaseScale), SKAction.removeFromParent()])
         
         //run sequence and remove all actions of node after actions
         node.run(sequence) {
             node.removeAllActions()
+            DispatchQueue.main.async {
+                finished?()
+            }
         }
     }
     
