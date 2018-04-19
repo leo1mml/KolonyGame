@@ -42,61 +42,75 @@ extension GameLayer {
     func handlePlanetAndRocket(planet: SKNode, rocket: SKNode, contactPoint: CGPoint) {
         
         if(planet.name == rocket.name){
+            
             addFlag(planet: planet, contactPoint: contactPoint)
             if let parent = self.parent as? GameScene {
                 parent.incrementScore()
             }
         } else {
-            var smoke: SKEmitterNode?
-            
-            guard let emitter = SKEmitterNode(fileNamed: "Smoke.sks") else {
-                return
-            }
-            
-            emitter.name = "smoke"
-            emitter.targetNode = self
-            smoke = emitter
-            smoke?.position = contactPoint
-            
-            let add = SKAction.run {
-                self.addChild(smoke!)
-            }
-            
-            let wait = SKAction.wait(forDuration: 3)
-            
-            let remove = SKAction.run {
-                smoke?.removeFromParent()
-            }
-            
-            let sequence = SKAction.sequence([add, wait, remove])
-            
-            self.run(sequence)
-          
+            addSmoke(planet: planet, contactPoint: contactPoint)
         }
         recicleShip(rocket: self.rocketToLaunch!)
+        
     }
     
-    func addFlag(planet: SKNode, contactPoint: CGPoint) {
+    func addSmoke(planet: SKNode, contactPoint: CGPoint) {
+        
+        let convertedPoint = self.convert(contactPoint, to: planet)
         
         switch planet.name {
         case PlanetProperties.red.type:
             
-            self.planetRed?.addFlag(contactPoint: self.convert(contactPoint, to: planet))
+            self.planetRed?.addSmoke(contactPoint: convertedPoint)
             
             break
         case PlanetProperties.blue.type:
             
-            self.planetBlue?.addFlag(contactPoint: self.convert(contactPoint, to: planet))
+            self.planetBlue?.addSmoke(contactPoint: convertedPoint)
             
             break
         case PlanetProperties.green.type:
             
-            self.planetGreen?.addFlag(contactPoint: self.convert(contactPoint, to: planet))
+            self.planetGreen?.addSmoke(contactPoint: convertedPoint)
             
             break
         case PlanetProperties.yellow.type:
             
-            self.planetYellow?.addFlag(contactPoint: self.convert(contactPoint, to: planet))
+            self.planetYellow?.addSmoke(contactPoint: convertedPoint)
+            
+            break
+        default:
+            break
+        }
+    }
+    
+    func addFlag(planet: SKNode, contactPoint: CGPoint) {
+        
+        let convertedPoint = self.convert(contactPoint, to: planet)
+        
+        switch planet.name {
+        case PlanetProperties.red.type:
+            
+            self.planetRed?.addFlag(contactPoint: convertedPoint)
+            self.planetRed?.addFireworks(contactPoint: convertedPoint)
+            
+            break
+        case PlanetProperties.blue.type:
+            
+            self.planetBlue?.addFlag(contactPoint: convertedPoint)
+            self.planetBlue?.addFireworks(contactPoint: convertedPoint)
+            
+            break
+        case PlanetProperties.green.type:
+            
+            self.planetGreen?.addFlag(contactPoint: convertedPoint)
+            self.planetGreen?.addFireworks(contactPoint: convertedPoint)
+            
+            break
+        case PlanetProperties.yellow.type:
+            
+            self.planetYellow?.addFlag(contactPoint: convertedPoint)
+            self.planetYellow?.addFireworks(contactPoint: convertedPoint)
             
             break
         default:
