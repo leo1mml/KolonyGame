@@ -43,8 +43,7 @@ class PlanetEntity: GKEntity {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // obs: o angulo 0 fica a esquerda.
+  
     func addFlag(contactPoint: CGPoint){
         
         let flag = SKSpriteNode(texture: SKTexture(imageNamed: "flag"+(property?.type)!))
@@ -54,12 +53,13 @@ class PlanetEntity: GKEntity {
         // angulo em radianos
         let radian = atan2(contactPoint.y, contactPoint.x)
         
+        // alterando ponto de ancoragem
         flag.anchorPoint = CGPoint(x: 0.5, y: 0)
         
-        // rotaciona a bandeira
+        // rotacionando a bandeira
         flag.zRotation = radian - CGFloat(Double.pi / 2)
         
-        //calculando a posição para inserir a bandeira
+        // inserindo a bandeira na posição da colisão
         flag.position = contactPoint
         
         self.spriteComponent?.node.addChild(flag)
