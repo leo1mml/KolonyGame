@@ -189,6 +189,12 @@ class GameLayer: SKNode {
         }
     }
     
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        if(rocketList.count == 3 && !cantTouchThis){
+            lauchRocket()
+        }
+    }
+    
     func update(deltaTime: TimeInterval) {
     
     }

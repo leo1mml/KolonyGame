@@ -15,6 +15,8 @@
 		143817F02075637E007E5A1E /* EntityManagerBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */; };
 		143817F120756381007E5A1E /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D720571F09008A9159 /* BackgroundEntity.swift */; };
 		143817F22075638F007E5A1E /* BlackHoleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */; };
+		145AA4CF208924E000E6CE02 /* SKAction + Movements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF66CC2087CD47008149B0 /* SKAction + Movements.swift */; };
+		145AA4D02089256600E6CE02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A1B1442087F91B00EE1899 /* Assets.xcassets */; };
 		1466BBEE207C1638007FD926 /* HudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466BBEA207C1638007FD926 /* HudLayer.swift */; };
 		1466BBF5207C17E8007FD926 /* ScoreIconEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466BBF2207C1728007FD926 /* ScoreIconEntity.swift */; };
 		1466BBF6207C17E9007FD926 /* ScoreIconEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466BBF2207C1728007FD926 /* ScoreIconEntity.swift */; };
@@ -454,6 +456,7 @@
 				9735C2242075BBF10054C6E9 /* Comets.sks in Resources */,
 				14A1B1412087EF9400EE1899 /* Smoke.sks in Resources */,
 				14AF0629207E8D44003D47F4 /* ONRAMP.ttf in Resources */,
+				145AA4D02089256600E6CE02 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +516,7 @@
 				14AF0628207E8D1E003D47F4 /* EntityManagerHudLayer.swift in Sources */,
 				8A8CCF882053239B00546F56 /* GameViewController.swift in Sources */,
 				14FA662720582FFB00D4C10B /* PhysicsCategory.swift in Sources */,
+				145AA4CF208924E000E6CE02 /* SKAction + Movements.swift in Sources */,
 				14AF0632207E8D8A003D47F4 /* LaunchState.swift in Sources */,
 				14AF062D207E8D56003D47F4 /* PlanetProperties.swift in Sources */,
 				974D11F420813EDE0073269E /* GameScene+ShakeScreen.swift in Sources */,
