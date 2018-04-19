@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1437E92E2089402800457822 /* backgroundSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1437E92D2089402800457822 /* backgroundSound1.mp3 */; };
 		143817EA2075635C007E5A1E /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA5205328FB00546F56 /* SpriteComponent.swift */; };
 		143817EB2075635F007E5A1E /* PhysicBodyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */; };
 		143817EC20756362007E5A1E /* RotationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */; };
@@ -49,7 +50,6 @@
 		14E2FE0720583C9600A0E3A8 /* PhysicBodyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */; };
 		14E2FE09205869AE00A0E3A8 /* RotationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */; };
 		14F19FA5208931EB00CE3A36 /* backgroundSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14F19FA3208931E900CE3A36 /* backgroundSound2.mp3 */; };
-		14F19FA6208931EB00CE3A36 /* backgroundSound1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 14F19FA4208931EB00CE3A36 /* backgroundSound1.wav */; };
 		14F761C32059A16400F4D04F /* RocketEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F761C22059A16400F4D04F /* RocketEntity.swift */; };
 		14F761C42059A16400F4D04F /* RocketEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F761C22059A16400F4D04F /* RocketEntity.swift */; };
 		14FA662620582FFB00D4C10B /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA662520582FFB00D4C10B /* PhysicsCategory.swift */; };
@@ -91,6 +91,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1437E92D2089402800457822 /* backgroundSound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundSound1.mp3; sourceTree = "<group>"; };
 		1466BBEA207C1638007FD926 /* HudLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudLayer.swift; sourceTree = "<group>"; };
 		1466BBF2207C1728007FD926 /* ScoreIconEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreIconEntity.swift; sourceTree = "<group>"; };
 		1466BBF9207C1874007FD926 /* ONRAMP.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ONRAMP.ttf; sourceTree = "<group>"; };
@@ -104,7 +105,6 @@
 		14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicBodyComponent.swift; sourceTree = "<group>"; };
 		14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationComponent.swift; sourceTree = "<group>"; };
 		14F19FA3208931E900CE3A36 /* backgroundSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundSound2.mp3; sourceTree = "<group>"; };
-		14F19FA4208931EB00CE3A36 /* backgroundSound1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = backgroundSound1.wav; sourceTree = "<group>"; };
 		14F761C22059A16400F4D04F /* RocketEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketEntity.swift; sourceTree = "<group>"; };
 		14FA662520582FFB00D4C10B /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		8A84A4652078135200CD92C9 /* RocketshipProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketshipProperties.swift; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 		14F19FA2208931B800CE3A36 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				14F19FA4208931EB00CE3A36 /* backgroundSound1.wav */,
+				1437E92D2089402800457822 /* backgroundSound1.mp3 */,
 				14F19FA3208931E900CE3A36 /* backgroundSound2.mp3 */,
 			);
 			path = Sounds;
@@ -455,9 +455,9 @@
 			files = (
 				14F19FA5208931EB00CE3A36 /* backgroundSound2.mp3 in Resources */,
 				8ABF66CB2087C5A1008149B0 /* Smoke.sks in Resources */,
-				14F19FA6208931EB00CE3A36 /* backgroundSound1.wav in Resources */,
 				9735C2232075BBF10054C6E9 /* Comets.sks in Resources */,
 				1466BBFA207C1874007FD926 /* ONRAMP.ttf in Resources */,
+				1437E92E2089402800457822 /* backgroundSound1.mp3 in Resources */,
 				8A8CCF7A2053239A00546F56 /* Main.storyboard in Resources */,
 				14A1B1452087F91B00EE1899 /* Assets.xcassets in Resources */,
 				8A8CCF7D2053239A00546F56 /* LaunchScreen.storyboard in Resources */,

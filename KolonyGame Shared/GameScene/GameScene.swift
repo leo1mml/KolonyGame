@@ -112,19 +112,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func playSound() {
         if !self.hasBeganToPlay {
             do{
-                self.backgroundMusic1 =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "backgroundSound1", ofType: "wav")!))
+                self.backgroundMusic1 =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "backgroundSound1", ofType: "mp3")!))
                 self.backgroundMusic1?.numberOfLoops = -1
                 self.backgroundMusic1?.play()
-                
-                self.backgroundMusic2 =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "backgroundSound2", ofType: "mp3")!))
-                self.backgroundMusic2?.numberOfLoops = -1
-                self.backgroundMusic2?.play()
-                
-                
-                self.hasBeganToPlay = true
             }catch{
                 print(error)
             }
+            
+            do{
+                self.backgroundMusic2 =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "backgroundSound2", ofType: "mp3")!))
+                self.backgroundMusic2?.numberOfLoops = -1
+                self.backgroundMusic2?.play()
+            }catch{
+                print(error)
+            }
+            
+            if (backgroundMusic1?.isPlaying)! && (backgroundMusic2?.isPlaying)! {
+                self.hasBeganToPlay = true
+            }
+            
+            
         }
     }
 
