@@ -88,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if lastUpdateTimeInterval == 0 {
             lastUpdateTimeInterval = currentTime
         }
-        
+        self.gameLayer?.update(deltaTime: currentTime)
         deltaTime = currentTime - lastUpdateTimeInterval
         lastUpdateTimeInterval = currentTime
         stateMachine.update(deltaTime: deltaTime)

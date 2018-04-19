@@ -21,11 +21,14 @@ class GameLayer: SKNode {
         }
     }
     var rocketList = [RocketEntity]()
+    var rocketAngle : CGFloat = 0.0
     
     var planetRed : PlanetEntity?
     var planetBlue : PlanetEntity?
     var planetGreen : PlanetEntity?
     var planetYellow : PlanetEntity?
+    
+    var spiralRadius : CGFloat = 0
     
     init(size: CGSize) {
         super.init()
@@ -50,10 +53,7 @@ class GameLayer: SKNode {
         blackholelight.zPosition = -10
         self.addChild(blackholelight)
         entityManager?.add(blackHole!)
-        createPlanetRed()
-        createPlanetBlue()
-        createPlanetGreen()
-        createPlanetYellow()
+        createPlanets()
         self.blackHole?.rotationComponent?.startRotate(angle: CGFloat.pi * 2, duration: 3)
     }
     
@@ -68,61 +68,28 @@ class GameLayer: SKNode {
         return CGPoint.zero
     }
     
+  
     
-    
-    func createPlanetBlue() {
-        let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetBlue = PlanetEntity(property: PlanetProperties.blue, size: size)
-        if let planetSpriteComponent = planetBlue?.component(ofType: SpriteComponent.self) {
-            if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
-                planetSpriteComponent.node.position = CGPoint(x: 0, y: -(blackHoleSprite.node.size.height/2))
-                planetSpriteComponent.node.zPosition = 20
-                entityManager?.addPlanet(self.planetBlue!)
-                self.planetBlue?.startRotating(angle: -Double.pi * 2, duration: 3)
-            }
+    func createPlanets() {
+        if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
+            self.planetBlue = createPlanet(size: CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11), properties: PlanetProperties.blue, position: CGPoint(x: 0, y: -(blackHoleSprite.node.size.height/2)), zPosition: 20, rotationAngle: -Double.pi * 2, duration: 3)
+            self.planetRed = createPlanet(size: CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11), properties: PlanetProperties.red, position: CGPoint(x: (blackHoleSprite.node.size.height/2), y: 0), zPosition: 20, rotationAngle: -Double.pi * 2, duration: 3)
+            self.planetGreen = createPlanet(size: CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11), properties: PlanetProperties.green, position: CGPoint(x: 0, y: +(blackHoleSprite.node.size.height/2)), zPosition: 20, rotationAngle: -Double.pi * 2, duration: 3)
+            self.planetYellow = createPlanet(size: CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11), properties: .yellow, position: CGPoint(x: -(blackHoleSprite.node.size.height/2), y: 0), zPosition: 20, rotationAngle: -Double.pi * 2, duration: 3)
         }
     }
     
-    func createPlanetGreen() {
-        let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetGreen = PlanetEntity(property: PlanetProperties.green, size: size)
-        if let planetSpriteComponent = planetGreen?.component(ofType: SpriteComponent.self) {
-            if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
-                planetSpriteComponent.node.position = CGPoint(x: 0, y: +(blackHoleSprite.node.size.height/2))
-                planetSpriteComponent.node.zPosition = 20
-                entityManager?.addPlanet(self.planetGreen!)
-                self.planetGreen?.startRotating(angle: -Double.pi * 2, duration: 3)
-            }
+    func createPlanet(size: CGSize, properties: PlanetProperties, position: CGPoint, zPosition: CGFloat, rotationAngle: Double, duration: Double) -> PlanetEntity{
+        let planet = PlanetEntity(property: properties, size: size)
+        if let planetSprite = planet.component(ofType: SpriteComponent.self) {
+            planetSprite.node.position = position
+            planetSprite.node.zPosition = zPosition
+            entityManager?.addPlanet(planet)
+            planet.startRotating(angle: -Double.pi * 2, duration: 3)
         }
+        return planet
     }
-    
-    
-    func createPlanetRed() {
-        let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetRed = PlanetEntity(property: PlanetProperties.red, size: size)
-        if let planetSpriteComponent = planetRed?.component(ofType: SpriteComponent.self) {
-            if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
-                planetSpriteComponent.node.position = CGPoint(x: (blackHoleSprite.node.size.height/2), y: 0)
-                planetSpriteComponent.node.zPosition = 20
-                entityManager?.addPlanet(self.planetRed!)
-                self.planetRed?.startRotating(angle: -Double.pi * 2, duration: 3)
-            }
-        }
-    }
-    
-    func createPlanetYellow() {
-        let size = CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11)
-        self.planetYellow = PlanetEntity(property: PlanetProperties.yellow, size: size)
-        if let planetSpriteComponent = planetYellow?.component(ofType: SpriteComponent.self) {
-            if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
-                planetSpriteComponent.node.position = CGPoint(x: -(blackHoleSprite.node.size.height/2), y: 0)
-                planetSpriteComponent.node.zPosition = 20
-                entityManager?.addPlanet(self.planetYellow!)
-                self.planetYellow?.startRotating(angle: -Double.pi * 2, duration: 3)
-            }
-        }
-    }
-    
+
     func createRocketList() {
         var positionX = (self.size?.width)! / 2
         for index in 0...2 {
@@ -216,6 +183,19 @@ class GameLayer: SKNode {
         }
     }
     
+    func flushRocketTo(centerPoint: CGPoint, startRadius: CGFloat, endRadius: CGFloat, angle: CGFloat, duration: TimeInterval){
+        if let sprite = self.rocketToLaunch?.component(ofType: SpriteComponent.self){
+            sprite.node.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+            sprite.node.physicsBody?.applyAngularImpulse(0.004)
+            let scaleDown = SKAction.scale(to: 0, duration: 4)
+            let spiralMovement = SKAction.spiral(startRadius: startRadius, endRadius: endRadius, angle: angle, centerPoint: centerPoint, duration: duration)
+            sprite.node.run(SKAction.group([scaleDown, spiralMovement])){
+                sprite.node.removeFromParent()
+            }
+        }
+        
+    }
+    
     func startGameOverEffect(finished: (() -> Void)?) {
         
         
@@ -280,6 +260,16 @@ class GameLayer: SKNode {
         if(rocketList.count == 3 && !cantTouchThis){
             lauchRocket()
         }
+    }
+    
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        if(rocketList.count == 3 && !cantTouchThis){
+            lauchRocket()
+        }
+    }
+    
+    func update(deltaTime: TimeInterval) {
+    
     }
     
     required init?(coder aDecoder: NSCoder) {
