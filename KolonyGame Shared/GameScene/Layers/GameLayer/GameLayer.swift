@@ -21,7 +21,8 @@ class GameLayer: SKNode {
         }
     }
     var rocketList = [RocketEntity]()
-    
+    var deltaTime: TimeInterval = 0
+    var actionInterval: TimeInterval = NumbersUtil.randomDouble(min: 10, max: 20)
     var planetRed : PlanetEntity?
     var planetBlue : PlanetEntity?
     var planetGreen : PlanetEntity?
@@ -190,7 +191,6 @@ class GameLayer: SKNode {
                 sprite.node.removeFromParent()
             }
         }
-        
     }
     
     func startGameOverEffect(finished: (() -> Void)?) {
@@ -266,7 +266,15 @@ class GameLayer: SKNode {
     }
     
     func update(deltaTime: TimeInterval) {
-    
+        if deltaTime < 12000{
+            self.deltaTime = self.deltaTime + deltaTime
+        }
+        if(self.deltaTime >= self.actionInterval){
+            self.deltaTime = 0
+            self.actionInterval = NumbersUtil.randomDouble(min: 3, max: 5)
+            print("inverteu")
+            self.blackHole?.rotationComponent?.invertRotation()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
