@@ -16,4 +16,6 @@ struct PhysicsCategory {
     
     static let BlackHole: UInt32 = 0b10
     
+    static let None: UInt32 = 0b100
+    
 }

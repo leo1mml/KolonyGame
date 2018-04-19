@@ -37,27 +37,37 @@ class PlanetEntity: GKEntity {
         self.animate()
         
         self.spriteComponent?.node.zPosition = 2
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func addFlag(flag: SKSpriteNode){
+  
+    func addFlag(contactPoint: CGPoint){
         
+        let flag = SKSpriteNode(texture: SKTexture(imageNamed: "flag"+(property?.type)!))
         flag.zPosition = (self.spriteComponent?.node.zPosition)! + 1
         flag.size = CGSize(width: (spriteComponent?.node.size.height)!/6, height: (spriteComponent?.node.size.height)!/4)
-
-        let aleatorio = NumbersUtil.randomDouble(min: 0, max: 2)
-        let radianos = Double.pi * aleatorio
-        let graus = CGFloat(Double(radianos * 180) / Double.pi)
-        flag.zRotation = -graus
         
-        let raio = ((self.spriteComponent?.node.size.height)!/2) + (flag.size.height/2)
-       
-        flag.position = CGPoint(x: raio * sin(graus) , y: raio * cos(graus))
-
-         self.spriteComponent?.node.addChild(flag)
+        // angulo em radianos
+        let radian = atan2(contactPoint.y, contactPoint.x)
+        
+        // alterando ponto de ancoragem
+        flag.anchorPoint = CGPoint(x: 0.5, y: 0)
+        
+        // rotacionando a bandeira
+        flag.zRotation = radian - CGFloat(Double.pi / 2)
+        
+        // inserindo a bandeira na posição da colisão
+        flag.position = contactPoint
+        
+        self.spriteComponent?.node.addChild(flag)
+        
+        flag.run((property?.flagAction)!){
+            flag.removeFromParent()
+        }
+        
     }
     
     func animate(){

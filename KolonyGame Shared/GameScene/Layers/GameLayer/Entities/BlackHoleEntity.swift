@@ -88,6 +88,26 @@ class BlackHoleEntity: GKEntity {
         return layerSprite
     }
     
+    
+    func movePlanetsToCenterBlackHole () {
+        
+        if let sprite = self.component(ofType: SpriteComponent.self) {
+            let action = SKAction.move(to:  CGPoint.zero, duration: TimeInterval(1))
+            let decreaseScale = SKAction.scale(to: 0, duration: TimeInterval(1))
+            for child in sprite.node.children {
+                switch child.name {
+                case "blue", "red", "green", "yellow":
+                    
+                    child.run(SKAction.group([action, decreaseScale])){
+                        child.removeAllActions()
+                    }
+                default:
+                    continue
+                }
+            }
+        }
+    }
+
     func moveOtherWay() {
         self.rotationComponent?.clockWise = !(self.rotationComponent?.clockWise)!
     }
