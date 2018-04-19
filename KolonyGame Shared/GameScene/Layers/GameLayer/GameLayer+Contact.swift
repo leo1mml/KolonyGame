@@ -56,7 +56,6 @@ extension GameLayer {
             emitter.name = "smoke"
             emitter.targetNode = self
             smoke = emitter
-            smoke?.zPosition = 20
             smoke?.position = contactPoint
             
             let add = SKAction.run {
