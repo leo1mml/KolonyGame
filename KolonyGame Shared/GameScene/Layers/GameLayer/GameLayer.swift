@@ -30,8 +30,6 @@ class GameLayer: SKNode {
     
     var spiralRadius : CGFloat = 0
     
-    var smoke: SKEmitterNode?
-    
     init(size: CGSize) {
         super.init()
         self.size = size
@@ -41,20 +39,6 @@ class GameLayer: SKNode {
     func configureLayer() {
         createBlackHole()
         createRocketList()
-        createSmoke()
-    }
-    
-    func createSmoke() {
-        guard let emitter = SKEmitterNode(fileNamed: "Smoke.sks") else {
-            return
-        }
- 
-        emitter.name = "smoke"
-        emitter.targetNode = self
-        smoke = emitter
-        smoke?.zPosition = 20
-        smoke?.position = CGPoint(x: (size?.width)! * 2, y: (size?.height)! * 2)
-        addChild(smoke!)
     }
     
     func createBlackHole() {

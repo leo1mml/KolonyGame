@@ -47,9 +47,32 @@ extension GameLayer {
                 parent.incrementScore()
             }
         } else {
-            smoke?.isHidden = false
+            var smoke: SKEmitterNode?
+            
+            guard let emitter = SKEmitterNode(fileNamed: "Smoke.sks") else {
+                return
+            }
+            
+            emitter.name = "smoke"
+            emitter.targetNode = self
+            smoke = emitter
+            smoke?.zPosition = 20
             smoke?.position = contactPoint
-            smoke?.resetSimulation()
+            
+            let add = SKAction.run {
+                self.addChild(smoke!)
+            }
+            
+            let wait = SKAction.wait(forDuration: 3)
+            
+            let remove = SKAction.run {
+                smoke?.removeFromParent()
+            }
+            
+            let sequence = SKAction.sequence([add, wait, remove])
+            
+            self.run(sequence)
+          
         }
         recicleShip(rocket: self.rocketToLaunch!)
     }
