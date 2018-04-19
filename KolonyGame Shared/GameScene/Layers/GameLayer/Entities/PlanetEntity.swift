@@ -70,59 +70,6 @@ class PlanetEntity: GKEntity {
         
     }
     
-    func addFireworks(contactPoint: CGPoint) {
-        
-        let node = self.spriteComponent?.node
-        
-        let firework = SKSpriteNode(texture: SKTexture(imageNamed: "fireworks_0"))
-        firework.zPosition = (node?.zPosition)! + 2
-        firework.size = CGSize(width: (node?.size)!.width * 1.2, height: (node?.size)!.height  * 1.2)
-        firework.position = contactPoint
-        
-        var textures = [SKTexture]()
-        
-        for i in 0...16 {
-            let name = "fireworks_\(i)"
-            textures.append(SKTexture(imageNamed: name))
-        }
-        
-        let animation = SKAction.animate(with: textures, timePerFrame: 0.06)
-        
-        node?.addChild(firework)
-        
-        firework.run(animation){
-            firework.removeFromParent()
-        }
-        
-    }
-    
-    func addSmoke(contactPoint: CGPoint) {
-        var smoke: SKEmitterNode?
-        
-        guard let emitter = SKEmitterNode(fileNamed: "Smoke.sks") else {
-            return
-        }
-        
-        emitter.name = "smoke"
-        emitter.targetNode = self.spriteComponent?.node
-        smoke = emitter
-        smoke?.position = contactPoint
-        
-        let add = SKAction.run {
-            self.spriteComponent?.node.addChild(smoke!)
-        }
-        
-        let wait = SKAction.wait(forDuration: 3)
-        
-        let remove = SKAction.run {
-            smoke?.removeFromParent()
-        }
-        
-        let sequence = SKAction.sequence([add, wait, remove])
-        
-        self.spriteComponent?.node.run(sequence)
-    }
-    
     func animate(){
         
         var textures = [SKTexture]()

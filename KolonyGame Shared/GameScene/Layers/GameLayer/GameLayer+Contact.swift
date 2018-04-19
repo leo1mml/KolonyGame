@@ -47,70 +47,95 @@ extension GameLayer {
             if let parent = self.parent as? GameScene {
                 parent.incrementScore()
             }
+            
         } else {
-            addSmoke(planet: planet, contactPoint: contactPoint)
+            
+            addSmoke(contactPoint: contactPoint)
+            
         }
         recicleShip(rocket: self.rocketToLaunch!)
         
     }
     
-    func addSmoke(planet: SKNode, contactPoint: CGPoint) {
+    func addFireworks(contactPoint: CGPoint) {
         
-        let convertedPoint = self.convert(contactPoint, to: planet)
+        let planetSize = planetRed?.spriteComponent?.node.size
         
-        switch planet.name {
-        case PlanetProperties.red.type:
-            
-            self.planetRed?.addSmoke(contactPoint: convertedPoint)
-            
-            break
-        case PlanetProperties.blue.type:
-            
-            self.planetBlue?.addSmoke(contactPoint: convertedPoint)
-            
-            break
-        case PlanetProperties.green.type:
-            
-            self.planetGreen?.addSmoke(contactPoint: convertedPoint)
-            
-            break
-        case PlanetProperties.yellow.type:
-            
-            self.planetYellow?.addSmoke(contactPoint: convertedPoint)
-            
-            break
-        default:
-            break
+        let firework = SKSpriteNode(texture: SKTexture(imageNamed: "fireworks_0"))
+        firework.zPosition = 50
+        firework.size = CGSize(width: (planetSize?.width)! * 1.2, height: (planetSize?.height)! * 1.2)
+        firework.position = contactPoint
+        
+        var textures = [SKTexture]()
+        
+        for i in 0...16 {
+            let name = "fireworks_\(i)"
+            textures.append(SKTexture(imageNamed: name))
         }
+        
+        let animation = SKAction.animate(with: textures, timePerFrame: 0.06)
+        
+        self.addChild(firework)
+        
+        firework.run(animation){
+            firework.removeFromParent()
+        }
+        
+    }
+    
+    func addSmoke(contactPoint: CGPoint) {
+        var smoke: SKEmitterNode?
+        
+        guard let emitter = SKEmitterNode(fileNamed: "Smoke.sks") else {
+            return
+        }
+        
+        emitter.name = "smoke"
+        emitter.targetNode = self
+        smoke = emitter
+        smoke?.position = contactPoint
+        smoke?.particleZPosition = 50
+        
+        let add = SKAction.run {
+            self.addChild(smoke!)
+        }
+        
+        let wait = SKAction.wait(forDuration: 3)
+        
+        let remove = SKAction.run {
+            smoke?.removeFromParent()
+        }
+        
+        let sequence = SKAction.sequence([add, wait, remove])
+        
+        self.run(sequence)
     }
     
     func addFlag(planet: SKNode, contactPoint: CGPoint) {
         
         let convertedPoint = self.convert(contactPoint, to: planet)
         
+        addFireworks(contactPoint: contactPoint)
+        
         switch planet.name {
         case PlanetProperties.red.type:
             
             self.planetRed?.addFlag(contactPoint: convertedPoint)
-            self.planetRed?.addFireworks(contactPoint: convertedPoint)
             
             break
         case PlanetProperties.blue.type:
             
             self.planetBlue?.addFlag(contactPoint: convertedPoint)
-            self.planetBlue?.addFireworks(contactPoint: convertedPoint)
             
             break
         case PlanetProperties.green.type:
             
             self.planetGreen?.addFlag(contactPoint: convertedPoint)
-            self.planetGreen?.addFireworks(contactPoint: convertedPoint)
             
             break
         case PlanetProperties.yellow.type:
             
             self.planetYellow?.addFlag(contactPoint: convertedPoint)
-            self.planetYellow?.addFireworks(contactPoint: convertedPoint)
             
             break
         default:
