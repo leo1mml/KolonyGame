@@ -44,6 +44,7 @@ extension GameLayer {
         if(planet.name == rocket.name){
             addFlag(planet: planet)
             if let parent = self.parent as? GameScene {
+                self.blackHole?.rotationComponent?.rotationDuration = (self.blackHole?.rotationComponent?.rotationDuration)! - 0.02
                 parent.incrementScore()
             }
         }

@@ -25,7 +25,7 @@ class BlackHoleEntity: GKEntity {
         self.size = size
         createLayers()
         self.rotationComponent = RotationComponent(entity: self)
-        self.rotationComponent?.startRotate(angle: CGFloat.pi * 2, duration: 10)
+        self.rotationComponent?.clockWise = false
         
         self.physicsBodyComponent = PhysicBodyComponent(circleOfRadius: size.height/2.8, contactTestBitMask: PhysicsCategory.Rocket, collisionBitMask: PhysicsCategory.BlackHole, physicCategory: PhysicsCategory.BlackHole, friction: 0.0, linearDamping: 0.0, restitution: 0.0)
         self.spriteComponent?.node.physicsBody = physicsBodyComponent?.physicBody
@@ -88,5 +88,8 @@ class BlackHoleEntity: GKEntity {
         return layerSprite
     }
     
+    func moveOtherWay() {
+        self.rotationComponent?.clockWise = !(self.rotationComponent?.clockWise)!
+    }
 }
 

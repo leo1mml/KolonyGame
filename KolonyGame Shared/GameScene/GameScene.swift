@@ -40,13 +40,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         self.addLayers()
         
-        let shakeBackground = self.shakeCamera(layer: self.backgroundLayer!, duration: 10)
-        let shakeGameLayer = self.shakeCamera(layer: self.gameLayer!, duration: 10)
-        let shakeHudLayer = self.shakeCamera(layer: self.hudLayer!, duration: 10)
-        
-        self.gameLayer?.run(shakeGameLayer)
-        self.hudLayer?.run(shakeHudLayer)
-        self.backgroundLayer?.run (shakeBackground)
+//        let shakeBackground = self.shakeCamera(layer: self.backgroundLayer!, duration: 10)
+//        let shakeGameLayer = self.shakeCamera(layer: self.gameLayer!, duration: 10)
+//        let shakeHudLayer = self.shakeCamera(layer: self.hudLayer!, duration: 10)
+//        
+//        self.gameLayer?.run(shakeGameLayer)
+//        self.hudLayer?.run(shakeHudLayer)
+//        self.backgroundLayer?.run (shakeBackground)
         
     }
     

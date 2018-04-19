@@ -21,14 +21,11 @@ class GameLayer: SKNode {
         }
     }
     var rocketList = [RocketEntity]()
-    var rocketAngle : CGFloat = 0.0
     
     var planetRed : PlanetEntity?
     var planetBlue : PlanetEntity?
     var planetGreen : PlanetEntity?
     var planetYellow : PlanetEntity?
-    
-    var spiralRadius : CGFloat = 0
     
     init(size: CGSize) {
         super.init()
@@ -54,7 +51,7 @@ class GameLayer: SKNode {
         self.addChild(blackholelight)
         entityManager?.add(blackHole!)
         createPlanets()
-        self.blackHole?.rotationComponent?.startRotate(angle: CGFloat.pi * 2, duration: 3)
+        self.blackHole?.rotationComponent?.rotate()
     }
     
     
