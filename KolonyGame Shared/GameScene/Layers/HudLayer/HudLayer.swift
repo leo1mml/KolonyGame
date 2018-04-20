@@ -122,7 +122,7 @@ class HudLayer: SKNode {
             
             self.highScoreLabel?.text = "BEST: \(String(self.highScore()))"
             self.highScoreLabel?.run(SKAction.fadeIn(withDuration: 1))
-            self.tapToLaunchAgainLabel?.run(SKAction.fadeIn(withDuration: 1))
+            self.tapToLaunchAgainLabel?.run(SKAction.fadeIn(withDuration: 1)) 
             self.gameOverSlogan?.spriteComponent?.node.run(SKAction.fadeIn(withDuration: 1))
             self.reconfigureLabelNode(node, nextPosition, nextScale)
             

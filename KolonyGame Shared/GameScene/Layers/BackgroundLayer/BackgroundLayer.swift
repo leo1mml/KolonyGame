@@ -46,7 +46,7 @@ class BackgroundLayer: SKNode {
         self.mist = MistEntity(imageName: "nevoas", size: size)
         
         //creating little stars of background
-        size = CGSize(width: (self.size?.height)! * 0.005, height: (self.size?.height)! * 0.005)
+        size = CGSize(width: (self.size?.width)! * 0.005, height: (self.size?.height)! * 0.005)
         self.littleStars = createPoolLittleStars(size, BackgroundTextures.littleStar)
         setup(littleStars: littleStars!)
         
