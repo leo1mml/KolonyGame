@@ -23,6 +23,8 @@ class PlayingState: GKState {
             scene.hudLayer?.resetupHudLayer()
             scene.gameLayer?.resetupGameLayer()
             scene.gameLayer?.blackHole?.resetupPlanets()
+            scene.backgroundLayer?.setup((scene.backgroundLayer?.stars!)!)
+            scene.backgroundLayer?.setup(littleStars: (scene.backgroundLayer?.littleStars!)!)
         } else {
             scene.backgroundLayer?.setupLayer()
             scene.gameLayer?.configureLayer()

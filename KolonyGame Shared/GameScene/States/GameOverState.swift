@@ -22,8 +22,11 @@ class GameOverState: GKState {
             self.scene.shakeScene(duration: 1.5) {
                 self.scene.gameLayer?.blackHoleSound()
                 self.scene.gameLayer?.startGameOverEffect(finished: nil)
-                self.scene.backgroundLayer?.startGameOverEffect(finished: nil)
+                self.scene.backgroundLayer?.startGameOverEffect{
+                    self.scene.backgroundLayer?.removeActionsAllStars()
+                }
                 self.scene.hudLayer?.startGameOverEffect()
+                
             }
         }
         

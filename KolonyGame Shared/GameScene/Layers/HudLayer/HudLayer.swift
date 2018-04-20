@@ -51,7 +51,7 @@ class HudLayer: SKNode {
             
             //creating score label
             self.highScoreLabel = SKLabelNode(fontNamed: "Onramp")
-            configure(label: self.highScoreLabel, fontSize: 44, text: "BEST: \(String(highScore()))", position: CGPoint(x: sizeLayer.width / 2, y: sizeLayer.height * 0.7))
+            configure(label: self.highScoreLabel, fontSize: 44, text: "", position: CGPoint(x: sizeLayer.width / 2, y: sizeLayer.height * 0.7))
             self.highScoreLabel?.alpha = 0
             self.entityManager?.add(self.highScoreLabel!)
             
@@ -120,8 +120,9 @@ class HudLayer: SKNode {
         self.scoreLabel?.run(sequence) {
             self.scoreLabel?.removeAllActions()
             
+            self.highScoreLabel?.text = "BEST: \(String(self.highScore()))"
             self.highScoreLabel?.run(SKAction.fadeIn(withDuration: 1))
-            self.tapToLaunchAgainLabel?.run(SKAction.fadeIn(withDuration: 1))
+            self.tapToLaunchAgainLabel?.run(SKAction.fadeIn(withDuration: 1)) 
             self.gameOverSlogan?.spriteComponent?.node.run(SKAction.fadeIn(withDuration: 1))
             self.reconfigureLabelNode(node, nextPosition, nextScale)
             
