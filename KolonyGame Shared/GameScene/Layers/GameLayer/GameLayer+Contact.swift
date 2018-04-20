@@ -51,6 +51,7 @@ extension GameLayer {
             if let parent = self.parent as? GameScene {
                 self.blackHole?.rotationComponent?.rotationDuration = (self.blackHole?.rotationComponent?.rotationDuration)! - 0.02
                 parent.incrementScore()
+                recicleShip(rocket: self.rocketToLaunch!)
             }
         }else {
             if let parent = self.parent as? GameScene {
@@ -59,8 +60,6 @@ extension GameLayer {
             }
             
         }
-        recicleShip(rocket: self.rocketToLaunch!)
-        
     }
     
     

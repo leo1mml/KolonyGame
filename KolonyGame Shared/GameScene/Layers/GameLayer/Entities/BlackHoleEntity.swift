@@ -109,8 +109,8 @@ class BlackHoleEntity: GKEntity {
     }
 
     func moveOtherWay() {
+         invertChildrenRotation()
         self.rotationComponent?.clockWise = !(self.rotationComponent?.clockWise)!
-        invertChildrenRotation()
     }
     
     func invertChildrenRotation() {
@@ -127,8 +127,8 @@ class BlackHoleEntity: GKEntity {
         
         let sprite = self.spriteComponent?.node
         for child in (sprite?.children)! {
-            child.removeAllActions()
-            child.run(repeatRotation)
+            child.removeAction(forKey: "rotation")
+            child.run(repeatRotation, withKey: "rotation")
         }
     }
 }

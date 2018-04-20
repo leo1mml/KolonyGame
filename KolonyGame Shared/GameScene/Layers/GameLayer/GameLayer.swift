@@ -52,7 +52,7 @@ class GameLayer: SKNode {
         self.addChild(blackholelight)
         entityManager?.add(blackHole!)
         createPlanets()
-        self.blackHole?.rotationComponent?.rotate()
+        self.blackHole?.moveOtherWay()
     }
     
     //Get the black hole position
@@ -191,7 +191,7 @@ class GameLayer: SKNode {
         if let sprite = self.rocketToLaunch?.component(ofType: SpriteComponent.self){
             sprite.node.physicsBody?.categoryBitMask = PhysicsCategory.None
             sprite.node.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-            sprite.node.physicsBody?.applyAngularImpulse((self.size?.height)! * 0.00005)
+            sprite.node.physicsBody?.applyAngularImpulse((self.size?.height)! * 0.000006)
             let scaleDown = SKAction.scale(to: 0, duration: 4)
             let spiralMovement = SKAction.spiral(startRadius: startRadius, endRadius: endRadius, angle: angle, centerPoint: centerPoint, duration: duration)
             sprite.node.run(SKAction.group([scaleDown, spiralMovement])){
@@ -278,7 +278,7 @@ class GameLayer: SKNode {
         }
         if(self.deltaTime >= self.actionInterval){
             self.deltaTime = 0
-            self.actionInterval = NumbersUtil.randomDouble(min: 3, max: 5)
+            self.actionInterval = NumbersUtil.randomDouble(min: 5, max: 8)
             self.blackHole?.moveOtherWay()
         }
     }
