@@ -19,6 +19,8 @@ class PlayingState: GKState {
     
     override func didEnter(from previousState: GKState?) {
         
+        scene.playBackgroundSound()
+        
         if previousState is GameOverState {
             scene.hudLayer?.resetupHudLayer()
             scene.gameLayer?.resetupGameLayer()

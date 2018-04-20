@@ -21,7 +21,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var deltaTime: TimeInterval = 0
     var lastUpdateTimeInterval: TimeInterval = 0
     
-    var hasBeganToPlay = false
     var backgroundMusic1: AVAudioPlayer?
     var backgroundMusic2: AVAudioPlayer?
     
@@ -40,13 +39,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.gameLayer?.zPosition = 0
         self.hudLayer?.zPosition = 5
         super.init(size: size)
-        
-        self.playSound()
+//        prepareBackgroundSound()
         
         self.setup(backgroundLayer: backgroundLayer!)
         self.physicsWorld.contactDelegate = self
         self.addLayers()
-        
+
     }
     
     func shakeScene(duration: Float, finished: @escaping () -> Void) {
@@ -90,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.backgroundColor = .clear
         
     }
-
+    
     override func update(_ currentTime: TimeInterval) {
         if lastUpdateTimeInterval == 0 {
             lastUpdateTimeInterval = currentTime
@@ -99,7 +97,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         deltaTime = currentTime - lastUpdateTimeInterval
         lastUpdateTimeInterval = currentTime
         stateMachine.update(deltaTime: deltaTime)
-
+        
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -120,32 +118,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func playSound() {
-        if !self.hasBeganToPlay {
-            do{
-                self.backgroundMusic1 =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "backgroundSound1", ofType: "mp3")!))
-                self.backgroundMusic1?.numberOfLoops = -1
-                self.backgroundMusic1?.play()
-            }catch{
-                print(error)
-            }
-            
-            do{
-                self.backgroundMusic2 =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "backgroundSound2", ofType: "mp3")!))
-                self.backgroundMusic2?.numberOfLoops = -1
-                self.backgroundMusic2?.play()
-            }catch{
-                print(error)
-            }
-            
-            if (backgroundMusic1?.isPlaying)! && (backgroundMusic2?.isPlaying)! {
-                self.hasBeganToPlay = true
-            }
-            
-            
-        }
+//    func prepareBackgroundSound() {
+//        do{
+//            self.backgroundMusic1 =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "backgroundSound1", ofType: "mp3")!))
+//            self.backgroundMusic1?.numberOfLoops = -1
+//        }catch{
+//            print(error)
+//        }
+//        
+//        do{
+//            self.backgroundMusic2 =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "backgroundSound2", ofType: "mp3")!))
+//            self.backgroundMusic2?.numberOfLoops = -1
+//        }catch{
+//            print(error)
+//        }
+//    }
+    
+    func playBackgroundSound() {
+        self.backgroundMusic1?.play()
+        self.backgroundMusic2?.play()
     }
-
+    
+    func stopBackgroundSound() {
+        self.backgroundMusic1?.stop()
+        self.backgroundMusic2?.stop()
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

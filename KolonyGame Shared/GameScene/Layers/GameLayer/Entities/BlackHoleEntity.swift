@@ -128,8 +128,6 @@ class BlackHoleEntity: GKEntity {
     
     func reconfigureSprite (_ node: SKNode, _ nextPosition: CGPoint) {
         node.run(SKAction.move(to: nextPosition, duration: TimeInterval(0.1)))
-        
-        
     }
 
     func moveOtherWay() {
