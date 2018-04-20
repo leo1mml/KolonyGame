@@ -103,8 +103,12 @@ class GameLayer: SKNode {
             
             if let sprite = rocket.component(ofType: SpriteComponent.self) {
                 sprite.node.position = CGPoint(x: positionX, y: (self.size?.height)! / 8)
+                if index == 0 {
+                    positionX += sprite.node.size.width * 1.75
+                }else {
+                    positionX += sprite.node.size.width * 1.5
+                }
             }
-            positionX += (self.size?.width)!/8
             entityManager?.add(rocket)
             self.rocketList.append(rocket)
         }
@@ -137,7 +141,7 @@ class GameLayer: SKNode {
             
             sprite.removeAllActions()
             if(rocketList.count > 0){
-                sprite.run(SKAction.move(to: CGPoint(x: (rocketList[rocketList.count - 1].spriteComponent?.node.position.x)! + (self.size?.width)!/8, y: (self.size?.height)!/8), duration: 0)){
+                sprite.run(SKAction.move(to: CGPoint(x: (rocketList[rocketList.count - 1].spriteComponent?.node.position.x)! + ((rocketList[rocketList.count - 1].spriteComponent?.node.size.width)! * 1.5), y: (self.size?.height)!/8), duration: 0)){
                     self.cantTouchThis = false
                 }
                 
@@ -146,7 +150,6 @@ class GameLayer: SKNode {
                     self.cantTouchThis = false
                 }
             }
-            
         }
         resizeRocketToNormal(rocket: rocket)
         rocket.stateMachine.enter(QueueState.self)
@@ -161,8 +164,8 @@ class GameLayer: SKNode {
                     sprite.run(moveAction)
                     resizeRocketToBig(rocket: rocketList[index])
                     rocketList[index].stateMachine.enter(IdleState.self)
-                }else {
-                    let moveAction = SKAction.move(to: CGPoint(x: sprite.position.x - ((self.size?.width)!/8), y: (self.size?.height)!/8), duration: 0.5)
+                }else{
+                    let moveAction = SKAction.move(to: CGPoint(x: sprite.position.x - (sprite.size.width * 1.5), y: (self.size?.height)!/8), duration: 0.5)
                     sprite.run(moveAction)
                 }
             }
@@ -183,8 +186,9 @@ class GameLayer: SKNode {
     
     func flushRocketTo(centerPoint: CGPoint, startRadius: CGFloat, endRadius: CGFloat, angle: CGFloat, duration: TimeInterval){
         if let sprite = self.rocketToLaunch?.component(ofType: SpriteComponent.self){
+            sprite.node.physicsBody?.categoryBitMask = PhysicsCategory.None
             sprite.node.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-            sprite.node.physicsBody?.applyAngularImpulse(0.004)
+            sprite.node.physicsBody?.applyAngularImpulse((self.size?.height)! * 0.00005)
             let scaleDown = SKAction.scale(to: 0, duration: 4)
             let spiralMovement = SKAction.spiral(startRadius: startRadius, endRadius: endRadius, angle: angle, centerPoint: centerPoint, duration: duration)
             sprite.node.run(SKAction.group([scaleDown, spiralMovement])){

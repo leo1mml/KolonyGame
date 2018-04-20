@@ -35,6 +35,7 @@ class RocketEntity: GKEntity {
         
         self.physicsBodyComponent = PhysicBodyComponent(circleOfRadius: size.height/2, contactTestBitMask: PhysicsCategory.BlackHole | PhysicsCategory.Planet, collisionBitMask: PhysicsCategory.Planet, physicCategory: PhysicsCategory.Rocket, friction: 0.0, linearDamping: 0.0, restitution: 0.0)
         self.spriteComponent?.node.physicsBody = self.physicsBodyComponent?.physicBody
+        self.spriteComponent?.node.zPosition = 70
         
         self.spriteComponent?.node.name = rocketType.type
         
@@ -45,7 +46,7 @@ class RocketEntity: GKEntity {
         
         self.rocketType = rocketType
         let sprite = self.spriteComponent?.node
-        
+        sprite?.zPosition = 50
         sprite?.texture = rocketType.texture
         sprite?.name = rocketType.type
     }
