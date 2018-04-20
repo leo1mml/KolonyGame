@@ -272,12 +272,11 @@ class GameLayer: SKNode {
             lauchRocket()
         }
         
-        if gameOver {
-            let scene = sceceReference()
-            scene?.hudLayer?.resetupHudLayer()
-            self.resetupGameLayer()
-            self.blackHole?.resetupPlanets()
-            self.gameOver = false
+        if let parent = self.parent as? GameScene {
+            if parent.stateMachine.currentState is GameOverState {
+                parent.stateMachine.enter(PlayingState.self)
+
+            }
         }
     }
     
