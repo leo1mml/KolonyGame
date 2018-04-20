@@ -22,7 +22,7 @@ class HudLayer: SKNode {
     var highScoreLabel: SKLabelNode?
     var tapToLaunchAgainLabel: SKLabelNode?
     let HIGH_SCORE_KEY = "highScore"
-   
+    var originalPositionScoreLabel: CGPoint?
     
     init(size: CGSize) {
         super.init()
@@ -70,6 +70,7 @@ class HudLayer: SKNode {
             if let spriteScoreIcon = scoreIcon?.spriteComponent {
                 if let score = self.scoreLabel {
                     score.position = CGPoint(x: (sizeLayer.width * 0.08) * 2  , y: spriteScoreIcon.node.position.y - (spriteScoreIcon.node.size.height / 2  + 1) )
+                    self.originalPositionScoreLabel = score.position
                     self.entityManager?.add(score)
                 }
             }
@@ -92,8 +93,8 @@ class HudLayer: SKNode {
         var nextPos = CGPoint(x: (size?.width)! * 0.44, y: (size?.height)! * 0.8)
         
         self.moveToBlackHoleposition(node: sprite, duration: TimeInterval(1), durantionDecreaseAlpha: TimeInterval(1), nextPosition: nextPos, nextScale: 2)
-        nextPos = CGPoint(x: (size?.width)! * 0.60, y: (size?.height)! * 0.77)
         
+        nextPos = CGPoint(x: (size?.width)! * 0.60, y: (size?.height)! * 0.77)
         self.scoreLabel?.fontSize = 44 * 1.5
         moveScoreLabelToBlackHol(node: self.scoreLabel!, duration: TimeInterval(1), durantionDecreaseAlpha: TimeInterval(1), nextPosition: nextPos, nextScale: 1)
         
@@ -196,9 +197,9 @@ class HudLayer: SKNode {
     }
     
     func resetupHudLayer () {
-        self.scoreLabel?.run(SKAction.sequence([SKAction.fadeOut(withDuration: TimeInterval(1))])) {
-            self.scoreLabel?.removeAllActions()
-        }
+//        self.scoreLabel?.run(SKAction.sequence([SKAction.fadeOut(withDuration: TimeInterval(1))])) {
+//            self.scoreLabel?.removeAllActions()
+//        }
         self.scoreIcon?.spriteComponent?.node.run(SKAction.fadeOut(withDuration: TimeInterval(1))){
             self.highScoreLabel?.removeAllActions()
         }
@@ -217,8 +218,7 @@ class HudLayer: SKNode {
     private func resetupScore() {
         
         let scoreIconPosition =  CGPoint(x: self.size!.width * 0.08 , y: self.size!.height * 0.97)
-        let scoreLabelPosition = CGPoint(x: (self.size!.width * 0.08) * 2  , y: (self.scoreIcon?.spriteComponent?.node.position.y)! - ((self.scoreIcon?.spriteComponent?.node.size.height)! / 2  + 1))
-        
+        let scoreLabelPosition = self.originalPositionScoreLabel!
         self.scoreIcon?.spriteComponent?.node.setScale(1)
         self.scoreIcon?.spriteComponent?.node.run(SKAction.sequence([SKAction.move(to: scoreIconPosition, duration: TimeInterval(1)), SKAction.fadeIn(withDuration: TimeInterval(1))])) {
             self.scoreIcon?.spriteComponent?.node.removeAllActions()

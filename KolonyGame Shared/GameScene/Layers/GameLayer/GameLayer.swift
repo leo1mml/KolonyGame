@@ -227,7 +227,14 @@ class GameLayer: SKNode {
     }
     
     
-    
+    func resetupGameLayer () {
+        
+        let group = SKAction.group([SKAction.move(to: CGPoint(x: (self.size?.width)!/2, y: (self.size?.height)! * 0.73), duration: TimeInterval(1)), SKAction.scale(to: 1, duration: TimeInterval(1))])
+        self.blackHole?.spriteComponent?.node.run(group)
+        for rocket in self.rocketList {
+            rocket.spriteComponent?.node.run(SKAction.fadeIn(withDuration: TimeInterval(1)))
+        }
+    }
 
     private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval, durantionDecreaseAlpha: TimeInterval, nextPosition: CGPoint, nextScale: Float, finished: (() -> Void)?) {
 
@@ -240,14 +247,15 @@ class GameLayer: SKNode {
         node.run(sequence) {
             DispatchQueue.main.async {
                 finished?()
+                self.reconfigureSprite(node, nextPosition)
             }
         }
     }
     
     func reconfigureSprite (_ node: SKSpriteNode, _ nextPosition: CGPoint) {
-        let sequence = SKAction.sequence([SKAction.move(to: nextPosition, duration: TimeInterval(0.1)), SKAction.fadeAlpha(by: 1, duration: TimeInterval(0.5))])
-        node.run(sequence) {
-        }
+        node.run(SKAction.move(to: nextPosition, duration: TimeInterval(0.1)))
+        
+        
     }
 
     
@@ -267,6 +275,9 @@ class GameLayer: SKNode {
         if gameOver {
             let scene = sceceReference()
             scene?.hudLayer?.resetupHudLayer()
+            self.resetupGameLayer()
+            self.blackHole?.resetupPlanets()
+            self.gameOver = false
         }
     }
     
