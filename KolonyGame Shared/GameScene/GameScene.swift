@@ -39,7 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.gameLayer?.zPosition = 0
         self.hudLayer?.zPosition = 5
         super.init(size: size)
-//        prepareBackgroundSound()
+        prepareBackgroundSound()
         
         self.setup(backgroundLayer: backgroundLayer!)
         self.physicsWorld.contactDelegate = self
@@ -118,21 +118,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-//    func prepareBackgroundSound() {
-//        do{
-//            self.backgroundMusic1 =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "backgroundSound1", ofType: "mp3")!))
-//            self.backgroundMusic1?.numberOfLoops = -1
-//        }catch{
-//            print(error)
-//        }
-//        
-//        do{
-//            self.backgroundMusic2 =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "backgroundSound2", ofType: "mp3")!))
-//            self.backgroundMusic2?.numberOfLoops = -1
-//        }catch{
-//            print(error)
-//        }
-//    }
+    func prepareBackgroundSound() {
+        do{
+            self.backgroundMusic1 =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "backgroundSound1", ofType: "mp3")!))
+            self.backgroundMusic1?.numberOfLoops = -1
+        }catch{
+            print(error)
+        }
+        
+        do{
+            self.backgroundMusic2 =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "backgroundSound2", ofType: "mp3")!))
+            self.backgroundMusic2?.numberOfLoops = -1
+        }catch{
+            print(error)
+        }
+    }
     
     func playBackgroundSound() {
         self.backgroundMusic1?.play()

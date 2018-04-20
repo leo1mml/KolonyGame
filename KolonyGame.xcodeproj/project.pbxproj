@@ -91,6 +91,14 @@
 		9735C2242075BBF10054C6E9 /* Comets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9735C2222075BBF10054C6E9 /* Comets.sks */; };
 		9735C2262075CB400054C6E9 /* NumbersUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2252075CB400054C6E9 /* NumbersUtil.swift */; };
 		974D11F420813EDE0073269E /* GameScene+ShakeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D11F220812A510073269E /* GameScene+ShakeScreen.swift */; };
+		975AA3C7208A6E5C00F97237 /* buttonSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14EEF0E9208A3849004D9470 /* buttonSound.mp3 */; };
+		975AA3C8208A6E6000F97237 /* point.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1437E93720894FE100457822 /* point.mp3 */; };
+		975AA3C9208A6E6200F97237 /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1437E93520894FC500457822 /* explosion.mp3 */; };
+		975AA3CA208A6E6500F97237 /* blackHole.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1437E93120894FA500457822 /* blackHole.mp3 */; };
+		975AA3CB208A6E6800F97237 /* blackHole2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1437E93220894FA600457822 /* blackHole2.mp3 */; };
+		975AA3CC208A6E6B00F97237 /* launchSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1437E92F2089482E00457822 /* launchSound.mp3 */; };
+		975AA3CD208A6E6D00F97237 /* backgroundSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1437E92D2089402800457822 /* backgroundSound1.mp3 */; };
+		975AA3CE208A6E7000F97237 /* backgroundSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14F19FA3208931E900CE3A36 /* backgroundSound2.mp3 */; };
 		977B660520755C5A00CE37D6 /* BackgroundBasicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660420755C5A00CE37D6 /* BackgroundBasicEntity.swift */; };
 		977B660720755D9300CE37D6 /* MistEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660620755D9300CE37D6 /* MistEntity.swift */; };
 		977B660B2075ACD500CE37D6 /* GameColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660A2075ACD500CE37D6 /* GameColors.swift */; };
@@ -501,11 +509,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				975AA3CD208A6E6D00F97237 /* backgroundSound1.mp3 in Resources */,
 				8A8CCF8B2053239B00546F56 /* Main.storyboard in Resources */,
+				975AA3CC208A6E6B00F97237 /* launchSound.mp3 in Resources */,
+				975AA3CA208A6E6500F97237 /* blackHole.mp3 in Resources */,
 				9735C2242075BBF10054C6E9 /* Comets.sks in Resources */,
+				975AA3C8208A6E6000F97237 /* point.mp3 in Resources */,
 				14A1B1412087EF9400EE1899 /* Smoke.sks in Resources */,
+				975AA3C9208A6E6200F97237 /* explosion.mp3 in Resources */,
 				14AF0629207E8D44003D47F4 /* ONRAMP.ttf in Resources */,
+				975AA3C7208A6E5C00F97237 /* buttonSound.mp3 in Resources */,
 				145AA4D02089256600E6CE02 /* Assets.xcassets in Resources */,
+				975AA3CE208A6E7000F97237 /* backgroundSound2.mp3 in Resources */,
+				975AA3CB208A6E6800F97237 /* blackHole2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,7 +755,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JC4QT73C9E;
+				DEVELOPMENT_TEAM = RT5RW3DL77;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -757,7 +773,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JC4QT73C9E;
+				DEVELOPMENT_TEAM = RT5RW3DL77;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
