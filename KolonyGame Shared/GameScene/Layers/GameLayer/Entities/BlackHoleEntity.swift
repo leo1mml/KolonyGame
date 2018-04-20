@@ -110,6 +110,26 @@ class BlackHoleEntity: GKEntity {
 
     func moveOtherWay() {
         self.rotationComponent?.clockWise = !(self.rotationComponent?.clockWise)!
+        invertChildrenRotation()
+    }
+    
+    func invertChildrenRotation() {
+        if(self.rotationComponent?.clockWise)!{
+            runChildrenRotationAction(angle: -CGFloat.pi * 2, duration: (self.rotationComponent?.rotationDuration)!)
+        }else {
+            runChildrenRotationAction(angle: CGFloat.pi * 2, duration: (self.rotationComponent?.rotationDuration)!)
+        }
+    }
+    
+    func runChildrenRotationAction(angle: CGFloat, duration: TimeInterval) {
+        let rotateAction = SKAction.rotate(byAngle: angle, duration: duration)
+        let repeatRotation = SKAction.repeatForever(rotateAction)
+        
+        let sprite = self.spriteComponent?.node
+        for child in (sprite?.children)! {
+            child.removeAllActions()
+            child.run(repeatRotation)
+        }
     }
 }
 

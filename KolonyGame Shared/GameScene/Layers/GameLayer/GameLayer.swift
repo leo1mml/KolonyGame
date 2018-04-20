@@ -185,6 +185,9 @@ class GameLayer: SKNode {
     }
     
     func flushRocketTo(centerPoint: CGPoint, startRadius: CGFloat, endRadius: CGFloat, angle: CGFloat, duration: TimeInterval){
+        for rocket in rocketList {
+            rocket.spriteComponent?.node.physicsBody?.categoryBitMask = PhysicsCategory.None
+        }
         if let sprite = self.rocketToLaunch?.component(ofType: SpriteComponent.self){
             sprite.node.physicsBody?.categoryBitMask = PhysicsCategory.None
             sprite.node.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
@@ -276,8 +279,7 @@ class GameLayer: SKNode {
         if(self.deltaTime >= self.actionInterval){
             self.deltaTime = 0
             self.actionInterval = NumbersUtil.randomDouble(min: 3, max: 5)
-            print("inverteu")
-            self.blackHole?.rotationComponent?.invertRotation()
+            self.blackHole?.moveOtherWay()
         }
     }
     

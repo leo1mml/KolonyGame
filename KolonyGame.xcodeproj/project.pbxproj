@@ -315,8 +315,8 @@
 			children = (
 				14AF061F207E876E003D47F4 /* RocketStates */,
 				8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */,
-				8A8CCFA72053292B00546F56 /* PlanetEntity.swift */,
 				8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */,
+				8A8CCFA72053292B00546F56 /* PlanetEntity.swift */,
 				14F761C22059A16400F4D04F /* RocketEntity.swift */,
 			);
 			path = Entities;
