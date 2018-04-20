@@ -20,8 +20,9 @@ class HudLayer: SKNode {
     var scoreIcon: SimpleEntity?
     var gameOverSlogan: SimpleEntity?
     var highScoreLabel: SKLabelNode?
-    
+    var tapToLaunchAgainLabel: SKLabelNode?
     let HIGH_SCORE_KEY = "highScore"
+   
     
     init(size: CGSize) {
         super.init()
@@ -43,6 +44,11 @@ class HudLayer: SKNode {
             self.gameOverSlogan = SimpleEntity(imageName: "gameOverText", size: sizeSlogan)
             self.gameOverSlogan?.spriteComponent?.node.alpha = 0
             
+            self.tapToLaunchAgainLabel = SKLabelNode(fontNamed: "Onramp")
+            configure(label: self.tapToLaunchAgainLabel, fontSize: 30, text: "TAP TO LAUNCH AGAIN", position: CGPoint(x: sizeLayer.width / 2, y: sizeLayer.height * 0.3))
+            self.tapToLaunchAgainLabel?.alpha = 0
+             self.entityManager?.add(self.tapToLaunchAgainLabel!)
+            
             //creating score label
             self.highScoreLabel = SKLabelNode(fontNamed: "Onramp")
             configure(label: self.highScoreLabel, fontSize: 44, text: "BEST: \(String(highScore()))", position: CGPoint(x: sizeLayer.width / 2, y: sizeLayer.height * 0.7))
@@ -63,7 +69,7 @@ class HudLayer: SKNode {
             
             if let spriteScoreIcon = scoreIcon?.spriteComponent {
                 if let score = self.scoreLabel {
-                    score.position = CGPoint(x: spriteScoreIcon.node.position.x + 30 , y: spriteScoreIcon.node.position.y - (spriteScoreIcon.node.size.height / 2  + 1) )
+                    score.position = CGPoint(x: (sizeLayer.width * 0.08) * 2  , y: spriteScoreIcon.node.position.y - (spriteScoreIcon.node.size.height / 2  + 1) )
                     self.entityManager?.add(score)
                 }
             }
@@ -114,8 +120,8 @@ class HudLayer: SKNode {
             self.scoreLabel?.removeAllActions()
             
             self.highScoreLabel?.run(SKAction.fadeIn(withDuration: 1))
+            self.tapToLaunchAgainLabel?.run(SKAction.fadeIn(withDuration: 1))
             self.gameOverSlogan?.spriteComponent?.node.run(SKAction.fadeIn(withDuration: 1))
-            
             self.reconfigureLabelNode(node, nextPosition, nextScale)
             
         }
@@ -187,6 +193,44 @@ class HudLayer: SKNode {
             return parent
         }
         return nil
+    }
+    
+    func resetupHudLayer () {
+        self.scoreLabel?.run(SKAction.sequence([SKAction.fadeOut(withDuration: TimeInterval(1))])) {
+            self.scoreLabel?.removeAllActions()
+        }
+        self.scoreIcon?.spriteComponent?.node.run(SKAction.fadeOut(withDuration: TimeInterval(1))){
+            self.highScoreLabel?.removeAllActions()
+        }
+        self.gameOverSlogan?.spriteComponent?.node.run(SKAction.fadeOut(withDuration: TimeInterval(1))){
+            self.gameOverSlogan?.spriteComponent?.node.removeAllActions()
+        }
+        self.highScoreLabel?.run(SKAction.fadeOut(withDuration: TimeInterval(1))){
+            self.highScoreLabel?.removeAllActions()
+        }
+        self.tapToLaunchAgainLabel?.run(SKAction.fadeOut(withDuration: TimeInterval(1))) {
+            self.tapToLaunchAgainLabel?.removeAllActions()
+            self.resetupScore()
+        }
+    }
+    
+    private func resetupScore() {
+        
+        let scoreIconPosition =  CGPoint(x: self.size!.width * 0.08 , y: self.size!.height * 0.97)
+        let scoreLabelPosition = CGPoint(x: (self.size!.width * 0.08) * 2  , y: (self.scoreIcon?.spriteComponent?.node.position.y)! - ((self.scoreIcon?.spriteComponent?.node.size.height)! / 2  + 1))
+        
+        self.scoreIcon?.spriteComponent?.node.setScale(1)
+        self.scoreIcon?.spriteComponent?.node.run(SKAction.sequence([SKAction.move(to: scoreIconPosition, duration: TimeInterval(1)), SKAction.fadeIn(withDuration: TimeInterval(1))])) {
+            self.scoreIcon?.spriteComponent?.node.removeAllActions()
+        }
+        
+        self.scoreLabel?.fontSize = 44
+        self.scoreLabel?.run(SKAction.sequence([SKAction.move(to: scoreLabelPosition, duration: TimeInterval(1)), SKAction.fadeIn(withDuration: TimeInterval(1))])) {
+            self.scoreLabel?.removeAllActions()
+        }
+        
+        
+   
     }
     
     //configure some properties of a gkEntity

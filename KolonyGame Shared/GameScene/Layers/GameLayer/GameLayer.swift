@@ -13,6 +13,7 @@ class GameLayer: SKNode {
     var entityManager : EntityManagerGameLayer?
     var blackHole : BlackHoleEntity?
     var cantTouchThis: Bool = false
+    var gameOver = false
     var rocketToLaunch : RocketEntity? {
         didSet {
             if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self)?.node{
@@ -193,7 +194,7 @@ class GameLayer: SKNode {
     
     func startGameOverEffect(finished: (() -> Void)?) {
         
-        
+        gameOver = true
         DispatchQueue.main.async {
             
             self.blackHole?.movePlanetsToCenterBlackHole()
@@ -204,9 +205,11 @@ class GameLayer: SKNode {
             
             for rocket in self.rocketList {
                 rocket.spriteComponent?.node.physicsBody?.categoryBitMask = PhysicsCategory.None
-                self.moveToBlackHoleposition(node: (rocket.spriteComponent?.node)!, duration: TimeInterval(time), durantionDecreaseScale: TimeInterval(1), finished: nil)
+                self.moveToBlackHoleposition(node: (rocket.spriteComponent?.node)!, duration: TimeInterval(time), durantionDecreaseAlpha: TimeInterval(1), nextPosition: (rocket.spriteComponent?.node.position)! , nextScale: 1, finished: nil)
                 time += 0.333
             }
+            
+            //
             
             
             
@@ -225,23 +228,28 @@ class GameLayer: SKNode {
     
     
     
-    //Move a sprite node for blackHole position
-    private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval, durantionDecreaseScale: TimeInterval, finished: (() -> Void)?) {
+
+    private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval, durantionDecreaseAlpha: TimeInterval, nextPosition: CGPoint, nextScale: Float, finished: (() -> Void)?) {
 
         //move to black hole position, set scale 0 and remove of screen
         
         let position = CGPoint(x: (self.size?.width)! / 2 , y: (self.size?.height)! / 2 )
-        let sequence = SKAction.sequence([SKAction.move(to: position, duration: duration), SKAction.scale(to: 0, duration: durantionDecreaseScale), SKAction.removeFromParent()])
-        
+        let sequence = SKAction.sequence([SKAction.move(to: position, duration: duration), SKAction.fadeAlpha(to: 0, duration: durantionDecreaseAlpha)])
+        //
         //run sequence and remove all actions of node after actions
         node.run(sequence) {
-            node.removeAllActions()
             DispatchQueue.main.async {
                 finished?()
             }
-            //// mandando as naves pro meio da tela raz
         }
     }
+    
+    func reconfigureSprite (_ node: SKSpriteNode, _ nextPosition: CGPoint) {
+        let sequence = SKAction.sequence([SKAction.move(to: nextPosition, duration: TimeInterval(0.1)), SKAction.fadeAlpha(by: 1, duration: TimeInterval(0.5))])
+        node.run(sequence) {
+        }
+    }
+
     
     
     private func sceceReference () ->  GameScene! {
@@ -255,12 +263,21 @@ class GameLayer: SKNode {
         if(rocketList.count == 3 && !cantTouchThis){
             lauchRocket()
         }
+        
+        if gameOver {
+            let scene = sceceReference()
+            scene?.hudLayer?.resetupHudLayer()
+        }
     }
     
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         if(rocketList.count == 3 && !cantTouchThis){
             lauchRocket()
         }
+        
+        
+        
+        
     }
     
     func update(deltaTime: TimeInterval) {
