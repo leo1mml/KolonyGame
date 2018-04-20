@@ -24,8 +24,8 @@
 		145AA4CF208924E000E6CE02 /* SKAction + Movements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF66CC2087CD47008149B0 /* SKAction + Movements.swift */; };
 		145AA4D02089256600E6CE02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A1B1442087F91B00EE1899 /* Assets.xcassets */; };
 		1466BBEE207C1638007FD926 /* HudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466BBEA207C1638007FD926 /* HudLayer.swift */; };
-		1466BBF5207C17E8007FD926 /* ScoreIconEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466BBF2207C1728007FD926 /* ScoreIconEntity.swift */; };
-		1466BBF6207C17E9007FD926 /* ScoreIconEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466BBF2207C1728007FD926 /* ScoreIconEntity.swift */; };
+		1466BBF5207C17E8007FD926 /* SimpleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466BBF2207C1728007FD926 /* SimpleEntity.swift */; };
+		1466BBF6207C17E9007FD926 /* SimpleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466BBF2207C1728007FD926 /* SimpleEntity.swift */; };
 		1466BBF7207C17EE007FD926 /* HudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466BBEA207C1638007FD926 /* HudLayer.swift */; };
 		1466BBFA207C1874007FD926 /* ONRAMP.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1466BBF9207C1874007FD926 /* ONRAMP.ttf */; };
 		1491A39E20659B5000AA982C /* StarEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7E320599526008A9159 /* StarEntity.swift */; };
@@ -104,7 +104,7 @@
 		1437E93520894FC500457822 /* explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explosion.mp3; sourceTree = "<group>"; };
 		1437E93720894FE100457822 /* point.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = point.mp3; sourceTree = "<group>"; };
 		1466BBEA207C1638007FD926 /* HudLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudLayer.swift; sourceTree = "<group>"; };
-		1466BBF2207C1728007FD926 /* ScoreIconEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreIconEntity.swift; sourceTree = "<group>"; };
+		1466BBF2207C1728007FD926 /* SimpleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEntity.swift; sourceTree = "<group>"; };
 		1466BBF9207C1874007FD926 /* ONRAMP.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ONRAMP.ttf; sourceTree = "<group>"; };
 		14A0F6A420769B530093C5D3 /* GameLayer+Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameLayer+Contact.swift"; sourceTree = "<group>"; };
 		14A1B1442087F91B00EE1899 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -186,8 +186,8 @@
 		1466BBE9207C1638007FD926 /* HudLayer */ = {
 			isa = PBXGroup;
 			children = (
-				1466BBEA207C1638007FD926 /* HudLayer.swift */,
 				1466BBEB207C1638007FD926 /* Entities */,
+				1466BBEA207C1638007FD926 /* HudLayer.swift */,
 			);
 			path = HudLayer;
 			sourceTree = "<group>";
@@ -196,7 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				14AF0626207E8CDF003D47F4 /* EntityManagerHudLayer.swift */,
-				1466BBF2207C1728007FD926 /* ScoreIconEntity.swift */,
+				1466BBF2207C1728007FD926 /* SimpleEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -531,7 +531,7 @@
 				14E2FE09205869AE00A0E3A8 /* RotationComponent.swift in Sources */,
 				977B660520755C5A00CE37D6 /* BackgroundBasicEntity.swift in Sources */,
 				977B660720755D9300CE37D6 /* MistEntity.swift in Sources */,
-				1466BBF6207C17E9007FD926 /* ScoreIconEntity.swift in Sources */,
+				1466BBF6207C17E9007FD926 /* SimpleEntity.swift in Sources */,
 				8A8CCFA32053249F00546F56 /* GameLayer.swift in Sources */,
 				8A8CCF772053239A00546F56 /* GameViewController.swift in Sources */,
 				14AF0624207E876E003D47F4 /* QueueState.swift in Sources */,
@@ -549,7 +549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				143817EF2075637A007E5A1E /* StarEntity.swift in Sources */,
-				1466BBF5207C17E8007FD926 /* ScoreIconEntity.swift in Sources */,
+				1466BBF5207C17E8007FD926 /* SimpleEntity.swift in Sources */,
 				8A8CCF922053239B00546F56 /* GameScene.swift in Sources */,
 				143817EA2075635C007E5A1E /* SpriteComponent.swift in Sources */,
 				8AE8079520570423006EDC86 /* GameLayer.swift in Sources */,

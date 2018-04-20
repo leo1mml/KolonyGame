@@ -78,6 +78,7 @@ class BackgroundLayer: SKNode {
             setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -12)
             
             if let sprite = i.spriteComponent {
+                sprite.node.run(SKAction.fadeIn(withDuration: TimeInterval(0.7)))
                 sprite.node.setScale(NumbersUtil.randomCGFloat(min: 0.3, max: 1))
                 sprite.node.run(sprite.alphaAction(alphaValue: 0, duration: TimeInterval(NumbersUtil.randomCGFloat(min: 1, max: 4))))
             }
@@ -107,6 +108,7 @@ class BackgroundLayer: SKNode {
                 sprite.node.colorBlendFactor = 1.0
 
                 //configuring alpha effect
+                sprite.node.run(SKAction.fadeIn(withDuration: TimeInterval(0.7)))
                 sprite.node.run(sprite.alphaAction(alphaValue: NumbersUtil.randomCGFloat(min: 0.1, max: 0.4), duration: TimeInterval(NumbersUtil.randomCGFloat(min: 1, max: 3))))
             }
         }
@@ -128,6 +130,12 @@ class BackgroundLayer: SKNode {
         //default value for exceptions case
         return (CGFloat(0), CGFloat(0))
     }
+    
+    private func resetupBackground () {
+        setup(self.stars!)
+        setup(littleStars: self.littleStars!)
+    }
+    
     
     //Create many stars for background
     private func createPoolStars(_ size : CGSize, _ typeTexture: BackgroundTextures) -> [StarEntity] {
@@ -191,7 +199,7 @@ class BackgroundLayer: SKNode {
     private func moveStars <T: BackgroundBasicEntity> (stars: [T], duration: TimeInterval, finished: (() -> Void)?) {
         for index in 0...20 {
             
-            moveToBlackHoleposition(node: (stars[index].spriteComponent?.node)!, duration: duration, durantionDecreaseScale: TimeInterval(0.1 ), finished: nil)
+            moveToBlackHoleposition(node: (stars[index].spriteComponent?.node)!, duration: duration, durantionDecreaseAlpha: TimeInterval(0.1 ), finished: nil)
             
             
 //            if star == stars.last {
@@ -220,19 +228,16 @@ class BackgroundLayer: SKNode {
     }
     
     //Move a sprite node for blackHole position
-    private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval, durantionDecreaseScale: TimeInterval, finished: (() -> Void)?) {
+    private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval, durantionDecreaseAlpha: TimeInterval, finished: (() -> Void)?) {
         
         node.zPosition = 50
         
         //move to black hole position, set scale 0 and remove of screen
-        let sequence = SKAction.sequence([SKAction.move(to: CGPoint.zero, duration: duration), SKAction.scale(to: 0, duration: durantionDecreaseScale), SKAction.removeFromParent()])
+        let sequence = SKAction.sequence([SKAction.move(to: CGPoint.zero, duration: duration), SKAction.fadeAlpha(to: 0, duration: durantionDecreaseAlpha)])
         
         //run sequence and remove all actions of node after actions
         node.run(sequence) {
             node.removeAllActions()
-            DispatchQueue.main.async {
-                finished?()
-            }
         }
     }
     
