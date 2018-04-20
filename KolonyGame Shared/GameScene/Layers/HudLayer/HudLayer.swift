@@ -17,7 +17,8 @@ class HudLayer: SKNode {
     var entityManager : EntityManagerHudLayer?
     private var score = 0
     var scoreLabel: SKLabelNode?
-    var scoreIcon: ScoreIconEntity?
+    var scoreIcon: SimpleEntity?
+    var gameOverSlogan: SimpleEntity?
     var highScoreLabel: SKLabelNode?
     
     let HIGH_SCORE_KEY = "highScore"
@@ -34,13 +35,21 @@ class HudLayer: SKNode {
             
             //creating score icon
             let size = CGSize(width: sizeLayer.height * 0.07, height: sizeLayer.height * 0.03402)
-            self.scoreIcon = ScoreIconEntity(imageName: "scoreicon", size: size)
+            self.scoreIcon = SimpleEntity(imageName: "scoreicon", size: size)
+            
+            let width = sizeLayer.height * 0.4
+            let sizeSlogan = CGSize(width: width, height: width * 0.2)
+            
+            self.gameOverSlogan = SimpleEntity(imageName: "gameOverText", size: sizeSlogan)
+            self.gameOverSlogan?.spriteComponent?.node.alpha = 0
             
             //creating score label
             self.highScoreLabel = SKLabelNode(fontNamed: "Onramp")
             configure(label: self.highScoreLabel, fontSize: 44, text: "BEST: \(String(highScore()))", position: CGPoint(x: sizeLayer.width / 2, y: sizeLayer.height * 0.7))
             self.highScoreLabel?.alpha = 0
             self.entityManager?.add(self.highScoreLabel!)
+            
+            
             self.scoreLabel = SKLabelNode(fontNamed: "Onramp")
             if let score = self.scoreLabel {
                 score.fontSize = 44
@@ -50,6 +59,8 @@ class HudLayer: SKNode {
             
             
             setupEntity(entity: scoreIcon!, position: CGPoint(x: sizeLayer.width * 0.08 , y: sizeLayer.height * 0.97), zPosition: nil)
+            setupEntity(entity: gameOverSlogan!, position: centerPoint(), zPosition: nil)
+            
             if let spriteScoreIcon = scoreIcon?.spriteComponent {
                 if let score = self.scoreLabel {
                     score.position = CGPoint(x: spriteScoreIcon.node.position.x + 30 , y: spriteScoreIcon.node.position.y - (spriteScoreIcon.node.size.height / 2  + 1) )
@@ -59,9 +70,13 @@ class HudLayer: SKNode {
             
             
             self.entityManager?.add(scoreIcon!)
+            self.entityManager?.add(gameOverSlogan!)
             
         }
     }
+    
+    
+    
     
     func startGameOverEffect () {
 
@@ -99,7 +114,7 @@ class HudLayer: SKNode {
             self.scoreLabel?.removeAllActions()
             
             self.highScoreLabel?.run(SKAction.fadeIn(withDuration: 1))
-            
+            self.gameOverSlogan?.spriteComponent?.node.run(SKAction.fadeIn(withDuration: 1))
             
             self.reconfigureLabelNode(node, nextPosition, nextScale)
             
