@@ -10,7 +10,7 @@ import GameplayKit
 import SpriteKit
 
 
-class ScoreIconEntity : GKEntity {
+class SimpleEntity : GKEntity {
     var spriteComponent: SpriteComponent?
     
     init(imageName: String, size: CGSize) {

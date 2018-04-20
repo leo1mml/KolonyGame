@@ -18,9 +18,17 @@ class PlayingState: GKState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        scene.backgroundLayer?.setupLayer()
-        scene.gameLayer?.configureLayer()
-        scene.hudLayer?.setupLayer()
+        
+        if previousState is GameOverState {
+            scene.hudLayer?.resetupHudLayer()
+            scene.gameLayer?.resetupGameLayer()
+            scene.gameLayer?.blackHole?.resetupPlanets()
+        } else {
+            scene.backgroundLayer?.setupLayer()
+            scene.gameLayer?.configureLayer()
+            scene.hudLayer?.setupLayer()
+        }
+        
         
     }
     
