@@ -68,8 +68,10 @@ class BackgroundLayer: SKNode {
         }
     }
     
-    private func setup (littleStars: [LittleStar]) {
+    func setup (littleStars: [LittleStar]) {
         for i in littleStars {
+            
+            i.spriteComponent?.node.setScale(1)
             //get position x and y in a tuple -> (x: CGFloat, y:CGFloat)
             var pos = randomPosition()
             
@@ -86,10 +88,11 @@ class BackgroundLayer: SKNode {
     }
     
     //Create ramdon position for stars and configure they
-    private func setup (_ stars: [StarEntity]) {
+    func setup (_ stars: [StarEntity]) {
         
         for  i in stars {
             
+            i.spriteComponent?.node.setScale(1)
             //get position x and y in a tuple -> (x: CGFloat, y:CGFloat)
 
             var pos = self.randomPosition()
@@ -199,7 +202,9 @@ class BackgroundLayer: SKNode {
     private func moveStars <T: BackgroundBasicEntity> (stars: [T], duration: TimeInterval, finished: (() -> Void)?) {
         for index in 0...20 {
             
-            moveToBlackHoleposition(node: (stars[index].spriteComponent?.node)!, duration: duration, durantionDecreaseAlpha: TimeInterval(0.1 ), finished: nil)
+            moveToBlackHoleposition(node: (stars[index].spriteComponent?.node)!, duration: duration, durantionDecreaseAlpha: TimeInterval(0.1 )) {
+                finished?()
+            }
             
             
 //            if star == stars.last {
@@ -227,6 +232,23 @@ class BackgroundLayer: SKNode {
         
     }
     
+    func removeActionsAllStars () {
+        if let starss = self.stars {
+            for item in starss {
+                item.spriteComponent?.node.setScale(0)
+                item.spriteComponent?.node.removeAllActions()
+            }
+        }
+        
+        if let starss = self.littleStars {
+            for item in starss {
+                item.spriteComponent?.node.setScale(0)
+                item.spriteComponent?.node.removeAllActions()
+            }
+        }
+        
+    }
+    
     //Move a sprite node for blackHole position
     private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval, durantionDecreaseAlpha: TimeInterval, finished: (() -> Void)?) {
         
@@ -237,7 +259,7 @@ class BackgroundLayer: SKNode {
         
         //run sequence and remove all actions of node after actions
         node.run(sequence) {
-            node.removeAllActions()
+            finished?()
         }
     }
     
