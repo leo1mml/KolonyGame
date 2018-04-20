@@ -49,6 +49,7 @@ extension GameLayer {
             
             addFlag(planet: planet, contactPoint: contactPoint)
             if let parent = self.parent as? GameScene {
+                self.blackHole?.rotationComponent?.rotationDuration = (self.blackHole?.rotationComponent?.rotationDuration)! - 0.02
                 parent.incrementScore()
             }
         }else {
