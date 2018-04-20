@@ -13,7 +13,7 @@ class GameLayer: SKNode {
     var entityManager : EntityManagerGameLayer?
     var blackHole : BlackHoleEntity?
     var cantTouchThis: Bool = false
-    var gameOver = false
+    
     var rocketToLaunch : RocketEntity? {
         didSet {
             if let sprite = rocketToLaunch?.component(ofType: SpriteComponent.self)?.node{
@@ -201,15 +201,11 @@ class GameLayer: SKNode {
     }
     
     func startGameOverEffect(finished: (() -> Void)?) {
-        
-        gameOver = true
         DispatchQueue.main.async {
             
             self.blackHole?.movePlanetsToCenterBlackHole()
             
-            
             var time = 0.333
-            
             
             for rocket in self.rocketList {
                 rocket.spriteComponent?.node.physicsBody?.categoryBitMask = PhysicsCategory.None
@@ -274,7 +270,6 @@ class GameLayer: SKNode {
         if let parent = self.parent as? GameScene {
             if parent.stateMachine.currentState is GameOverState {
                 parent.stateMachine.enter(PlayingState.self)
-
             }
         }
     }
