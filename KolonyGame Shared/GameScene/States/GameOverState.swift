@@ -23,7 +23,8 @@ class GameOverState: GKState {
                 self.scene.gameLayer?.blackHoleSound()
                 self.scene.gameLayer?.startGameOverEffect(finished: nil)
                 self.scene.backgroundLayer?.startGameOverEffect(finished: nil)
-            
+                self.scene.hudLayer?.startGameOverEffect()
+                
                 
             }
         }
