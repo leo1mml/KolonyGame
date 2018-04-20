@@ -13,6 +13,7 @@ class GameLayer: SKNode {
     var entityManager : EntityManagerGameLayer?
     var blackHole : BlackHoleEntity?
     var cantTouchThis: Bool = false
+    var tapToLaunch = true
     
     var rocketToLaunch : RocketEntity? {
         didSet {
@@ -186,7 +187,7 @@ class GameLayer: SKNode {
             let scaleDown = SKAction.scale(to: 0, duration: 4)
             let spiralMovement = SKAction.spiral(startRadius: startRadius, endRadius: endRadius, angle: angle, centerPoint: centerPoint, duration: duration)
             sprite.node.run(SKAction.group([scaleDown, spiralMovement])){
-                sprite.node.removeFromParent()
+                sprite.node.alpha = 0.0
             }
         }
         
@@ -257,6 +258,22 @@ class GameLayer: SKNode {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            
+        if let parent = self.parent as? GameScene {
+            if parent.stateMachine.currentState is GameOverState {
+                parent.stateMachine.enter(PlayingState.self)
+            }
+        }
+        if(rocketList.count == 3 && !cantTouchThis && !self.tapToLaunch){
+            lauchRocket()
+        
+        }else {
+            self.tapToLaunch = false
+        }
+        
+    }
+    
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         if(rocketList.count == 3 && !cantTouchThis){
             lauchRocket()
         }
@@ -265,12 +282,6 @@ class GameLayer: SKNode {
             if parent.stateMachine.currentState is GameOverState {
                 parent.stateMachine.enter(PlayingState.self)
             }
-        }
-    }
-    
-    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        if(rocketList.count == 3 && !cantTouchThis){
-            lauchRocket()
         }
         
         

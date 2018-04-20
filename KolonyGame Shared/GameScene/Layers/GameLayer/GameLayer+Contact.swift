@@ -59,6 +59,7 @@ extension GameLayer {
                 addSmoke(contactPoint: contactPoint)
                 missSound()
                 parent.changeState(state: GameOverState.self)
+                self.tapToLaunch = true
             }
             
         }
@@ -71,6 +72,7 @@ extension GameLayer {
     func handleRocketAndBlackHole (rocket: SKNode, blackHole: SKNode) {
         if let parent = self.parent as? GameScene {
             parent.changeState(state: GameOverState.self)
+            self.tapToLaunch = true
         }
     }
     
