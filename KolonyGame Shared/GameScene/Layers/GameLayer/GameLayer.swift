@@ -33,6 +33,7 @@ class GameLayer: SKNode {
     init(size: CGSize) {
         super.init()
         self.size = size
+        entityManager = EntityManagerGameLayer(gameLayer: self)
     }
     
     func playSound() {
