@@ -92,6 +92,21 @@ class RocketEntity: GKEntity {
     
     func launch(velocity: CGVector) {
         self.spriteComponent?.node.physicsBody?.velocity = velocity
+        launchSound()
+    }
+    
+    func launchSound() {
+        let audioNode = SKAudioNode(fileNamed: "launchSound")
+        
+        let wait = SKAction.wait(forDuration: 2)
+        let remove = SKAction.run {
+            audioNode.removeFromParent()
+        }
+        
+        let action = SKAction.sequence([wait, remove])
+        audioNode.run(action)
+        
+        self.spriteComponent?.node.addChild(audioNode)
     }
     
     func moveIdle() {
