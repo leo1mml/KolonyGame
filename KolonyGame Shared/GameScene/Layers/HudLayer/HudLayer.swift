@@ -8,6 +8,8 @@
 
 import SpriteKit
 import GameplayKit
+import Foundation
+import UIKit
 
 class HudLayer: SKNode {
     
@@ -16,6 +18,8 @@ class HudLayer: SKNode {
     private var score = 0
     var scoreLabel: SKLabelNode?
     var scoreIcon: ScoreIconEntity?
+    
+    let HIGH_SCORE_KEY = "highScore"
     
     init(size: CGSize) {
         super.init()
@@ -55,6 +59,8 @@ class HudLayer: SKNode {
     }
     
     func startGameOverEffect () {
+
+        self.updateHighScore()
         self.moveToBlackHoleposition(node: (self.scoreIcon!.spriteComponent?.node)!, duration: TimeInterval(1), durantionDecreaseScale: TimeInterval(1))
         let sequence = SKAction.sequence([SKAction.move(to: CGPoint.zero, duration: TimeInterval(1)), SKAction.scale(to: 0, duration: TimeInterval(1)), SKAction.removeFromParent()])
         self.scoreLabel?.run(sequence) {
@@ -62,7 +68,26 @@ class HudLayer: SKNode {
         }
     }
     
+    func updateHighScore () {
+        let savedHighScore = UserDefaults.standard.object(forKey: HIGH_SCORE_KEY)
+        if let highScore = savedHighScore as? Int{
+            if highScore > self.score {
+                save(highScoreValue: self.score)
+            }
+        } else {
+            save(highScoreValue: self.score)
+        }
+    }
     
+
+    func save (highScoreValue: Int) {
+        UserDefaults.standard.set(highScoreValue, forKey: HIGH_SCORE_KEY)
+        UserDefaults.standard.synchronize()
+    }
+    
+    func presentScore() {
+        
+    }
     
     private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval, durantionDecreaseScale: TimeInterval) {
         

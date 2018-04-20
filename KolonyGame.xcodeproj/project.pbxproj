@@ -176,8 +176,8 @@
 		1466BBE9207C1638007FD926 /* HudLayer */ = {
 			isa = PBXGroup;
 			children = (
-				1466BBEA207C1638007FD926 /* HudLayer.swift */,
 				1466BBEB207C1638007FD926 /* Entities */,
+				1466BBEA207C1638007FD926 /* HudLayer.swift */,
 			);
 			path = HudLayer;
 			sourceTree = "<group>";
