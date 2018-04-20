@@ -222,11 +222,6 @@ class BackgroundLayer: SKNode {
     //Move a sprite node for blackHole position
     private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval, durantionDecreaseScale: TimeInterval, finished: (() -> Void)?) {
         
-        let scene = self.sceceReference()
-        var position = CGPoint.zero
-        if let gameLayer = scene?.gameLayer {
-            position = gameLayer.blackHolePosition()
-        }
         node.zPosition = 50
         
         //move to black hole position, set scale 0 and remove of screen

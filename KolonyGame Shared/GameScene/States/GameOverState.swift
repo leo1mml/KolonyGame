@@ -21,9 +21,11 @@ class GameOverState: GKState {
         DispatchQueue.main.async {
             self.scene.shakeScene(duration: 1.5) {
                 
+                
                 self.scene.gameLayer?.startGameOverEffect(finished: nil)
                 self.scene.backgroundLayer?.startGameOverEffect(finished: nil)
-            
+                self.scene.hudLayer?.startGameOverEffect()
+                
                 
             }
         }

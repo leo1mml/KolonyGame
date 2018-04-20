@@ -58,12 +58,10 @@ class GameLayer: SKNode {
     }
     
     //Get the black hole position
-    func blackHolePosition() -> CGPoint{
+    func blackHolePosition(layer: SKNode) -> CGPoint {
         if let spriteComponent = blackHole?.component(ofType: SpriteComponent.self) {
             let position = spriteComponent.node.position
-            if let scene = self.parent as? GameScene {
-                return self.convert(position, to: scene.backgroundLayer!)
-            }
+            return self.convert(position, to: layer)
         }
         return CGPoint.zero
     }
