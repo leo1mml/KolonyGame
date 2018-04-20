@@ -80,6 +80,7 @@
 		8A8CCFAA20532B6600546F56 /* PlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA920532B6600546F56 /* PlayingState.swift */; };
 		8ABF66CB2087C5A1008149B0 /* Smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8ABF66CA2087C5A1008149B0 /* Smoke.sks */; };
 		8ABF66CD2087CD47008149B0 /* SKAction + Movements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF66CC2087CD47008149B0 /* SKAction + Movements.swift */; };
+		8ABF66CE20894CD7008149B0 /* BackgroundTextures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DC3C8520867B27000A4DA0 /* BackgroundTextures.swift */; };
 		8AE807912056FE70006EDC86 /* EntityManagerGameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */; };
 		8AE807922057040F006EDC86 /* PlanetEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8CCFA72053292B00546F56 /* PlanetEntity.swift */; };
 		8AE8079320570413006EDC86 /* EntityManagerGameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */; };
@@ -336,8 +337,8 @@
 			children = (
 				14AF061F207E876E003D47F4 /* RocketStates */,
 				8AE807902056FE70006EDC86 /* EntityManagerGameLayer.swift */,
-				8A8CCFA72053292B00546F56 /* PlanetEntity.swift */,
 				8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */,
+				8A8CCFA72053292B00546F56 /* PlanetEntity.swift */,
 				14F761C22059A16400F4D04F /* RocketEntity.swift */,
 			);
 			path = Entities;
@@ -558,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ABF66CE20894CD7008149B0 /* BackgroundTextures.swift in Sources */,
 				143817EF2075637A007E5A1E /* StarEntity.swift in Sources */,
 				1466BBF5207C17E8007FD926 /* SimpleEntity.swift in Sources */,
 				8A8CCF922053239B00546F56 /* GameScene.swift in Sources */,
@@ -737,7 +739,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RT5RW3DL77;
+				DEVELOPMENT_TEAM = JC4QT73C9E;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -755,7 +757,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RT5RW3DL77;
+				DEVELOPMENT_TEAM = JC4QT73C9E;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -774,7 +776,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J8J2K4KEX2;
+				DEVELOPMENT_TEAM = JC4QT73C9E;
 				INFOPLIST_FILE = "KolonyGame tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPID.KolonyGame;
@@ -792,7 +794,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J8J2K4KEX2;
+				DEVELOPMENT_TEAM = JC4QT73C9E;
 				INFOPLIST_FILE = "KolonyGame tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPID.KolonyGame;

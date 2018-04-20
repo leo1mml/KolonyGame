@@ -97,7 +97,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         deltaTime = currentTime - lastUpdateTimeInterval
         lastUpdateTimeInterval = currentTime
         stateMachine.update(deltaTime: deltaTime)
-        
+        gameLayer?.update(deltaTime: deltaTime)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {

@@ -19,7 +19,7 @@ class LaunchState: GKState {
     
     override func didEnter(from previousState: GKState?) {
         rocket.spriteComponent?.node.removeAllActions()
-        rocket.launch(velocity: CGVector(dx: 0, dy: 400))
+        rocket.launch(velocity: CGVector(dx: 0, dy: (rocket.spriteComponent?.node.parent?.calculateAccumulatedFrame().height)! * 0.57))
         rocket.flame.removeFromParent()
         rocket.launchFlame()
     }

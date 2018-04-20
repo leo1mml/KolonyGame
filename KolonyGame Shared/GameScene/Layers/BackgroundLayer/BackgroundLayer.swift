@@ -172,19 +172,17 @@ class BackgroundLayer: SKNode {
     //create comets particles
     private func createComet() -> SKEmitterNode {
         
-//        let particle = SKEmitterNode(fileNamed: "Comets.sks")
-//        let texture = SKTexture(image: #imageLiteral(resourceName: "cometa"))
-//
-//        texture.filteringMode = .linear
-//        particle?.particleTexture = texture
-//
-//        particle?.position = CGPoint(x: (size?.width)!/2 * -1, y: ((size?.height)!/2))
-//        particle?.zPosition = -13
-//
-//
-//        return particle!
-        
-        return SKEmitterNode()
+        let particle = SKEmitterNode(fileNamed: "Comets.sks")
+        let texture = SKTexture(image: #imageLiteral(resourceName: "cometa"))
+
+        texture.filteringMode = .linear
+        particle?.particleTexture = texture
+
+        particle?.position = CGPoint(x: (size?.width)!/2 * -1, y: ((size?.height)!/2))
+        particle?.zPosition = -13
+
+
+        return (particle)!
     }
     
     private func moveSpritesToBlackHolePostion (finished: (() -> Void)?) {
