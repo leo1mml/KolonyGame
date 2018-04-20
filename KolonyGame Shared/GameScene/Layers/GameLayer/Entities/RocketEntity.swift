@@ -103,6 +103,8 @@ class RocketEntity: GKEntity {
             audioNode.removeFromParent()
         }
         
+        audioNode.run(SKAction.changeVolume(by: 0.5, duration: 0.1))
+        
         let action = SKAction.sequence([wait, remove])
         audioNode.run(action)
         

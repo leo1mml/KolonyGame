@@ -54,6 +54,8 @@
 		14D3B25D2077EDCA00CB6B98 /* LittleStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2282076BE200054C6E9 /* LittleStar.swift */; };
 		14E2FE0720583C9600A0E3A8 /* PhysicBodyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */; };
 		14E2FE09205869AE00A0E3A8 /* RotationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */; };
+		14E69C7E208A3E9C0032A5E1 /* GameLayer+Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E69C7D208A3E9C0032A5E1 /* GameLayer+Sounds.swift */; };
+		14E69C7F208A3E9C0032A5E1 /* GameLayer+Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E69C7D208A3E9C0032A5E1 /* GameLayer+Sounds.swift */; };
 		14EEF0EA208A3849004D9470 /* buttonSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14EEF0E9208A3849004D9470 /* buttonSound.mp3 */; };
 		14F19FA5208931EB00CE3A36 /* backgroundSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14F19FA3208931E900CE3A36 /* backgroundSound2.mp3 */; };
 		14F761C32059A16400F4D04F /* RocketEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F761C22059A16400F4D04F /* RocketEntity.swift */; };
@@ -116,6 +118,7 @@
 		14AF0626207E8CDF003D47F4 /* EntityManagerHudLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerHudLayer.swift; sourceTree = "<group>"; };
 		14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicBodyComponent.swift; sourceTree = "<group>"; };
 		14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationComponent.swift; sourceTree = "<group>"; };
+		14E69C7D208A3E9C0032A5E1 /* GameLayer+Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameLayer+Sounds.swift"; sourceTree = "<group>"; };
 		14EEF0E9208A3849004D9470 /* buttonSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buttonSound.mp3; sourceTree = "<group>"; };
 		14F19FA3208931E900CE3A36 /* backgroundSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundSound2.mp3; sourceTree = "<group>"; };
 		14F761C22059A16400F4D04F /* RocketEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketEntity.swift; sourceTree = "<group>"; };
@@ -354,6 +357,7 @@
 				8A8CCFA02053245300546F56 /* Entities */,
 				8A8CCFA22053249F00546F56 /* GameLayer.swift */,
 				14A0F6A420769B530093C5D3 /* GameLayer+Contact.swift */,
+				14E69C7D208A3E9C0032A5E1 /* GameLayer+Sounds.swift */,
 			);
 			path = GameLayer;
 			sourceTree = "<group>";
@@ -541,6 +545,7 @@
 				14AF0624207E876E003D47F4 /* QueueState.swift in Sources */,
 				9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */,
 				9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */,
+				14E69C7E208A3E9C0032A5E1 /* GameLayer+Sounds.swift in Sources */,
 				8A8CCFA82053292B00546F56 /* PlanetEntity.swift in Sources */,
 				1466BBEE207C1638007FD926 /* HudLayer.swift in Sources */,
 				8A8CCF752053239A00546F56 /* AppDelegate.swift in Sources */,
@@ -579,6 +584,7 @@
 				143817F02075637E007E5A1E /* EntityManagerBackgroundLayer.swift in Sources */,
 				143817ED2075636D007E5A1E /* GameOverState.swift in Sources */,
 				8AE8079320570413006EDC86 /* EntityManagerGameLayer.swift in Sources */,
+				14E69C7F208A3E9C0032A5E1 /* GameLayer+Sounds.swift in Sources */,
 				14D3B25D2077EDCA00CB6B98 /* LittleStar.swift in Sources */,
 				8AE8079420570418006EDC86 /* BackgroundLayer.swift in Sources */,
 				14F761C42059A16400F4D04F /* RocketEntity.swift in Sources */,
@@ -729,7 +735,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RT5RW3DL77;
+				DEVELOPMENT_TEAM = J8J2K4KEX2;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -747,7 +753,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RT5RW3DL77;
+				DEVELOPMENT_TEAM = J8J2K4KEX2;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

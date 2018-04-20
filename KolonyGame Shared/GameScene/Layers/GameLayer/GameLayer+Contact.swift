@@ -46,7 +46,7 @@ extension GameLayer {
     func handlePlanetAndRocket(planet: SKNode, rocket: SKNode, contactPoint: CGPoint) {
         
         if(planet.name == rocket.name){
-            jackpotSound()
+            self.jackpotSound()
             addFlag(planet: planet, contactPoint: contactPoint)
             if let parent = self.parent as? GameScene {
                 self.blackHole?.rotationComponent?.rotationDuration = (self.blackHole?.rotationComponent?.rotationDuration)! - 0.02
@@ -57,7 +57,7 @@ extension GameLayer {
             
             if let parent = self.parent as? GameScene {
                 addSmoke(contactPoint: contactPoint)
-                missSound()
+                self.missSound()
                 parent.changeState(state: GameOverState.self)
             }
             
@@ -66,77 +66,13 @@ extension GameLayer {
         recicleShip(rocket: self.rocketToLaunch!)
         
     }
-    
-    
+
     func handleRocketAndBlackHole (rocket: SKNode, blackHole: SKNode) {
         if let parent = self.parent as? GameScene {
             parent.changeState(state: GameOverState.self)
         }
     }
-    
-    func blackHoleSound() {
-        
-        let audioNode = SKAudioNode(fileNamed: "blackHole")
-        let audioNode2 = SKAudioNode(fileNamed: "blackHole2")
-        
-        (self.parent as! GameScene).backgroundMusic1?.stop()
-        (self.parent as! GameScene).backgroundMusic2?.stop()
-        
-        let waitNode = SKAction.wait(forDuration: 9)
-        let waitNode2 = SKAction.wait(forDuration: 52)
-        
-        let removeNode = SKAction.run {
-            audioNode.removeFromParent()
-        }
-        let removeNode2 = SKAction.run {
-            audioNode2.removeFromParent()
-        }
-        
-        let action = SKAction.sequence([waitNode, removeNode])
-        let action2 = SKAction.sequence([waitNode2, removeNode2])
-        
-        let audio1 = SKAction.run {
-            audioNode.run(action)
-            self.addChild(audioNode)
-        }
-        let audio2 = SKAction.run {
-            audioNode2.run(action2)
-            self.addChild(audioNode2)
-        }
-        
-        let sequence = SKAction.sequence([audio1, audio2])
-        self.run(sequence)
-        
-    }
-    
-    func jackpotSound() {
-        let audioNode = SKAudioNode(fileNamed: "point")
-        
-        let wait = SKAction.wait(forDuration: 2)
-        let remove = SKAction.run {
-            audioNode.removeFromParent()
-        }
-        
-        let action = SKAction.sequence([wait, remove])
-        audioNode.run(action)
-        
-        self.addChild(audioNode)
-    }
-    
-    func missSound() {
-        let audioNode = SKAudioNode(fileNamed: "explosion")
-        
-        let wait = SKAction.wait(forDuration: 2)
-        let remove = SKAction.run {
-            audioNode.removeFromParent()
-        }
-        
-        let action = SKAction.sequence([wait, remove])
-        audioNode.run(action)
-        
-        self.addChild(audioNode)
-    }
-    
+
      func addFireworks(contactPoint: CGPoint) {
         
         let planetSize = planetRed?.spriteComponent?.node.size

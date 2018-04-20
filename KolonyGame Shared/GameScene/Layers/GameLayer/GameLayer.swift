@@ -28,10 +28,19 @@ class GameLayer: SKNode {
     var planetGreen : PlanetEntity?
     var planetYellow : PlanetEntity?
     
+    var blackHoleSound: SKAudioNode = SKAudioNode(fileNamed: "blackHole")
+    
     init(size: CGSize) {
         super.init()
         self.size = size
-        entityManager = EntityManagerGameLayer(gameLayer: self)
+    }
+    
+    func playSound() {
+        self.addChild(blackHoleSound)
+    }
+    
+    func stopSound() {
+        self.blackHoleSound.removeFromParent()
     }
     
     func configureLayer() {
@@ -63,9 +72,7 @@ class GameLayer: SKNode {
         }
         return CGPoint.zero
     }
-    
-  
-    
+
     func createPlanets() {
         if let blackHoleSprite = self.blackHole?.component(ofType: SpriteComponent.self){
             self.planetBlue = createPlanet(size: CGSize(width: (self.size?.height)! * 0.11, height: (self.size?.height)! * 0.11), properties: PlanetProperties.blue, position: CGPoint(x: 0, y: -(blackHoleSprite.node.size.height/2)), zPosition: 20, rotationAngle: -Double.pi * 2, duration: 3)
@@ -208,26 +215,20 @@ class GameLayer: SKNode {
                 self.moveToBlackHoleposition(node: (rocket.spriteComponent?.node)!, duration: TimeInterval(time), durantionDecreaseAlpha: TimeInterval(1), nextPosition: (rocket.spriteComponent?.node.position)! , nextScale: 1, finished: nil)
                 time += 0.333
             }
-            
-            //
-            
-            
-            
+
             let group = SKAction.group([SKAction.move(to: CGPoint(x: (self.size?.width)! / 2 , y: (self.size?.height)! / 2), duration: TimeInterval(1)), SKAction.scale(to: 6, duration: TimeInterval(1))])
-            
-            
+  
             self.blackHole?.spriteComponent?.node.run(group){
                 finished?()
             }
-            
-            
-            
+
         }
         
     }
     
-    
     func resetupGameLayer () {
+        
+        self.stopSound()
         
         let group = SKAction.group([SKAction.move(to: CGPoint(x: (self.size?.width)!/2, y: (self.size?.height)! * 0.73), duration: TimeInterval(1)), SKAction.scale(to: 1, duration: TimeInterval(1))])
         self.blackHole?.spriteComponent?.node.run(group)
@@ -254,12 +255,9 @@ class GameLayer: SKNode {
     
     func reconfigureSprite (_ node: SKSpriteNode, _ nextPosition: CGPoint) {
         node.run(SKAction.move(to: nextPosition, duration: TimeInterval(0.1)))
-        
-        
+    
     }
 
-    
-    
     private func sceceReference () ->  GameScene! {
         if let parent = self.parent as? GameScene {
             return parent
@@ -284,10 +282,7 @@ class GameLayer: SKNode {
         if(rocketList.count == 3 && !cantTouchThis){
             lauchRocket()
         }
-        
-        
-        
-        
+
     }
     
     func update(deltaTime: TimeInterval) {
