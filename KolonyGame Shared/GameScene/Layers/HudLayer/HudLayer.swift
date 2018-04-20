@@ -200,6 +200,8 @@ class HudLayer: SKNode {
 //        self.scoreLabel?.run(SKAction.sequence([SKAction.fadeOut(withDuration: TimeInterval(1))])) {
 //            self.scoreLabel?.removeAllActions()
 //        }
+        self.score = 0
+        self.scoreLabel?.text = String(self.score)
         self.scoreIcon?.spriteComponent?.node.run(SKAction.fadeOut(withDuration: TimeInterval(1))){
             self.highScoreLabel?.removeAllActions()
         }
