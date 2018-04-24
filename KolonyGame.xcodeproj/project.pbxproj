@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1408E76E208A765700E4D104 /* EntityManagerHudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1408E76C208A765700E4D104 /* EntityManagerHudLayer.swift */; };
-		1408E76F208A765700E4D104 /* SimpleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1408E76D208A765700E4D104 /* SimpleEntity.swift */; };
 		1437E92E2089402800457822 /* backgroundSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1437E92D2089402800457822 /* backgroundSound1.mp3 */; };
 		1437E9302089482E00457822 /* launchSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1437E92F2089482E00457822 /* launchSound.mp3 */; };
 		1437E93320894FA600457822 /* blackHole.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1437E93120894FA500457822 /* blackHole.mp3 */; };
@@ -40,7 +39,6 @@
 		14AF0623207E876E003D47F4 /* LaunchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF0620207E876E003D47F4 /* LaunchState.swift */; };
 		14AF0624207E876E003D47F4 /* QueueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF0621207E876E003D47F4 /* QueueState.swift */; };
 		14AF0625207E876E003D47F4 /* IdleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF0622207E876E003D47F4 /* IdleState.swift */; };
-		14AF0627207E8D1E003D47F4 /* EntityManagerHudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF0626207E8CDF003D47F4 /* EntityManagerHudLayer.swift */; };
 		14AF0628207E8D1E003D47F4 /* EntityManagerHudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF0626207E8CDF003D47F4 /* EntityManagerHudLayer.swift */; };
 		14AF0629207E8D44003D47F4 /* ONRAMP.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1466BBF9207C1874007FD926 /* ONRAMP.ttf */; };
 		14AF062A207E8D4A003D47F4 /* GameColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660A2075ACD500CE37D6 /* GameColors.swift */; };
@@ -547,8 +545,6 @@
 				14AF0625207E876E003D47F4 /* IdleState.swift in Sources */,
 				8AE807912056FE70006EDC86 /* EntityManagerGameLayer.swift in Sources */,
 				8A8CCFA6205328FB00546F56 /* SpriteComponent.swift in Sources */,
-				1408E76F208A765700E4D104 /* SimpleEntity.swift in Sources */,
-				14AF0627207E8D1E003D47F4 /* EntityManagerHudLayer.swift in Sources */,
 				977B660B2075ACD500CE37D6 /* GameColors.swift in Sources */,
 				9735C2262075CB400054C6E9 /* NumbersUtil.swift in Sources */,
 				8A84A4662078135200CD92C9 /* RocketshipProperties.swift in Sources */,
@@ -757,7 +753,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J8J2K4KEX2;
+				DEVELOPMENT_TEAM = JC4QT73C9E;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -775,7 +771,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J8J2K4KEX2;
+				DEVELOPMENT_TEAM = JC4QT73C9E;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -794,7 +790,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J8J2K4KEX2;
+				DEVELOPMENT_TEAM = JC4QT73C9E;
 				INFOPLIST_FILE = "KolonyGame tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPID.KolonyGame;
@@ -812,7 +808,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J8J2K4KEX2;
+				DEVELOPMENT_TEAM = JC4QT73C9E;
 				INFOPLIST_FILE = "KolonyGame tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPID.KolonyGame;
