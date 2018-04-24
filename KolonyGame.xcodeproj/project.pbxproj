@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1408E76E208A765700E4D104 /* EntityManagerHudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1408E76C208A765700E4D104 /* EntityManagerHudLayer.swift */; };
+		1408E76F208A765700E4D104 /* SimpleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1408E76D208A765700E4D104 /* SimpleEntity.swift */; };
 		1437E92E2089402800457822 /* backgroundSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1437E92D2089402800457822 /* backgroundSound1.mp3 */; };
 		1437E9302089482E00457822 /* launchSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1437E92F2089482E00457822 /* launchSound.mp3 */; };
 		1437E93320894FA600457822 /* blackHole.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1437E93120894FA500457822 /* blackHole.mp3 */; };
@@ -23,7 +25,6 @@
 		143817F22075638F007E5A1E /* BlackHoleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */; };
 		145AA4CF208924E000E6CE02 /* SKAction + Movements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF66CC2087CD47008149B0 /* SKAction + Movements.swift */; };
 		145AA4D02089256600E6CE02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A1B1442087F91B00EE1899 /* Assets.xcassets */; };
-		1460B913208A549A00CBE925 /* BackgroundTextures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DC3C8520867B27000A4DA0 /* BackgroundTextures.swift */; };
 		1466BBEE207C1638007FD926 /* HudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466BBEA207C1638007FD926 /* HudLayer.swift */; };
 		1466BBF5207C17E8007FD926 /* SimpleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466BBF2207C1728007FD926 /* SimpleEntity.swift */; };
 		1466BBF6207C17E9007FD926 /* SimpleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466BBF2207C1728007FD926 /* SimpleEntity.swift */; };
@@ -110,6 +111,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1408E76C208A765700E4D104 /* EntityManagerHudLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityManagerHudLayer.swift; path = Layers/HudLayer/Entities/EntityManagerHudLayer.swift; sourceTree = "<group>"; };
+		1408E76D208A765700E4D104 /* SimpleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimpleEntity.swift; path = Layers/HudLayer/Entities/SimpleEntity.swift; sourceTree = "<group>"; };
 		1437E92D2089402800457822 /* backgroundSound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundSound1.mp3; sourceTree = "<group>"; };
 		1437E92F2089482E00457822 /* launchSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = launchSound.mp3; sourceTree = "<group>"; };
 		1437E93120894FA500457822 /* blackHole.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackHole.mp3; sourceTree = "<group>"; };
@@ -166,8 +169,6 @@
 		9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerBackgroundLayer.swift; sourceTree = "<group>"; };
 		9790E7D720571F09008A9159 /* BackgroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEntity.swift; sourceTree = "<group>"; };
 		9790E7E320599526008A9159 /* StarEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarEntity.swift; sourceTree = "<group>"; };
-		97D1A216207BDFF20011F458 /* ScoreIconEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreIconEntity.swift; sourceTree = "<group>"; };
-		97D1A21C207BE76E0011F458 /* EntityManagerHudLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerHudLayer.swift; sourceTree = "<group>"; };
 		97DC3C8520867B27000A4DA0 /* BackgroundTextures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTextures.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,8 +193,6 @@
 		1466BBE8207C15DD007FD926 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				97D1A216207BDFF20011F458 /* ScoreIconEntity.swift */,
-				97D1A21C207BE76E0011F458 /* EntityManagerHudLayer.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -310,6 +309,8 @@
 		8A8CCF9D205323EF00546F56 /* GameScene */ = {
 			isa = PBXGroup;
 			children = (
+				1408E76C208A765700E4D104 /* EntityManagerHudLayer.swift */,
+				1408E76D208A765700E4D104 /* SimpleEntity.swift */,
 				8A8CCF9F2053244C00546F56 /* Components */,
 				8A8CCFA12053245D00546F56 /* States */,
 				8A8CCF9E2053244400546F56 /* Layers */,
@@ -546,6 +547,7 @@
 				14AF0625207E876E003D47F4 /* IdleState.swift in Sources */,
 				8AE807912056FE70006EDC86 /* EntityManagerGameLayer.swift in Sources */,
 				8A8CCFA6205328FB00546F56 /* SpriteComponent.swift in Sources */,
+				1408E76F208A765700E4D104 /* SimpleEntity.swift in Sources */,
 				14AF0627207E8D1E003D47F4 /* EntityManagerHudLayer.swift in Sources */,
 				977B660B2075ACD500CE37D6 /* GameColors.swift in Sources */,
 				9735C2262075CB400054C6E9 /* NumbersUtil.swift in Sources */,
@@ -558,6 +560,7 @@
 				977B660520755C5A00CE37D6 /* BackgroundBasicEntity.swift in Sources */,
 				977B660720755D9300CE37D6 /* MistEntity.swift in Sources */,
 				1466BBF6207C17E9007FD926 /* SimpleEntity.swift in Sources */,
+				1408E76E208A765700E4D104 /* EntityManagerHudLayer.swift in Sources */,
 				8A8CCFA32053249F00546F56 /* GameLayer.swift in Sources */,
 				8A8CCF772053239A00546F56 /* GameViewController.swift in Sources */,
 				14AF0624207E876E003D47F4 /* QueueState.swift in Sources */,
@@ -603,7 +606,6 @@
 				143817F02075637E007E5A1E /* EntityManagerBackgroundLayer.swift in Sources */,
 				143817ED2075636D007E5A1E /* GameOverState.swift in Sources */,
 				8AE8079320570413006EDC86 /* EntityManagerGameLayer.swift in Sources */,
-				1460B913208A549A00CBE925 /* BackgroundTextures.swift in Sources */,
 				14E69C7F208A3E9C0032A5E1 /* GameLayer+Sounds.swift in Sources */,
 				14D3B25D2077EDCA00CB6B98 /* LittleStar.swift in Sources */,
 				8AE8079420570418006EDC86 /* BackgroundLayer.swift in Sources */,
@@ -755,7 +757,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RT5RW3DL77;
+				DEVELOPMENT_TEAM = J8J2K4KEX2;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -773,7 +775,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RT5RW3DL77;
+				DEVELOPMENT_TEAM = J8J2K4KEX2;
 				INFOPLIST_FILE = "KolonyGame iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -792,7 +794,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JC4QT73C9E;
+				DEVELOPMENT_TEAM = J8J2K4KEX2;
 				INFOPLIST_FILE = "KolonyGame tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPID.KolonyGame;
@@ -810,7 +812,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JC4QT73C9E;
+				DEVELOPMENT_TEAM = J8J2K4KEX2;
 				INFOPLIST_FILE = "KolonyGame tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BEPID.KolonyGame;
