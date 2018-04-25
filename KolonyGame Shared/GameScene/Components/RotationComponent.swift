@@ -18,7 +18,7 @@ class RotationComponent: GKComponent {
         }
     }
     
-    var clockWise = false {
+    var clockWise = true {
         didSet {
             invertRotation()
         }
