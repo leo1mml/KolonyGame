@@ -110,13 +110,14 @@ class BlackHoleEntity: GKEntity {
         }
     }
     
-    func resetupPlanets () {
+    func resetupPlanets (finished: @escaping () -> Void) {
         if let sprite = self.component(ofType: SpriteComponent.self) {
             for child in sprite.node.children {
                 switch child.name {
                 case "blue", "red", "green", "yellow":
                     child.run(SKAction.fadeIn(withDuration: TimeInterval(1))){
                         child.removeAllActions()
+                        finished()
                     }
                 default:
                     continue
