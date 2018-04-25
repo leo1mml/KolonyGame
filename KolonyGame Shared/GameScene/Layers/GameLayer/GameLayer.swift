@@ -392,17 +392,14 @@ class GameLayer: SKNode {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             
         if let parent = self.parent as? GameScene {
-            if parent.stateMachine.currentState is GameOverState {
+            if parent.stateMachine.currentState is GameOverState && !cantTouchThis {
                 parent.stateMachine.enter(PlayingState.self)
             }
+            
+            if(rocketList.count == 3 && !cantTouchThis && parent.stateMachine.currentState is PlayingState) {
+                lauchRocket()
+            }
         }
-        if(rocketList.count == 3 && !cantTouchThis && !self.tapToLaunch){
-            lauchRocket()
-        
-        }else {
-            self.tapToLaunch = false
-        }
-        
     }
     
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
@@ -427,14 +424,14 @@ class GameLayer: SKNode {
      - Parameter deltaTime: the time interval between one update and the previous one.
      */
     func update(deltaTime: TimeInterval) {
-        if deltaTime < 12000{
-            self.deltaTime = self.deltaTime + deltaTime
-        }
-        if(self.deltaTime >= self.actionInterval){
-            self.deltaTime = 0
-            self.actionInterval = NumbersUtil.randomDouble(min: 5, max: 8)
-            self.blackHole?.moveOtherWay()
-        }
+//        if deltaTime < 12000{
+//            self.deltaTime = self.deltaTime + deltaTime
+//        }
+//        if(self.deltaTime >= self.actionInterval){
+//            self.deltaTime = 0
+//            self.actionInterval = NumbersUtil.randomDouble(min: 5, max: 8)
+//            self.blackHole?.moveOtherWay()
+//        }
     }
     
     required init?(coder aDecoder: NSCoder) {

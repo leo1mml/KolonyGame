@@ -95,7 +95,6 @@ class HudLayer: SKNode {
         self.moveToBlackHoleposition(node: sprite, duration: TimeInterval(1), durantionDecreaseAlpha: TimeInterval(1), nextPosition: nextPos, nextScale: 2)
         
         nextPos = CGPoint(x: (size?.width)! * 0.60, y: (size?.height)! * 0.77)
-        self.scoreLabel?.fontSize = 44 * 1.5
         moveScoreLabelToBlackHol(node: self.scoreLabel!, duration: TimeInterval(1), durantionDecreaseAlpha: TimeInterval(1), nextPosition: nextPos, nextScale: 1)
         
         
@@ -116,10 +115,10 @@ class HudLayer: SKNode {
     
     
     func moveScoreLabelToBlackHol (node: SKLabelNode, duration: TimeInterval, durantionDecreaseAlpha: TimeInterval, nextPosition: CGPoint, nextScale: Float) {
-        let sequence = SKAction.sequence([SKAction.move(to: centerPoint(), duration: duration), SKAction.fadeAlpha(to: 0, duration: durantionDecreaseAlpha)])
+        let sequence = SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: durantionDecreaseAlpha)])
         self.scoreLabel?.run(sequence) {
             self.scoreLabel?.removeAllActions()
-            
+            self.scoreLabel?.fontSize = 44 * 1.5
             self.highScoreLabel?.text = "BEST: \(String(self.highScore()))"
             self.highScoreLabel?.run(SKAction.fadeIn(withDuration: 1))
             self.tapToLaunchAgainLabel?.run(SKAction.fadeIn(withDuration: 1)) 
@@ -167,7 +166,7 @@ class HudLayer: SKNode {
         node.zPosition = 50
         
         //move to black hole position, set scale 0 and remove of screen
-        let sequence = SKAction.sequence([SKAction.move(to: CGPoint(x: (self.size?.width)! / 2 , y: (self.size?.height)! / 2), duration: duration), SKAction.fadeAlpha(to: 0, duration: durantionDecreaseAlpha)])
+        let sequence = SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: durantionDecreaseAlpha)])
         
         //run sequence and remove all actions of node after actions
         node.run(sequence) {
@@ -198,14 +197,14 @@ class HudLayer: SKNode {
     }
     
     func resetupHudLayer () {
-//        self.scoreLabel?.run(SKAction.sequence([SKAction.fadeOut(withDuration: TimeInterval(1))])) {
-//            self.scoreLabel?.removeAllActions()
-//        }
+        
         self.score = 0
         self.scoreLabel?.text = String(self.score)
         self.scoreIcon?.spriteComponent?.node.run(SKAction.fadeOut(withDuration: TimeInterval(1))){
             self.highScoreLabel?.removeAllActions()
         }
+        
+        self.scoreLabel?.run(SKAction.fadeOut(withDuration: TimeInterval(1)))
         self.gameOverSlogan?.spriteComponent?.node.run(SKAction.fadeOut(withDuration: TimeInterval(1))){
             self.gameOverSlogan?.spriteComponent?.node.removeAllActions()
         }
@@ -228,7 +227,7 @@ class HudLayer: SKNode {
         }
         
         self.scoreLabel?.fontSize = 44
-        self.scoreLabel?.run(SKAction.sequence([SKAction.move(to: scoreLabelPosition, duration: TimeInterval(1)), SKAction.fadeIn(withDuration: TimeInterval(1))])) {
+        self.scoreLabel?.run(SKAction.sequence([SKAction.fadeOut(withDuration: TimeInterval(1)), SKAction.move(to: scoreLabelPosition, duration: TimeInterval(0.5)), SKAction.fadeIn(withDuration: TimeInterval(0.5))])) {
             self.scoreLabel?.removeAllActions()
         }
         
