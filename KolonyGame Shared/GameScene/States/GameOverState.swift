@@ -20,8 +20,8 @@ class GameOverState: GKState {
     override func didEnter(from previousState: GKState?) {
         DispatchQueue.main.async {
             
+            self.scene.gameLayer?.nextState = false
             self.scene.stopBackgroundSound()
-            
             self.scene.shakeScene(duration: 1.5) {
                 self.scene.gameLayer?.playSound()
                 self.scene.gameLayer?.startGameOverEffect(finished: nil)
@@ -36,7 +36,8 @@ class GameOverState: GKState {
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is PlayingState.Type
+
+        return  stateClass is RetryState.Type
     }
     
     override func update(deltaTime seconds: TimeInterval) {

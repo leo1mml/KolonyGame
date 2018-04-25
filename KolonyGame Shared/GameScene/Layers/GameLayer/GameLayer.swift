@@ -21,7 +21,10 @@ class GameLayer: SKNode {
     var blackHole : BlackHoleEntity?
     
     ///This variable is used to tell if the game layer is allowed in user interaction or not.
-    var cantTouchThis: Bool = false
+    var cantLaunchRocket: Bool = false
+    
+    ///This variable is used to inform if the game can enter the next state.
+    var nextState: Bool = true
     
     /// Checks if the user has to give a tap before launching the rocket.
     var tapToLaunch = true
@@ -58,6 +61,7 @@ class GameLayer: SKNode {
     
     /// The black hole sound.
     var blackHoleSound: SKAudioNode = SKAudioNode(fileNamed: "blackHole")
+    
     
     // MARK: - INIT
     
@@ -224,12 +228,12 @@ class GameLayer: SKNode {
             sprite.removeAllActions()
             if(rocketList.count > 0){
                 sprite.run(SKAction.move(to: CGPoint(x: (rocketList[rocketList.count - 1].spriteComponent?.node.position.x)! + ((rocketList[rocketList.count - 1].spriteComponent?.node.size.width)! * 1.5), y: (self.size?.height)!/8), duration: 0)){
-                    self.cantTouchThis = false
+                    self.cantLaunchRocket = false
                 }
                 
             }else {
                 sprite.run(SKAction.move(to: CGPoint(x: (self.size?.width)!/2, y: (self.size?.height)!/8), duration: 0)) {
-                    self.cantTouchThis = false
+                    self.cantLaunchRocket = false
                 }
             }
         }
@@ -259,7 +263,7 @@ class GameLayer: SKNode {
     func lauchRocket() {
         if(rocketList.count > 0){
             self.rocketToLaunch = nil
-            self.cantTouchThis = true
+            self.cantLaunchRocket = true
             self.rocketToLaunch = self.rocketList.remove(at: 0)
             if(rocketToLaunch != nil){
                 rocketToLaunch?.stateMachine.enter(LaunchState.self)
@@ -386,20 +390,23 @@ class GameLayer: SKNode {
     // MARK: - TOUCH
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            
+        
         if let parent = self.parent as? GameScene {
-            if parent.stateMachine.currentState is GameOverState && !cantTouchThis {
-                parent.stateMachine.enter(PlayingState.self)
-            }
-            
-            if(rocketList.count == 3 && !cantTouchThis && parent.stateMachine.currentState is PlayingState) {
-                lauchRocket()
+            if parent.stateMachine.currentState is GameOverState && nextState{
+                parent.stateMachine.enter(RetryState.self)
             }
         }
+        if(rocketList.count == 3 && !cantLaunchRocket && !self.tapToLaunch && sceceReference().stateMachine.currentState is PlayingState){
+            lauchRocket()
+            
+        }else {
+            self.tapToLaunch = false
+        }
+        
     }
     
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        if(rocketList.count == 3 && !cantTouchThis){
+        if(rocketList.count == 3 && !cantLaunchRocket){
             lauchRocket()
         }
         

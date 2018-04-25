@@ -26,7 +26,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     lazy var stateMachine: GKStateMachine = GKStateMachine(states: [
         PlayingState(scene: self),
-        GameOverState(scene: self)
+        GameOverState(scene: self),
+        RetryState(scene: self)
         ])
     
     init(size: CGSize, stateClass: AnyClass) {

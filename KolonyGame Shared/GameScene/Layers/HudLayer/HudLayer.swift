@@ -121,7 +121,9 @@ class HudLayer: SKNode {
             self.scoreLabel?.fontSize = 44 * 1.5
             self.highScoreLabel?.text = "BEST: \(String(self.highScore()))"
             self.highScoreLabel?.run(SKAction.fadeIn(withDuration: 1))
-            self.tapToLaunchAgainLabel?.run(SKAction.fadeIn(withDuration: 1)) 
+            self.tapToLaunchAgainLabel?.run(SKAction.fadeIn(withDuration: 1)){
+                self.sceceReference().gameLayer?.nextState = true
+            }
             self.gameOverSlogan?.spriteComponent?.node.run(SKAction.fadeIn(withDuration: 1))
             self.reconfigureLabelNode(node, nextPosition, nextScale)
             
@@ -213,6 +215,7 @@ class HudLayer: SKNode {
         }
         self.tapToLaunchAgainLabel?.run(SKAction.fadeOut(withDuration: TimeInterval(1))) {
             self.tapToLaunchAgainLabel?.removeAllActions()
+            
             self.resetupScore()
         }
     }

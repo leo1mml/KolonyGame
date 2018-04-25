@@ -104,6 +104,7 @@
 		9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D32056F51D008A9159 /* BackgroundLayer.swift */; };
 		9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */; };
 		9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D720571F09008A9159 /* BackgroundEntity.swift */; };
+		979385F120910A080069B621 /* RetryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979385F020910A080069B621 /* RetryState.swift */; };
 		97DC3C84208275A6000A4DA0 /* GameScene+ShakeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D11F220812A510073269E /* GameScene+ShakeScreen.swift */; };
 		97DC3C8620867B27000A4DA0 /* BackgroundTextures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DC3C8520867B27000A4DA0 /* BackgroundTextures.swift */; };
 /* End PBXBuildFile section */
@@ -167,6 +168,7 @@
 		9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerBackgroundLayer.swift; sourceTree = "<group>"; };
 		9790E7D720571F09008A9159 /* BackgroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEntity.swift; sourceTree = "<group>"; };
 		9790E7E320599526008A9159 /* StarEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarEntity.swift; sourceTree = "<group>"; };
+		979385F020910A080069B621 /* RetryState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryState.swift; sourceTree = "<group>"; };
 		97DC3C8520867B27000A4DA0 /* BackgroundTextures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTextures.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -356,6 +358,7 @@
 			children = (
 				8A8CCFA920532B6600546F56 /* PlayingState.swift */,
 				14ACEF742056FEAA00D62305 /* GameOverState.swift */,
+				979385F020910A080069B621 /* RetryState.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				8A8CCF912053239B00546F56 /* GameScene.swift in Sources */,
 				97DC3C84208275A6000A4DA0 /* GameScene+ShakeScreen.swift in Sources */,
 				14AF0625207E876E003D47F4 /* IdleState.swift in Sources */,
+				979385F120910A080069B621 /* RetryState.swift in Sources */,
 				8AE807912056FE70006EDC86 /* EntityManagerGameLayer.swift in Sources */,
 				8A8CCFA6205328FB00546F56 /* SpriteComponent.swift in Sources */,
 				977B660B2075ACD500CE37D6 /* GameColors.swift in Sources */,
