@@ -279,16 +279,13 @@ class GameLayer: SKNode {
         - duration: The duration of the movement.
      */
     func flushRocketTo(centerPoint: CGPoint, startRadius: CGFloat, endRadius: CGFloat, angle: CGFloat, duration: TimeInterval){
-        for rocket in rocketList {
-            rocket.spriteComponent?.node.physicsBody?.categoryBitMask = PhysicsCategory.None
-        }
         if let sprite = self.rocketToLaunch?.component(ofType: SpriteComponent.self){
-            sprite.node.physicsBody?.categoryBitMask = PhysicsCategory.None
             sprite.node.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-            sprite.node.physicsBody?.applyAngularImpulse((self.size?.height)! * 0.000006)
             let scaleDown = SKAction.scale(to: 0, duration: 4)
             let spiralMovement = SKAction.spiral(startRadius: startRadius, endRadius: endRadius, angle: angle, centerPoint: centerPoint, duration: duration)
-            sprite.node.run(SKAction.group([scaleDown, spiralMovement])){
+            let rotationMovement = SKAction.rotate(byAngle: CGFloat.pi * CGFloat(2), duration: TimeInterval(0.2))
+            let repeatRotationForever = SKAction.repeatForever(rotationMovement)
+            sprite.node.run(SKAction.group([scaleDown, spiralMovement, repeatRotationForever])){
                 sprite.node.alpha = 0.0
             }
         }
@@ -309,7 +306,6 @@ class GameLayer: SKNode {
             var time = 0.333
             
             for rocket in self.rocketList {
-                rocket.spriteComponent?.node.physicsBody?.categoryBitMask = PhysicsCategory.None
                 self.moveToBlackHoleposition(node: (rocket.spriteComponent?.node)!, duration: TimeInterval(time), durantionDecreaseAlpha: TimeInterval(1), nextPosition: (rocket.spriteComponent?.node.position)! , nextScale: 1, finished: nil)
                 time += 0.333
             }

@@ -11,35 +11,36 @@ import SpriteKit
 extension GameLayer {
     
     func didBegin(_ contact: SKPhysicsContact) {
-        
-        let categories = (contact.bodyA.categoryBitMask, contact.bodyB.categoryBitMask)
-        
-        switch categories {
+        if((self.parent as! GameScene).stateMachine.currentState is PlayingState){
+            let categories = (contact.bodyA.categoryBitMask, contact.bodyB.categoryBitMask)
             
-        case (PhysicsCategory.Planet, PhysicsCategory.Rocket):
-            handlePlanetAndRocket(planet: contact.bodyA.node!, rocket: contact.bodyB.node!, contactPoint: contact.contactPoint)
-            break
-        case (PhysicsCategory.Rocket, PhysicsCategory.Planet):
-            handlePlanetAndRocket(planet: contact.bodyB.node!, rocket: contact.bodyA.node!, contactPoint: contact.contactPoint)
-            break
-            
-        case (PhysicsCategory.BlackHole, PhysicsCategory.Rocket):
-            if let spriteBlackHole = self.blackHole?.component(ofType: SpriteComponent.self) {
-                flushRocketTo(centerPoint: (spriteBlackHole.node.position), startRadius: contact.contactPoint.y.distance(to: spriteBlackHole.node.position.y), endRadius: 0, angle: CGFloat.pi * 2, duration: 3)
-                handleRocketAndBlackHole(rocket: contact.bodyB.node!, blackHole: contact.bodyA.node!)
+            switch categories {
+                
+            case (PhysicsCategory.Planet, PhysicsCategory.Rocket):
+                handlePlanetAndRocket(planet: contact.bodyA.node!, rocket: contact.bodyB.node!, contactPoint: contact.contactPoint)
+                break
+            case (PhysicsCategory.Rocket, PhysicsCategory.Planet):
+                handlePlanetAndRocket(planet: contact.bodyB.node!, rocket: contact.bodyA.node!, contactPoint: contact.contactPoint)
+                break
+                
+            case (PhysicsCategory.BlackHole, PhysicsCategory.Rocket):
+                if let spriteBlackHole = self.blackHole?.component(ofType: SpriteComponent.self) {
+                    flushRocketTo(centerPoint: (spriteBlackHole.node.position), startRadius: contact.contactPoint.y.distance(to: spriteBlackHole.node.position.y), endRadius: 0, angle: CGFloat.pi * 2, duration: 3)
+                    handleRocketAndBlackHole(rocket: contact.bodyB.node!, blackHole: contact.bodyA.node!)
+                }
+                
+                break
+            case (PhysicsCategory.Rocket, PhysicsCategory.BlackHole):
+                if let spriteBlackHole = self.blackHole?.component(ofType: SpriteComponent.self) {
+                    flushRocketTo(centerPoint: (spriteBlackHole.node.position), startRadius: contact.contactPoint.y.distance(to: spriteBlackHole.node.position.y), endRadius: 0, angle: CGFloat.pi * 2, duration: 3)
+                    handleRocketAndBlackHole(rocket: contact.bodyA.node!, blackHole: contact.bodyB.node!)
+                }
+                
+                break
+            default:
+                print("You Lose")
+                break
             }
-            
-            break
-        case (PhysicsCategory.Rocket, PhysicsCategory.BlackHole):
-            if let spriteBlackHole = self.blackHole?.component(ofType: SpriteComponent.self) {
-                flushRocketTo(centerPoint: (spriteBlackHole.node.position), startRadius: contact.contactPoint.y.distance(to: spriteBlackHole.node.position.y), endRadius: 0, angle: CGFloat.pi * 2, duration: 3)
-                handleRocketAndBlackHole(rocket: contact.bodyA.node!, blackHole: contact.bodyB.node!)
-            }
-            
-            break
-        default:
-            print("You Lose")
-            break
         }
     }
     
