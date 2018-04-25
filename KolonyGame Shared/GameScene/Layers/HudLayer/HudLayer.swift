@@ -249,6 +249,9 @@ class HudLayer: SKNode {
     }
     
     func incrementScore() {
+        self.scoreLabel?.run(SKAction.sequence([SKAction.scale(to: 1.3, duration: TimeInterval(0.25)), SKAction.scale(to: 1, duration: TimeInterval(0.25))])) {
+            self.scoreLabel?.removeAllActions()
+        }
         self.score += 1
         if let score = self.scoreLabel {
             score.text = String(self.score)
