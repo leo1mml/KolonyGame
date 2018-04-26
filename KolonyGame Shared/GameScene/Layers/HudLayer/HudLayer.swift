@@ -61,6 +61,7 @@ class HudLayer: SKNode {
                 score.fontSize = 44
                 score.text = String(self.score)
                 score.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
+                
             }
             
             
@@ -249,6 +250,10 @@ class HudLayer: SKNode {
     }
     
     func incrementScore() {
+        
+        self.scoreIcon?.spriteComponent?.node.run(SKAction.sequence([SKAction.scale(to: 1.3, duration: TimeInterval(0.25)), SKAction.scale(to: 1, duration: TimeInterval(0.25))])){
+            self.scoreIcon?.spriteComponent?.node.removeAllActions()
+        }
         self.scoreLabel?.run(SKAction.sequence([SKAction.scale(to: 1.3, duration: TimeInterval(0.25)), SKAction.scale(to: 1, duration: TimeInterval(0.25))])) {
             self.scoreLabel?.removeAllActions()
         }
