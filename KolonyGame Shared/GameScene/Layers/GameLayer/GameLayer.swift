@@ -102,7 +102,7 @@ class GameLayer: SKNode {
         self.addChild(blackholelight)
         entityManager?.add(blackHole!)
         createPlanets()
-        self.blackHole?.moveOtherWay()
+        self.blackHole?.stateMachine.enter(RotatingState.self)
     }
     /**
      Get the black hole position
@@ -422,14 +422,14 @@ class GameLayer: SKNode {
      - Parameter deltaTime: the time interval between one update and the previous one.
      */
     func update(deltaTime: TimeInterval) {
-        //        if deltaTime < 12000{
-        //            self.deltaTime = self.deltaTime + deltaTime
-        //        }
-        //        if(self.deltaTime >= self.actionInterval){
-        //            self.deltaTime = 0
-        //            self.actionInterval = NumbersUtil.randomDouble(min: 5, max: 8)
-        //            self.blackHole?.moveOtherWay()
-        //        }
+                if deltaTime < 12000{
+                    self.deltaTime = self.deltaTime + deltaTime
+                }
+                if(self.deltaTime >= self.actionInterval){
+                    self.deltaTime = 0
+                    self.actionInterval = NumbersUtil.randomDouble(min: 5, max: 8)
+                    self.blackHole?.stateMachine.enter(BreakState.self)
+                }
     }
     
     required init?(coder aDecoder: NSCoder) {
