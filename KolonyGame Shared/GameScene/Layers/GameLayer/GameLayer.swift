@@ -102,12 +102,12 @@ class GameLayer: SKNode {
         self.addChild(blackholelight)
         entityManager?.add(blackHole!)
         createPlanets()
-        self.blackHole?.moveOtherWay()
+        self.blackHole?.stateMachine.enter(RotatingState.self)
     }
     /**
      Get the black hole position
      - Parameters:
-        - layer: the layer which the position should be calculated
+     - layer: the layer which the position should be calculated
      - Returns: The position of the sprite relative to the layer passed as argument, or de point zero to the current layer.
      */
     func blackHolePosition(layer: SKNode) -> CGPoint {
@@ -117,7 +117,7 @@ class GameLayer: SKNode {
         }
         return CGPoint.zero
     }
-
+    
     /**
      Create all the planets around the black hole
      */
@@ -134,12 +134,12 @@ class GameLayer: SKNode {
     /**
      Creates a planet on the screen
      - Parameters:
-        - size: The planet's size
-        - properties: The enum with the properties of the planet, default values: blue, yellow, green, red.
-        - position: The planet position relative to its layer
-        - zPosition: The zPosition of the planet, it's used to avoid overlaying of other items.
-        - rotationAngle: The angle in radians that the planet should spin, the rotation is usually used to cancel the default rotation of the black hole.
-        - duration: The duration that the planet should perform the rotation.
+     - size: The planet's size
+     - properties: The enum with the properties of the planet, default values: blue, yellow, green, red.
+     - position: The planet position relative to its layer
+     - zPosition: The zPosition of the planet, it's used to avoid overlaying of other items.
+     - rotationAngle: The angle in radians that the planet should spin, the rotation is usually used to cancel the default rotation of the black hole.
+     - duration: The duration that the planet should perform the rotation.
      - Returns: The planet entity to be added to the entity manager
      */
     func createPlanet(size: CGSize, properties: PlanetProperties, position: CGPoint, zPosition: CGFloat, rotationAngle: Double, duration: Double) -> PlanetEntity{
@@ -152,7 +152,7 @@ class GameLayer: SKNode {
         }
         return planet
     }
-
+    
     
     /**
      Create the rockets, place them in the right positions, and add them to the layer and entity manager.
@@ -188,7 +188,7 @@ class GameLayer: SKNode {
     /**
      Resize the planet to a bigger size
      - Parameters:
-        - rocket: The rocket entity which contains the sprite to be resized.
+     - rocket: The rocket entity which contains the sprite to be resized.
      */
     func resizeRocketToBig(rocket: RocketEntity) {
         if let sprite = rocket.component(ofType: SpriteComponent.self)?.node {
@@ -214,7 +214,7 @@ class GameLayer: SKNode {
     /**
      This method is used to recicle a rocket entity after its collision. After the recicle the entity will now be configured with new random properties.
      - Parameters:
-        - rocket: The rocket entity to be recicled.
+     - rocket: The rocket entity to be recicled.
      */
     func recicleShip(rocket: RocketEntity) {
         rocket.stop()
@@ -224,17 +224,10 @@ class GameLayer: SKNode {
             
             rocket.setup(size: sprite.size, rocketType: properties)
             
-            
             sprite.removeAllActions()
-            if(rocketList.count > 0){
-                sprite.run(SKAction.move(to: CGPoint(x: (rocketList[rocketList.count - 1].spriteComponent?.node.position.x)! + ((rocketList[rocketList.count - 1].spriteComponent?.node.size.width)! * 1.5), y: (self.size?.height)!/8), duration: 0)){
-                    self.cantLaunchRocket = false
-                }
-                
-            }else {
-                sprite.run(SKAction.move(to: CGPoint(x: (self.size?.width)!/2, y: (self.size?.height)!/8), duration: 0)) {
-                    self.cantLaunchRocket = false
-                }
+            
+            sprite.run(SKAction.move(to: CGPoint(x: (rocketList[rocketList.count - 1].spriteComponent?.node.position.x)! + ((rocketList[rocketList.count - 1].spriteComponent?.node.size.width)! * 1.5), y: (self.size?.height)!/8), duration: 0)){
+                self.cantLaunchRocket = false
             }
         }
         resizeRocketToNormal(rocket: rocket)
@@ -276,11 +269,11 @@ class GameLayer: SKNode {
     /**
      Makes the rocket disappear in a spiral movement until it gets to a specific point.
      - Parameters:
-        - centerPoint: The point which the black hole should go with the spiral movement.
-        - startRadius: The distance between the center point and the rocket to be flushed.
-        - endRadius: The final distance between the center point and the rocket at the end of the movement.
-        - angle: The angle which the movement should go through.
-        - duration: The duration of the movement.
+     - centerPoint: The point which the black hole should go with the spiral movement.
+     - startRadius: The distance between the center point and the rocket to be flushed.
+     - endRadius: The final distance between the center point and the rocket at the end of the movement.
+     - angle: The angle which the movement should go through.
+     - duration: The duration of the movement.
      */
     func flushRocketTo(centerPoint: CGPoint, startRadius: CGFloat, endRadius: CGFloat, angle: CGFloat, duration: TimeInterval){
         self.nextState = false
@@ -317,11 +310,11 @@ class GameLayer: SKNode {
             }
             
             let group = SKAction.group([SKAction.move(to: CGPoint(x: (self.size?.width)! / 2 , y: (self.size?.height)! / 2), duration: TimeInterval(1)), SKAction.scale(to: 6, duration: TimeInterval(1))])
-  
+            
             self.blackHole?.spriteComponent?.node.run(group){
                 finished?()
             }
-
+            
         }
         
     }
@@ -339,20 +332,20 @@ class GameLayer: SKNode {
             rocket.spriteComponent?.node.run(SKAction.fadeIn(withDuration: TimeInterval(1)))
         }
     }
-
+    
     
     /**
      Moves a node to the black hole position
      - Parameters:
-        - node: The node that should perform the move action
-        - duration: The duration of the movement.
-        - durantionDecreaseAlpha: The duration of the decrease size action of the node.
-        - nextPosition: The position that the element should go after the game over effect.
-        - nextScale: The scale size which the element should be after it concludes the movement.
-        - finished: The callback that should be performed once the animation is over.
+     - node: The node that should perform the move action
+     - duration: The duration of the movement.
+     - durantionDecreaseAlpha: The duration of the decrease size action of the node.
+     - nextPosition: The position that the element should go after the game over effect.
+     - nextScale: The scale size which the element should be after it concludes the movement.
+     - finished: The callback that should be performed once the animation is over.
      */
     private func moveToBlackHoleposition (node: SKSpriteNode, duration: TimeInterval, durantionDecreaseAlpha: TimeInterval, nextPosition: CGPoint, nextScale: Float, finished: (() -> Void)?) {
-
+        
         //move to black hole position, set scale 0 and remove of screen
         
         let position = CGPoint(x: (self.size?.width)! / 2 , y: (self.size?.height)! / 2 )
@@ -370,14 +363,14 @@ class GameLayer: SKNode {
     /**
      Moves the sprite node to a position
      - Parameters:
-        - node: The node that should move
-        - nextPosition: The position of the node when the movement ends.
+     - node: The node that should move
+     - nextPosition: The position of the node when the movement ends.
      */
     func reconfigureSprite (_ node: SKSpriteNode, _ nextPosition: CGPoint) {
         node.run(SKAction.move(to: nextPosition, duration: TimeInterval(0.1)))
-    
+        
     }
-
+    
     
     /**
      Gets the scene reference, the scene which this layer is at.
@@ -429,14 +422,14 @@ class GameLayer: SKNode {
      - Parameter deltaTime: the time interval between one update and the previous one.
      */
     func update(deltaTime: TimeInterval) {
-//        if deltaTime < 12000{
-//            self.deltaTime = self.deltaTime + deltaTime
-//        }
-//        if(self.deltaTime >= self.actionInterval){
-//            self.deltaTime = 0
-//            self.actionInterval = NumbersUtil.randomDouble(min: 5, max: 8)
-//            self.blackHole?.moveOtherWay()
-//        }
+                if deltaTime < 12000{
+                    self.deltaTime = self.deltaTime + deltaTime
+                }
+                if(self.deltaTime >= self.actionInterval){
+                    self.deltaTime = 0
+                    self.actionInterval = NumbersUtil.randomDouble(min: 5, max: 8)
+                    self.blackHole?.stateMachine.enter(BreakState.self)
+                }
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -17,6 +17,7 @@ class BlackHoleEntity: GKEntity {
     var physicsBodyComponent: PhysicBodyComponent?
     var size: CGSize?
     var layers : [SKSpriteNode] = []
+    lazy var stateMachine: GKStateMachine = GKStateMachine(states: [BreakState(blackHole: self), RotatingState(blackHole: self)])
     
     init(size: CGSize) {
         super.init()
@@ -25,7 +26,6 @@ class BlackHoleEntity: GKEntity {
         self.size = size
         createLayers()
         self.rotationComponent = RotationComponent(entity: self)
-        self.rotationComponent?.clockWise = false
         
         self.physicsBodyComponent = PhysicBodyComponent(circleOfRadius: size.height/2.8, contactTestBitMask: PhysicsCategory.Rocket, collisionBitMask: PhysicsCategory.BlackHole, physicCategory: PhysicsCategory.BlackHole, friction: 0.0, linearDamping: 0.0, restitution: 0.0)
         self.spriteComponent?.node.physicsBody = physicsBodyComponent?.physicBody
@@ -116,7 +116,6 @@ class BlackHoleEntity: GKEntity {
                 switch child.name {
                 case "blue", "red", "green", "yellow":
                     child.run(SKAction.fadeIn(withDuration: TimeInterval(1))){
-                        child.removeAllActions()
                         finished()
                     }
                 default:
@@ -129,19 +128,6 @@ class BlackHoleEntity: GKEntity {
     
     func reconfigureSprite (_ node: SKNode, _ nextPosition: CGPoint) {
         node.run(SKAction.move(to: nextPosition, duration: TimeInterval(0.1)))
-    }
-
-    func moveOtherWay() {
-         invertChildrenRotation()
-        self.rotationComponent?.clockWise = !(self.rotationComponent?.clockWise)!
-    }
-    
-    func invertChildrenRotation() {
-        if(self.rotationComponent?.clockWise)!{
-            runChildrenRotationAction(angle: -CGFloat.pi * 2, duration: (self.rotationComponent?.rotationDuration)!)
-        }else {
-            runChildrenRotationAction(angle: CGFloat.pi * 2, duration: (self.rotationComponent?.rotationDuration)!)
-        }
     }
     
     func runChildrenRotationAction(angle: CGFloat, duration: TimeInterval) {
