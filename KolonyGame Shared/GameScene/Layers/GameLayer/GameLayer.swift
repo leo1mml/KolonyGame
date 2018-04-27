@@ -6,6 +6,7 @@
 //  Copyright © 2018 Leonel Menezes. All rights reserved.
 //
 import SpriteKit
+import AVFoundation
 
 class GameLayer: SKNode {
     
@@ -60,7 +61,7 @@ class GameLayer: SKNode {
     var planetYellow : PlanetEntity?
     
     /// The black hole sound.
-    var blackHoleSound: SKAudioNode = SKAudioNode(fileNamed: "blackHole")
+    var blackHoleSound: AVAudioPlayer?
     
     
     // MARK: - INIT
@@ -69,17 +70,22 @@ class GameLayer: SKNode {
         super.init()
         self.size = size
         entityManager = EntityManagerGameLayer(gameLayer: self)
+        prepareBlackHoleSound()
     }
-    
+
     // MARK: - SOUND
     func playSound() {
-        self.addChild(blackHoleSound)
+        self.blackHoleSound?.play()
     }
     
-    func stopSound() {
-        self.blackHoleSound.removeFromParent()
+    func prepareBlackHoleSound() {
+        do{
+            self.blackHoleSound =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "blackHole", ofType: "mp3")!))
+            self.blackHoleSound?.numberOfLoops = 0
+        }catch{
+            print(error)
+        }
     }
-    
     
     // MARK: - CONFIGURATION
     func configureLayer() {
@@ -323,8 +329,6 @@ class GameLayer: SKNode {
      Reconfigures the game layer elements to its specific positions.
      */
     func resetupGameLayer () {
-        
-        self.stopSound()
         
         let group = SKAction.group([SKAction.move(to: CGPoint(x: (self.size?.width)!/2, y: (self.size?.height)! * 0.73), duration: TimeInterval(1)), SKAction.scale(to: 1, duration: TimeInterval(1))])
         self.blackHole?.spriteComponent?.node.run(group)
