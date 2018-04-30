@@ -14,6 +14,7 @@ class GameLayer: SKNode {
     
     ///Game layer size reference.
     var size: CGSize?
+    var rocketSize: CGSize?
     
     ///Entity manager that manages all entities within the game layer.
     var entityManager : EntityManagerGameLayer?
@@ -69,6 +70,7 @@ class GameLayer: SKNode {
     init(size: CGSize) {
         super.init()
         self.size = size
+        self.rocketSize = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
         entityManager = EntityManagerGameLayer(gameLayer: self)
         prepareBlackHoleSound()
     }
@@ -166,8 +168,7 @@ class GameLayer: SKNode {
     func createRocketList() {
         var positionX = (self.size?.width)! / 2
         for index in 0...2 {
-            let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-            let rocket = RocketEntity(size: size, rocketType: RocketType.generateRandomShipProperties())
+            let rocket = RocketEntity(size: rocketSize!, rocketType: RocketType.generateRandomShipProperties())
             
             if(index == 0){
                 self.rocketToLaunch = rocket
@@ -290,7 +291,6 @@ class GameLayer: SKNode {
             let rotationMovement = SKAction.rotate(byAngle: CGFloat.pi * CGFloat(2), duration: TimeInterval(0.2))
             let repeatRotationForever = SKAction.repeat(rotationMovement, count: Int((self.size?.height)!/30))
             sprite.node.run(SKAction.group([scaleDown, spiralMovement, repeatRotationForever])){
-                self.recicleShip(rocket: self.rocketToLaunch!)
                 self.nextState = true
             }
         }
@@ -333,7 +333,9 @@ class GameLayer: SKNode {
         let group = SKAction.group([SKAction.move(to: CGPoint(x: (self.size?.width)!/2, y: (self.size?.height)! * 0.73), duration: TimeInterval(1)), SKAction.scale(to: 1, duration: TimeInterval(1))])
         self.blackHole?.spriteComponent?.node.run(group)
         for rocket in self.rocketList {
-            rocket.spriteComponent?.node.run(SKAction.fadeIn(withDuration: TimeInterval(1)))
+            rocket.spriteComponent?.node.run(SKAction.fadeIn(withDuration: TimeInterval(1))){
+                rocket.resizeFlame(size: self.rocketSize!)
+            }
         }
     }
     
