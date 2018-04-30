@@ -23,6 +23,7 @@ class RetryState: GKState {
             scene.gameLayer?.recicleShip(rocket: (scene.gameLayer?.rocketToLaunch)!)
         }
         
+        scene.gameLayer?.stopBlackHoleSound()
         scene.backgroundLayer?.setup((scene.backgroundLayer?.stars!)!)
         scene.backgroundLayer?.setup(littleStars: (scene.backgroundLayer?.littleStars!)!)
             scene.hudLayer?.resetupHudLayer()

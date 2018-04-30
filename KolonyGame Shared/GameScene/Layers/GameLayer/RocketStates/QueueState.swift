@@ -21,6 +21,7 @@ class QueueState: GKState {
 
         rocket.flame.removeFromParent()
         rocket.IdleFlame()
+        rocket.spriteComponent?.node.zRotation = 0.0
         
     }
     

@@ -76,8 +76,14 @@ class GameLayer: SKNode {
     }
 
     // MARK: - SOUND
-    func playSound() {
+    func playBlackHoleSound() {
         self.blackHoleSound?.play()
+    }
+    
+    func stopBlackHoleSound() {
+        if (self.blackHoleSound?.isPlaying)! {
+            self.blackHoleSound?.stop()
+        }
     }
     
     func prepareBlackHoleSound() {
@@ -337,6 +343,12 @@ class GameLayer: SKNode {
                 rocket.resizeFlame(size: self.rocketSize!)
             }
         }
+        
+        planetRed?.animate()
+        planetBlue?.animate()
+        planetGreen?.animate()
+        planetYellow?.animate()
+        
     }
     
     
