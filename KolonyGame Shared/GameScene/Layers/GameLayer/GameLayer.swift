@@ -308,14 +308,14 @@ class GameLayer: SKNode {
             
             self.blackHole?.movePlanetsToCenterBlackHole()
             
-            var time = 0.333
+            var time = 0.133
             
             for rocket in self.rocketList {
-                self.moveToBlackHoleposition(node: (rocket.spriteComponent?.node)!, duration: TimeInterval(time), durantionDecreaseAlpha: TimeInterval(1), nextPosition: (rocket.spriteComponent?.node.position)! , nextScale: 1, finished: nil)
-                time += 0.333
+                self.moveToBlackHoleposition(node: (rocket.spriteComponent?.node)!, duration: TimeInterval(time), durantionDecreaseAlpha: TimeInterval(0.7), nextPosition: (rocket.spriteComponent?.node.position)! , nextScale: 1, finished: nil)
+                time += 0.133
             }
             
-            let group = SKAction.group([SKAction.move(to: CGPoint(x: (self.size?.width)! / 2 , y: (self.size?.height)! / 2), duration: TimeInterval(1)), SKAction.scale(to: 6, duration: TimeInterval(1))])
+            let group = SKAction.group([SKAction.move(to: CGPoint(x: (self.size?.width)! / 2 , y: (self.size?.height)! / 2), duration: TimeInterval(0.7)), SKAction.scale(to: 6, duration: TimeInterval(0.7))])
             
             self.blackHole?.spriteComponent?.node.run(group){
                 finished?()

@@ -187,9 +187,9 @@ class BackgroundLayer: SKNode {
     
     private func moveSpritesToBlackHolePostion (finished: (() -> Void)?) {
         //moveToBlackHoleposition(node: (self.mist?.spriteComponent?.node)!, duration: TimeInterval(0.5), durantionDecreaseScale: TimeInterval(0.5), finished: nil)
-        moveStars(stars: self.stars!, duration: TimeInterval(NumbersUtil.randomDouble(min: 1, max: 1)), finished: nil)
+        moveStars(stars: self.stars!, duration: TimeInterval(NumbersUtil.randomDouble(min: 0.7, max: 0.7)), finished: nil)
         
-        moveStars(stars: self.littleStars!, duration: TimeInterval(NumbersUtil.randomDouble(min: 1, max: 1))) {
+        moveStars(stars: self.littleStars!, duration: TimeInterval(NumbersUtil.randomDouble(min: 0.7, max: 0.7))) {
             DispatchQueue.main.async {
                 finished?()
             }

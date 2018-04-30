@@ -93,10 +93,10 @@ class HudLayer: SKNode {
         let sprite = (self.scoreIcon!.spriteComponent?.node)!
         var nextPos = CGPoint(x: (size?.width)! * 0.44, y: (size?.height)! * 0.8)
         
-        self.moveToBlackHoleposition(node: sprite, duration: TimeInterval(1), durantionDecreaseAlpha: TimeInterval(1), nextPosition: nextPos, nextScale: 2)
+        self.moveToBlackHoleposition(node: sprite, duration: TimeInterval(0.7), durantionDecreaseAlpha: TimeInterval(0.7), nextPosition: nextPos, nextScale: 2)
         
         nextPos = CGPoint(x: (size?.width)! * 0.60, y: (size?.height)! * 0.77)
-        moveScoreLabelToBlackHol(node: self.scoreLabel!, duration: TimeInterval(1), durantionDecreaseAlpha: TimeInterval(1), nextPosition: nextPos, nextScale: 1)
+        moveScoreLabelToBlackHol(node: self.scoreLabel!, duration: TimeInterval(0.7), durantionDecreaseAlpha: TimeInterval(0.7), nextPosition: nextPos, nextScale: 1)
         
         
         
@@ -121,11 +121,11 @@ class HudLayer: SKNode {
             self.scoreLabel?.removeAllActions()
             self.scoreLabel?.fontSize = 44 * 1.5
             self.highScoreLabel?.text = "BEST: \(String(self.highScore()))"
-            self.highScoreLabel?.run(SKAction.fadeIn(withDuration: 1))
-            self.tapToLaunchAgainLabel?.run(SKAction.fadeIn(withDuration: 1)){
+            self.highScoreLabel?.run(SKAction.fadeIn(withDuration: 0.7))
+            self.tapToLaunchAgainLabel?.run(SKAction.fadeIn(withDuration: 0.7)){
                 self.sceceReference().gameLayer?.nextState = true
             }
-            self.gameOverSlogan?.spriteComponent?.node.run(SKAction.fadeIn(withDuration: 1))
+            self.gameOverSlogan?.spriteComponent?.node.run(SKAction.fadeIn(withDuration: 0.7))
             self.reconfigureLabelNode(node, nextPosition, nextScale)
             
         }

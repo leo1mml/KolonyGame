@@ -92,16 +92,21 @@ class BlackHoleEntity: GKEntity {
     func movePlanetsToCenterBlackHole () {
         
         if let sprite = self.component(ofType: SpriteComponent.self) {
-            let action = SKAction.move(to:  CGPoint.zero, duration: TimeInterval(1))
-            let decreaseAlpha = SKAction.fadeAlpha(to: 0, duration: TimeInterval(1))
+            let action = SKAction.move(to:  CGPoint.zero, duration: TimeInterval(0.7))
+            let decreaseScale = SKAction.scale(to: 0, duration: TimeInterval(0.7))
+            
+
             for child in sprite.node.children {
                 let lastPosition = child.position
                 switch child.name {
                 case "blue", "red", "green", "yellow":
                     
-                    child.run(SKAction.group([action, decreaseAlpha])){
+                    child.run(SKAction.group([action, decreaseScale])){
                         child.removeAllActions()
                         self.reconfigureSprite(child, lastPosition)
+                        child.alpha = 0
+                        child.setScale(1)
+                        
                     }
                 default:
                     continue
@@ -127,6 +132,7 @@ class BlackHoleEntity: GKEntity {
     }
     
     func reconfigureSprite (_ node: SKNode, _ nextPosition: CGPoint) {
+        node.setScale(1)
         node.run(SKAction.move(to: nextPosition, duration: TimeInterval(0.1)))
     }
     
