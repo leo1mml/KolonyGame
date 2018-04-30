@@ -343,6 +343,12 @@ class GameLayer: SKNode {
                 rocket.resizeFlame(size: self.rocketSize!)
             }
         }
+        
+        planetRed?.animate()
+        planetBlue?.animate()
+        planetGreen?.animate()
+        planetYellow?.animate()
+        
     }
     
     
