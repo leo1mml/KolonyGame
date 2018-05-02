@@ -2,11 +2,7 @@
   "images" : [
     {
       "idiom" : "tv",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "tv",
-      "scale" : "2x"
+      "filename" : "Template-Icon-App-App-Store-1280x768-Recuperado_0000s_0000_Layer5.png"
     }
   ],
   "info" : {
