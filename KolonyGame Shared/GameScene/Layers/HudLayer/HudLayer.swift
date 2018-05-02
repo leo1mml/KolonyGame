@@ -24,6 +24,7 @@ class HudLayer: SKNode {
     var tapToLaunchAgainLabel: SKLabelNode?
     let HIGH_SCORE_KEY = "highScore"
     var originalPositionScoreLabel: CGPoint?
+
     
     init(size: CGSize) {
         super.init()
@@ -33,6 +34,7 @@ class HudLayer: SKNode {
     
     func setupLayer() {
         if let sizeLayer = self.size {
+            self.newBestSprite = initializeEntity(textureImageName: "newBest", size: CGSize(width: sizeLayer.height * 0.25, height: (sizeLayer.height * 0.25) * 0.2146), alpha: 0)
             self.scoreIcon = initializeEntity(textureImageName: "scoreicon", size: CGSize(width: sizeLayer.height * 0.07, height: sizeLayer.height * 0.03402), alpha: 1)
             self.gameOverSlogan = initializeEntity(textureImageName: "gameOverText", size: CGSize(width: sizeLayer.height * 0.4, height: (sizeLayer.height * 0.4) * 0.2), alpha: 0)
             self.tapToLaunchAgainLabel = initializeLabelNode(fontName: "Onramp", fontSize: 30, fontText: "TAP TO LAUCH AGAIN", alpha: 0, position: CGPoint(x: sizeLayer.width / 2, y: sizeLayer.height * 0.3), aligmentMode: .center)
@@ -43,10 +45,11 @@ class HudLayer: SKNode {
             
             self.entityManager?.addAll([self.tapToLaunchAgainLabel!, self.highScoreLabel!, self.scoreLabel!])
             
+            setupEntity(entity: newBestSprite!, position: CGPoint(x: sizeLayer.width / 2, y: sizeLayer.height * 0.71), zPosition: nil)
             setupEntity(entity: scoreIcon!, position: CGPoint(x: sizeLayer.width * 0.08 , y: sizeLayer.height * 0.97), zPosition: nil)
             setupEntity(entity: gameOverSlogan!, position: centerPoint(), zPosition: nil)
     
-            self.entityManager?.addAll(entities: [self.scoreIcon!, self.gameOverSlogan!])
+            self.entityManager?.addAll(entities: [self.scoreIcon!, self.gameOverSlogan!, self.newBestSprite!])
         }
     }
     
@@ -68,8 +71,6 @@ class HudLayer: SKNode {
     }
     
     func startGameOverEffect () {
-
-        self.updateHighScore()
         
         let sprite = (self.scoreIcon!.spriteComponent?.node)!
         var nextPos = CGPoint(x: (size?.width)! * 0.44, y: (size?.height)! * 0.8)
@@ -78,9 +79,6 @@ class HudLayer: SKNode {
         
         nextPos = CGPoint(x: (size?.width)! * 0.60, y: (size?.height)! * 0.77)
         moveScoreLabelToBlackHol(node: self.scoreLabel!, duration: TimeInterval(0.7), durantionDecreaseAlpha: TimeInterval(0.7), nextPosition: nextPos, nextScale: 1)
-        
-        
-        
         
     }
 
@@ -96,8 +94,16 @@ class HudLayer: SKNode {
         self.scoreLabel?.run(sequence) {
             self.scoreLabel?.removeAllActions()
             self.scoreLabel?.fontSize = 44 * 1.5
-            self.highScoreLabel?.text = "BEST: \(String(self.highScore()))"
-            self.highScoreLabel?.run(SKAction.fadeIn(withDuration: 0.7))
+            
+            let fadeIn = SKAction.fadeIn(withDuration: 0.7)
+            
+            if self.isHighScore() {
+                self.newBestSprite?.spriteComponent?.node.run(fadeIn)
+            }else{
+                self.highScoreLabel?.text = "BEST: \(String(self.highScore()))"
+                self.highScoreLabel?.run(fadeIn)
+            }
+            
             self.tapToLaunchAgainLabel?.run(SKAction.fadeIn(withDuration: 0.7)){
                 self.sceceReference().gameLayer?.nextState = true
             }
@@ -107,11 +113,21 @@ class HudLayer: SKNode {
         }
     }
     
+    
+    
     func reconfigureLabelNode (_ node: SKLabelNode, _ nextPosition: CGPoint, _ scale: Float)  {
         let sequence = reconfigureActions(scale: scale, nextPosition: nextPosition)
         node.run(sequence) {
             node.removeAllActions()
         }
+    }
+    
+    func isHighScore () -> Bool {
+        let savedHighScore = UserDefaults.standard.object(forKey: HIGH_SCORE_KEY)
+        if let highScore = savedHighScore as? Int {
+            return highScore < self.score
+        }
+        return false
     }
     
     func updateHighScore () {
@@ -177,6 +193,7 @@ class HudLayer: SKNode {
     
     func resetupHudLayer () {
         
+        self.updateHighScore()
         self.score = 0
         self.scoreLabel?.text = String(self.score)
         self.scoreIcon?.spriteComponent?.node.run(SKAction.fadeOut(withDuration: TimeInterval(1))){
@@ -187,9 +204,15 @@ class HudLayer: SKNode {
         self.gameOverSlogan?.spriteComponent?.node.run(SKAction.fadeOut(withDuration: TimeInterval(1))){
             self.gameOverSlogan?.spriteComponent?.node.removeAllActions()
         }
+        
+        self.newBestSprite?.spriteComponent?.node.run(SKAction.fadeOut(withDuration: TimeInterval(1))){
+            self.highScoreLabel?.removeAllActions()
+        }
+        
         self.highScoreLabel?.run(SKAction.fadeOut(withDuration: TimeInterval(1))){
             self.highScoreLabel?.removeAllActions()
         }
+        
         self.tapToLaunchAgainLabel?.run(SKAction.fadeOut(withDuration: TimeInterval(1))) {
             self.tapToLaunchAgainLabel?.removeAllActions()
             
