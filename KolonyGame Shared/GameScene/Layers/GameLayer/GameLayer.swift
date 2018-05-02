@@ -108,6 +108,7 @@ class GameLayer: SKNode {
         self.blackHole = BlackHoleEntity(size: size)
         if let spriteComponent = blackHole?.component(ofType: SpriteComponent.self) {
             spriteComponent.node.position = CGPoint(x: (self.size?.width)!/2, y: (self.size?.height)! * 0.73)
+            spriteComponent.node.alpha = 0
         }
         let blackholelight = SKSpriteNode(texture: SKTexture(imageNamed: "blackholelight"))
         blackholelight.size = CGSize(width: size.width * 3.14, height: size.height * 3.14)
