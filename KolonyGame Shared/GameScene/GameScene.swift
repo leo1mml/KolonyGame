@@ -48,6 +48,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     }
     
+    func initializingGamePlay() {
+        self.gameLayer?.fadeInBlackHoleAndPlanets()
+        self.hudLayer?.initialize()
+    }
+
+    
     func shakeScene(duration: Float, finished: @escaping () -> Void) {
         let shakeBackground = self.shakeCamera(layer: self.backgroundLayer!, duration: duration)
         let shakeGameLayer = self.shakeCamera(layer: self.gameLayer!, duration: duration)

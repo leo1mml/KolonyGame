@@ -101,6 +101,9 @@ class GameLayer: SKNode {
         createRocketList()
     }
     
+    func fadeInBlackHoleAndPlanets() {
+        self.blackHole?.spriteComponent?.node.run(SKAction.fadeIn(withDuration: TimeInterval(0.5)))
+    }
     
     ///Creates a black hole in the screen, sets it to its specific position and adds its children, the planets.
     func createBlackHole() {
@@ -424,7 +427,12 @@ class GameLayer: SKNode {
             lauchRocket()
             
         }else {
-            self.tapToLaunch = false
+            if let parent = self.parent as? GameScene {
+                self.tapToLaunch = false
+                parent.initializingGamePlay()
+            }
+            
+            
         }
         
     }
