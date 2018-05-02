@@ -40,7 +40,7 @@ class HudLayer: SKNode {
             self.tapToLaunchAgainLabel = initializeLabelNode(fontName: "Onramp", fontSize: 30, fontText: "TAP TO LAUCH AGAIN", alpha: 0, position: CGPoint(x: sizeLayer.width / 2, y: sizeLayer.height * 0.3), aligmentMode: .center)
             self.highScoreLabel = initializeLabelNode(fontName: "Onramp", fontSize: 44, fontText: "", alpha: 0, position: CGPoint(x: sizeLayer.width / 2, y: sizeLayer.height * 0.7), aligmentMode: .center)
            
-            self.scoreLabel = initializeLabelNode(fontName: "Onramp", fontSize: 44, fontText: String(self.score), alpha: 1, position: CGPoint(x: (sizeLayer.width * 0.08) * 2  , y: sizeLayer.height * 0.95), aligmentMode: .left)
+            self.scoreLabel = initializeLabelNode(fontName: "Onramp", fontSize: 44, fontText: String(self.score), alpha: 1, position: CGPoint(x: (sizeLayer.width * 0.08) * 2  , y: sizeLayer.height * 0.9515), aligmentMode: .left)
             self.originalPositionScoreLabel = self.scoreLabel?.position
             
             self.entityManager?.addAll([self.tapToLaunchAgainLabel!, self.highScoreLabel!, self.scoreLabel!])
@@ -194,13 +194,14 @@ class HudLayer: SKNode {
     func resetupHudLayer () {
         
         self.updateHighScore()
-        self.score = 0
         self.scoreLabel?.text = String(self.score)
         self.scoreIcon?.spriteComponent?.node.run(SKAction.fadeOut(withDuration: TimeInterval(1))){
             self.highScoreLabel?.removeAllActions()
         }
         
-        self.scoreLabel?.run(SKAction.fadeOut(withDuration: TimeInterval(1)))
+        self.scoreLabel?.run(SKAction.fadeOut(withDuration: TimeInterval(1))){
+            self.score = 0
+        }
         self.gameOverSlogan?.spriteComponent?.node.run(SKAction.fadeOut(withDuration: TimeInterval(1))){
             self.gameOverSlogan?.spriteComponent?.node.removeAllActions()
         }
