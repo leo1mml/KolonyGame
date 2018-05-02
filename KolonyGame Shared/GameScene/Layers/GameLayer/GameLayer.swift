@@ -434,7 +434,7 @@ class GameLayer: SKNode {
      - Parameter deltaTime: the time interval between one update and the previous one.
      */
     func update(deltaTime: TimeInterval) {
-                if deltaTime < 12000{
+                if deltaTime < 10{
                     self.deltaTime = self.deltaTime + deltaTime
                 }
                 if(self.deltaTime >= self.actionInterval){
