@@ -316,6 +316,8 @@ class GameLayer: SKNode {
             
             var time = 0.133
             
+            self.blackHole?.rotationComponent?.rotationDuration = 4.0
+            
             for rocket in self.rocketList {
                 self.moveToBlackHoleposition(node: (rocket.spriteComponent?.node)!, duration: TimeInterval(time), durantionDecreaseAlpha: TimeInterval(0.7), nextPosition: (rocket.spriteComponent?.node.position)! , nextScale: 1, finished: nil)
                 time += 0.133
@@ -437,9 +439,25 @@ class GameLayer: SKNode {
                 }
                 if(self.deltaTime >= self.actionInterval){
                     self.deltaTime = 0
-                    self.actionInterval = NumbersUtil.randomDouble(min: 5, max: 8)
+                    self.actionInterval = generateRandomInterval()
                     self.blackHole?.stateMachine.enter(BreakState.self)
                 }
+    }
+    
+    func generateRandomInterval() -> Double {
+        if let score = self.sceceReference().hudLayer?.score{
+            if(score < 10){
+                return NumbersUtil.randomDouble(min: 20, max: 25)
+            }else if(score >= 10 && score < 15) {
+                return NumbersUtil.randomDouble(min: 15, max: 20)
+            }else if(score >= 15 && score < 20) {
+                return NumbersUtil.randomDouble(min: 10, max: 15)
+            }else if(score >= 20 && score < 25) {
+                return NumbersUtil.randomDouble(min: 5, max: 10)
+            }
+            return NumbersUtil.randomDouble(min: 3, max: 5)
+        }
+        return NumbersUtil.randomDouble(min: 20, max: 25)
     }
     
     required init?(coder aDecoder: NSCoder) {
