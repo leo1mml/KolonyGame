@@ -35,7 +35,7 @@ class HudLayer: SKNode {
     
     func setupLayer() {
         if let sizeLayer = self.size {
-            self.tapToLauch = initializeEntity(textureImageName: "tapToLaunch", size: CGSize(width: sizeLayer.height * 0.4, height: (sizeLayer.height * 0.4) * 0.2239), alpha: 1)
+            self.tapToLauch = initializeEntity(textureImageName: "tapToLaunch", size: CGSize(width: sizeLayer.height * 0.35, height: (sizeLayer.height * 0.35) * 0.2239), alpha: 1)
             animateTapToLauch()
             self.newBestSprite = initializeEntity(textureImageName: "newBest", size: CGSize(width: sizeLayer.height * 0.25, height: (sizeLayer.height * 0.25) * 0.2146), alpha: 0)
             self.scoreIcon = initializeEntity(textureImageName: "scoreicon", size: CGSize(width: sizeLayer.height * 0.07, height: sizeLayer.height * 0.03402), alpha: 0)
@@ -111,7 +111,10 @@ class HudLayer: SKNode {
             let fadeIn = SKAction.fadeIn(withDuration: 0.7)
             
             if self.isHighScore() {
-                self.newBestSprite?.spriteComponent?.node.run(fadeIn)
+                self.newBestSprite?.spriteComponent?.node.run(fadeIn) {
+                    self.newBestSprite?.spriteComponent?.node.run((self.newBestSprite?.spriteComponent?.scaleAction(timeBetweenScale: TimeInterval(0.5), scaleMultiplier: 1.05))!)
+                }
+                
             }else{
                 self.highScoreLabel?.text = "BEST: \(String(self.highScore()))"
                 self.highScoreLabel?.run(fadeIn)
@@ -208,7 +211,8 @@ class HudLayer: SKNode {
         
         let fadeOutTime = TimeInterval(0.7)
         self.updateHighScore()
-        self.scoreLabel?.text = String(self.score)
+        
+        
         
         self.resetupScore()
         self.gameOverSlogan?.spriteComponent?.node.run(SKAction.fadeOut(withDuration: fadeOutTime)){
@@ -234,8 +238,6 @@ class HudLayer: SKNode {
         let scoreIconPosition =  CGPoint(x: self.size!.width * 0.08 , y: self.size!.height * 0.97)
         let scoreLabelPosition = self.originalPositionScoreLabel!
         
-        
-        
         self.scoreIcon?.spriteComponent?.node.run(SKAction.sequence([SKAction.fadeOut(withDuration: TimeInterval(0.25)), SKAction.move(to: scoreIconPosition, duration: TimeInterval(0.01))])) {
             self.scoreIcon?.spriteComponent?.node.setScale(1)
             self.scoreIcon?.spriteComponent?.node.run(SKAction.fadeIn(withDuration: TimeInterval(0.5)))
@@ -246,6 +248,8 @@ class HudLayer: SKNode {
         
         self.scoreLabel?.run(SKAction.sequence([SKAction.fadeOut(withDuration: TimeInterval(0.25)), SKAction.move(to: scoreLabelPosition, duration: TimeInterval(0.1))])) {
             self.scoreLabel?.fontSize = 44
+            self.score = 0
+            self.scoreLabel?.text = String(self.score)
             self.scoreLabel?.run(SKAction.fadeIn(withDuration: TimeInterval(0.5)))
             self.scoreLabel?.removeAllActions()
         }
