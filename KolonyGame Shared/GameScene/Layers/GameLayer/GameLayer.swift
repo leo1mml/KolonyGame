@@ -403,6 +403,14 @@ class GameLayer: SKNode {
     // MARK: - TOUCH
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touch()
+    }
+    
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        touch()
+    }
+    
+    func touch() {
         
         if let parent = self.parent as? GameScene {
             if parent.stateMachine.currentState is GameOverState && nextState{
@@ -415,22 +423,6 @@ class GameLayer: SKNode {
         }else {
             self.tapToLaunch = false
         }
-        
-    }
-    
-    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        if(rocketList.count == 3 && !cantLaunchRocket){
-            lauchRocket()
-        }
-        
-        if let parent = self.parent as? GameScene {
-            if parent.stateMachine.currentState is GameOverState {
-                parent.stateMachine.enter(PlayingState.self)
-            }
-        }
-        
-        
-        
         
     }
     
