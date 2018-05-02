@@ -19,6 +19,7 @@ class HudLayer: SKNode {
     var scoreLabel: SKLabelNode?
     var scoreIcon: SimpleEntity?
     var gameOverSlogan: SimpleEntity?
+    var newBestSprite: SimpleEntity?
     var highScoreLabel: SKLabelNode?
     var tapToLaunchAgainLabel: SKLabelNode?
     let HIGH_SCORE_KEY = "highScore"
@@ -31,60 +32,40 @@ class HudLayer: SKNode {
     }
     
     func setupLayer() {
-        
         if let sizeLayer = self.size {
+            self.scoreIcon = initializeEntity(textureImageName: "scoreicon", size: CGSize(width: sizeLayer.height * 0.07, height: sizeLayer.height * 0.03402), alpha: 1)
+            self.gameOverSlogan = initializeEntity(textureImageName: "gameOverText", size: CGSize(width: sizeLayer.height * 0.4, height: (sizeLayer.height * 0.4) * 0.2), alpha: 0)
+            self.tapToLaunchAgainLabel = initializeLabelNode(fontName: "Onramp", fontSize: 30, fontText: "TAP TO LAUCH AGAIN", alpha: 0, position: CGPoint(x: sizeLayer.width / 2, y: sizeLayer.height * 0.3), aligmentMode: .center)
+            self.highScoreLabel = initializeLabelNode(fontName: "Onramp", fontSize: 44, fontText: "", alpha: 0, position: CGPoint(x: sizeLayer.width / 2, y: sizeLayer.height * 0.7), aligmentMode: .center)
+           
+            self.scoreLabel = initializeLabelNode(fontName: "Onramp", fontSize: 44, fontText: String(self.score), alpha: 1, position: CGPoint(x: (sizeLayer.width * 0.08) * 2  , y: sizeLayer.height * 0.95), aligmentMode: .left)
+            self.originalPositionScoreLabel = self.scoreLabel?.position
             
-            //creating score icon
-            let size = CGSize(width: sizeLayer.height * 0.07, height: sizeLayer.height * 0.03402)
-            self.scoreIcon = SimpleEntity(imageName: "scoreicon", size: size)
-            
-            let width = sizeLayer.height * 0.4
-            let sizeSlogan = CGSize(width: width, height: width * 0.2)
-            
-            self.gameOverSlogan = SimpleEntity(imageName: "gameOverText", size: sizeSlogan)
-            self.gameOverSlogan?.spriteComponent?.node.alpha = 0
-            
-            self.tapToLaunchAgainLabel = SKLabelNode(fontNamed: "Onramp")
-            configure(label: self.tapToLaunchAgainLabel, fontSize: 30, text: "TAP TO LAUNCH AGAIN", position: CGPoint(x: sizeLayer.width / 2, y: sizeLayer.height * 0.3))
-            self.tapToLaunchAgainLabel?.alpha = 0
-             self.entityManager?.add(self.tapToLaunchAgainLabel!)
-            
-            //creating score label
-            self.highScoreLabel = SKLabelNode(fontNamed: "Onramp")
-            configure(label: self.highScoreLabel, fontSize: 44, text: "", position: CGPoint(x: sizeLayer.width / 2, y: sizeLayer.height * 0.7))
-            self.highScoreLabel?.alpha = 0
-            self.entityManager?.add(self.highScoreLabel!)
-            
-            
-            self.scoreLabel = SKLabelNode(fontNamed: "Onramp")
-            if let score = self.scoreLabel {
-                score.fontSize = 44
-                score.text = String(self.score)
-                score.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
-                
-            }
-            
+            self.entityManager?.addAll([self.tapToLaunchAgainLabel!, self.highScoreLabel!, self.scoreLabel!])
             
             setupEntity(entity: scoreIcon!, position: CGPoint(x: sizeLayer.width * 0.08 , y: sizeLayer.height * 0.97), zPosition: nil)
             setupEntity(entity: gameOverSlogan!, position: centerPoint(), zPosition: nil)
-            
-            if let spriteScoreIcon = scoreIcon?.spriteComponent {
-                if let score = self.scoreLabel {
-                    score.position = CGPoint(x: (sizeLayer.width * 0.08) * 2  , y: spriteScoreIcon.node.position.y - (spriteScoreIcon.node.size.height / 2  + 1) )
-                    self.originalPositionScoreLabel = score.position
-                    self.entityManager?.add(score)
-                }
-            }
-            
-            
-            self.entityManager?.add(scoreIcon!)
-            self.entityManager?.add(gameOverSlogan!)
-            
+    
+            self.entityManager?.addAll(entities: [self.scoreIcon!, self.gameOverSlogan!])
         }
     }
     
+    func initializeLabelNode (fontName: String, fontSize: CGFloat, fontText: String, alpha: CGFloat, position: CGPoint, aligmentMode: SKLabelHorizontalAlignmentMode) -> SKLabelNode {
+        let label = SKLabelNode(fontNamed: fontName)
+        label.alpha = alpha
+        label.fontSize = fontSize
+        label.text = fontText
+        label.position = position
+        label.horizontalAlignmentMode = aligmentMode
+        return label
+    }
     
     
+    func initializeEntity (textureImageName: String, size: CGSize, alpha: CGFloat) -> SimpleEntity {
+        let entity = SimpleEntity(imageName: textureImageName, size: size)
+        entity.spriteComponent?.node.alpha = alpha
+        return entity
+    }
     
     func startGameOverEffect () {
 
@@ -93,21 +74,16 @@ class HudLayer: SKNode {
         let sprite = (self.scoreIcon!.spriteComponent?.node)!
         var nextPos = CGPoint(x: (size?.width)! * 0.44, y: (size?.height)! * 0.8)
         
-        self.moveToBlackHoleposition(node: sprite, duration: TimeInterval(1), durantionDecreaseAlpha: TimeInterval(1), nextPosition: nextPos, nextScale: 2)
+        self.moveToBlackHoleposition(node: sprite, duration: TimeInterval(0.7), durantionDecreaseAlpha: TimeInterval(0.7), nextPosition: nextPos, nextScale: 2)
         
         nextPos = CGPoint(x: (size?.width)! * 0.60, y: (size?.height)! * 0.77)
-        moveScoreLabelToBlackHol(node: self.scoreLabel!, duration: TimeInterval(1), durantionDecreaseAlpha: TimeInterval(1), nextPosition: nextPos, nextScale: 1)
+        moveScoreLabelToBlackHol(node: self.scoreLabel!, duration: TimeInterval(0.7), durantionDecreaseAlpha: TimeInterval(0.7), nextPosition: nextPos, nextScale: 1)
         
         
         
         
     }
-    
-    func configure(label: SKLabelNode?, fontSize: CGFloat, text: String, position: CGPoint) {
-        label?.fontSize = fontSize
-        label?.text = text
-        label?.position = position
-    }
+
     
     func centerPoint () -> CGPoint {
         return CGPoint(x: (self.size?.width)! / 2 , y: (self.size?.height)! / 2)
@@ -121,11 +97,11 @@ class HudLayer: SKNode {
             self.scoreLabel?.removeAllActions()
             self.scoreLabel?.fontSize = 44 * 1.5
             self.highScoreLabel?.text = "BEST: \(String(self.highScore()))"
-            self.highScoreLabel?.run(SKAction.fadeIn(withDuration: 1))
-            self.tapToLaunchAgainLabel?.run(SKAction.fadeIn(withDuration: 1)){
+            self.highScoreLabel?.run(SKAction.fadeIn(withDuration: 0.7))
+            self.tapToLaunchAgainLabel?.run(SKAction.fadeIn(withDuration: 0.7)){
                 self.sceceReference().gameLayer?.nextState = true
             }
-            self.gameOverSlogan?.spriteComponent?.node.run(SKAction.fadeIn(withDuration: 1))
+            self.gameOverSlogan?.spriteComponent?.node.run(SKAction.fadeIn(withDuration: 0.7))
             self.reconfigureLabelNode(node, nextPosition, nextScale)
             
         }

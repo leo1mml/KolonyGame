@@ -91,6 +91,13 @@ class RocketEntity: GKEntity {
         self.spriteComponent?.node.addChild(flame)
     }
     
+    func resizeFlame(size: CGSize) {
+        flame.position = CGPoint(x: 0, y: -size.height * 0.61)
+        
+        flame.size = CGSize(width: size.width * 0.3712, height: size.height * 0.2266)
+        
+    }
+    
     func launch(velocity: CGVector) {
         self.spriteComponent?.node.physicsBody?.velocity = velocity
         launchSound()

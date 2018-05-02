@@ -23,7 +23,7 @@ class GameOverState: GKState {
             self.scene.gameLayer?.nextState = false
             self.scene.stopBackgroundSound()
             self.scene.shakeScene(duration: 1.5) {
-                self.scene.gameLayer?.playSound()
+                self.scene.gameLayer?.playBlackHoleSound()
                 self.scene.gameLayer?.startGameOverEffect(finished: nil)
                 self.scene.backgroundLayer?.startGameOverEffect{
                     self.scene.backgroundLayer?.removeActionsAllStars()

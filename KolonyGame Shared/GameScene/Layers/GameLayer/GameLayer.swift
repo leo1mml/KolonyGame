@@ -6,6 +6,7 @@
 //  Copyright © 2018 Leonel Menezes. All rights reserved.
 //
 import SpriteKit
+import AVFoundation
 
 class GameLayer: SKNode {
     
@@ -13,6 +14,7 @@ class GameLayer: SKNode {
     
     ///Game layer size reference.
     var size: CGSize?
+    var rocketSize: CGSize?
     
     ///Entity manager that manages all entities within the game layer.
     var entityManager : EntityManagerGameLayer?
@@ -60,7 +62,7 @@ class GameLayer: SKNode {
     var planetYellow : PlanetEntity?
     
     /// The black hole sound.
-    var blackHoleSound: SKAudioNode = SKAudioNode(fileNamed: "blackHole")
+    var blackHoleSound: AVAudioPlayer?
     
     
     // MARK: - INIT
@@ -68,18 +70,30 @@ class GameLayer: SKNode {
     init(size: CGSize) {
         super.init()
         self.size = size
+        self.rocketSize = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
         entityManager = EntityManagerGameLayer(gameLayer: self)
+        prepareBlackHoleSound()
     }
-    
+
     // MARK: - SOUND
-    func playSound() {
-        self.addChild(blackHoleSound)
+    func playBlackHoleSound() {
+        self.blackHoleSound?.play()
     }
     
-    func stopSound() {
-        self.blackHoleSound.removeFromParent()
+    func stopBlackHoleSound() {
+        if (self.blackHoleSound?.isPlaying)! {
+            self.blackHoleSound?.stop()
+        }
     }
     
+    func prepareBlackHoleSound() {
+        do{
+            self.blackHoleSound =  try AVAudioPlayer(contentsOf:URL.init(fileURLWithPath: Bundle.main.path(forResource: "blackHole", ofType: "mp3")!))
+            self.blackHoleSound?.numberOfLoops = 0
+        }catch{
+            print(error)
+        }
+    }
     
     // MARK: - CONFIGURATION
     func configureLayer() {
@@ -160,8 +174,7 @@ class GameLayer: SKNode {
     func createRocketList() {
         var positionX = (self.size?.width)! / 2
         for index in 0...2 {
-            let size = CGSize(width: (self.size?.height)! * 0.046, height: (self.size?.height)! * 0.053)
-            let rocket = RocketEntity(size: size, rocketType: RocketType.generateRandomShipProperties())
+            let rocket = RocketEntity(size: rocketSize!, rocketType: RocketType.generateRandomShipProperties())
             
             if(index == 0){
                 self.rocketToLaunch = rocket
@@ -284,7 +297,6 @@ class GameLayer: SKNode {
             let rotationMovement = SKAction.rotate(byAngle: CGFloat.pi * CGFloat(2), duration: TimeInterval(0.2))
             let repeatRotationForever = SKAction.repeat(rotationMovement, count: Int((self.size?.height)!/30))
             sprite.node.run(SKAction.group([scaleDown, spiralMovement, repeatRotationForever])){
-                self.recicleShip(rocket: self.rocketToLaunch!)
                 self.nextState = true
             }
         }
@@ -302,14 +314,14 @@ class GameLayer: SKNode {
             
             self.blackHole?.movePlanetsToCenterBlackHole()
             
-            var time = 0.333
+            var time = 0.133
             
             for rocket in self.rocketList {
-                self.moveToBlackHoleposition(node: (rocket.spriteComponent?.node)!, duration: TimeInterval(time), durantionDecreaseAlpha: TimeInterval(1), nextPosition: (rocket.spriteComponent?.node.position)! , nextScale: 1, finished: nil)
-                time += 0.333
+                self.moveToBlackHoleposition(node: (rocket.spriteComponent?.node)!, duration: TimeInterval(time), durantionDecreaseAlpha: TimeInterval(0.7), nextPosition: (rocket.spriteComponent?.node.position)! , nextScale: 1, finished: nil)
+                time += 0.133
             }
             
-            let group = SKAction.group([SKAction.move(to: CGPoint(x: (self.size?.width)! / 2 , y: (self.size?.height)! / 2), duration: TimeInterval(1)), SKAction.scale(to: 6, duration: TimeInterval(1))])
+            let group = SKAction.group([SKAction.move(to: CGPoint(x: (self.size?.width)! / 2 , y: (self.size?.height)! / 2), duration: TimeInterval(0.7)), SKAction.scale(to: 6, duration: TimeInterval(0.7))])
             
             self.blackHole?.spriteComponent?.node.run(group){
                 finished?()
@@ -324,13 +336,19 @@ class GameLayer: SKNode {
      */
     func resetupGameLayer () {
         
-        self.stopSound()
-        
         let group = SKAction.group([SKAction.move(to: CGPoint(x: (self.size?.width)!/2, y: (self.size?.height)! * 0.73), duration: TimeInterval(1)), SKAction.scale(to: 1, duration: TimeInterval(1))])
         self.blackHole?.spriteComponent?.node.run(group)
         for rocket in self.rocketList {
-            rocket.spriteComponent?.node.run(SKAction.fadeIn(withDuration: TimeInterval(1)))
+            rocket.spriteComponent?.node.run(SKAction.fadeIn(withDuration: TimeInterval(1))){
+                rocket.resizeFlame(size: self.rocketSize!)
+            }
         }
+        
+        planetRed?.animate()
+        planetBlue?.animate()
+        planetGreen?.animate()
+        planetYellow?.animate()
+        
     }
     
     
@@ -385,6 +403,14 @@ class GameLayer: SKNode {
     // MARK: - TOUCH
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touch()
+    }
+    
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        touch()
+    }
+    
+    func touch() {
         
         if let parent = self.parent as? GameScene {
             if parent.stateMachine.currentState is GameOverState && nextState{
@@ -397,22 +423,6 @@ class GameLayer: SKNode {
         }else {
             self.tapToLaunch = false
         }
-        
-    }
-    
-    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        if(rocketList.count == 3 && !cantLaunchRocket){
-            lauchRocket()
-        }
-        
-        if let parent = self.parent as? GameScene {
-            if parent.stateMachine.currentState is GameOverState {
-                parent.stateMachine.enter(PlayingState.self)
-            }
-        }
-        
-        
-        
         
     }
     

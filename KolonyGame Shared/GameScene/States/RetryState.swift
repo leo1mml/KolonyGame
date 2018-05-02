@@ -18,6 +18,12 @@ class RetryState: GKState {
     }
     
     override func didEnter(from previousState: GKState?) {
+        
+        if scene.gameLayer?.rocketList.count == 2 {
+            scene.gameLayer?.recicleShip(rocket: (scene.gameLayer?.rocketToLaunch)!)
+        }
+        
+        scene.gameLayer?.stopBlackHoleSound()
         scene.backgroundLayer?.setup((scene.backgroundLayer?.stars!)!)
         scene.backgroundLayer?.setup(littleStars: (scene.backgroundLayer?.littleStars!)!)
             scene.hudLayer?.resetupHudLayer()

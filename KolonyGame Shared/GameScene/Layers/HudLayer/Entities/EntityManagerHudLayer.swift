@@ -34,10 +34,21 @@ class EntityManagerHudLayer: GKEntity {
         //        }
     }
     
+    func addAll (entities: [GKEntity]) {
+        for entity in entities {
+            self.add(entity)
+        }
+    }
+    
     func add(_ label: SKLabelNode) {
         hudLayer.addChild(label)
     }
 
+    func addAll(_ labels : [SKLabelNode]) {
+        for label in labels {
+            add(label)
+        }
+    }
     
     func remove(_ entity: GKEntity) {
         if let spriteNode = entity.component(ofType: SpriteComponent.self)?.node {

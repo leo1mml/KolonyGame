@@ -25,7 +25,7 @@ class PlayingState: GKState {
             scene.backgroundLayer?.setupLayer()
             scene.gameLayer?.configureLayer()
             scene.hudLayer?.setupLayer()
-        }
+        } 
         
     }
     
