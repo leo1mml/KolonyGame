@@ -15,7 +15,7 @@ class HudLayer: SKNode {
     
     var size: CGSize?
     var entityManager : EntityManagerHudLayer?
-    private var score = 0
+    var score = 0
     var scoreLabel: SKLabelNode?
     var scoreIcon: SimpleEntity?
     var gameOverSlogan: SimpleEntity?
