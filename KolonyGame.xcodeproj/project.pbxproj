@@ -17,9 +17,7 @@
 		143817EB2075635F007E5A1E /* PhysicBodyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */; };
 		143817EC20756362007E5A1E /* RotationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */; };
 		143817ED2075636D007E5A1E /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ACEF742056FEAA00D62305 /* GameOverState.swift */; };
-		143817EF2075637A007E5A1E /* StarEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7E320599526008A9159 /* StarEntity.swift */; };
 		143817F02075637E007E5A1E /* EntityManagerBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */; };
-		143817F120756381007E5A1E /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D720571F09008A9159 /* BackgroundEntity.swift */; };
 		143817F22075638F007E5A1E /* BlackHoleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */; };
 		145AA4CF208924E000E6CE02 /* SKAction + Movements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF66CC2087CD47008149B0 /* SKAction + Movements.swift */; };
 		145AA4D02089256600E6CE02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A1B1442087F91B00EE1899 /* Assets.xcassets */; };
@@ -28,7 +26,6 @@
 		1466BBF6207C17E9007FD926 /* SimpleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466BBF2207C1728007FD926 /* SimpleEntity.swift */; };
 		1466BBF7207C17EE007FD926 /* HudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466BBEA207C1638007FD926 /* HudLayer.swift */; };
 		1466BBFA207C1874007FD926 /* ONRAMP.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1466BBF9207C1874007FD926 /* ONRAMP.ttf */; };
-		1491A39E20659B5000AA982C /* StarEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7E320599526008A9159 /* StarEntity.swift */; };
 		14A0F6A520769B530093C5D3 /* GameLayer+Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A0F6A420769B530093C5D3 /* GameLayer+Contact.swift */; };
 		14A0F6A620769B530093C5D3 /* GameLayer+Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A0F6A420769B530093C5D3 /* GameLayer+Contact.swift */; };
 		14A1B1412087EF9400EE1899 /* Smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8ABF66CA2087C5A1008149B0 /* Smoke.sks */; };
@@ -45,12 +42,9 @@
 		14AF062C207E8D52003D47F4 /* RocketshipProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A84A4652078135200CD92C9 /* RocketshipProperties.swift */; };
 		14AF062D207E8D56003D47F4 /* PlanetProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A84A46720781B0900CD92C9 /* PlanetProperties.swift */; };
 		14AF062E207E8D73003D47F4 /* BackgroundBasicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660420755C5A00CE37D6 /* BackgroundBasicEntity.swift */; };
-		14AF062F207E8D78003D47F4 /* MistEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660620755D9300CE37D6 /* MistEntity.swift */; };
 		14AF0630207E8D83003D47F4 /* QueueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF0621207E876E003D47F4 /* QueueState.swift */; };
 		14AF0631207E8D87003D47F4 /* IdleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF0622207E876E003D47F4 /* IdleState.swift */; };
 		14AF0632207E8D8A003D47F4 /* LaunchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF0620207E876E003D47F4 /* LaunchState.swift */; };
-		14D3B25C2077EDC900CB6B98 /* LittleStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2282076BE200054C6E9 /* LittleStar.swift */; };
-		14D3B25D2077EDCA00CB6B98 /* LittleStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9735C2282076BE200054C6E9 /* LittleStar.swift */; };
 		14DC3FCD209A2E0D00B0BC35 /* RetryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979385F020910A080069B621 /* RetryState.swift */; };
 		14E2FE0720583C9600A0E3A8 /* PhysicBodyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE0620583C9600A0E3A8 /* PhysicBodyComponent.swift */; };
 		14E2FE09205869AE00A0E3A8 /* RotationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FE08205869AE00A0E3A8 /* RotationComponent.swift */; };
@@ -103,12 +97,10 @@
 		975AA3CD208A6E6D00F97237 /* backgroundSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1437E92D2089402800457822 /* backgroundSound1.mp3 */; };
 		975AA3CE208A6E7000F97237 /* backgroundSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14F19FA3208931E900CE3A36 /* backgroundSound2.mp3 */; };
 		977B660520755C5A00CE37D6 /* BackgroundBasicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660420755C5A00CE37D6 /* BackgroundBasicEntity.swift */; };
-		977B660720755D9300CE37D6 /* MistEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660620755D9300CE37D6 /* MistEntity.swift */; };
 		977B660B2075ACD500CE37D6 /* GameColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B660A2075ACD500CE37D6 /* GameColors.swift */; };
 		97812766209A3674002EC2DA /* EntityManagerHudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF0626207E8CDF003D47F4 /* EntityManagerHudLayer.swift */; };
 		9790E7D42056F51D008A9159 /* BackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D32056F51D008A9159 /* BackgroundLayer.swift */; };
 		9790E7D62057073D008A9159 /* EntityManagerBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */; };
-		9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790E7D720571F09008A9159 /* BackgroundEntity.swift */; };
 		979385F120910A080069B621 /* RetryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979385F020910A080069B621 /* RetryState.swift */; };
 		97DC3C84208275A6000A4DA0 /* GameScene+ShakeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D11F220812A510073269E /* GameScene+ShakeScreen.swift */; };
 		97DC3C8620867B27000A4DA0 /* BackgroundTextures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DC3C8520867B27000A4DA0 /* BackgroundTextures.swift */; };
@@ -164,15 +156,11 @@
 		8AE8079620571FA6006EDC86 /* BlackHoleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackHoleEntity.swift; sourceTree = "<group>"; };
 		9735C2222075BBF10054C6E9 /* Comets.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Comets.sks; sourceTree = "<group>"; };
 		9735C2252075CB400054C6E9 /* NumbersUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersUtil.swift; sourceTree = "<group>"; };
-		9735C2282076BE200054C6E9 /* LittleStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleStar.swift; sourceTree = "<group>"; };
 		974D11F220812A510073269E /* GameScene+ShakeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+ShakeScreen.swift"; sourceTree = "<group>"; };
 		977B660420755C5A00CE37D6 /* BackgroundBasicEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBasicEntity.swift; sourceTree = "<group>"; };
-		977B660620755D9300CE37D6 /* MistEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistEntity.swift; sourceTree = "<group>"; };
 		977B660A2075ACD500CE37D6 /* GameColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColors.swift; sourceTree = "<group>"; };
 		9790E7D32056F51D008A9159 /* BackgroundLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundLayer.swift; sourceTree = "<group>"; };
 		9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerBackgroundLayer.swift; sourceTree = "<group>"; };
-		9790E7D720571F09008A9159 /* BackgroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEntity.swift; sourceTree = "<group>"; };
-		9790E7E320599526008A9159 /* StarEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarEntity.swift; sourceTree = "<group>"; };
 		979385F020910A080069B621 /* RetryState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryState.swift; sourceTree = "<group>"; };
 		97DC3C8520867B27000A4DA0 /* BackgroundTextures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTextures.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -412,12 +400,8 @@
 		9790E7D22056F4F7008A9159 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				9790E7D720571F09008A9159 /* BackgroundEntity.swift */,
 				977B660420755C5A00CE37D6 /* BackgroundBasicEntity.swift */,
 				9790E7D52057073D008A9159 /* EntityManagerBackgroundLayer.swift */,
-				977B660620755D9300CE37D6 /* MistEntity.swift */,
-				9790E7E320599526008A9159 /* StarEntity.swift */,
-				9735C2282076BE200054C6E9 /* LittleStar.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -548,14 +532,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				97812766209A3674002EC2DA /* EntityManagerHudLayer.swift in Sources */,
-				14D3B25C2077EDC900CB6B98 /* LittleStar.swift in Sources */,
-				1491A39E20659B5000AA982C /* StarEntity.swift in Sources */,
 				8AE8079720571FA6006EDC86 /* BlackHoleEntity.swift in Sources */,
 				8A8CCFAA20532B6600546F56 /* PlayingState.swift in Sources */,
 				14AF0623207E876E003D47F4 /* LaunchState.swift in Sources */,
 				14F761C32059A16400F4D04F /* RocketEntity.swift in Sources */,
 				14ACEF752056FEAA00D62305 /* GameOverState.swift in Sources */,
-				9790E7D820571F09008A9159 /* BackgroundEntity.swift in Sources */,
 				8ABF66CD2087CD47008149B0 /* SKAction + Movements.swift in Sources */,
 				8A8CCF912053239B00546F56 /* GameScene.swift in Sources */,
 				97DC3C84208275A6000A4DA0 /* GameScene+ShakeScreen.swift in Sources */,
@@ -574,7 +555,6 @@
 				8A84A46820781B0900CD92C9 /* PlanetProperties.swift in Sources */,
 				14E2FE09205869AE00A0E3A8 /* RotationComponent.swift in Sources */,
 				977B660520755C5A00CE37D6 /* BackgroundBasicEntity.swift in Sources */,
-				977B660720755D9300CE37D6 /* MistEntity.swift in Sources */,
 				1466BBF6207C17E9007FD926 /* SimpleEntity.swift in Sources */,
 				8A8CCFA32053249F00546F56 /* GameLayer.swift in Sources */,
 				8A8CCF772053239A00546F56 /* GameViewController.swift in Sources */,
@@ -594,7 +574,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ABF66CE20894CD7008149B0 /* BackgroundTextures.swift in Sources */,
-				143817EF2075637A007E5A1E /* StarEntity.swift in Sources */,
 				1466BBF5207C17E8007FD926 /* SimpleEntity.swift in Sources */,
 				8A8CCF922053239B00546F56 /* GameScene.swift in Sources */,
 				143817EA2075635C007E5A1E /* SpriteComponent.swift in Sources */,
@@ -625,12 +604,9 @@
 				143817ED2075636D007E5A1E /* GameOverState.swift in Sources */,
 				8AE8079320570413006EDC86 /* EntityManagerGameLayer.swift in Sources */,
 				14E69C7F208A3E9C0032A5E1 /* GameLayer+Sounds.swift in Sources */,
-				14D3B25D2077EDCA00CB6B98 /* LittleStar.swift in Sources */,
 				8AE8079420570418006EDC86 /* BackgroundLayer.swift in Sources */,
 				14F761C42059A16400F4D04F /* RocketEntity.swift in Sources */,
 				8A8CCF862053239B00546F56 /* AppDelegate.swift in Sources */,
-				14AF062F207E8D78003D47F4 /* MistEntity.swift in Sources */,
-				143817F120756381007E5A1E /* BackgroundEntity.swift in Sources */,
 				14AF0630207E8D83003D47F4 /* QueueState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
