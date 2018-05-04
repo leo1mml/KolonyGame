@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kolonyLoaded" translatesAutoresizingMaskIntoConstraints="NO" id="sVd-6a-mfM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kolonyloading" translatesAutoresizingMaskIntoConstraints="NO" id="sVd-6a-mfM">
                                 <rect key="frame" x="101" y="318" width="173" height="30"/>
                                 <color key="tintColor" red="0.10980392160000001" green="0.098039215690000001" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
@@ -40,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="kolonyLoaded" width="600" height="103"/>
+        <image name="kolonyloading" width="600" height="103"/>
     </resources>
 </document>
