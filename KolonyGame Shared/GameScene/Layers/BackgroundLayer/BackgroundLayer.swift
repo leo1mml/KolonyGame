@@ -18,10 +18,10 @@ class BackgroundLayer: SKNode {
     var size: CGSize?
     var entityManager : EntityManagerBackgroundLayer?
     
-    var bg : BackgroundEntity? = nil
-    var mist: MistEntity? = nil
-    var stars: [StarEntity]? = nil
-    var littleStars: [LittleStar]? = nil
+    var bg : BackgroundBasicEntity? = nil
+    var mist: BackgroundBasicEntity? = nil
+    var stars: [BackgroundBasicEntity]? = nil
+    var littleStars: [BackgroundBasicEntity]? = nil
     var comets: SKEmitterNode? = nil
     
     init(size: CGSize) {
@@ -34,7 +34,7 @@ class BackgroundLayer: SKNode {
         
         //creating background
         var size = CGSize(width: (self.size?.width)!, height: (self.size?.height)!)
-        self.bg = BackgroundEntity(imageName: "bg", size: size)
+        self.bg = BackgroundBasicEntity(imageName: "bg", size: size)
         
         //creating stars of background
         size = CGSize(width: (self.size?.height)! * 0.01, height: (self.size?.height)! * 0.01)
@@ -43,7 +43,7 @@ class BackgroundLayer: SKNode {
         
         //creating mist
         size = CGSize(width: (self.size?.height)! , height: (self.size?.height)!)
-        self.mist = MistEntity(imageName: "nevoas", size: size)
+        self.mist = BackgroundBasicEntity(imageName: "nevoas", size: size)
         
         //creating little stars of background
         size = CGSize(width: (self.size?.width)! * 0.005, height: (self.size?.height)! * 0.005)
@@ -68,7 +68,7 @@ class BackgroundLayer: SKNode {
         }
     }
     
-    func setup (littleStars: [LittleStar]) {
+    func setup (littleStars: [BackgroundBasicEntity]) {
         for i in littleStars {
             
             i.spriteComponent?.node.setScale(1)
@@ -88,7 +88,7 @@ class BackgroundLayer: SKNode {
     }
     
     //Create ramdon position for stars and configure they
-    func setup (_ stars: [StarEntity]) {
+    func setup (_ stars: [BackgroundBasicEntity]) {
         
         for  i in stars {
             
@@ -141,20 +141,20 @@ class BackgroundLayer: SKNode {
     
     
     //Create many stars for background
-    private func createPoolStars(_ size : CGSize, _ typeTexture: BackgroundTextures) -> [StarEntity] {
-        var stars = [StarEntity]()
+    private func createPoolStars(_ size : CGSize, _ typeTexture: BackgroundTextures) -> [BackgroundBasicEntity] {
+        var stars = [BackgroundBasicEntity]()
         for _ in 0...STARS_AMOUNT {
-            stars.append(StarEntity(texture: typeTexture.texture, size: size))
+            stars.append(BackgroundBasicEntity(texture: typeTexture.texture, size: size))
         }
         return stars
     }
     
     
     //Create many little stars for background
-    private func createPoolLittleStars(_ size : CGSize, _ typeTexture: BackgroundTextures) -> [LittleStar] {
-        var stars = [LittleStar]()
+    private func createPoolLittleStars(_ size : CGSize, _ typeTexture: BackgroundTextures) -> [BackgroundBasicEntity] {
+        var stars = [BackgroundBasicEntity]()
         for _ in 0...LITLE_STARS_AMOUNT {
-            stars.append(LittleStar(texture: typeTexture.texture, size: size))
+            stars.append(BackgroundBasicEntity(texture: typeTexture.texture, size: size))
         }
         return stars
     }
@@ -203,20 +203,6 @@ class BackgroundLayer: SKNode {
             moveToBlackHoleposition(node: (stars[index].spriteComponent?.node)!, duration: duration, durantionDecreaseAlpha: TimeInterval(0.1 )) {
                 finished?()
             }
-            
-            
-//            if star == stars.last {
-//                moveToBlackHoleposition(node: (star.spriteComponent?.node)!, duration: duration, durantionDecreaseScale: TimeInterval(0.5)) {
-//
-//                    print("IS LAST STAR")
-//
-//                    DispatchQueue.main.async {
-//                        finished?()
-//                    }
-//                }
-//            } else {
-//                moveToBlackHoleposition(node: (star.spriteComponent?.node)!, duration: duration, durantionDecreaseScale: TimeInterval(2), finished: nil)
-//            }
         }
     }
     
