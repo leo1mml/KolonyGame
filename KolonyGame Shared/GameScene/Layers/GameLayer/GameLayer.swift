@@ -77,6 +77,7 @@ class GameLayer: SKNode {
 
     // MARK: - SOUND
     func playBlackHoleSound() {
+        self.blackHoleSound?.currentTime = 0
         self.blackHoleSound?.play()
     }
     
