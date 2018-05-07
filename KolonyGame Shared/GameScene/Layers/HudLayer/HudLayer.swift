@@ -25,6 +25,7 @@ class HudLayer: SKNode {
     var tapToLaunchAgainLabel: SKLabelNode?
     let HIGH_SCORE_KEY = "highScore"
     var originalPositionScoreLabel: CGPoint?
+    var gameLogo: SimpleEntity?
     
     
     init(size: CGSize) {
@@ -35,8 +36,9 @@ class HudLayer: SKNode {
     
     func setupLayer() {
         if let sizeLayer = self.size {
-            self.tapToLauch = initializeEntity(textureImageName: "tapToLaunch", size: CGSize(width: sizeLayer.height * 0.35, height: (sizeLayer.height * 0.35) * 0.2239), alpha: 1)
+            self.tapToLauch = initializeEntity(textureImageName: "tapToLaunch", size: CGSize(width: sizeLayer.height * 0.28, height: (sizeLayer.height * 0.28) * 0.2239), alpha: 1)
             animateTapToLauch()
+            self.gameLogo = initializeEntity(textureImageName: "logo", size: CGSize(width: sizeLayer.height * 0.35, height: (sizeLayer.height * 0.35) * 0.1733), alpha: 1)
             self.newBestSprite = initializeEntity(textureImageName: "newBest", size: CGSize(width: sizeLayer.height * 0.25, height: (sizeLayer.height * 0.25) * 0.2146), alpha: 0)
             self.scoreIcon = initializeEntity(textureImageName: "scoreicon", size: CGSize(width: sizeLayer.height * 0.07, height: sizeLayer.height * 0.03402), alpha: 0)
             self.gameOverSlogan = initializeEntity(textureImageName: "gameOverText", size: CGSize(width: sizeLayer.height * 0.4, height: (sizeLayer.height * 0.4) * 0.2), alpha: 0)
@@ -48,11 +50,13 @@ class HudLayer: SKNode {
             
             self.entityManager?.addAll([self.tapToLaunchAgainLabel!, self.highScoreLabel!, self.scoreLabel!])
             
+            setupEntity(entity: self.gameLogo!, position: CGPoint(x: sizeLayer.width / 2, y: (sizeLayer.height / 2) + ((sizeLayer.height / 2) / 2)), zPosition: nil)
             setupEntity(entity: newBestSprite!, position: CGPoint(x: sizeLayer.width / 2, y: sizeLayer.height * 0.71), zPosition: nil)
             setupEntity(entity: scoreIcon!, position: CGPoint(x: sizeLayer.width * 0.08 , y: sizeLayer.height * 0.97), zPosition: nil)
             setupEntity(entity: gameOverSlogan!, position: centerPoint(), zPosition: nil)
             setupEntity(entity: tapToLauch!, position: centerPoint(), zPosition: nil)
-            self.entityManager?.addAll(entities: [self.scoreIcon!, self.gameOverSlogan!, self.newBestSprite!, self.tapToLauch!])
+            
+            self.entityManager?.addAll(entities: [self.scoreIcon!, self.gameOverSlogan!, self.newBestSprite!, self.tapToLauch!, self.gameLogo!])
         }
     }
     
@@ -90,7 +94,8 @@ class HudLayer: SKNode {
     }
 
     func initialize () {
-        self.tapToLauch?.spriteComponent?.node.run(SKAction.fadeOut(withDuration: 0.5)) {
+        self.gameLogo?.spriteComponent?.node.run(SKAction.sequence([SKAction.fadeOut(withDuration: 0.5), SKAction.removeFromParent()]))
+        self.tapToLauch?.spriteComponent?.node.run(SKAction.sequence([SKAction.fadeOut(withDuration: 0.5), SKAction.removeFromParent()])) {
             self.scoreIcon?.spriteComponent?.node.run(SKAction.fadeIn(withDuration: TimeInterval(0.5)))
             self.scoreLabel?.run(SKAction.fadeIn(withDuration: TimeInterval(0.5)))
         }

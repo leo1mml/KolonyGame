@@ -53,6 +53,7 @@ class BackgroundLayer: SKNode {
         
         
         size = CGSize(width: (self.size?.height)! * 0.04, height: ((self.size?.height)! * 0.04) * 0.9428)
+        
         self.meteorite = BackgroundBasicEntity(imageName: "meteorite", size: size)
         
         setupEntity(entity: meteorite!, position: CGPoint(x: -5, y: -5), zPosition: 10)
@@ -61,7 +62,7 @@ class BackgroundLayer: SKNode {
        
         self.comets = createComet()
         
-        self.addEntitiesInBackgroundLayer([bg!, mist!, meteorite!])
+        self.addEntitiesInBackgroundLayer([bg!, mist!])
         self.entityManager?.addAll(stars!)
         self.entityManager?.addAll(littleStars!)
         self.entityManager?.add(particles: self.comets!)
@@ -103,7 +104,7 @@ class BackgroundLayer: SKNode {
             i.spriteComponent?.node.setScale(1)
             //get position x and y in a tuple -> (x: CGFloat, y:CGFloat)
 
-            var pos = self.randomPosition()
+            let pos = self.randomPosition()
         
             setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -12)
             
