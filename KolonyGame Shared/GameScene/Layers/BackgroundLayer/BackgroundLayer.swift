@@ -23,6 +23,7 @@ class BackgroundLayer: SKNode {
     var stars: [BackgroundBasicEntity]? = nil
     var littleStars: [BackgroundBasicEntity]? = nil
     var comets: SKEmitterNode? = nil
+    var meteorite: BackgroundBasicEntity? = nil
     
     init(size: CGSize) {
         super.init()
@@ -50,6 +51,12 @@ class BackgroundLayer: SKNode {
         self.littleStars = createPoolLittleStars(size, BackgroundTextures.littleStar)
         setup(littleStars: littleStars!)
         
+        
+        size = CGSize(width: (self.size?.height)! * 0.04, height: ((self.size?.height)! * 0.04) * 0.9428)
+        
+        self.meteorite = BackgroundBasicEntity(imageName: "meteorite", size: size)
+        
+        setupEntity(entity: meteorite!, position: CGPoint(x: -5, y: -5), zPosition: 10)
         setupEntity(entity: mist!, position: CGPoint.zero, zPosition: -14)
         setupEntity(entity: bg!, position: CGPoint.zero, zPosition: -15)
        
@@ -59,6 +66,8 @@ class BackgroundLayer: SKNode {
         self.entityManager?.addAll(stars!)
         self.entityManager?.addAll(littleStars!)
         self.entityManager?.add(particles: self.comets!)
+        
+        //animateMeteorite()
         
     }
     
@@ -95,12 +104,7 @@ class BackgroundLayer: SKNode {
             i.spriteComponent?.node.setScale(1)
             //get position x and y in a tuple -> (x: CGFloat, y:CGFloat)
 
-            var pos = self.randomPosition()
-            
-            if let size = self.size {
-                pos.x -= size.width / 2
-                pos.y -= size.height / 2
-            }
+            let pos = self.randomPosition()
         
             setupEntity(entity: i, position: CGPoint(x: pos.x, y: pos.y), zPosition: -12)
             
@@ -124,8 +128,11 @@ class BackgroundLayer: SKNode {
             let respawnDistributionX =  GKShuffledDistribution(randomSource: GKARC4RandomSource(), lowestValue: 0, highestValue: Int(size.width))
             let respawnDistributionY =  GKShuffledDistribution(randomSource: GKARC4RandomSource(), lowestValue: 0, highestValue: Int(size.height))
             
-            let x = CGFloat(respawnDistributionX.nextInt())
-            let y = CGFloat(respawnDistributionY.nextInt())
+            var x = CGFloat(respawnDistributionX.nextInt())
+            var y = CGFloat(respawnDistributionY.nextInt())
+            
+            x -= size.width / 2
+            y -= size.height / 2
             
             return (x,  y)
         }
@@ -253,6 +260,102 @@ class BackgroundLayer: SKNode {
         }
         return nil
     }
+    
+    private func animateMeteorite () {
+        meteorite?.spriteComponent?.node.texture?.filteringMode = .nearest
+        Timer.scheduledTimer(withTimeInterval: TimeInterval(50), repeats: true) { (_) in
+            let points = self.generateMeteoriteRockNewStartingPosition()
+            let startingPoint = points.0
+            let finishPoint = points.1
+
+            self.meteorite?.spriteComponent?.node.position = startingPoint
+            self.meteorite?.spriteComponent?.node.run(SKAction.move(to: finishPoint, duration: TimeInterval(50 - 10)))
+            self.meteorite?.spriteComponent?.node.run(SKAction.repeatForever(SKAction.rotate(byAngle: -90, duration: 120)))
+        }
+        
+        
+    }
+    
+    func generateMeteoriteRockNewStartingPosition() -> (CGPoint, CGPoint){
+        let isOnLeft = arc4random_uniform(2)
+        let startingY = NumbersUtil.randomCGFloat(min: 0, max: (self.size?.height)!)
+        let finishingY = NumbersUtil.randomCGFloat(min: 0, max: (self.size?.height)!)
+
+        
+        let meteoriteWidth = (self.meteorite?.spriteComponent?.node.size.width)!
+        var startingX = -meteoriteWidth
+        var finishingX = meteoriteWidth + (self.size?.width)!
+
+        if (isOnLeft != 0){
+            var bubble : CGFloat = 0
+            bubble = startingX
+            startingX = finishingX
+            finishingX = bubble
+        }
+
+        let startingPoint = CGPoint(x: startingX, y: startingY)
+        let finishingPoint = CGPoint(x: finishingX, y: finishingY)
+
+        return (startingPoint, finishingPoint)
+    }
+    
+    
+    
+    
+    
+//    
+//    //Meteorites
+//    func generateRocks(quantidade:Int){
+//        for _ in 1...quantidade{
+//            //Loading image
+//            let meteoriteRocks = SKSpriteNode(imageNamed: "Assets/minirock.png")
+//            meteoriteRocks.zPosition = 10
+//            //Adding anti-aliasing
+//            meteoriteRocks.texture?.filteringMode = .nearest
+//            //Creating random position
+//            //            let posicaoRandomica = CGPoint(x: randomCGFloat(min: 0, max: sceneView.frame.width * 3), y: randomCGFloat(min: 0, max: sceneView.frame.height * 3))
+//            meteoriteRocks.position = CGPoint(x: -5, y: -5)
+//            //Creating timer and movement to random position
+//            let duration : Int = 50
+//            Timer.scheduledTimer(withTimeInterval: Double(duration), repeats: true) { (_) in
+//                let points = self.generateMeteoriteRockNewStartingPosition(meteoriteRock: meteoriteRocks)
+//                let startingPoint = points.0
+//                let finishPoint = points.1
+//                
+//                meteoriteRocks.position = startingPoint
+//                meteoriteRocks.run(SKAction.move(to: finishPoint, duration: TimeInterval(duration - 10)))
+//                meteoriteRocks.run(SKAction.repeatForever(SKAction.rotate(byAngle: -90, duration: 120)))
+//            }
+//            
+//            //Creating random scale
+//            meteoriteRocks.setScale(randomCGFloat(min: 0.20, max: 0.50))
+//            //Adding node on screen
+//            sceneView.scene?.addChild(meteoriteRocks)
+//            
+//        }
+//    }
+//    
+//    //Generating new Meteorites after first ends
+//    func generateMeteoriteRockNewStartingPosition(meteoriteRock : SKSpriteNode) -> (CGPoint, CGPoint){
+//        let isOnLeft = arc4random_uniform(2)
+//        let startingY = randomCGFloat(min: 0, max: self.sceneView.frame.height)
+//        let finishingY = randomCGFloat(min: 0, max: self.sceneView.frame.height)
+//        
+//        var startingX = -meteoriteRock.size.width
+//        var finishingX = meteoriteRock.size.width + self.sceneView.frame.width
+//        
+//        if (isOnLeft != 0){
+//            var bubble : CGFloat = 0
+//            bubble = startingX
+//            startingX = finishingX
+//            finishingX = bubble
+//        }
+//        
+//        let startingPoint = CGPoint(x: startingX, y: startingY)
+//        let finishingPoint = CGPoint(x: finishingX, y: finishingY)
+//        
+//        return (startingPoint, finishingPoint)
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
