@@ -16,11 +16,21 @@ class PlayingState: GKState {
         self.scene = scene as! GameScene
         super.init()
     }
+    
     override func didEnter(from previousState: GKState?) {
         
+        scene.playBackgroundSound()
+        
+        if !(previousState is RetryState) {
+            scene.backgroundLayer?.setupLayer()
+            scene.gameLayer?.configureLayer()
+            scene.hudLayer?.setupLayer()
+        } 
+        
     }
+    
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return true
+        return stateClass is GameOverState.Type
     }
     
     override func update(deltaTime seconds: TimeInterval) {

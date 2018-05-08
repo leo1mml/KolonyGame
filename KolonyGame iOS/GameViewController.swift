@@ -14,28 +14,34 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let scene = GameScene.newGameScene()
 
         // Present the scene
         let skView = self.view as! SKView
-        skView.presentScene(scene)
+        let scene = GameScene(size: skView.frame.size, stateClass: PlayingState.self)
+        
+//        skView.showsFPS = true
+//        skView.showsNodeCount = true
+//        skView.showsPhysics = true
         
         skView.ignoresSiblingOrder = true
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        
+        scene.scaleMode = .aspectFit
+        
+        scene.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        scene.physicsBody?.friction = 0.0
+        scene.physicsBody?.linearDamping = 0.0
+        
+        skView.presentScene(scene)
     }
+    
+    
 
     override var shouldAutorotate: Bool {
         return true
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
+        return .portrait
     }
 
     override func didReceiveMemoryWarning() {
