@@ -94,8 +94,8 @@ class HudLayer: SKNode {
     }
 
     func initialize () {
-        self.gameLogo?.spriteComponent?.node.run(SKAction.sequence([SKAction.fadeOut(withDuration: 0.5), SKAction.removeFromParent()]))
-        self.tapToLauch?.spriteComponent?.node.run(SKAction.sequence([SKAction.fadeOut(withDuration: 0.5), SKAction.removeFromParent()])) {
+        self.gameLogo?.spriteComponent?.node.run(SKAction.sequence([SKAction.fadeOut(withDuration: 0.5)]))
+        self.tapToLauch?.spriteComponent?.node.run(SKAction.sequence([SKAction.fadeOut(withDuration: 0.5)])) {
             self.scoreIcon?.spriteComponent?.node.run(SKAction.fadeIn(withDuration: TimeInterval(0.5)))
             self.scoreLabel?.run(SKAction.fadeIn(withDuration: TimeInterval(0.5)))
         }
