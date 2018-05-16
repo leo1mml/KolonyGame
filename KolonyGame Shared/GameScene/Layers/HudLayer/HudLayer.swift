@@ -246,7 +246,7 @@ class HudLayer: SKNode {
         self.scoreIcon?.spriteComponent?.node.run(SKAction.sequence([SKAction.fadeOut(withDuration: TimeInterval(0.25)), SKAction.move(to: scoreIconPosition, duration: TimeInterval(0.01))])) {
             self.scoreIcon?.spriteComponent?.node.setScale(1)
             self.scoreIcon?.spriteComponent?.node.run(SKAction.fadeIn(withDuration: TimeInterval(0.5)))
-            self.scoreIcon?.spriteComponent?.node.removeAllActions()
+            //self.scoreIcon?.spriteComponent?.node.removeAllActions()
         }
         
         
@@ -256,7 +256,7 @@ class HudLayer: SKNode {
             self.score = 0
             self.scoreLabel?.text = String(self.score)
             self.scoreLabel?.run(SKAction.fadeIn(withDuration: TimeInterval(0.5)))
-            self.scoreLabel?.removeAllActions()
+            //self.scoreLabel?.removeAllActions()
         }
         
         
