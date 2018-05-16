@@ -10,7 +10,13 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
+protocol kolonyLaunch {
+    func didlaunch()
+}
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    
+    var launchDelegate: kolonyLaunch!
     
     let gameLayer: GameLayer?
     let backgroundLayer: BackgroundLayer?
@@ -31,7 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ])
     
     init(size: CGSize, stateClass: AnyClass) {
-        
+
         initialState = stateClass
         
         self.gameLayer = GameLayer(size: size)
@@ -91,9 +97,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
-        stateMachine.enter(initialState)
         self.backgroundColor = .clear
-        
+    }
+    
+    func play() {
+        stateMachine.enter(initialState)
+        self.launchDelegate.didlaunch()
     }
     
     override func update(_ currentTime: TimeInterval) {
