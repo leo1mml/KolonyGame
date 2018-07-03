@@ -23,13 +23,11 @@ class GameViewController: UIViewController {
         self.skView = self.view as! SKView
         skView.ignoresSiblingOrder = true
         
-        self.loadScene = SKScene(size: skView.frame.size)
-        self.loadScene.backgroundColor = UIColor(red: 0.11, green: 0.10, blue: 0.21, alpha: 1.0)
-        self.loadScene.scaleMode = .aspectFit
-        self.logoNode = SKSpriteNode(imageNamed: "kolonyloading")
-        self.logoNode.size = CGSize(width: skView.frame.size.width * 0.461333, height: skView.frame.size.height * 0.044977)
-        self.logoNode.position = CGPoint(x: skView.frame.size.width/2, y: skView.frame.size.height/2)
-        self.loadScene.addChild(logoNode)
+        loadKolony()
+    }
+    
+    func loadKolony() {
+        createLoadingScene()
         self.skView.presentScene(loadScene)
         
         self.scene = GameScene(size: skView.frame.size, stateClass: PlayingState.self)
@@ -41,11 +39,31 @@ class GameViewController: UIViewController {
         self.scene.physicsBody?.linearDamping = 0.0
     }
     
+    func createLoadingScene() {
+        self.loadScene = SKScene(size: skView.frame.size)
+        self.loadScene.backgroundColor = UIColor(red: 0.11, green: 0.10, blue: 0.21, alpha: 1.0)
+        self.loadScene.scaleMode = .aspectFit
+        self.logoNode = SKSpriteNode(imageNamed: "kolonyloading")
+        let logoWidth = skView.frame.size.width * 0.461333
+        let logoHeight = logoWidth / 6
+        self.logoNode.size = CGSize(width: logoWidth, height: logoHeight)
+        self.logoNode.position = CGPoint(x: skView.frame.size.width/2, y: skView.frame.size.height/2)
+        self.loadScene.addChild(logoNode)
+    }
+    
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         
         for press in presses {
             if press.type == .select {
                 scene?.pressesBegan(presses, with: event)
+            }
+            
+            if press.type == .menu {
+                if (scene.tapToLaunch) {
+                    super.pressesBegan(presses, with: event)
+                } else {
+                    loadKolony()
+                }
             }
         }
         

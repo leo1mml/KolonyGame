@@ -18,6 +18,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var launchDelegate: kolonyLaunch!
     
+    var tapToLaunch: Bool!
+    
     let gameLayer: GameLayer?
     let backgroundLayer: BackgroundLayer?
     let hudLayer: HudLayer?
@@ -39,6 +41,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     init(size: CGSize, stateClass: AnyClass) {
 
         initialState = stateClass
+        
+        tapToLaunch = true
         
         self.gameLayer = GameLayer(size: size)
         self.backgroundLayer = BackgroundLayer(size: size)
@@ -129,6 +133,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         for press in presses {
             if press.type == .select {
+                tapToLaunch = false
                 gameLayer?.pressesBegan(presses, with: event)
             }
         }

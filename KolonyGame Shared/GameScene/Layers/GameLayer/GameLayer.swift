@@ -434,8 +434,6 @@ class GameLayer: SKNode {
                 self.tapToLaunch = false
                 parent.initializingGamePlay()
             }
-            
-            
         }
         
     }
